@@ -1,0 +1,24 @@
+lint:
+  image: registry.gitlab.com/pipeline-components/ruff:latest
+  before_script:
+    - mkdir reports
+  script:
+    - ruff ./x2gbfs
+
+
+black:
+  image:
+    name: ${CI_REGISTRY}/common/base-images/flask:ubuntu-22.04
+  before_script:
+    - pip install -r requirements-dev.txt
+  script:
+    - black -S --check --diff x2gbfs
+
+
+mypy-check:
+  image:
+    name: ${CI_REGISTRY}/common/base-images/flask:ubuntu-22.04
+  before_script:
+    - pip install -r requirements-dev.txt
+  script:
+    - mypy x2gbfs

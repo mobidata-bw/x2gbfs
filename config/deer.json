@@ -1,0 +1,86 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundensatz umfasst freie Kilometer. Sobald dieser den Tagessatz überschreitet, gilt dieser. Für Buchungen mit Start/Ziel Flughafen entstehen zusätzliche Kosten. Die hier angegebenen Tarife sind indikativ. Es gelten die jeweils aktuellen Tarife laut Vertrag. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "deer basic line",
+                "per_min_pricing": [
+                    {
+                        "end": 3660,
+                        "interval": 60,
+                        "rate": 9.9,
+                        "start": 0
+                    },
+                    {
+                        "interval": 3660,
+                        "rate": 69.9,
+                        "start": 3660
+                    }
+                ],
+                "plan_id": "basic_line",
+                "price": 0,
+                "url": "https://www.deer-carsharing.de/basic/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagestarif umfasst freie Kilometer. Der Wochenendtarif beträgt 169,90€. Die hier angegebenen Tarife sind indikativ. Es gelten die jeweils aktuellen Tarife laut Vertrag. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "deer business_line line",
+                "per_min_pricing": [
+                    {
+                        "interval": 3660,
+                        "rate": 119.9,
+                        "start": 0
+                    }
+                ],
+                "plan_id": "business_line",
+                "price": 0,
+                "url": "https://www.deer-carsharing.de/business/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tarife umfassen freie Kilometer. Der Wochenendtarif beträgt 499,90€. Die hier angegebenen Tarife sind indikativ. Es gelten die jeweils aktuellen Tarife laut Vertrag. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "deer exclusive line",
+                "per_min_pricing": [
+                    {
+                        "interval": 3660,
+                        "rate": 299.9,
+                        "start": 0
+                    }
+                ],
+                "plan_id": "exclusive_line",
+                "price": 0,
+                "url": "https://www.deer-carsharing.de/exclusive/"
+            }
+        ],
+        "system_information": {
+            "email": "carsharing@deer-mobility.de",
+            "feed_contact_email": "moidata-bww@nvbw.de",
+            "language": "de-DE",
+            "name": "deer",
+            "operator": "DEER GmbH",
+            "phone_number": "+49 7051 1300-120",
+            "privacy_url": "https://www.deer-carsharing.de/wp-content/uploads/2023/05/Datenschutzerklaerung_deer_e-Carsharing.pdf",
+            "purchase_url": "https://www.deer-carsharing.de/registrieren/",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://deer-carsharing.de/yet_unknown",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.fleetster.calw"
+                },
+                "ios": {
+                    "discovery_uri": "https://deer-carsharing.de/yet_unknown",
+                    "store_uri": "https://apps.apple.com/de/app/public-e-carsharing-deer/id1380667727"
+                }
+            },
+            "system_id": "deer",
+            "terms_last_updated": "2022-05-01",
+            "terms_url": "https://www.deer-carsharing.de/wp-content/uploads/2023/03/AGB-deer-1.5.2022.pdf",
+            "timezone": "CET",
+            "url": "https://www.deer-carsharing.de/"
+        }
+    },
+    "publication_base_url": "https://data.mfdz.de/mobidata-bw/deer"
+}

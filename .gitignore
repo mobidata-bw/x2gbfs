@@ -1,0 +1,6 @@
+*.py[cod]
+/.idea
+/Makefile.env
+/venv
+/.env
+/out/*
