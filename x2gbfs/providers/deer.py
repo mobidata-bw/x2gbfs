@@ -1,5 +1,6 @@
 import logging
 import re
+from typing import Dict, Optional, Tuple
 
 logger = logging.getLogger('x2gbfs.deer')
 
@@ -18,13 +19,13 @@ class Deer:
             if vehicle['active'] and not vehicle['deleted'] and vehicle['typeOfUsage'] == 'carsharing':
                 yield vehicle
 
-    def normalize_id(self, id:str)-> str: 
+    def normalize_id(self, id: str) -> str:
         """
         Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
         """
         return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
 
-    def create_station_status(self, station_id:str, last_reported:int):
+    def create_station_status(self, station_id: str, last_reported: int):
         """
         Return a default station status, which needs to be updated later on.
         """
@@ -37,7 +38,7 @@ class Deer:
             'last_reported': last_reported,
         }
 
-    def pricing_plan_id(self, vehicle: Dict)->str:
+    def pricing_plan_id(self, vehicle: Dict) -> Optional[str]:
         """
         Maps deer's vehicle categories to pricing plans (provided viaa config).
         Note: category seems not to match exactly to the pricing plans, as Tesla
@@ -51,10 +52,9 @@ class Deer:
         if category in {'business', 'premium'}:
             return 'business_line'
 
-        logger.warning('No default_pricing_plan mapping for category %s', category)
-        return None
+        raise OSError(f'No default_pricing_plan mapping for category {category}')
 
-    def load_stations(self, default_last_reported:int)-> (Dict, Dict):
+    def load_stations(self, default_last_reported: int) -> Tuple[Dict, Dict]:
         """
         Retrieves stations from deer's fleetster API and converts them
         into gbfs station infos and station status.
@@ -90,7 +90,7 @@ class Deer:
 
         return gbfs_station_infos_map, gbfs_station_status_map
 
-    def load_vehicles(self, default_last_reported:int):
+    def load_vehicles(self, default_last_reported: int):
         """
         Retrieves vehicles from deer's fleetster API and converts them
         into gbfs vehicles, vehicle_types.

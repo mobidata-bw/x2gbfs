@@ -1,9 +1,9 @@
 import json
-from decouple import config
 import logging
+import os
 from argparse import ArgumentParser
 
-import os
+from decouple import config
 
 from x2gbfs.gbfs import GbfsTransformer, GbfsWriter
 from x2gbfs.providers import Deer, FleetsterAPI
@@ -18,7 +18,7 @@ def build_extractor(provider):
         api_url = config('DEER_API_URL')
         api_user = config('DEER_USER')
         api_password = config('DEER_PASSWORD')
-        
+
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
         extractor = Deer(fleetsterApi)
     else:
@@ -26,7 +26,8 @@ def build_extractor(provider):
 
     return extractor
 
-def main(args):
+
+def main(args) -> None:
     provider = args.provider
     with open(f'config/{provider}.json') as config_file:
         # TODO error handling

@@ -58,3 +58,8 @@ line-length = 120
 inline-quotes = "single"
 multiline-quotes = "single"
 docstring-quotes = "double"
+
+[[tool.mypy.overrides]]
+# See https://github.com/HBNetwork/python-decouple/issues/122
+module = "decouple"
+ignore_missing_imports = true
