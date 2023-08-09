@@ -35,6 +35,7 @@ class Deer:
             'is_installed': True,
             'is_returning': True,
             'station_id': station_id,
+            'vehicle_types_available': [],
             'last_reported': last_reported,
         }
 

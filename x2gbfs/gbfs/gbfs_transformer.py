@@ -50,5 +50,4 @@ class GbfsTransformer:
     def _update_station_availability_status(self, vt_available, station_status):
         num_bikes_available = sum([vt['count'] for vt in vt_available])
         station_status['num_bikes_available'] = num_bikes_available
-        if num_bikes_available > 0:
-            station_status['vehicle_types_available'] = vt_available
+        station_status['vehicle_types_available'] = vt_available
