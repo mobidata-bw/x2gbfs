@@ -6,7 +6,7 @@ from time import sleep
 
 from decouple import config
 
-from x2gbfs.gbfs import GbfsTransformer, GbfsWriter
+from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
 from x2gbfs.providers import Deer, FleetsterAPI
 
 logging.basicConfig()
@@ -14,7 +14,7 @@ logging.getLogger().setLevel(logging.INFO)
 logger = logging.getLogger('x2gbfs')
 
 
-def build_extractor(provider):
+def build_extractor(provider: str) -> BaseProvider:
     if provider == 'deer':
         api_url = config('DEER_API_URL')
         api_user = config('DEER_USER')
@@ -23,20 +23,22 @@ def build_extractor(provider):
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
         extractor = Deer(fleetsterApi)
     else:
-        raise OSError(f'Unkown config {provider}')
+        raise ValueError(f'Unkown config {provider}')
 
     return extractor
 
-def main(providers, output_dir, base_url, interval=0):
+
+def main(providers: list[str], output_dir: str, base_url: str, interval: int = 0) -> None:
     while True:
         for provider in providers:
             generate_feed_for(provider, output_dir, base_url)
-        if interval == 0:
-            return
-        else:
+        if interval > 0:
             sleep(interval)
+        else:
+            return
 
-def generate_feed_for(provider, output_dir, base_url) -> None:
+
+def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
     with open(f'config/{provider}.json') as config_file:
         # TODO error handling
         feed_config = json.load(config_file)

@@ -41,9 +41,9 @@ class FleetsterAPI:
 
             self.token = response.json()['_id']
 
-            return self.token
+        return self.token
 
-    def _get_with_authorization(self, url) -> Dict:
+    def _get_with_authorization(self, url: str) -> Dict:
         token = self._login()
         response = requests.get(url, headers={'Authorization': token}, timeout=10)
         response.raise_for_status()

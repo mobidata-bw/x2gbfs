@@ -1,20 +1,22 @@
 import logging
 import re
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Generator, Optional, Tuple
+
+from x2gbfs.gbfs.base_provider import BaseProvider
 
 logger = logging.getLogger('x2gbfs.deer')
 
 
-class Deer:
+class Deer(BaseProvider):
     def __init__(self, api):
         self.api = api
 
-    def all_stations(self):
+    def all_stations(self) -> Generator[Dict, None, None]:
         for location in self.api.all_stations():
             if location['extended']['PublicCarsharing']['hasPublicCarsharing']:
                 yield location
 
-    def all_vehicles(self):
+    def all_vehicles(self) -> Generator[Dict, None, None]:
         for vehicle in self.api.all_vehicles():
             if vehicle['active'] and not vehicle['deleted'] and vehicle['typeOfUsage'] == 'carsharing':
                 yield vehicle
@@ -25,7 +27,7 @@ class Deer:
         """
         return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
 
-    def create_station_status(self, station_id: str, last_reported: int):
+    def create_station_status(self, station_id: str, last_reported: int) -> Dict[str, Any]:
         """
         Return a default station status, which needs to be updated later on.
         """
@@ -91,7 +93,7 @@ class Deer:
 
         return gbfs_station_infos_map, gbfs_station_status_map
 
-    def load_vehicles(self, default_last_reported: int):
+    def load_vehicles(self, default_last_reported: int) -> Tuple[Dict, Dict]:
         """
         Retrieves vehicles from deer's fleetster API and converts them
         into gbfs vehicles, vehicle_types.

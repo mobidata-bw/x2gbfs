@@ -1,9 +1,12 @@
 from collections import Counter
 from datetime import datetime
+from typing import Any, Dict
+
+from .base_provider import BaseProvider
 
 
 class GbfsTransformer:
-    def load_stations_and_vehicles(self, provider):
+    def load_stations_and_vehicles(self, provider: BaseProvider):
         """
         Load stations and vehicles from provider, updates vehicle availabilities at stations
         and returns gbfs collections station_infos, station_status, vehicle_types, vehicles.
@@ -20,7 +23,7 @@ class GbfsTransformer:
             list(vehicles_map.values()),
         )
 
-    def _update_stations_availability_status(self, status_map, vehicles_map):
+    def _update_stations_availability_status(self, status_map: Dict[str, Dict], vehicles_map: Dict[str, Dict]) -> None:
         """
         Updates station_status' vehicle_types_available and num_bikes_available.
         A vehicle is available at a station, when it's station_id matches and it
@@ -32,7 +35,7 @@ class GbfsTransformer:
         station_vehicle_type_arr = [(v['station_id'], v['vehicle_type_id']) for v in filtered_vehicle_map.values()]
         station_vehicle_type_cnt = Counter(station_vehicle_type_arr)
 
-        vehicle_types_per_station = {}
+        vehicle_types_per_station: Dict[str, list] = {}
         for station_vehicle_type in station_vehicle_type_cnt:
             station_id = station_vehicle_type[0]
 
@@ -47,7 +50,13 @@ class GbfsTransformer:
             if station_id in status_map:
                 self._update_station_availability_status(vehicle_types_per_station[station_id], status_map[station_id])
 
-    def _update_station_availability_status(self, vt_available, station_status):
+    def _update_station_availability_status(
+        self, vt_available: list[Dict[str, Any]], station_status: Dict[str, Any]
+    ) -> None:
+        """
+        Sets station_status.vehicle_types_available and
+        calculates num_bikes_available as the sum of all vehicle_types_available.
+        """
         num_bikes_available = sum([vt['count'] for vt in vt_available])
         station_status['num_bikes_available'] = num_bikes_available
         station_status['vehicle_types_available'] = vt_available

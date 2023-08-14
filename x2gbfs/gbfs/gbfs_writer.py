@@ -2,25 +2,35 @@ import copy
 import json
 from datetime import datetime
 from pathlib import Path
+from typing import Dict, List
 
 
 class GbfsWriter:
-    def __init__(self, feed_language='en'):
+    def __init__(self, feed_language: str = 'en'):
         self.feed_language = feed_language
 
-    def gbfs_data(self, feed_language, base_url, include_pricing_plans=True):
+    def gbfs_data(self, feed_language: str, base_url: str, include_pricing_plans: bool = True) -> Dict:
         feeds = ['system_information', 'station_information', 'station_status', 'free_bike_status', 'vehicle_types']
         if include_pricing_plans:
             feeds.append('system_pricing_plans')
 
         return {feed_language: {'feeds': [{'name': feed, 'url': f'{base_url}/{feed}.json'} for feed in feeds]}}
 
-    def write_gbfs_file(self, filename, data, timestamp, ttl=60):
+    def write_gbfs_file(self, filename: str, data, timestamp: int, ttl: int = 60) -> None:
         with open(filename, 'w') as dest:
             content = {'data': data, 'last_updated': timestamp, 'ttl': ttl, 'version': '2.3'}
             json.dump(content, dest, indent=2)
 
-    def write_gbfs_feed(self, config, destFolder, info, status, vehicle_types, vehicles, base_url):
+    def write_gbfs_feed(
+        self,
+        config: Dict,
+        destFolder: str,
+        info: List[Dict],
+        status: List[Dict],
+        vehicle_types: List[Dict],
+        vehicles: List[Dict],
+        base_url: str,
+    ) -> None:
         base_url = base_url or config['publication_base_url']
         pricing_plans = config['feed_data'].get('pricing_plans')
         system_information = copy.deepcopy(config['feed_data']['system_information'])
