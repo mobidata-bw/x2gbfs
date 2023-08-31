@@ -31,7 +31,11 @@ To take notice of such changes, you might register a watch on the relevant urls 
 
 ## Using Docker
 
-To start x2gbfs in a docker container which runs indefinetly and updates all feeds every 30 seconds, start it e.g. like this, providing the interval lenght via `-i <secondsToWait>`:
+The following command demonstrates how to run x2gbfs in a Docker container which
+- only generates the `deer` GBFS feed (`-p deer`),
+- writes into a directory that is mounted from the host machine (`-v …`),
+- runs indefinetly and updates all feeds every 30 seconds (`-i 30`).
+
 ```sh
 docker build -t x2gbfs .
 docker run --rm -v $PWD/out:/app/out x2gbfs -p deer -b 'file:out' -i 30
