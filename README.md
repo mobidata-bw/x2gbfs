@@ -34,11 +34,12 @@ To take notice of such changes, you might register a watch on the relevant urls 
 The following command demonstrates how to run x2gbfs in a Docker container which
 - only generates the `deer` GBFS feed (`-p deer`),
 - writes into a directory that is mounted from the host machine (`-v …`),
+- has access to the necessary Deer API credentials (`--env-file .env`),
 - runs indefinetly and updates all feeds every 30 seconds (`-i 30`).
 
 ```sh
 docker build -t x2gbfs .
-docker run --rm -v $PWD/out:/app/out x2gbfs -p deer -b 'file:out' -i 30
+docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p deer -b 'file:out' -i 30
 ```
 
 
