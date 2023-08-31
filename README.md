@@ -34,7 +34,7 @@ To take notice of such changes, you might register a watch on the relevant urls 
 To start x2gbfs in a docker container which runs indefinetly and updates all feeds every 30 seconds, start it e.g. like this, providing the interval lenght via `-i <secondsToWait>`:
 ```sh
 docker build -t x2gbfs .
-docker run --rm -v $PWD/out:/usr/src/app/out x2gbfs -p deer -b 'file:out' -i 30
+docker run --rm -v $PWD/out:/app/out x2gbfs -p deer -b 'file:out' -i 30
 ```
 
 
