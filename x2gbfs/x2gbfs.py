@@ -3,9 +3,10 @@ import logging
 import os
 from argparse import ArgumentParser
 from time import sleep
+from typing import Any, Dict, List
 
 from decouple import config
-from typing import Any, Dict, List
+
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
 from x2gbfs.providers import Deer, FleetsterAPI
 
