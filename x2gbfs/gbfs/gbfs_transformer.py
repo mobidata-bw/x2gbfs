@@ -1,6 +1,6 @@
 from collections import Counter
 from datetime import datetime
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 from .base_provider import BaseProvider
 
@@ -51,7 +51,7 @@ class GbfsTransformer:
                 self._update_station_availability_status(vehicle_types_per_station[station_id], status_map[station_id])
 
     def _update_station_availability_status(
-        self, vt_available: list[Dict[str, Any]], station_status: Dict[str, Any]
+        self, vt_available: List[Dict[str, Any]], station_status: Dict[str, Any]
     ) -> None:
         """
         Sets station_status.vehicle_types_available and

@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from time import sleep
 
 from decouple import config
-
+from typing import Any, Dict, List
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
 from x2gbfs.providers import Deer, FleetsterAPI
 
@@ -28,7 +28,7 @@ def build_extractor(provider: str) -> BaseProvider:
     return extractor
 
 
-def main(providers: list[str], output_dir: str, base_url: str, interval: int = 0) -> None:
+def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0) -> None:
     while True:
         for provider in providers:
             generate_feed_for(provider, output_dir, base_url)
