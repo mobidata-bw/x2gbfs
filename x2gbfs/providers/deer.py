@@ -6,8 +6,22 @@ from x2gbfs.gbfs.base_provider import BaseProvider
 
 logger = logging.getLogger('x2gbfs.deer')
 
+WATT_PER_PS = 736
 
 class Deer(BaseProvider):
+
+    COLOR_NAMES = {
+        '#ffffff': 'weiß',
+        '#b50d17': 'rot',
+        '#000000': 'schwarz',
+        '#f6f6f6': 'hellgrau',
+        '#929292': 'mittelgrau',
+        '#474747': 'dunkelgrau',
+        '#6b6a6a': 'gedimmtes grau',
+        '#bebbbb': 'silber',
+        '#242424': 'dunkelgrau',
+    }
+
     def __init__(self, api):
         self.api = api
 
@@ -81,9 +95,9 @@ class Deer(BaseProvider):
                 'lon': geo_position.get('longitude'),
                 'name': elem.get('name'),
                 'station_id': station_id,
-                'addresss': elem.get('streetName'),
+                'address': elem.get('streetName') + ' ' + elem.get('streetNumber'),
                 'post_code': elem.get('postcode'),
-                'city': elem.get('city'),  # Non-standard
+                '_city': elem.get('city'),  # Non-standard
                 'rental_methods': ['key'],
             }
 
@@ -99,7 +113,7 @@ class Deer(BaseProvider):
         into gbfs vehicles, vehicle_types.
 
         TODO: booking status is not taken into account yet
-        TODO: labels and accessories are not taken into account yet
+        TODO: labels are not taken into account yet
         """
         gbfs_vehicles_map = {}
         gbfs_vehicle_types_map = {}
@@ -108,16 +122,43 @@ class Deer(BaseProvider):
             vehicle_id = str(elem['_id'])
             vehicle_type_id = self.normalize_id(elem['brand'] + '_' + elem['model'])
 
+            extended_properties = elem['extended']['Properties']
+            accessories = []
+            if 'doors' in extended_properties and isinstance(extended_properties['doors'], int):
+                doors = extended_properties['doors']
+                accessories.append(f'doors_{doors}')
+            if 'aircondition' in extended_properties and extended_properties['aircondition'] == True:
+                accessories.append('air_conditioning')
+            if 'navigation' in extended_properties and extended_properties['navigation'] == True:
+                accessories.append('navigation')
+
             gbfs_vehicle_type = {
                 'vehicle_type_id': vehicle_type_id,
                 'form_factor': 'car',
                 'propulsion_type': elem['engine'],
                 'max_range_meters': 100000,
                 'name': elem['brand'] + ' ' + elem['model'],
+                'make': elem['brand'],
+                'model': elem['model'],
+                'wheel_count': 4,
                 'return_type': 'roundtrip',
                 'default_pricing_plan_id': self.pricing_plan_id(elem),
+                'vehicle_accessories': accessories,
             }
 
+            if 'horsepower' in extended_properties and isinstance(extended_properties['horsepower'], int):
+                gbfs_vehicle_type['rated_power'] = extended_properties['horsepower'] * WATT_PER_PS
+            if 'vMax' in extended_properties and isinstance(extended_properties['vMax'], int):
+                gbfs_vehicle_type['max_permitted_speed'] = extended_properties['vMax']
+            if 'seats' in extended_properties and isinstance(extended_properties['seats'], int):
+                gbfs_vehicle_type['rider_capacity'] = extended_properties['seats']
+            if 'color' in extended_properties:
+                color_hex = extended_properties['color']
+                if color_hex in self.COLOR_NAMES:
+                    gbfs_vehicle_type['color'] =  self.COLOR_NAMES[color_hex]
+                else:
+                    logger.warning(f'No color hex-to-name mapping for color {color_hex}')
+            
             gbfs_vehicle = {
                 'bike_id': vehicle_id,
                 'vehicle_type_id': vehicle_type_id,
@@ -127,6 +168,9 @@ class Deer(BaseProvider):
                 'is_disabled': False,  # TODO
                 'current_range_meters': 0,  # TODO
             }
+
+            if 'winterTires' in extended_properties and extended_properties['winterTires']:
+                gbfs_vehicle['vehicle_equipment'] = ['winter_tires']
 
             gbfs_vehicles_map[vehicle_id] = gbfs_vehicle
             gbfs_vehicle_types_map[vehicle_type_id] = gbfs_vehicle_type
