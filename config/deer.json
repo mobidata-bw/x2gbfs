@@ -59,7 +59,7 @@
         "system_information": {
             "email": "carsharing@deer-mobility.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
-            "language": "de-DE",
+            "language": "de",
             "name": "deer",
             "operator": "DEER GmbH",
             "phone_number": "+49 7051 1300-120",
@@ -78,7 +78,7 @@
             "system_id": "deer",
             "terms_last_updated": "2022-05-01",
             "terms_url": "https://www.deer-carsharing.de/wp-content/uploads/2023/03/AGB-deer-1.5.2022.pdf",
-            "timezone": "CET",
+            "timezone": "Europe/Berlin",
             "url": "https://www.deer-carsharing.de/"
         }
     },
