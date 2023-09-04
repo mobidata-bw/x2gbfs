@@ -6,15 +6,21 @@ Currently supported providers:
 * deer (via it's fleetster API)
 
 
-To generate a feed for e.g. deer network, execute
+To generate a feed for e.g. deer network, go to the `x2gbfs` dir and execute
 
 ```sh
 DEER_API_URL=URL DEER_USER=USER DEER_PASSWORD=PASSWORD python -m x2gbfs.x2gbfs -p deer -b 'file:out'
 ```
 
 where `URL`, `USER` and `PASSWORD` needs to be replaced by the fleetster API credentials. 
-Alternativly, these vars can be provided via an `.env` file in the current dir, 
-which will be picked up by `x2gbfs`. 
+This results in the following output:
+
+```
+INFO:x2gbfs:Updated feeds for deer
+```
+
+Alternatively, the `DEER_API_URL`, `DEER_USER` and `DEER_PASSWORD` vars can be provided via an `.env` file in the current dir, which will be picked up by `x2gbfs`. 
+
 
 Note: Usually, not every GBFS information can be retrieved from the provider's API. 
 The content of `system_information` and `system_pricing_plans` currently needs to 
