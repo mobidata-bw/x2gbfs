@@ -1,5 +1,6 @@
 import logging
 import re
+from datetime import datetime
 from typing import Any, Dict, Generator, Optional, Tuple
 
 from x2gbfs.gbfs.base_provider import BaseProvider
@@ -34,6 +35,24 @@ class Deer(BaseProvider):
         for vehicle in self.api.all_vehicles():
             if vehicle['active'] and not vehicle['deleted'] and vehicle['typeOfUsage'] == 'carsharing':
                 yield vehicle
+
+    def _next_booking_per_vehicle(self, timestamp: datetime) -> Dict[str, Dict[str, str]]:
+        """
+        Returns a map which for each vehicle contains the currently ongoing
+        or the next upcoming fleetster booking.
+        """
+        bookings = self.api.all_bookings_ending_after(timestamp)
+        next_booking_per_vehicle = {}
+        for booking in bookings:
+            vehicle_id = booking['vehicleId']
+            if vehicle_id not in next_booking_per_vehicle:
+                next_booking_per_vehicle[vehicle_id] = booking
+            else:
+                former_booking = next_booking_per_vehicle[vehicle_id]
+                if booking['startDate'] < former_booking['startDate']:
+                    next_booking_per_vehicle[vehicle_id] = booking
+
+        return next_booking_per_vehicle
 
     def normalize_id(self, id: str) -> str:
         """
@@ -175,4 +194,35 @@ class Deer(BaseProvider):
             gbfs_vehicles_map[vehicle_id] = gbfs_vehicle
             gbfs_vehicle_types_map[vehicle_type_id] = gbfs_vehicle_type
 
+        gbfs_vehicles_map = self._update_booking_state(gbfs_vehicles_map)
+
         return gbfs_vehicle_types_map, gbfs_vehicles_map
+
+    def _update_booking_state(self, gbfs_vehicles_map: Dict) -> Dict:
+        """
+        For every vehicle in gbfs_vehicles_map, this function
+        sets is_reserved to true, if there is an ongoing booking (startDate < now < endDate),
+        or, if not, available_until to the startDate of the earliest booking in the future.
+        If no booking for a vehicle id exists, is_reserved is false and no available_until
+        information.
+        """
+        timestamp = datetime.now()
+        timestamp_iso = timestamp.isoformat()
+
+        next_bookings = self._next_booking_per_vehicle(timestamp)
+        for vehicle_id, vehicle in gbfs_vehicles_map.items():
+            if vehicle_id not in next_bookings:
+                # No booking => available forever and not reserved
+                continue
+            next_booking_start = next_bookings[vehicle_id]['startDate']
+            if next_booking_start > timestamp_iso:
+                # Next booking starts in the future, set available_until, currently not reserved
+                # Note: fleetsters timestamp has ms information which would be flagged by GBFS validator, so we parse and reformat in isoformat
+                gbfs_formatted_start_time = (
+                    datetime.fromisoformat(next_booking_start).isoformat().replace('+00:00', 'Z')
+                )
+                vehicle['available_until'] = gbfs_formatted_start_time
+            else:
+                vehicle['is_reserved'] = True
+
+        return gbfs_vehicles_map

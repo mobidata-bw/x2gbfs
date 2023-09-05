@@ -32,6 +32,10 @@ class FleetsterAPI:
         for vehicle in vehicles:
             yield vehicle
 
+    def all_bookings_ending_after(self, timestamp):
+        enddate = timestamp.isoformat()
+        return self._get_with_authorization(f'{self.api_url}/bookings?endDate%5B%24gte%5D={enddate}Z')
+
     def _login(self) -> str:
         if self.token is None:
             endpoint = f'{self.api_url}/users/auth'
