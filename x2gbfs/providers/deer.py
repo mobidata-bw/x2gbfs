@@ -25,15 +25,35 @@ class Deer(BaseProvider):
 
     def __init__(self, api):
         self.api = api
+        self.stationIdCache = set()
 
     def all_stations(self) -> Generator[Dict, None, None]:
+        """
+        Returns all stations, which are
+        * not deleted
+        * declare extended.PublicCarsharing.hasPublicCarsharing == true
+        """
         for location in self.api.all_stations():
-            if location['extended']['PublicCarsharing']['hasPublicCarsharing']:
+            if not location['deleted'] and location['extended']['PublicCarsharing']['hasPublicCarsharing']:
+                self.stationIdCache.add(location['_id'])
                 yield location
 
     def all_vehicles(self) -> Generator[Dict, None, None]:
+        """
+        Returns all vehicles, which are
+        * not deleted
+        * have typeOfUsage == carsharing
+        * have a locationId which is a valid carsharing station
+
+        Note: all_stations needs to be iterated before all_vehicles so station ids are cached.
+        """
         for vehicle in self.api.all_vehicles():
-            if vehicle['active'] and not vehicle['deleted'] and vehicle['typeOfUsage'] == 'carsharing':
+            if (
+                vehicle['active']
+                and not vehicle['deleted']
+                and vehicle['typeOfUsage'] == 'carsharing'
+                and vehicle.get('locationId') in self.stationIdCache
+            ):
                 yield vehicle
 
     def _next_booking_per_vehicle(self, timestamp: datetime) -> Dict[str, Dict[str, str]]:
@@ -118,6 +138,7 @@ class Deer(BaseProvider):
                 'post_code': elem.get('postcode'),
                 '_city': elem.get('city'),  # Non-standard
                 'rental_methods': ['key'],
+                'is_charging_station': True,
             }
 
             gbfs_station_infos_map[station_id] = gbfs_station
