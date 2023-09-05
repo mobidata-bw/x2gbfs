@@ -74,6 +74,36 @@ class Deer(BaseProvider):
 
         return next_booking_per_vehicle
 
+    def _normalize_brand(self, brand: str) -> str:
+        """
+        Normalizes the brand by stripping whitespaces at begin/end,
+        capitalizing the brand and fixing some specific issues in the deer data.
+        """
+
+        normalized_brand = brand.capitalize().strip()
+
+        if normalized_brand == 'Vw' or normalized_brand == 'Volkswagen':
+            return 'VW'
+        if normalized_brand == 'Cupra':
+            return 'Seat'
+        if normalized_brand == 'Mercedes-benz':
+            return 'Mercedes-Benz'
+
+        return normalized_brand
+
+    def _normalize_model(self, model: str) -> str:
+        """
+        Normalizes the model by stripping whitespaces at begin/end and
+        fixing some common spelling differences.
+        """
+        normalized_model = model.strip()
+
+        normalized_model = re.sub(r'(?i)id\.? ?', 'ID.', normalized_model)
+        normalized_model = re.sub(r'(?i)(cupra )?born', 'CUPRA Born', normalized_model)
+        normalized_model = re.sub(r'(?i)(renault )?zoe', 'ZOE', normalized_model)
+        normalized_model = re.sub(r'(?i)e[ -]up!?', 'e-up!', normalized_model)
+        return re.sub(r'(?i)e[ -]golf', 'e-Golf', normalized_model)
+
     def normalize_id(self, id: str) -> str:
         """
         Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
@@ -134,7 +164,7 @@ class Deer(BaseProvider):
                 'lon': geo_position.get('longitude'),
                 'name': elem.get('name'),
                 'station_id': station_id,
-                'address': elem.get('streetName') + ' ' + elem.get('streetNumber'),
+                'address': f"{elem.get('streetName')} {elem.get('streetNumber')}",
                 'post_code': elem.get('postcode'),
                 '_city': elem.get('city'),  # Non-standard
                 'rental_methods': ['key'],
@@ -147,73 +177,82 @@ class Deer(BaseProvider):
 
         return gbfs_station_infos_map, gbfs_station_status_map
 
+    def _extract_vehicle_and_type(self, fleetster_vehicle: Dict[str, Any]) -> Tuple[Dict, Dict]:
+        """
+        Extracts vehicle and vehicle_type from the given fleetster vehicle dict.
+
+        Returns (vehicle, vehicle_type)
+        """
+        vehicle_id = str(fleetster_vehicle['_id'])
+        normalized_brand = self._normalize_brand(fleetster_vehicle['brand'])
+        normalized_model = self._normalize_model(fleetster_vehicle['model'])
+        vehicle_type_id = self.normalize_id(normalized_brand + '_' + normalized_model)
+
+        extended_properties = fleetster_vehicle['extended']['Properties']
+        accessories = []
+        if 'doors' in extended_properties and isinstance(extended_properties['doors'], int):
+            doors = extended_properties['doors']
+            accessories.append(f'doors_{doors}')
+        if 'aircondition' in extended_properties and extended_properties['aircondition'] is True:
+            accessories.append('air_conditioning')
+        if 'navigation' in extended_properties and extended_properties['navigation'] is True:
+            accessories.append('navigation')
+
+        gbfs_vehicle_type = {
+            'vehicle_type_id': vehicle_type_id,
+            'form_factor': 'car',
+            'propulsion_type': fleetster_vehicle['engine'],
+            'max_range_meters': 100000,
+            'name': normalized_brand + ' ' + normalized_model,
+            'make': normalized_brand,
+            'model': normalized_model,
+            'wheel_count': 4,
+            'return_type': 'roundtrip',
+            'default_pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
+            'vehicle_accessories': accessories,
+        }
+
+        if 'horsepower' in extended_properties and isinstance(extended_properties['horsepower'], int):
+            gbfs_vehicle_type['rated_power'] = extended_properties['horsepower'] * WATT_PER_PS
+        if 'vMax' in extended_properties and isinstance(extended_properties['vMax'], int):
+            gbfs_vehicle_type['max_permitted_speed'] = extended_properties['vMax']
+        if 'seats' in extended_properties and isinstance(extended_properties['seats'], int):
+            gbfs_vehicle_type['rider_capacity'] = extended_properties['seats']
+        if 'color' in extended_properties:
+            color_hex = extended_properties['color']
+            if color_hex in self.COLOR_NAMES:
+                gbfs_vehicle_type['color'] = self.COLOR_NAMES[color_hex]
+            else:
+                logger.warning(f'No color hex-to-name mapping for color {color_hex}')
+
+        gbfs_vehicle = {
+            'bike_id': vehicle_id,
+            'vehicle_type_id': vehicle_type_id,
+            'station_id': fleetster_vehicle['locationId'],
+            'pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
+            'is_reserved': False,  # Will possibly be updated later by self._update_booking_state
+            'is_disabled': False,  # TODO
+            'current_range_meters': 0,  # TODO
+        }
+
+        if 'winterTires' in extended_properties and extended_properties['winterTires']:
+            gbfs_vehicle['vehicle_equipment'] = ['winter_tires']
+
+        return gbfs_vehicle, gbfs_vehicle_type
+
     def load_vehicles(self, default_last_reported: int) -> Tuple[Dict, Dict]:
         """
         Retrieves vehicles from deer's fleetster API and converts them
         into gbfs vehicles, vehicle_types.
-
-        TODO: booking status is not taken into account yet
-        TODO: labels are not taken into account yet
         """
         gbfs_vehicles_map = {}
         gbfs_vehicle_types_map = {}
 
         for elem in self.all_vehicles():
-            vehicle_id = str(elem['_id'])
-            vehicle_type_id = self.normalize_id(elem['brand'] + '_' + elem['model'])
+            (gbfs_vehicle, gbfs_vehicle_type) = self._extract_vehicle_and_type(elem)
 
-            extended_properties = elem['extended']['Properties']
-            accessories = []
-            if 'doors' in extended_properties and isinstance(extended_properties['doors'], int):
-                doors = extended_properties['doors']
-                accessories.append(f'doors_{doors}')
-            if 'aircondition' in extended_properties and extended_properties['aircondition'] == True:
-                accessories.append('air_conditioning')
-            if 'navigation' in extended_properties and extended_properties['navigation'] == True:
-                accessories.append('navigation')
-
-            gbfs_vehicle_type = {
-                'vehicle_type_id': vehicle_type_id,
-                'form_factor': 'car',
-                'propulsion_type': elem['engine'],
-                'max_range_meters': 100000,
-                'name': elem['brand'] + ' ' + elem['model'],
-                'make': elem['brand'],
-                'model': elem['model'],
-                'wheel_count': 4,
-                'return_type': 'roundtrip',
-                'default_pricing_plan_id': self.pricing_plan_id(elem),
-                'vehicle_accessories': accessories,
-            }
-
-            if 'horsepower' in extended_properties and isinstance(extended_properties['horsepower'], int):
-                gbfs_vehicle_type['rated_power'] = extended_properties['horsepower'] * WATT_PER_PS
-            if 'vMax' in extended_properties and isinstance(extended_properties['vMax'], int):
-                gbfs_vehicle_type['max_permitted_speed'] = extended_properties['vMax']
-            if 'seats' in extended_properties and isinstance(extended_properties['seats'], int):
-                gbfs_vehicle_type['rider_capacity'] = extended_properties['seats']
-            if 'color' in extended_properties:
-                color_hex = extended_properties['color']
-                if color_hex in self.COLOR_NAMES:
-                    gbfs_vehicle_type['color'] =  self.COLOR_NAMES[color_hex]
-                else:
-                    logger.warning(f'No color hex-to-name mapping for color {color_hex}')
-            
-            gbfs_vehicle = {
-                'bike_id': vehicle_id,
-                'vehicle_type_id': vehicle_type_id,
-                'station_id': elem['locationId'],
-                'pricing_plan_id': self.pricing_plan_id(elem),
-                'is_reserved': False,  # TODO
-                'is_disabled': False,  # TODO
-                'current_range_meters': 0,  # TODO
-            }
-
-            if 'winterTires' in extended_properties and extended_properties['winterTires']:
-                gbfs_vehicle['vehicle_equipment'] = ['winter_tires']
-
-            gbfs_vehicles_map[vehicle_id] = gbfs_vehicle
-            gbfs_vehicle_types_map[vehicle_type_id] = gbfs_vehicle_type
+            gbfs_vehicles_map[gbfs_vehicle['bike_id']] = gbfs_vehicle
+            gbfs_vehicle_types_map[gbfs_vehicle_type['vehicle_type_id']] = gbfs_vehicle_type
 
         gbfs_vehicles_map = self._update_booking_state(gbfs_vehicles_map)
 
