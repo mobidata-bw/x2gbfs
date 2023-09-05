@@ -9,7 +9,15 @@ logger = logging.getLogger('x2gbfs.deer')
 
 WATT_PER_PS = 736
 
+
 class Deer(BaseProvider):
+
+    """
+    Color names map deer's hex colors of vehicles to German color names.
+    Note: RC-3.0 does not treat vehicle_types.color as localized string,
+    so it is unclear, if they should be returned in English. Defining them
+    as hex color string in GBFS would IMHO be the most appropriate.
+    """
 
     COLOR_NAMES = {
         '#ffffff': 'weiß',
