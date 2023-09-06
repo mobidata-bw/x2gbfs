@@ -30,18 +30,26 @@ def build_extractor(provider: str) -> BaseProvider:
 
 
 def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0) -> None:
+    should_loop_infinetly = interval > 0
+    error_occured = False
+
     while True:
         for provider in providers:
-            generate_feed_for(provider, output_dir, base_url)
-        if interval > 0:
+            try:
+                generate_feed_for(provider, output_dir, base_url)
+            except Exception:
+                logger.exception(f'Generating feed for {provider} failed!')
+                error_occured = True
+
+        if should_loop_infinetly:
             sleep(interval)
         else:
-            return
+            # In case an error occured, we terminate with exit code 1
+            exit(error_occured)
 
 
 def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
     with open(f'config/{provider}.json') as config_file:
-        # TODO error handling
         feed_config = json.load(config_file)
 
     transformer = GbfsTransformer()

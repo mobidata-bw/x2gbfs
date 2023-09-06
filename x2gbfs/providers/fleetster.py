@@ -1,7 +1,11 @@
 import json
+import logging
+from time import sleep
 from typing import Dict, Generator, Optional
 
 import requests
+
+logger = logging.getLogger(__name__)
 
 
 class FleetsterAPI:
@@ -11,6 +15,9 @@ class FleetsterAPI:
     fleetster-API-Documentation is available here:
     https://my.fleetster.net/swagger/
     """
+
+    #: Number of times a login is attempted before an error is thrown on 401 response
+    MAX_LOGIN_ATTEMPTS = 1
 
     token: Optional[str] = None
     api_url: Optional[str] = None
@@ -44,8 +51,35 @@ class FleetsterAPI:
         return self.token
 
     def _get_with_authorization(self, url: str) -> Dict:
-        token = self._login()
-        response = requests.get(url, headers={'Authorization': token}, timeout=10)
-        response.raise_for_status()
+        """
+        Gets the provided url and returns the response as (json) dict.
 
+        The request is performed with an authentication token, aquired before the request.
+        In case the API responds with an 401 response, a new login is attempted
+        self.MAX_LOGIN_ATTEMPTS times.
+        """
+        no_of_login_attempts = 0
+        while not no_of_login_attempts >= self.MAX_LOGIN_ATTEMPTS:
+            no_of_login_attempts += 1
+            token = self._login()
+            response = requests.get(url, headers={'Authorization': token}, timeout=10)
+            if response.status_code == 401:
+                # Authentication issues will cause a retry attempt.
+                # An authentication issue could be caused by a competing client requesting
+                # a session token with the same credentials, invalidating our token
+
+                # Give potentially competing clients some time to complete their requests
+                seconds_to_sleep = 0.5 * no_of_login_attempts
+                logger.warn(
+                    f'Requested token {self.token} was invalid, waiting for {seconds_to_sleep} seconds before retry'
+                )
+                sleep(seconds_to_sleep)
+
+                # Reset authentication token, so it will be requested again
+                self.token = None
+
+            else:
+                break
+
+        response.raise_for_status()
         return response.json()
