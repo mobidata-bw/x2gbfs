@@ -85,19 +85,18 @@ class Deer(BaseProvider):
     def _normalize_brand(self, brand: str) -> str:
         """
         Normalizes the brand by stripping whitespaces at begin/end,
-        capitalizing the brand and fixing some specific issues in the deer data.
+        and by avoiding ambiguous names.
         """
 
-        normalized_brand = brand.capitalize().strip()
-
-        if normalized_brand == 'Vw' or normalized_brand == 'Volkswagen':
+        brand_strip = brand.strip()
+        brand_lower = brand_strip.lower()
+        
+        if brand_lower == 'vw' or brand_lower == 'volkswagen':
             return 'VW'
-        if normalized_brand == 'Cupra':
+        if brand_strip == 'Cupra':
             return 'Seat'
-        if normalized_brand == 'Mercedes-benz':
-            return 'Mercedes-Benz'
 
-        return normalized_brand
+        return brand_strip
 
     def _normalize_model(self, model: str) -> str:
         """
