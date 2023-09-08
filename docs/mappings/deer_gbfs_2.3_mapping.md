@@ -83,7 +83,7 @@ GBFS Field | Mapping
 `cargo_load_capacity` | -
 `propulsion_type` | vehicle[‘engine’]<br /><br /><ul><li>`electric => electric`</li></ul>Others currently not in use. Converter should report an error if not and ignore this vehicle.
 `eco_label` | -
-`max_range_meters` | Not provided by fleetster/deer.
+`max_range_meters` | Not provided by fleetster/deer. Set to `200000` for all vehicle types (200km)
 `name` | normalized vehicle['brand'] + normalized vehicle['model']
 `vehicle_accessories` | `air_conditioning` if `vehicle['extended']['Properties']['aircondition']`<br/>`doors_${vehicle['extended']['Properties']['doors']}` <br/> `navigation` if `vehicle['extended']['Properties']['navigation']`
 `g_CO2_km` |
@@ -171,7 +171,7 @@ GBFS Field | Mapping
 `rental_uris` | None. fleetster/deer do not provide rental uris for now
 `vehicle_type_id` | normalized, lower cased `vehicle['brand']` + '_' + normalized, lower cased `vehicle['model']`
 `last_reported` |
-`current_range_meters` | ?
+`current_range_meters` | Hard coded to `50000` (50km) as no realtime info is available
 `current_fuel_percent` | -
 `station_id` | `vehicle['locationId']`
 `home_station_id` | -

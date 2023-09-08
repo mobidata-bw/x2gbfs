@@ -11,12 +11,17 @@ WATT_PER_PS = 736
 
 
 class Deer(BaseProvider):
-
     """
-    Color names map deer's hex colors of vehicles to German color names.
-    Note: RC-3.0 does not treat vehicle_types.color as localized string,
-    so it is unclear, if they should be returned in English. Defining them
-    as hex color string in GBFS would IMHO be the most appropriate.
+    Extracts vehicle, vehicle_types, station_information, station_status from deer's Fleetser-API.
+
+    Constants:
+        COLOR_NAMES             Color names map deer's hex colors of vehicles to German color names.
+                                Note: RC-3.0 does not treat vehicle_types.color as localized string,
+                                so it is unclear, if they should be returned in English. Defining them
+                                as hex color string in GBFS would IMHO be the most appropriate.
+        MAX_RANGE_METERS        Fleetster/Deer currently do not provide a max range per vehicle via the API. Use this value as default.
+        CURRENT_RANGE_METERS    Fleetster/Deer currently do not provide a current range / fuel percent per vehicle via the API. Use this value as default.
+
     """
 
     COLOR_NAMES = {
@@ -30,6 +35,8 @@ class Deer(BaseProvider):
         '#bebbbb': 'silber',
         '#242424': 'dunkelgrau',
     }
+    MAX_RANGE_METERS = 200000
+    CURRENT_RANGE_METERS = 50000
 
     def __init__(self, api):
         self.api = api
@@ -90,10 +97,10 @@ class Deer(BaseProvider):
 
         brand_strip = brand.strip()
         brand_lower = brand_strip.lower()
-        
+
         if brand_lower == 'vw' or brand_lower == 'volkswagen':
             return 'VW'
-        if brand_strip == 'Cupra':
+        if brand_lower == 'cupra':
             return 'Seat'
 
         return brand_strip
@@ -209,7 +216,7 @@ class Deer(BaseProvider):
             'vehicle_type_id': vehicle_type_id,
             'form_factor': 'car',
             'propulsion_type': fleetster_vehicle['engine'],
-            'max_range_meters': 100000,
+            'max_range_meters': self.MAX_RANGE_METERS,
             'name': normalized_brand + ' ' + normalized_model,
             'make': normalized_brand,
             'model': normalized_model,
@@ -238,8 +245,8 @@ class Deer(BaseProvider):
             'station_id': fleetster_vehicle['locationId'],
             'pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
             'is_reserved': False,  # Will possibly be updated later by self._update_booking_state
-            'is_disabled': False,  # TODO
-            'current_range_meters': 0,  # TODO
+            'is_disabled': False,
+            'current_range_meters': self.CURRENT_RANGE_METERS,
         }
 
         if 'winterTires' in extended_properties and extended_properties['winterTires']:
