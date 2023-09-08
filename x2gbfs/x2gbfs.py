@@ -2,10 +2,12 @@ import json
 import logging
 import os
 from argparse import ArgumentParser
+from random import random
 from time import sleep
 from typing import Any, Dict, List
 
 from decouple import config
+from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
 from x2gbfs.providers import Deer, FleetsterAPI
@@ -37,12 +39,12 @@ def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0
         for provider in providers:
             try:
                 generate_feed_for(provider, output_dir, base_url)
-            except Exception:
+            except HTTPError:
                 logger.exception(f'Generating feed for {provider} failed!')
                 error_occured = True
 
         if should_loop_infinetly:
-            sleep(interval)
+            sleep(interval + random() * interval / 10)  # noqa: S311 (no cryptographic purpose)
         else:
             # In case an error occured, we terminate with exit code 1
             exit(error_occured)
