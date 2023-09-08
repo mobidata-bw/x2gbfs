@@ -1,5 +1,6 @@
 import json
 import logging
+from random import random
 from time import sleep
 from typing import Dict, Generator, Optional
 
@@ -17,7 +18,7 @@ class FleetsterAPI:
     """
 
     #: Number of times a login is attempted before an error is thrown on 401 response
-    MAX_LOGIN_ATTEMPTS = 1
+    MAX_LOGIN_ATTEMPTS = 5
 
     token: Optional[str] = None
     api_url: Optional[str] = None
@@ -69,7 +70,10 @@ class FleetsterAPI:
                 # a session token with the same credentials, invalidating our token
 
                 # Give potentially competing clients some time to complete their requests
-                seconds_to_sleep = 0.5 * no_of_login_attempts
+                # exponential back-offs plus some randomised "jitter" to prevent the https://en.wikipedia.org/wiki/Thundering_herd_problem
+                seconds_to_sleep = (
+                    0.5 * (1 + random() / 10) * no_of_login_attempts**2  # noqa: S311 (no cryptographic purpose)
+                )
                 logger.warn(
                     f'Requested token {self.token} was invalid, waiting for {seconds_to_sleep} seconds before retry'
                 )
