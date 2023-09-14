@@ -1,6 +1,6 @@
 import logging
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, Generator, Optional, Tuple
 
 from x2gbfs.gbfs.base_provider import BaseProvider
@@ -274,6 +274,18 @@ class Deer(BaseProvider):
 
         return gbfs_vehicle_types_map, gbfs_vehicles_map
 
+    def _utcnow(self):
+        return datetime.now(timezone.utc)
+
+    def _timestamp_to_isoformat(self, timestamp):
+        """
+        Returns timestamp in isoformat.
+        As gbfs-validator currently can't handle numeric +00:00 timezone information, we replace +00:00 by Z
+        It's validation expressio is ^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})([A-Z])$
+        See also https://github.com/MobilityData/gbfs-json-schema/issues/95
+        """
+        return timestamp.isoformat().replace('+00:00', 'Z')
+
     def _update_booking_state(self, gbfs_vehicles_map: Dict) -> Dict:
         """
         For every vehicle in gbfs_vehicles_map, this function
@@ -282,21 +294,18 @@ class Deer(BaseProvider):
         If no booking for a vehicle id exists, is_reserved is false and no available_until
         information.
         """
-        timestamp = datetime.now()
-        timestamp_iso = timestamp.isoformat()
+        timestamp = self._utcnow()
 
         next_bookings = self._next_booking_per_vehicle(timestamp)
         for vehicle_id, vehicle in gbfs_vehicles_map.items():
             if vehicle_id not in next_bookings:
                 # No booking => available forever and not reserved
                 continue
-            next_booking_start = next_bookings[vehicle_id]['startDate']
-            if next_booking_start > timestamp_iso:
+            next_booking_start = datetime.fromisoformat(next_bookings[vehicle_id]['startDate'])
+            if next_booking_start > timestamp:
                 # Next booking starts in the future, set available_until, currently not reserved
-                # Note: fleetsters timestamp has ms information which would be flagged by GBFS validator, so we parse and reformat in isoformat
-                gbfs_formatted_start_time = (
-                    datetime.fromisoformat(next_booking_start).isoformat().replace('+00:00', 'Z')
-                )
+                gbfs_formatted_start_time = self._timestamp_to_isoformat(next_booking_start)
+
                 vehicle['available_until'] = gbfs_formatted_start_time
             else:
                 vehicle['is_reserved'] = True

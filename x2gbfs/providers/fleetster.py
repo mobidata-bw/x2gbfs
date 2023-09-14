@@ -1,5 +1,6 @@
 import json
 import logging
+from datetime import datetime
 from random import random
 from time import sleep
 from typing import Dict, Generator, Optional
@@ -40,9 +41,16 @@ class FleetsterAPI:
         for vehicle in vehicles:
             yield vehicle
 
-    def all_bookings_ending_after(self, timestamp):
-        enddate = timestamp.isoformat()
-        return self._get_with_authorization(f'{self.api_url}/bookings?endDate%5B%24gte%5D={enddate}Z')
+    def all_bookings_ending_after(self, utctimestamp: datetime):
+        enddate = self._timestamp_to_isoformat(utctimestamp)
+        return self._get_with_authorization(f'{self.api_url}/bookings?endDate%5B%24gte%5D={enddate}')
+
+    def _timestamp_to_isoformat(self, utctimestamp: datetime):
+        """
+        Returns timestamp in isoformat.
+        As fleetster currently can't handle numeric timezone information, we replace +00:00 by Z
+        """
+        return utctimestamp.isoformat().replace('+00:00', 'Z')
 
     def _login(self) -> str:
         if self.token is None:
