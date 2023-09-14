@@ -23,11 +23,14 @@ be provided via config/<provider>.json and need to be updated when that informat
 ## Implementing a new provider
 To implement a new provider, you should take the following steps:
 
-* Implement a new `BaseProvider` subclass, which retrieves `station_info`, `station_status`, `vehicles` and `vehicle_types` from the provides API.
+* Implement a new `BaseProvider` subclass, which retrieves `station_info`, `station_status` (in case it's a station based system), `vehicles` and `vehicle_types` from the provides API.
 * Provide a `config/my_new_provider.json` which contains a `feed_data` section that provides the seldomly updated `system_information` and `pricing_plans`.
+* Add the newly created provider to `x2gbfs.py`'s `build_extractor` method.
 
 Note that you should regularly check, if system or pricing information has changed and needs to be updated. 
 To take notice of such changes, you might register a watch on the relevant urls of the provider website.
+
+As an example, how a free floating provider could be implemented, see the [example provider](./x2gbfs/providers/example.py).
 
 ## Using Docker
 
