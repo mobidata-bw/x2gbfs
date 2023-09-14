@@ -247,6 +247,7 @@ class Deer(BaseProvider):
             'pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
             'is_reserved': False,  # Will possibly be updated later by self._update_booking_state
             'is_disabled': False,
+            # TODO: pull this information from the Deer GBFS API as soon as available
             'current_range_meters': self.CURRENT_RANGE_METERS,
         }
 
