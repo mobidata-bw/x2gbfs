@@ -216,6 +216,7 @@ class Deer(BaseProvider):
             'vehicle_type_id': vehicle_type_id,
             'form_factor': 'car',
             'propulsion_type': fleetster_vehicle['engine'],
+            # TODO: pull this information from the Deer GBFS API as soon as available
             'max_range_meters': self.MAX_RANGE_METERS,
             'name': normalized_brand + ' ' + normalized_model,
             'make': normalized_brand,
