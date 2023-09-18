@@ -10,7 +10,7 @@ from decouple import config
 from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
-from x2gbfs.providers import Deer, FleetsterAPI
+from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
@@ -18,17 +18,17 @@ logger = logging.getLogger('x2gbfs')
 
 
 def build_extractor(provider: str) -> BaseProvider:
+    if provider == 'example':
+        return ExampleProvider()
     if provider == 'deer':
         api_url = config('DEER_API_URL')
         api_user = config('DEER_USER')
         api_password = config('DEER_PASSWORD')
 
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
-        extractor = Deer(fleetsterApi)
-    else:
-        raise ValueError(f'Unkown config {provider}')
+        return Deer(fleetsterApi)
 
-    return extractor
+    raise ValueError(f'Unkown config {provider}')
 
 
 def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0) -> None:

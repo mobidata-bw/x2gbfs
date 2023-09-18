@@ -1,26 +1,38 @@
 from collections import Counter
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from .base_provider import BaseProvider
 
 
 class GbfsTransformer:
-    def load_stations_and_vehicles(self, provider: BaseProvider):
+    def load_stations_and_vehicles(
+        self, provider: BaseProvider
+    ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List]]:
         """
         Load stations and vehicles from provider, updates vehicle availabilities at stations
         and returns gbfs collections station_infos, station_status, vehicle_types, vehicles.
+
+        Note, that all these collections are conditionally required, and hence may be missing
+        (see e.g. https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#files)
+
         """
         default_last_reported = int(datetime.timestamp(datetime.now()))
 
         station_infos_map, station_status_map = provider.load_stations(default_last_reported)
         vehicle_types_map, vehicles_map = provider.load_vehicles(default_last_reported)
-        self._update_stations_availability_status(station_status_map, vehicles_map)
+
+        if station_status_map and vehicles_map:
+            # if feed has stations and vehicles, we deduce vehicle_types_available
+            # information from vehicle.station_id information
+            self._update_stations_availability_status(station_status_map, vehicles_map)
+
         return (
-            list(station_infos_map.values()),
-            list(station_status_map.values()),
-            list(vehicle_types_map.values()),
-            list(vehicles_map.values()),
+            list(station_infos_map.values()) if station_infos_map else None,
+            list(station_status_map.values()) if station_status_map else None,
+            # Note: if vehicle_types are not provided, all vehicles are assumed to be non motorized bikes https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#files
+            list(vehicle_types_map.values()) if vehicle_types_map else None,
+            list(vehicles_map.values()) if vehicles_map else None,
         )
 
     def _update_stations_availability_status(self, status_map: Dict[str, Dict], vehicles_map: Dict[str, Dict]) -> None:
