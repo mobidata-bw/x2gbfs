@@ -13,7 +13,7 @@ DEER_API_URL=URL DEER_USER=USER DEER_PASSWORD=PASSWORD python -m x2gbfs.x2gbfs -
 ```
 
 where `URL`, `USER` and `PASSWORD` needs to be replaced by the fleetster API credentials. 
-This results in the following output:
+If the GBFS has been generated successfully, this will result in the following output:
 
 ```
 INFO:x2gbfs:Updated feeds for deer
