@@ -64,8 +64,8 @@ System information is manually extracted from the providers homepage. Only the r
 
 #### Field Mappings
 
-GBFS Field |
---- |
+GBFS Field | Mapping
+--- | ---
 `vehicle_type_id` |
 `form_factor` |
 `rider_capacity`|
@@ -96,8 +96,8 @@ GBFS Field |
 
 #### Field Mappings
 
-GBFS Field |
---- |
+GBFS Field | Mapping
+--- | ---
 `station_id` |
 `name` |
 `short_name` |
@@ -127,8 +127,8 @@ GBFS Field |
 
 #### Field Mappings
 
-GBFS Field |
---- |
+GBFS Field | Mapping
+--- | ---
 `station_id` |
 `num_bikes_available` |
 `vehicle_types_available` |
@@ -148,8 +148,8 @@ GBFS Field |
 
 #### Field Mappings
 
-GBFS Field |
---- |
+GBFS Field | Mapping
+--- | ---
 `bike_id` |
 `lat` |
 `lon` |
