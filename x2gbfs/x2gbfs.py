@@ -10,7 +10,7 @@ from decouple import config
 from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
-from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI, VoiRaumobil
+from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI, LastenVeloFreiburgProvider, VoiRaumobil
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
@@ -20,6 +20,8 @@ logger = logging.getLogger('x2gbfs')
 def build_extractor(provider: str) -> BaseProvider:
     if provider == 'example':
         return ExampleProvider()
+    if provider == 'lastenvelo_fr':
+        return LastenVeloFreiburgProvider()
     if provider == 'deer':
         api_url = config('DEER_API_URL')
         api_user = config('DEER_USER')

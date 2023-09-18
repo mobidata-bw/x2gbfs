@@ -27,3 +27,17 @@ class BaseProvider(ABC):
         are station_info/station_status.
         """
         pass
+
+    def _create_station_status(self, station_id: str, last_reported: int) -> Dict[str, Any]:
+        """
+        Return a new default station status, which needs to be updated later on.
+        """
+        return {
+            'num_bikes_available': 0,
+            'is_renting': True,
+            'is_installed': True,
+            'is_returning': True,
+            'station_id': station_id,
+            'vehicle_types_available': [],
+            'last_reported': last_reported,
+        }
