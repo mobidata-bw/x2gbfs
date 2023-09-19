@@ -286,6 +286,14 @@ class Deer(BaseProvider):
         """
         return timestamp.isoformat().replace('+00:00', 'Z')
 
+    def _datetime_from_isoformat(self, isoformatted_datetime: str) -> datetime:
+        """
+        Fleetster API returns datetimes with Z timezone, which can't be handled by python <= 3.10.
+        """
+        # In Python >= v3.11, fromisoformat supports Z timezone, for now, we need to work around
+        # datetime.fromisoformat(reformatted_datetime)
+        return datetime.strptime(isoformatted_datetime, "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc)
+
     def _update_booking_state(self, gbfs_vehicles_map: Dict) -> Dict:
         """
         For every vehicle in gbfs_vehicles_map, this function
@@ -301,7 +309,7 @@ class Deer(BaseProvider):
             if vehicle_id not in next_bookings:
                 # No booking => available forever and not reserved
                 continue
-            next_booking_start = datetime.fromisoformat(next_bookings[vehicle_id]['startDate'])
+            next_booking_start = self._datetime_from_isoformat(next_bookings[vehicle_id]['startDate'])
             if next_booking_start > timestamp:
                 # Next booking starts in the future, set available_until, currently not reserved
                 gbfs_formatted_start_time = self._timestamp_to_isoformat(next_booking_start)
