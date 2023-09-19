@@ -22,6 +22,9 @@ class LastenVeloFreiburgProvider(BaseProvider):
         )
         response.raise_for_status()
 
+        # API returns Content-Type: text/html, though it should Content-Type: text/html; charset=utf-8
+        response.encoding = response.apparent_encoding
+
         content = response.text
         # Need to fix header (fieldnames contain commata) and linebreaks
         for key, value in self.REPLACEMENTS.items():
@@ -73,7 +76,7 @@ class LastenVeloFreiburgProvider(BaseProvider):
         return gbfs_vehicle, gbfs_vehicle_type
 
     def _station_id(self, row: Dict[str, str]) -> str:
-        return f'{row["lat"]}_{row["lon"]}'
+        return '{:.6f}_{:.6f}'.format(float(row['lat']), float(row['lon']))
 
     def _bike_name_without_number(self, row: Dict[str, str]) -> str:
         name = row['bike_name']
@@ -83,12 +86,14 @@ class LastenVeloFreiburgProvider(BaseProvider):
         return name
 
     def _vehicle_type_id(self, row: Dict[str, str]) -> str:
-        name = self._bike_name_without_number(row).lower()
+        """
+        Returns lowercase prefix of "name of bike" before ' - '
+        """
 
-        if 'carla' in name:
-            return 'carla'
-
-        return name.replace(' - ', '_').replace(' ', '_')
+        name = row['bike_name']
+        if ' - ' in name:
+            name = name[: name.index(' - ')]
+        return name.lower().replace(' ', '_')
 
     def _extract_station_info_and_state(self, row: Dict[str, str]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         last_reported = int(float(row['UTC Timestamp']))
