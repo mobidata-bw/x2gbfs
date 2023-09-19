@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 
 class GbfsWriter:
-    def __init__(self, feed_language: str = 'en'):
-        self.feed_language = feed_language
+    def __init__(self):
+        pass
 
     def gbfs_data(self, feed_language: str, base_url: str, feeds: List[str]) -> Dict:
         return {feed_language: {'feeds': [{'name': feed, 'url': f'{base_url}/{feed}.json'} for feed in feeds]}}
@@ -33,6 +33,7 @@ class GbfsWriter:
         base_url = base_url or config['publication_base_url']
         pricing_plans = config['feed_data'].get('pricing_plans')
         system_information = copy.deepcopy(config['feed_data']['system_information'])
+        feed_language = system_information['language']
 
         Path(destFolder).mkdir(parents=True, exist_ok=True)
 
@@ -60,4 +61,4 @@ class GbfsWriter:
         if pricing_plans:
             feeds.append('system_pricing_plans')
             self.write_gbfs_file(destFolder + '/system_pricing_plans.json', {'plans': pricing_plans}, timestamp)
-        self.write_gbfs_file(destFolder + '/gbfs.json', self.gbfs_data(self.feed_language, base_url, feeds), timestamp)
+        self.write_gbfs_file(destFolder + '/gbfs.json', self.gbfs_data(feed_language, base_url, feeds), timestamp)
