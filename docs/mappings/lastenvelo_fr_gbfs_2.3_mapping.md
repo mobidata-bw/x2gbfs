@@ -77,21 +77,21 @@ Vehicle Types, vehicles, and station information are all extracted from https://
 
 GBFS Field | Mapping
 --- | ---
-`vehicle_type_id` | normalized `row[name of bike]`
+`vehicle_type_id` | depending on `row['further_information']`, one of three/two_wheeled_bike_for_load_only, three/two_wheeled_bike_for_load_and_child, three_wheeled_trailer, two_wheeled_bike_for_child_only
 `form_factor` | `cargo_bicycle`. Note: some of the vehicles are bikes with a cargo trailer, but we handle them as `cargo_bicycle` anyway.
-`rider_capacity`| 2 if 'Kindertransport' in `row[further information]` else 1.
+`rider_capacity`| 2 if 'Kindertransport' in `row['further information']` else 1.
 `cargo_volume_capacity` | -
 `cargo_load_capacity` | -
-`propulsion_type` | `electric_assist` if 'mit Motor' in `row[further information]` else `human`
+`propulsion_type` | `electric_assist` if 'mit Motor' in `row['further information']` else `human`
 `eco_label` | -
 `max_range_meters` | `20.000`
-`name` | `row['name of bike']`
+`name` | Depending on type: `{ 'three_wheeled_bike_for_load_and_child': 'Lastenrad, 3-rädrig - Kindertransport möglich', 'three_wheeled_bike_for_load_only': 'Lastenrad, 3-rädrig - Kein Kindertransport', 'three_wheeled_trailer': 'Fahrrad mit Anhänger -  Kein Kindertransport', 'two_wheeled_bike_for_child_only': 'Lastenrad, 2-rädrig - Nur Kindertransport', 'two_wheeled_bike_for_load_and_child': 'Lastenrad, 2-rädrig - Kindertransport möglich', 'two_wheeled_bike_for_load_only': 'Lastenrad, 2-rädrig - Kein Kindertransport'}`
 `vehicle_accessories` | -
 `g_CO2_km` | -
 `vehicle_image` | -
 `make` | -
 `model` | -
-`wheel_count` | `3 if '3-rädrig' in row[further information] else 2`
+`wheel_count` | `3 if '3-rädrig' in row['further information'] or 'hänger' in row['further information'] or else 2`
 `max_permitted_speed` | -
 `rated_power` | -
 `default_reserve_time` | -
@@ -167,7 +167,7 @@ GBFS Field | Mapping
 `is_reserved` | `rented` in `row['rental_state']`
 `is_disabled` | `defect` in `row['rental_state']`
 `rental_uris` | `row['url']`
-`vehicle_type_id` |
+`vehicle_type_id` | see section vehicle_types
 `last_reported` | `row['UTC Timestamp']`
 `current_range_meters` | `20.000`. API does not provide any information yet
 `current_fuel_percent` | -

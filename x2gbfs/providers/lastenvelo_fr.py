@@ -16,6 +16,15 @@ class LastenVeloFreiburgProvider(BaseProvider):
         '<br>': '\n',
     }
 
+    VEHICLE_NAMES_FOR_TYPE = {
+        'three_wheeled_bike_for_load_and_child': 'Lastenrad, 3-rädrig - Kindertransport möglich',
+        'three_wheeled_bike_for_load_only': 'Lastenrad, 3-rädrig - Kein Kindertransport',
+        'three_wheeled_trailer': 'Fahrrad mit Anhänger -  Kein Kindertransport',
+        'two_wheeled_bike_for_child_only': 'Lastenrad, 2-rädrig - Nur Kindertransport',
+        'two_wheeled_bike_for_load_and_child': 'Lastenrad, 2-rädrig - Kindertransport möglich',
+        'two_wheeled_bike_for_load_only': 'Lastenrad, 2-rädrig - Kein Kindertransport',
+    }
+
     def _load_lastenvelo_csv(self) -> None:
         response = requests.get(
             self.LASTENVELO_API_URL, headers={'User-Agent': 'x2gbfs +https://github.com/mobidata-bw/'}, timeout=5
@@ -50,10 +59,10 @@ class LastenVeloFreiburgProvider(BaseProvider):
             'vehicle_type_id': vehicle_type_id,
             'form_factor': 'cargo_bicycle',
             'propulsion_type': 'electric_assist' if has_engine else 'human',
-            'name': self._bike_name_without_number(row),
+            'name': self._vehicle_name_for_type(vehicle_type_id),
             'return_type': 'roundtrip',
             'default_pricing_plan_id': 'kostenfrei',
-            'wheel_count': 3 if '3-rädrig' in further_information else 2,
+            'wheel_count': 3 if '3-rädrig' in further_information or 'hänger' in further_information else 2,
             'rider_capacity': 2 if 'Kindertransport' in further_information else 1,
         }
 
@@ -78,22 +87,32 @@ class LastenVeloFreiburgProvider(BaseProvider):
     def _station_id(self, row: Dict[str, str]) -> str:
         return '{:.6f}_{:.6f}'.format(float(row['lat']), float(row['lon']))
 
-    def _bike_name_without_number(self, row: Dict[str, str]) -> str:
-        name = row['bike_name']
-
-        if ' - ' in name:
-            return name[name.index(' - ') + 3 :]
-        return name
+    def _vehicle_name_for_type(self, vehicle_type_id: str) -> str:
+        return self.VEHICLE_NAMES_FOR_TYPE[vehicle_type_id]
 
     def _vehicle_type_id(self, row: Dict[str, str]) -> str:
         """
-        Returns lowercase prefix of "name of bike" before ' - '
+        Returns vehicle_type_id depending on property `further information`.
         """
 
-        name = row['bike_name']
-        if ' - ' in name:
-            name = name[: name.index(' - ')]
-        return name.lower().replace(' ', '_')
+        further_information = row['further information']
+        if '2-rädrig' in further_information:
+            wheel_type = 'two_wheeled'
+        elif '3-rädrig' in further_information or 'Fahrrad mit Anhänger' in further_information:
+            wheel_type = 'three_wheeled'
+        else:
+            raise Exception(f'Unexpected wheel type "{further_information}"')
+
+        if 'Nur Kindertransport' in further_information:
+            bike_type = 'bike_for_child_only'
+        elif 'Kindertransport möglich' in further_information:
+            bike_type = 'bike_for_load_and_child'
+        elif 'Fahrrad mit Anhänger' in further_information:
+            bike_type = 'trailer'
+        else:
+            bike_type = 'bike_for_load_only'
+
+        return f'{wheel_type}_{bike_type}'
 
     def _extract_station_info_and_state(self, row: Dict[str, str]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         last_reported = int(float(row['UTC Timestamp']))
