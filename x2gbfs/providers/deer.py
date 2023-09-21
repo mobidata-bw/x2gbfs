@@ -292,7 +292,7 @@ class Deer(BaseProvider):
         """
         # In Python >= v3.11, fromisoformat supports Z timezone, for now, we need to work around
         # datetime.fromisoformat(reformatted_datetime)
-        return datetime.strptime(isoformatted_datetime, "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc)
+        return datetime.strptime(isoformatted_datetime, '%Y-%m-%dT%H:%M:%S.%fZ').replace(tzinfo=timezone.utc)
 
     def _update_booking_state(self, gbfs_vehicles_map: Dict) -> Dict:
         """
