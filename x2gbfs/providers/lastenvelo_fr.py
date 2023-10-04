@@ -1,20 +1,28 @@
 import csv
+from datetime import datetime, timezone
 from typing import Any, Dict, Generator, Optional, Tuple
 
 import requests
 
 from x2gbfs.gbfs.base_provider import BaseProvider
+from x2gbfs.util import timestamp_to_isoformat
 
 
 class LastenVeloFreiburgProvider(BaseProvider):
-    lastenvelo_csv: str = ''
+    LASTENVELO_API_URL = 'https://www.lastenvelofreiburg.de/LVF_usage.csv'
 
-    LASTENVELO_API_URL = 'https://www.lastenvelofreiburg.de/LVF_usage.html'
+    BIKE_ID_COL_NAME = 'BikeID'
+    TIMESTAMP_COL_NAME = 'UTC Timestamp'
+    LAT_COL_NAME = 'lattitude of station'
+    LON_COL_NAME = 'longitude of station'
+    RENTAL_STATE_COL_NAME = 'rental state (available, rented or defect)'
+    DEEPLINK_COL_NAME = 'link to booking calender'
+    BIKE_NAME_COL_NAME = 'name of bike'
+    FURTHER_INFO_COL_NAME = 'further information'
+    AVAILABLE_UNTIL_COL_NAME = 'latest time bike needs to be returned'
 
-    REPLACEMENTS = {
-        'UTC Timestamp,Human readable Timestamp,BikeID,lattitude of station,longitude of station,rental state (available, rented or defect),name of bike,further information': 'UTC Timestamp,Human readable Timestamp,BikeID,lat,lon,rental_state,bike_name,further information,url',
-        '<br>': '\n',
-    }
+    DEFAULT_MAX_RANGE = 60000
+    DEFAULT_CURRENT_RANGE = 30000
 
     VEHICLE_NAMES_FOR_TYPE = {
         'three_wheeled_bike_for_load_and_child': 'Lastenrad, 3-rädrig - Kindertransport möglich',
@@ -25,20 +33,18 @@ class LastenVeloFreiburgProvider(BaseProvider):
         'two_wheeled_bike_for_load_only': 'Lastenrad, 2-rädrig - Kein Kindertransport',
     }
 
+    lastenvelo_csv: str = ''
+
     def _load_lastenvelo_csv(self) -> None:
         response = requests.get(
             self.LASTENVELO_API_URL, headers={'User-Agent': 'x2gbfs +https://github.com/mobidata-bw/'}, timeout=5
         )
         response.raise_for_status()
 
-        # API returns Content-Type: text/html, though it should Content-Type: text/html; charset=utf-8
+        # API returns Content-Type: text/csv, though it should Content-Type: text/csv; charset=utf-8
         response.encoding = response.apparent_encoding
 
         content = response.text
-        # Need to fix header (fieldnames contain commata) and linebreaks
-        for key, value in self.REPLACEMENTS.items():
-            content = content.replace(key, value)
-
         self.lastenvelo_csv = content
 
     def _all_lastenvelo_rows(self) -> Generator[Dict, None, None]:
@@ -50,8 +56,8 @@ class LastenVeloFreiburgProvider(BaseProvider):
             yield row
 
     def _extract_vehicle_and_type(self, row: Dict[str, str]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-        last_reported = int(float(row['UTC Timestamp']))
-        further_information = row['further information']
+        last_reported = int(float(row[self.TIMESTAMP_COL_NAME]))
+        further_information = row[self.FURTHER_INFO_COL_NAME]
         has_engine = 'mit Motor' in further_information
         vehicle_type_id = self._vehicle_type_id(row)
 
@@ -67,25 +73,30 @@ class LastenVeloFreiburgProvider(BaseProvider):
         }
 
         if has_engine:
-            gbfs_vehicle_type['max_range_meters'] = 20000
+            gbfs_vehicle_type['max_range_meters'] = self.DEFAULT_MAX_RANGE
 
         gbfs_vehicle = {
-            'bike_id': row['BikeID'],
+            'bike_id': row[self.BIKE_ID_COL_NAME],
             'vehicle_type_id': vehicle_type_id,
             'station_id': self._station_id(row),
-            'is_reserved': 'rented' in row['rental_state'],
-            'is_disabled': 'defect' in row['rental_state'],
-            'current_range_meters': 20000,
+            'is_reserved': 'rented' in row[self.RENTAL_STATE_COL_NAME],
+            'is_disabled': 'defect' in row[self.RENTAL_STATE_COL_NAME],
+            'current_range_meters': self.DEFAULT_CURRENT_RANGE,
             'rental_uris': {
-                'web': row['url'],
+                'web': row[self.DEEPLINK_COL_NAME],
             },
             'last_reported': last_reported,
         }
 
+        available_until_value = row[self.AVAILABLE_UNTIL_COL_NAME]
+        if len(available_until_value) > 0:
+            available_until = datetime.fromtimestamp(int(float(available_until_value)), tz=timezone.utc)
+            gbfs_vehicle['available_until'] = timestamp_to_isoformat(available_until)
+
         return gbfs_vehicle, gbfs_vehicle_type
 
     def _station_id(self, row: Dict[str, str]) -> str:
-        return '{:.6f}_{:.6f}'.format(float(row['lat']), float(row['lon']))
+        return '{:.6f}_{:.6f}'.format(float(row[self.LAT_COL_NAME]), float(row[self.LON_COL_NAME]))
 
     def _vehicle_name_for_type(self, vehicle_type_id: str) -> str:
         return self.VEHICLE_NAMES_FOR_TYPE[vehicle_type_id]
@@ -95,7 +106,7 @@ class LastenVeloFreiburgProvider(BaseProvider):
         Returns vehicle_type_id depending on property `further information`.
         """
 
-        further_information = row['further information']
+        further_information = row[self.FURTHER_INFO_COL_NAME]
         if '2-rädrig' in further_information:
             wheel_type = 'two_wheeled'
         elif '3-rädrig' in further_information or 'Fahrrad mit Anhänger' in further_information:
@@ -115,21 +126,21 @@ class LastenVeloFreiburgProvider(BaseProvider):
         return f'{wheel_type}_{bike_type}'
 
     def _extract_station_info_and_state(self, row: Dict[str, str]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-        last_reported = int(float(row['UTC Timestamp']))
+        last_reported = int(float(row[self.TIMESTAMP_COL_NAME]))
         station_id = self._station_id(row)
 
         info = {
-            'lat': float(row['lat']),
-            'lon': float(row['lon']),
-            'name': row['bike_name'],
+            'lat': float(row[self.LAT_COL_NAME]),
+            'lon': float(row[self.LON_COL_NAME]),
+            'name': row[self.BIKE_NAME_COL_NAME],
             'station_id': station_id,
             'home_station_id': station_id,
             # 'addresss': Not provided
             # 'post_code': Not provided
             'rental_methods': ['key'],
-            'is_charging_station': 'ohne Ladestation' not in row['further information'],
+            'is_charging_station': 'ohne Ladestation' not in row[self.FURTHER_INFO_COL_NAME],
             'rental_uris': {
-                'web': row['url'],
+                'web': row[self.DEEPLINK_COL_NAME],
             },
         }
 
