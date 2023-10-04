@@ -65,9 +65,17 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
     transformer = GbfsTransformer()
     extractor = build_extractor(provider)
 
-    (info, status, vehicle_types, vehicles) = transformer.load_stations_and_vehicles(extractor)
+    (info, status, vehicle_types, vehicles, last_reported) = transformer.load_stations_and_vehicles(extractor)
     GbfsWriter().write_gbfs_feed(
-        feed_config, f'{output_dir}/{provider}', info, status, vehicle_types, vehicles, f'{base_url}/{provider}'
+        feed_config,
+        f'{output_dir}/{provider}',
+        info,
+        status,
+        vehicle_types,
+        vehicles,
+        f'{base_url}/{provider}',
+        last_reported,
+        ttl=feed_config.get('ttl', 60),
     )
     logger.info(f'Updated feeds for {provider}')
 

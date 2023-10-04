@@ -8,7 +8,7 @@ from .base_provider import BaseProvider
 class GbfsTransformer:
     def load_stations_and_vehicles(
         self, provider: BaseProvider
-    ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List]]:
+    ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List], int]:
         """
         Load stations and vehicles from provider, updates vehicle availabilities at stations
         and returns gbfs collections station_infos, station_status, vehicle_types, vehicles.
@@ -33,6 +33,7 @@ class GbfsTransformer:
             # Note: if vehicle_types are not provided, all vehicles are assumed to be non motorized bikes https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#files
             list(vehicle_types_map.values()) if vehicle_types_map else None,
             list(vehicles_map.values()) if vehicles_map else None,
+            default_last_reported,
         )
 
     def _count_vehicle_types_at_station(self, vehicles_map, filter) -> Counter:

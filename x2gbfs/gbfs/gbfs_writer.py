@@ -29,6 +29,8 @@ class GbfsWriter:
         vehicle_types: Optional[List[Dict]],
         vehicles: Optional[List[Dict]],
         base_url: str,
+        timestamp: int,
+        ttl: int = 60,
     ) -> None:
         base_url = base_url or config['publication_base_url']
         pricing_plans = config['feed_data'].get('pricing_plans')
@@ -37,13 +39,14 @@ class GbfsWriter:
 
         Path(destFolder).mkdir(parents=True, exist_ok=True)
 
-        timestamp = int(datetime.timestamp(datetime.now()))
         feeds = ['system_information']
-        self.write_gbfs_file(destFolder + '/system_information.json', system_information, timestamp)
+        self.write_gbfs_file(destFolder + '/system_information.json', system_information, timestamp, ttl)
         if station_information and station_status:
             feeds.extend(('station_information', 'station_status'))
-            self.write_gbfs_file(destFolder + '/station_information.json', {'stations': station_information}, timestamp)
-            self.write_gbfs_file(destFolder + '/station_status.json', {'stations': station_status}, timestamp)
+            self.write_gbfs_file(
+                destFolder + '/station_information.json', {'stations': station_information}, timestamp, ttl
+            )
+            self.write_gbfs_file(destFolder + '/station_status.json', {'stations': station_status}, timestamp, ttl)
         elif station_information or station_status:
             logger.error(
                 f'For feed {system_information["system_id"]}, only one of station_information or station_status was returned. Skipping station generation.'
@@ -54,11 +57,11 @@ class GbfsWriter:
             )
         if vehicles:
             feeds.append('free_bike_status')
-            self.write_gbfs_file(destFolder + '/free_bike_status.json', {'bikes': vehicles}, timestamp)
+            self.write_gbfs_file(destFolder + '/free_bike_status.json', {'bikes': vehicles}, timestamp, ttl)
         if vehicle_types:
             feeds.append('vehicle_types')
-            self.write_gbfs_file(destFolder + '/vehicle_types.json', {'vehicle_types': vehicle_types}, timestamp)
+            self.write_gbfs_file(destFolder + '/vehicle_types.json', {'vehicle_types': vehicle_types}, timestamp, ttl)
         if pricing_plans:
             feeds.append('system_pricing_plans')
-            self.write_gbfs_file(destFolder + '/system_pricing_plans.json', {'plans': pricing_plans}, timestamp)
-        self.write_gbfs_file(destFolder + '/gbfs.json', self.gbfs_data(feed_language, base_url, feeds), timestamp)
+            self.write_gbfs_file(destFolder + '/system_pricing_plans.json', {'plans': pricing_plans}, timestamp, ttl)
+        self.write_gbfs_file(destFolder + '/gbfs.json', self.gbfs_data(feed_language, base_url, feeds), timestamp, ttl)
