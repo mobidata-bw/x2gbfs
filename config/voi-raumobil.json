@@ -1,0 +1,32 @@
+{
+    "feed_data": {
+	"pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "1 EURO + 0,22 EURO/Minute.",
+                "is_taxable": false,
+                "name": "Voi Scooter Karlsruhe Preisplan",
+                "per_min_pricing": [
+                    {
+                        "interval": 1,
+                        "rate": 0.22,
+                        "start": 0
+                    }
+                ],
+                "plan_id": "basic",
+                "price": 1
+            }
+	],
+        "system_information": {
+            "email": "support@voiapp.io",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "name": "Voi Scooter Karlsruhe",
+            "operator": "Voi Technology Germany GmbH",
+            "system_id": "voi_karlsruhe",
+            "timezone": "Europe/Berlin"
+        }
+    },
+    "publication_base_url": "https://data.mfdz.de/mobidata-bw/voi"
+}
+

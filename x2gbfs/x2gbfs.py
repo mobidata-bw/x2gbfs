@@ -10,7 +10,7 @@ from decouple import config
 from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
-from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI
+from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI, VoiRaumobil
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
@@ -27,8 +27,14 @@ def build_extractor(provider: str) -> BaseProvider:
 
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
         return Deer(fleetsterApi)
+    if provider == 'voi-raumobil':
+        api_url = config('VOI_API_URL')
+        api_user = config('VOI_USER')
+        api_password = config('VOI_PASSWORD')
 
-    raise ValueError(f'Unkown config {provider}')
+        return VoiRaumobil(api_url, api_user, api_password)
+
+    raise ValueError(f'Unknown config {provider}')
 
 
 def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0) -> None:
