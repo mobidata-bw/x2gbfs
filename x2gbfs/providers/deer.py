@@ -124,20 +124,6 @@ class Deer(BaseProvider):
         """
         return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
 
-    def create_station_status(self, station_id: str, last_reported: int) -> Dict[str, Any]:
-        """
-        Return a default station status, which needs to be updated later on.
-        """
-        return {
-            'num_bikes_available': 0,
-            'is_renting': True,
-            'is_installed': True,
-            'is_returning': True,
-            'station_id': station_id,
-            'vehicle_types_available': [],
-            'last_reported': last_reported,
-        }
-
     def pricing_plan_id(self, vehicle: Dict) -> Optional[str]:
         """
         Maps deer's vehicle categories to pricing plans (provided viaa config).
@@ -187,7 +173,7 @@ class Deer(BaseProvider):
 
             gbfs_station_infos_map[station_id] = gbfs_station
 
-            gbfs_station_status_map[station_id] = self.create_station_status(station_id, default_last_reported)
+            gbfs_station_status_map[station_id] = self._create_station_status(station_id, default_last_reported)
 
         return gbfs_station_infos_map, gbfs_station_status_map
 

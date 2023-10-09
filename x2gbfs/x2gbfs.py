@@ -10,7 +10,7 @@ from decouple import config
 from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
-from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI, VoiRaumobil
+from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI, LastenVeloFreiburgProvider, VoiRaumobil
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
@@ -20,6 +20,8 @@ logger = logging.getLogger('x2gbfs')
 def build_extractor(provider: str) -> BaseProvider:
     if provider == 'example':
         return ExampleProvider()
+    if provider == 'lastenvelo_fr':
+        return LastenVeloFreiburgProvider()
     if provider == 'deer':
         api_url = config('DEER_API_URL')
         api_user = config('DEER_USER')
@@ -63,9 +65,17 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
     transformer = GbfsTransformer()
     extractor = build_extractor(provider)
 
-    (info, status, vehicle_types, vehicles) = transformer.load_stations_and_vehicles(extractor)
+    (info, status, vehicle_types, vehicles, last_reported) = transformer.load_stations_and_vehicles(extractor)
     GbfsWriter().write_gbfs_feed(
-        feed_config, f'{output_dir}/{provider}', info, status, vehicle_types, vehicles, f'{base_url}/{provider}'
+        feed_config,
+        f'{output_dir}/{provider}',
+        info,
+        status,
+        vehicle_types,
+        vehicles,
+        f'{base_url}/{provider}',
+        last_reported,
+        ttl=feed_config.get('ttl', 60),
     )
     logger.info(f'Updated feeds for {provider}')
 
