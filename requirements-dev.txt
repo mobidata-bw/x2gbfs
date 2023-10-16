@@ -3,5 +3,5 @@ types-urllib3==1.26.25.14
 
 ruff~=0.0.292
 black~=23.9.1
-mypy~=1.5.1
+mypy~=1.6.0
 mypy-gitlab-code-quality~=1.0.0
