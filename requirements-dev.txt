@@ -1,4 +1,4 @@
-types-requests==2.31.0.8
+types-requests==2.31.0.10
 types-urllib3==1.26.25.14
 
 ruff~=0.0.292
