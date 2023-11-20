@@ -1,7 +1,7 @@
 types-requests==2.31.0.10
 types-urllib3==1.26.25.14
 
-ruff~=0.1.1
+ruff~=0.1.6
 black~=23.10.1
 mypy~=1.6.1
 mypy-gitlab-code-quality~=1.0.0
