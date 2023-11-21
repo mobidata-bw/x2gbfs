@@ -1,0 +1,329 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif: Am ersten Tag 1,50€/h, am 2. Tag 0,95€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,26€/km bis 100km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "A 4-Sitzer-Kleinstwagen (KLASSIK/AKTIV)",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 1020,
+                        "interval": 60,
+                        "rate": 1.5
+                    },
+                    {
+                        "start": 1020,
+                        "end": 1440,
+                        "interval": 60,
+                        "rate": 0
+                    },
+                    {
+                        "interval": 60,
+                        "rate": 0.95,
+                        "start": 1440
+                    }
+                ],
+                "per_km_pricing": [
+                    {
+                        "start": 0,
+                        "end": 100,
+                        "interval": 1,
+                        "rate": 0.26
+                    },
+                    {
+                        "start": 100,
+                        "interval": 1,
+                        "rate": 0.22
+                    }
+                ],
+                "plan_id": "micro",
+                "price": 0,
+                "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif: Am ersten Tag 2,00€/h, am 2. Tag 1,20€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,26€/km bis 100km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV)",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 1020,
+                        "interval": 60,
+                        "rate": 2.0
+                    },
+                    {
+                        "start": 1020,
+                        "end": 1440,
+                        "interval": 60,
+                        "rate": 0
+                    },
+                    {
+                        "interval": 60,
+                        "rate": 1.20,
+                        "start": 1440
+                    }
+                ],
+                "per_km_pricing": [
+                    {
+                        "start": 0,
+                        "end": 100,
+                        "interval": 1,
+                        "rate": 0.26
+                    },
+                    {
+                        "start": 100,
+                        "interval": 1,
+                        "rate": 0.22
+                    }
+                ],
+                "plan_id": "mini",
+                "price": 0,
+                "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif: Am ersten Tag 2,00€/h, am 2. Tag 1,20€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,26€/km bis 100km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV)",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 1020,
+                        "interval": 60,
+                        "rate": 2.0
+                    },
+                    {
+                        "start": 1020,
+                        "end": 1440,
+                        "interval": 60,
+                        "rate": 0
+                    },
+                    {
+                        "interval": 60,
+                        "rate": 1.20,
+                        "start": 1440
+                    }
+                ],
+                "per_km_pricing": [
+                    {
+                        "start": 0,
+                        "end": 100,
+                        "interval": 1,
+                        "rate": 0.26
+                    },
+                    {
+                        "start": 100,
+                        "interval": 1,
+                        "rate": 0.22
+                    }
+                ],
+                "plan_id": "small",
+                "price": 0,
+                "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif: Am ersten Tag 2,70€/h, am 2. Tag 1,55€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,30€/km bis 100km, danach 0,26€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "C/D Kombi/Hochdachkombi (KLASSIK/AKTIV)",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 1020,
+                        "interval": 60,
+                        "rate": 2.70
+                    },
+                    {
+                        "start": 1020,
+                        "end": 1440,
+                        "interval": 60,
+                        "rate": 0
+                    },
+                    {
+                        "interval": 60,
+                        "rate": 1.55,
+                        "start": 1440
+                    }
+                ],
+                "per_km_pricing": [
+                    {
+                        "start": 0,
+                        "end": 100,
+                        "interval": 1,
+                        "rate": 0.3
+                    },
+                    {
+                        "start": 100,
+                        "interval": 1,
+                        "rate": 0.26
+                    }
+                ],
+                "plan_id": "stationwagon",
+                "price": 0,
+                "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif: Am ersten Tag 3,90€/h, am 2. Tag 2,15€/h. Nachtpreis zwischen 0h und 7h: 0,50€. 0,35€/km bis 100km, danach 0,31€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "E 9-Sitzer-Bus (KLASSIK/AKTIV)",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 1020,
+                        "interval": 60,
+                        "rate": 3.90
+                    },
+                    {
+                        "start": 1020,
+                        "end": 1440,
+                        "interval": 60,
+                        "rate": 0.5
+                    },
+                    {
+                        "interval": 60,
+                        "rate": 2.15,
+                        "start": 1440
+                    }
+                ],
+                "per_km_pricing": [
+                    {
+                        "start": 0,
+                        "end": 100,
+                        "interval": 1,
+                        "rate": 0.35
+                    },
+                    {
+                        "start": 100,
+                        "interval": 1,
+                        "rate": 0.31
+                    }
+                ],
+                "plan_id": "large",
+                "price": 0,
+                "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif: Am ersten Tag 4,40€/h, am 2. Tag 2,40€/h. Nachtpreis zwischen 0h und 7h: 0,50€. 0,35€/km bis 100km, danach 0,31€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "F Transporter (KLASSIK/AKTIV)",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 1020,
+                        "interval": 60,
+                        "rate": 4.40
+                    },
+                    {
+                        "start": 1020,
+                        "end": 1440,
+                        "interval": 60,
+                        "rate": 0.5
+                    },
+                    {
+                        "interval": 60,
+                        "rate": 2.40,
+                        "start": 1440
+                    }
+                ],
+                "per_km_pricing": [
+                    {
+                        "start": 0,
+                        "end": 100,
+                        "interval": 1,
+                        "rate": 0.35
+                    },
+                    {
+                        "start": 100,
+                        "interval": 1,
+                        "rate": 0.31
+                    }
+                ],
+                "plan_id": "transporter",
+                "price": 0,
+                "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tarif-Lastenrad: 2,00€/h, Mindestbuchungszeit 1h, danach Abrechnung im 15min-Takt. Tagespreis 18€. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif-Lastenrad",
+                "per_min_pricing": [
+                    {
+                        "start": 0,
+                        "end": 60,
+                        "interval": 60,
+                        "rate": 2.00
+                    },
+                    {
+                        "start": 60,
+                        "end": 540,
+                        "interval": 15,
+                        "rate": 0.5
+                    },
+                    {
+                        "interval": 15,
+                        "rate": 0,
+                        "start": 540,
+                        "end": 1440
+                    },
+                    {
+                        "interval": 1440,
+                        "rate": 18,
+                        "start": 1440
+                    }
+                ],
+                "plan_id": "bike",
+                "price": 0,
+                "url": "https://www.my-e-car.de/lastenrad-e-cargosharing/"
+            }
+        ],
+        "system_information": {
+            "email": "service@my-e-car.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "license_id": "DL-DE-BY-2.0",
+            "attribution_organization_name": "my-e-car GmbH",
+            "attribution_url": "https://www.my-e-car.de/",
+            "name": "my-e-car",
+            "operator": "my-e-car GmbH",
+            "phone_number": "+49 7621 916 58 53",
+            "privacy_url": "https://www.my-e-car.de/datenschutz/",
+            "purchase_url": "https://www.my-e-car.de/registrieren-informationen/",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                },
+                "ios": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                }
+            },
+            "system_id": "my-e-car",
+            "terms_last_updated": "2022-02-15",
+            "terms_url": "https://www.my-e-car.de/agb/",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.my-e-car.de/"
+        }
+    },
+    "system_id": "10024",
+    "provider_id": 84,
+    "url_templates": {
+        "station": {
+            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "web": "https://ewi3-myecar.cantamen.de/?openPlace={placeId}"
+        },
+        "vehicle": {
+            "android": "cantamen-interapp-csd://add_booking?openPlace={bookeeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openPlace={bookeeId}",
+            "web": "https://ewi3-myecar.cantamen.de/?openBooke={bookeeId}"
+        }
+    }
+}

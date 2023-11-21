@@ -10,14 +10,22 @@ from decouple import config
 from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
-from x2gbfs.providers import Deer, ExampleProvider, FleetsterAPI, LastenVeloFreiburgProvider, VoiRaumobil
+from x2gbfs.providers import (
+    Deer,
+    ExampleProvider,
+    FleetsterAPI,
+    LastenVeloFreiburgProvider,
+    MyECarProvider,
+    StadtmobilSuedbadenProvider,
+    VoiRaumobil,
+)
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 logger = logging.getLogger('x2gbfs')
 
 
-def build_extractor(provider: str) -> BaseProvider:
+def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
     if provider == 'example':
         return ExampleProvider()
     if provider == 'lastenvelo_fr':
@@ -35,6 +43,10 @@ def build_extractor(provider: str) -> BaseProvider:
         api_password = config('VOI_PASSWORD')
 
         return VoiRaumobil(api_url, api_user, api_password)
+    if provider in ['stadtmobil_suedbaden']:
+        return StadtmobilSuedbadenProvider(feed_config)
+    if provider in ['my-e-car']:
+        return MyECarProvider(feed_config)
 
     raise ValueError(f'Unknown config {provider}')
 
@@ -63,7 +75,7 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
         feed_config = json.load(config_file)
 
     transformer = GbfsTransformer()
-    extractor = build_extractor(provider)
+    extractor = build_extractor(provider, feed_config)
 
     (info, status, vehicle_types, vehicles, last_reported) = transformer.load_stations_and_vehicles(extractor)
     GbfsWriter().write_gbfs_feed(

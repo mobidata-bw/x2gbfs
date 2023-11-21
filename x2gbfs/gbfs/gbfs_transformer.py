@@ -19,8 +19,9 @@ class GbfsTransformer:
         """
         default_last_reported = int(datetime.timestamp(datetime.now()))
 
-        station_infos_map, station_status_map = provider.load_stations(default_last_reported)
-        vehicle_types_map, vehicles_map = provider.load_vehicles(default_last_reported)
+        station_infos_map, station_status_map, vehicle_types_map, vehicles_map = provider.load_stations_and_vehicles(
+            default_last_reported
+        )
 
         if station_status_map and vehicles_map:
             # if feed has stations and vehicles, we deduce vehicle_types_available
