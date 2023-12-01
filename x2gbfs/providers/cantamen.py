@@ -270,9 +270,7 @@ class CantamenIXSIProvider(BaseProvider):
 
     def _rental_uri(self, gbfs_type: str, platform: str, bookee_or_place_id: str):
         if gbfs_type == 'vehicle':
-            return self.config['url_templates']['vehicle'][platform].format(
-                bookeeId=bookee_or_place_id
-            )
+            return self.config['url_templates']['vehicle'][platform].format(bookeeId=bookee_or_place_id)
         if gbfs_type == 'station':
             return self.config['url_templates']['station'][platform].format(placeId=bookee_or_place_id)
 
@@ -285,10 +283,14 @@ class CantamenIXSIProvider(BaseProvider):
         """
         platforms = ['web', 'ios', 'android']
         for station in station_infos.values():
-            station['rental_uris'] = { platform: self._rental_uri('station', platform, station['station_id']) for platform in platforms }
+            station['rental_uris'] = {
+                platform: self._rental_uri('station', platform, station['station_id']) for platform in platforms
+            }
 
         for vehicle in vehicles.values():
-            vehicle['rental_uris'] = { platform: self._rental_uri('vehicle', platform, vehicle['bike_id']) for platform in platforms }
+            vehicle['rental_uris'] = {
+                platform: self._rental_uri('vehicle', platform, vehicle['bike_id']) for platform in platforms
+            }
 
     def load_vehicles(self, default_last_reported: int) -> Tuple[Dict, Dict]:
         vehicles = {}
