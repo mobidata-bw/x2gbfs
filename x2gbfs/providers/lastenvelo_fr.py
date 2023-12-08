@@ -96,7 +96,7 @@ class LastenVeloFreiburgProvider(BaseProvider):
         return gbfs_vehicle, gbfs_vehicle_type
 
     def _station_id(self, row: Dict[str, str]) -> str:
-        return '{:.6f}_{:.6f}'.format(float(row[self.LAT_COL_NAME]), float(row[self.LON_COL_NAME]))
+        return '{:.6f}_{:.6f}'.format(float(row[self.LAT_COL_NAME]), float(row[self.LON_COL_NAME])).replace('.', '-')
 
     def _vehicle_name_for_type(self, vehicle_type_id: str) -> str:
         return self.VEHICLE_NAMES_FOR_TYPE[vehicle_type_id]
