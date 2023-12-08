@@ -89,7 +89,10 @@ class VoiRaumobil(BaseProvider):
         for elem in self.all_vehicles():
             # Note: usually you would iterate over a data source retrieve from a proprietary
             # system and convert it to vehicles, reflecting their real-time properties.
-            vehicle_id = elem['properties']['id']  # TO DO
+            vehicle_id = elem['properties']['id']
+            # The provider/type  prefixwill be introduced by lamassu, so we chop it off here
+            if vehicle_id.startswith('VOI:VEHICLE:'):
+                vehicle_id = vehicle_id[len('VOI:VEHICLE:') :]
 
             gbfs_vehicle = {
                 'bike_id': vehicle_id,
