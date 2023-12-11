@@ -31,6 +31,7 @@ class LastenVeloFreiburgProvider(BaseProvider):
         'two_wheeled_bike_for_child_only': 'Lastenrad, 2-rädrig - Nur Kindertransport',
         'two_wheeled_bike_for_load_and_child': 'Lastenrad, 2-rädrig - Kindertransport möglich',
         'two_wheeled_bike_for_load_only': 'Lastenrad, 2-rädrig - Kein Kindertransport',
+        'four_wheeled_bike_for_load_only': '4-rädrig - mit Motor',
     }
 
     lastenvelo_csv: str = ''
@@ -55,6 +56,14 @@ class LastenVeloFreiburgProvider(BaseProvider):
         for row in reader:
             yield row
 
+    def _extract_wheel_count(self, further_information):
+        if '4-rädrig' in further_information:
+            return 4
+        if '3-rädrig' in further_information or 'hänger' in further_information:
+            return 3
+
+        return 2
+
     def _extract_vehicle_and_type(self, row: Dict[str, str]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         last_reported = int(float(row[self.TIMESTAMP_COL_NAME]))
         further_information = row[self.FURTHER_INFO_COL_NAME]
@@ -68,8 +77,8 @@ class LastenVeloFreiburgProvider(BaseProvider):
             'name': self._vehicle_name_for_type(vehicle_type_id),
             'return_type': 'roundtrip',
             'default_pricing_plan_id': 'kostenfrei',
-            'wheel_count': 3 if '3-rädrig' in further_information or 'hänger' in further_information else 2,
-            'rider_capacity': 2 if 'Kindertransport' in further_information else 1,
+            'wheel_count': self._extract_wheel_count(further_information),
+            'rider_capacity': 2 if 'Kindertransport' in further_information or '4-rädrig' in further_information else 1,
         }
 
         if has_engine:
@@ -111,6 +120,8 @@ class LastenVeloFreiburgProvider(BaseProvider):
             wheel_type = 'two_wheeled'
         elif '3-rädrig' in further_information or 'Fahrrad mit Anhänger' in further_information:
             wheel_type = 'three_wheeled'
+        elif '4-rädrig' in further_information:
+            wheel_type = 'four_wheeled'
         else:
             raise Exception(f'Unexpected wheel type "{further_information}"')
 
