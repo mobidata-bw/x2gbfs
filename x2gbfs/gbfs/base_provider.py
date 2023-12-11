@@ -1,4 +1,7 @@
+import logging
 from typing import Any, Dict, Generator, Optional, Tuple
+
+logger = logging.getLogger('x2gbfs.base_provider')
 
 
 class BaseProvider:
@@ -26,6 +29,20 @@ class BaseProvider:
         """
         return None, None
 
+    def _filter_vehicles_at_inexistant_stations(self, vehicles_map, station_infos_map):
+        """
+        Filters vehicles which have a station assigned that is not contained in station_info_map
+        """
+        if vehicles_map and station_infos_map:
+            for vehicle_id in list(vehicles_map.keys()):
+                station_id = vehicles_map[vehicle_id].get('station_id')
+
+                if station_id not in station_infos_map:
+                    logger.info(
+                        f'Vehicle {vehicle_id} is assigned to inexistant station {station_id}, it will be removed from feed'
+                    )
+                    vehicles_map.pop(vehicle_id)
+
     def load_stations_and_vehicles(
         self, default_last_reported: int
     ) -> Tuple[Optional[Dict], Optional[Dict], Optional[Dict], Optional[Dict]]:
@@ -39,6 +56,8 @@ class BaseProvider:
         """
         station_infos_map, station_status_map = self.load_stations(default_last_reported)
         vehicle_types_map, vehicles_map = self.load_vehicles(default_last_reported)
+
+        self._filter_vehicles_at_inexistant_stations(vehicles_map, station_infos_map)
 
         return station_infos_map, station_status_map, vehicle_types_map, vehicles_map
 

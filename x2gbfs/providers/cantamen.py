@@ -1,3 +1,4 @@
+import logging
 import re
 from datetime import datetime, timezone
 from typing import Any, Dict, Generator, List, Optional, Tuple
@@ -9,6 +10,8 @@ from x2gbfs.gbfs.base_provider import BaseProvider
 from x2gbfs.util import timestamp_to_isoformat
 
 from .api.ixsi import IxsiAPI
+
+logger = logging.getLogger('x2gbfs.cantamen')
 
 
 class CantamenIXSIProvider(BaseProvider):
@@ -312,6 +315,10 @@ class CantamenIXSIProvider(BaseProvider):
 
         for place in self._all_places():
             info, state = self._extract_station_info_and_state(place, default_last_reported)
+
+            if info.get('lon') == 0.0 or info.get('lat') == 0.0:
+                logger.info(f'Skip station {info.get("name")} as it has coords (0,0)')
+                continue
             status[state['station_id']] = state
             infos[info['station_id']] = info
 
