@@ -59,7 +59,7 @@ def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0
         for provider in providers:
             try:
                 generate_feed_for(provider, output_dir, base_url)
-            except HTTPError:
+            except Exception:
                 logger.exception(f'Generating feed for {provider} failed!')
                 error_occured = True
 
