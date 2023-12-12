@@ -317,7 +317,7 @@ class CantamenIXSIProvider(BaseProvider):
             info, state = self._extract_station_info_and_state(place, default_last_reported)
 
             if info.get('lon') == 0.0 or info.get('lat') == 0.0:
-                logger.info(f'Skip station {info.get("name")} as it has coords (0,0)')
+                logger.info(f'Skip station {info.get("name")} ({info["station_id"]}) as it has coords (0,0)')
                 continue
             status[state['station_id']] = state
             infos[info['station_id']] = info
