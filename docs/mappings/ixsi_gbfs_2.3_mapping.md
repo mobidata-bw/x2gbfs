@@ -37,6 +37,11 @@ Various stadtmobil organizations and other car sharing operators use IXSI as boo
 
 The IXSI API is described via a [API documentation](https://carsharing.de/sites/default/files/uploads/ixsi-v5_docu_v0.9_bcs.pdf).
 
+### Provider ID
+
+To request a specific sharing provider, it's provider ID is required and needs to be configured in the provider config (see e.g. the [stadtmobiL-suedbaden config](https://github.com/mobidata-bw/x2gbfs/blob/a8bdd98ce51ca2a2aa0b008d2f906c5401fbd9eb/config/stadtmobil_suedbaden.json#L282))
+
+
 ### Example
 
 The following fragment is an example of the IXSI static bookee document:
