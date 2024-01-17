@@ -5,7 +5,7 @@ from websockets.sync.client import connect
 
 
 class IxsiAPI:
-    def __init__(self, system_id: str, uri: str, timeout=5):
+    def __init__(self, system_id: str, uri: str, timeout=5, max_size=2**24):
         """
         Send a message to a recipient.
 
@@ -16,9 +16,10 @@ class IxsiAPI:
         self.system_id = system_id
         self.uri = uri
         self.timeout = timeout
+        self.max_size = max_size
 
     def _request(self, message):
-        with connect(self.uri) as websocket:
+        with connect(self.uri, max_size=self.max_size) as websocket:
             websocket.send(message)
             return websocket.recv(timeout=self.timeout)
 

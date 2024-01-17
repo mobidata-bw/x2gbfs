@@ -20,6 +20,7 @@ class CantamenIXSIProvider(BaseProvider):
     It can be configured via ENV variables:
     * CANTAMEN_IXSI_API_URL (required): an IXSIv5 service endpoint url
     * CANTAMEN_IXSI_API_TIMEOUT (specified in seconds, optional, default 5)
+    * CANTAMEN_IXSI_RESPONSE_MAX_SIZE (specified in bytes, optional, default 2**24)
 
     This Provider expects the config dict to provide the followig information:
     * provider_id: ID of the provider to be retrieved
@@ -84,12 +85,15 @@ class CantamenIXSIProvider(BaseProvider):
     def __init__(self, feed_config):
         self.api_url = config('CANTAMEN_IXSI_API_URL')
         self.api_timeout = config('CANTAMEN_IXSI_API_TIMEOUT', 5)
+        self.api_response_max_size = config('CANTAMEN_IXSI_RESPONSE_MAX_SIZE', 2**24)
         self.config = feed_config
 
     def _load_response(self) -> Dict[str, Any]:
         if not self.cached_response:
             provider_id = self.config['provider_id']
-            data = IxsiAPI(self.config['system_id'], self.api_url, self.api_timeout).result_for_provider(provider_id)
+            data = IxsiAPI(
+                self.config['system_id'], self.api_url, self.api_timeout, self.api_response_max_size
+            ).result_for_provider(provider_id)
             base_data = xmltodict.parse(data)['Ixsi']['Response']['BaseData']
             self._parse_attributes(base_data['Attributes'])
             self.cached_response = base_data
