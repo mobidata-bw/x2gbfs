@@ -19,7 +19,7 @@ class CantamenIXSIProvider(BaseProvider):
     Generic Stadtmobil provider to retrieve sharing data via IXSI an convert it to GBFS.
     It can be configured via ENV variables:
     * CANTAMEN_IXSI_API_URL (required): an IXSIv5 service endpoint url
-    * CANTAMEN_IXSI_API_TIMEOUT (specified in seconds, optional, default 5)
+    * CANTAMEN_IXSI_API_TIMEOUT (specified in seconds, optional, default 10)
     * CANTAMEN_IXSI_RESPONSE_MAX_SIZE (specified in bytes, optional, default 2**24)
 
     This Provider expects the config dict to provide the followig information:
@@ -84,7 +84,7 @@ class CantamenIXSIProvider(BaseProvider):
 
     def __init__(self, feed_config):
         self.api_url = config('CANTAMEN_IXSI_API_URL')
-        self.api_timeout = config('CANTAMEN_IXSI_API_TIMEOUT', 5)
+        self.api_timeout = config('CANTAMEN_IXSI_API_TIMEOUT', 10)
         self.api_response_max_size = config('CANTAMEN_IXSI_RESPONSE_MAX_SIZE', 2**24)
         self.config = feed_config
 
