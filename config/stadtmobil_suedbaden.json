@@ -275,7 +275,8 @@
             "terms_last_updated": "2021-02-01",
             "terms_url": "https://www.stadtmobil-suedbaden.de/agb/",
             "timezone": "Europe/Berlin",
-            "url": "https://www.stadtmobil-suedbaden.de/"
+            "url": "https://www.stadtmobil-suedbaden.de/",
+	    "_feed_notice": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar."
         }
     },
     "system_id": "10024",
