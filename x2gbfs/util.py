@@ -1,4 +1,7 @@
 from datetime import datetime, timezone
+from typing import Any, Dict, Generator, Optional, Tuple
+
+import requests
 
 
 def timestamp_to_isoformat(utctimestamp: datetime):
@@ -9,3 +12,15 @@ def timestamp_to_isoformat(utctimestamp: datetime):
     See also https://github.com/MobilityData/gbfs-json-schema/issues/95
     """
     return utctimestamp.isoformat().replace('+00:00', 'Z')
+
+
+def get(
+    url: str,
+    params: Optional[dict[str, str]] = None,
+    headers: Optional[dict[str, str]] = None,
+    timeout: int = 5,
+    user_agent: str = 'x2gbfs +https://github.com/mobidata-bw/',
+):
+    request_headers = dict(headers) if headers is not None else {}
+    request_headers['User-Agent'] = user_agent
+    return requests.get(url, headers=request_headers, timeout=timeout, params=params)
