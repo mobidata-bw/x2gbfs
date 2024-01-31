@@ -266,7 +266,7 @@ class CantamenIXSIProvider(BaseProvider):
         current_fuel_percent = current_charge_level / 100.0
         return {
             'bike_id': bookee['ID'],
-            'is_reserved': True,  # No realtime information available, set to reserved
+            'is_reserved': False,  # No realtime information available, set to False
             'is_disabled': False,
             'station_id': bookee['PlaceID'],
             'vehicle_type_id': vehicle_type_id,
