@@ -55,6 +55,8 @@ class CantamenIXSIProvider(BaseProvider):
         'childsafetyseat15to36': 'child_seat_c',
         # propulsion_type mappings (hybrid/electric are already GBFS conformant)
         'diesel': 'combustion_diesel',
+        'gasoline': 'combustion',
+        'dieselfromeuro6': 'combustion_diesel',
     }
 
     # attributes that map to GBFS `vehicle_accessories` entries
@@ -72,9 +74,9 @@ class CantamenIXSIProvider(BaseProvider):
     # attributes that map to GBFS `vehicle_equipment` entries
     EQUIPMENT_ATTRIBUTES = ['winter_tires', 'child_seat_c']
     # attributes that map to GBFS `propulsion_type` (naturalgas is no GBFS ppropulsion type yet)
-    PROPULSION_ATTRIBUTES = ['hybrid', 'combustion_diesel', 'electric']
     # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
     PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter']
+    PROPULSION_ATTRIBUTES = ['hybrid', 'combustion', 'combustion_diesel', 'electric']
 
     cached_response: Optional[Dict[str, Any]] = None
     attributes: Dict[str, str] = {}
@@ -184,17 +186,22 @@ class CantamenIXSIProvider(BaseProvider):
 
         # first propulsion_type attribute ot None, if None declared for this bookee
         propulsion_type = next(iter(self._filter_and_map_attributes(attributes, self.PROPULSION_ATTRIBUTES)), None)
+        is_hybrid = next(iter(self._filter_and_map_attributes(attributes, ['hybrid'])), None)
 
-        if form_factor == 'cargo_bicycle':
+        if is_hybrid == 'hybrid':
+            propulsion_type = 'hybrid'
+        elif form_factor == 'cargo_bicycle':
             propulsion_type = 'electric_assist'
             max_range_meters = self.DEFAULT_CARGO_BIKE_MAX_RANGE_METERS
-        elif propulsion_type == 'electric' or 'CurrentStateOfCharge' in bookee or 'km' in name:
+        elif propulsion_type == 'electric' or (
+            propulsion_type is None and ('CurrentStateOfCharge' in bookee or 'km' in name)
+        ):
             propulsion_type = 'electric'
             pattern = re.compile(r'.*\< ?(\d*) ?km')
             match = pattern.match(name)
             if match:
                 max_range_meters = int(match.group(1)) * 1000
-        else:
+        elif propulsion_type is None:
             propulsion_type = 'combustion'  # if no combustion type can be derived, we assume combustion
 
         return propulsion_type, max_range_meters
