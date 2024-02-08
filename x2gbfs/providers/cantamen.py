@@ -121,6 +121,9 @@ class CantamenIXSIProvider(BaseProvider):
     def _all_bookees(self) -> Generator[Dict[str, Any], None, None]:
         bookees = self._load_response()['Bookee']
         for bookee in bookees:
+            if bookee.get('Class') is None:
+                logger.info(f'Bookee {bookee["ID"]} has no Class and will be ignored')
+                continue
             yield bookee
 
     def _all_places(self) -> Generator[Dict[str, Any], None, None]:
