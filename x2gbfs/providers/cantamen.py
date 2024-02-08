@@ -74,8 +74,6 @@ class CantamenIXSIProvider(BaseProvider):
     # attributes that map to GBFS `vehicle_equipment` entries
     EQUIPMENT_ATTRIBUTES = ['winter_tires', 'child_seat_c']
     # attributes that map to GBFS `propulsion_type` (naturalgas is no GBFS ppropulsion type yet)
-    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
-    PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter']
     PROPULSION_ATTRIBUTES = ['hybrid', 'combustion', 'combustion_diesel', 'electric']
 
     cached_response: Optional[Dict[str, Any]] = None
@@ -83,12 +81,15 @@ class CantamenIXSIProvider(BaseProvider):
     # maps IXSI color attributes' IDs to their respective color names, e.g. "10648" (with Code COL_RED) -> "Rot"
     colors: Dict[str, str] = {}
     seats: Dict[str, int] = {}
+    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
+    pricing_plan_ids: List[str] = []
 
     def __init__(self, feed_config):
         self.api_url = config('CANTAMEN_IXSI_API_URL')
         self.api_timeout = config('CANTAMEN_IXSI_API_TIMEOUT', 10)
         self.api_response_max_size = config('CANTAMEN_IXSI_RESPONSE_MAX_SIZE', 2**24)
         self.config = feed_config
+        self.pricing_plan_ids = [plan['plan_id'] for plan in feed_config['feed_data']['pricing_plans']]
 
     def _load_response(self) -> Dict[str, Any]:
         if not self.cached_response:
@@ -209,8 +210,12 @@ class CantamenIXSIProvider(BaseProvider):
     def _extract_pricing_plan_id(self, bookee: Dict, attributes: List[str]) -> str:
         # if this bookee is a stationwagen, pricing_plan_id `stationwagen` is returned.
         # Otherwise, the bookee's lowercased `Class`. This needs to be a supported pricing_plan_id
-        pricing_plan_id = 'stationwagon' if self._is_stationwagon(attributes) else bookee['Class'].lower()
-        if pricing_plan_id not in self.PRICING_PLAN_IDS:
+        pricing_plan_id = (
+            'stationwagon'
+            if self._is_stationwagon(attributes) and 'stationwagon' in self.pricing_plan_ids
+            else bookee['Class'].lower()
+        )
+        if pricing_plan_id not in self.pricing_plan_ids:
             raise ValueError('Unexpected bookee class {} is no pricing_plan_id'.format(pricing_plan_id))
 
         return pricing_plan_id
@@ -350,13 +355,3 @@ class CantamenIXSIProvider(BaseProvider):
             self._add_rental_uris(station_infos_map, vehicles_map)
 
         return station_infos_map, station_status_map, vehicle_types_map, vehicles_map
-
-
-class MyECarProvider(CantamenIXSIProvider):
-    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
-    PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter', 'bike']
-
-
-class StadtmobilSuedbadenProvider(CantamenIXSIProvider):
-    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
-    PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter']
