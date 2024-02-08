@@ -86,7 +86,7 @@ class CantamenIXSIProvider(BaseProvider):
 
     def __init__(self, feed_config):
         self.api_url = config('CANTAMEN_IXSI_API_URL')
-        self.api_timeout = config('CANTAMEN_IXSI_API_TIMEOUT', 10)
+        self.api_timeout = int(config('CANTAMEN_IXSI_API_TIMEOUT', 10))
         self.api_response_max_size = config('CANTAMEN_IXSI_RESPONSE_MAX_SIZE', 2**24)
         self.config = feed_config
         self.pricing_plan_ids = [plan['plan_id'] for plan in feed_config['feed_data']['pricing_plans']]
