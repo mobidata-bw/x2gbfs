@@ -218,7 +218,9 @@ class CantamenIXSIProvider(BaseProvider):
         # Vehicles usually have their license plate (in parentheses) appended in their name.
         # We cut this of by cutting of all text starting from the rightmost opening parenthesis.
         # A single license plate (X-XXX XXX (BÜ)) is handled explicitly here
-        name = bookee_name[0 : bookee_name.replace('(BÜ)', '').rfind('(')].strip()
+        name = bookee_name.replace('(BÜ)', '')
+        name = re.sub(r'\(\d+\)', '', name)
+        name = name[0 : name.rfind('(')].strip() if name.rfind('(') > 0 else name.strip()
         # range is spelled in various ways (e.g. 'bis XXXkm', '< XXXkm', '<XXXkm'), we homogenize ot '<XXXkm'':
         return name.replace(' bis ', ' <').replace('< ', '<')
 
