@@ -33,7 +33,7 @@
                         "rate": 0.23
                     }
                 ],
-                "plan_id": "micro",
+                "plan_id": "mini",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
@@ -75,7 +75,7 @@
                         "rate": 0.21
                     }
                 ],
-                "plan_id": "mini",
+                "plan_id": "small",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
@@ -117,7 +117,7 @@
                         "rate": 0.22
                     }
                 ],
-                "plan_id": "small",
+                "plan_id": "medium",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
@@ -153,7 +153,7 @@
                         "rate": 0.30
                     }
                 ],
-                "plan_id": "large",
+                "plan_id": "van",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
