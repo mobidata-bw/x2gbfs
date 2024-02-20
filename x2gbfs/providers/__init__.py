@@ -4,3 +4,4 @@ from .example import ExampleProvider
 from .fleetster import FleetsterAPI
 from .lastenvelo_fr import LastenVeloFreiburgProvider
 from .voi_raumobil import VoiRaumobil
+from .noi import NoiProvider
