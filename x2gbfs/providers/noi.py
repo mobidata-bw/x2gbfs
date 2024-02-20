@@ -59,22 +59,22 @@ class NoiProvider(BaseProvider):
         response = requests.get(self.STATION_URL, timeout=10)
         raw_stations = response.json()["data"]
 
-        stations = {}
+        info = {}
         for i in raw_stations:
             id = i["scode"]
             coord = i["scoordinate"]
-            stations[id] = {
+            info[id] = {
                 "station_id": id,
                 "name": i["sname"],
                 "lon": coord["x"],
-                "lat": coord["y"]
+                "lat": coord["y"],
             }
 
-        print(stations)
-        infos = self.load_infos()
-        return infos, stations
+        print(info)
+        status = self.load_status(default_last_reported)
+        return info, status,
 
-    def load_infos(self) -> Optional[Dict]:
+    def load_status(self, last_reported: int) -> Optional[Dict]:
         response = requests.get(self.CAR_URL, timeout=10)
         raw_cars = response.json()["data"]
         infos = {}
@@ -85,7 +85,11 @@ class NoiProvider(BaseProvider):
                 id = i["pcode"]
                 infos[id] = {
                     "station_id": id,
-                    "num_bikes_available" : 1
+                    "num_bikes_available" : 1,
+                    "is_installed": True,
+                    "is_renting": True,
+                    "is_returning": True,
+                    "last_reported": last_reported
                 }
         return infos
 
