@@ -2,7 +2,7 @@ import logging
 from typing import Dict, Optional, Tuple
 
 from x2gbfs.gbfs.base_provider import BaseProvider
-import requests
+import requests, re
 
 logger = logging.getLogger(__name__)
 
@@ -28,19 +28,39 @@ class NoiProvider(BaseProvider):
     VEHICLE_TYPES = {
         'scooter': {
             # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
-            'vehicle_type_id': 'scooter',
-            'form_factor': 'scooter',
-            'propulsion_type': 'electric',
-            'max_range_meters': 10000,
-            'name': 'Scooter',
-            'wheel_count': 2,
-            'return_type': 'free_floating',
-            'default_pricing_plan_id': 'basic',  # refers to a pricing plan specified in config/example.json
+            'vehicle_type_id': 'vw-golf',
+            'form_factor': 'car',
+            'propulsion_type': 'combustion',
+            'max_range_meters': 500000,
+            'name': 'VW Golf',
+            'wheel_count': 4
         }
     }
 
     def __init__(self):
         pass
+
+    def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
+        response = requests.get(self.CAR_URL, timeout=20)
+        raw_cars = response.json()["data"]
+        types = {}
+        for i in raw_cars:
+
+                id = self.extract_type_id(i)
+                types[id] = {
+                    # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
+                    'vehicle_type_id': id,
+                    'form_factor': 'car',
+                    'propulsion_type': 'combustion',
+                    'max_range_meters': 500000,
+                    'name': i["smetadata"]["brand"].strip(),
+                    'wheel_count': 4
+                }
+        return types, {}
+
+    def extract_type_id(self, i):
+        stripped = i["smetadata"]["brand"].lower().strip().replace("!", "")
+        return re.sub(r'[^a-z0-9]+', '-', stripped)
 
     def load_stations(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         """
@@ -56,7 +76,7 @@ class NoiProvider(BaseProvider):
         provider.
         """
 
-        response = requests.get(self.STATION_URL, timeout=10)
+        response = requests.get(self.STATION_URL, timeout=20)
         raw_stations = response.json()["data"]
 
         info = {}
@@ -70,18 +90,16 @@ class NoiProvider(BaseProvider):
                 "lat": coord["y"],
             }
 
-        print(info)
         status = self.load_status(default_last_reported)
         return info, status,
 
     def load_status(self, last_reported: int) -> Optional[Dict]:
-        response = requests.get(self.CAR_URL, timeout=10)
+        response = requests.get(self.CAR_URL, timeout=20)
         raw_cars = response.json()["data"]
         infos = {}
         for i in raw_cars:
 
             if i.get("pcode") is not None:
-                print(i)
                 id = i["pcode"]
                 infos[id] = {
                     "station_id": id,
@@ -89,7 +107,11 @@ class NoiProvider(BaseProvider):
                     "is_installed": True,
                     "is_renting": True,
                     "is_returning": True,
-                    "last_reported": last_reported
+                    "last_reported": last_reported,
+                    "vehicle_types_available": [{
+                        "vehicle_type_id": self.extract_type_id(i),
+                        "count": 1
+                    }]
                 }
         return infos
 

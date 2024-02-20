@@ -1,38 +1,25 @@
 {
     "feed_data": {
         "system_information": {
-            "email": "service@my-e-car.de",
-            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "email": "info@carsharing.bz.it",
+            "feed_contact_email": "mail@leonard.io",
             "language": "de",
             "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
-            "attribution_organization_name": "NOI",
-            "attribution_url": "https://www.my-e-car.de/",
-            "name": "my-e-car",
-            "operator": "my-e-car GmbH",
-            "phone_number": "+49 7621 916 58 53",
-            "privacy_url": "https://www.my-e-car.de/datenschutz/",
-            "purchase_url": "https://www.my-e-car.de/registrieren-informationen/",
+            "attribution_organization_name": "Konsortialgenossenschaft Car Sharing Südtirol Alto Adige",
+            "attribution_url": "https://www.carsharing.bz.it",
+            "name": "Carsharing Südtirol Alto Adige",
+            "operator": "Konsortialgenossenschaft Car Sharing Südtirol Alto Adige",
+            "phone_number": "+39 0471 061319",
+            "privacy_url": "https://www.carsharing.bz.it/de/privacy/",
+            "purchase_url": "https://www.carsharing.bz.it/",
             "system_id": "NOI",
             "terms_last_updated": "2022-02-15",
-            "terms_url": "https://www.my-e-car.de/agb/",
+            "terms_url": "https://www.carsharing.bz.it/de/impressum/",
             "timezone": "Europe/Rome",
-            "url": "https://www.my-e-car.de/",
-	          "_feed_notice": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar."
+            "url": "https://www.carsharing.bz.it/de/"
         }
     },
     "system_id": "10024",
-    "provider_id": 84,
-    "url_templates": {
-        "station": {
-            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
-        },
-        "vehicle": {
-            "android": "cantamen-interapp-csd://add_booking?openPlace={bookeeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openPlace={bookeeId}",
-            "web": "https://ewi3.cantamen.de/?openBooke={bookeeId}"
-        }
-    }
+    "provider_id": 84
 }
