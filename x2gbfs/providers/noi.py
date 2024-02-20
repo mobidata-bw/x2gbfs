@@ -51,7 +51,7 @@ class NoiProvider(BaseProvider):
                     # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
                     'vehicle_type_id': id,
                     'form_factor': 'car',
-                    'propulsion_type': 'combustion',
+                    'propulsion_type': self.extract_propulsion(i),
                     'max_range_meters': 500000,
                     'name': i["smetadata"]["brand"].strip(),
                     'wheel_count': 4
@@ -61,6 +61,13 @@ class NoiProvider(BaseProvider):
     def extract_type_id(self, i):
         stripped = i["smetadata"]["brand"].lower().strip().replace("!", "")
         return re.sub(r'[^a-z0-9]+', '-', stripped)
+
+    def extract_propulsion(self, i):
+        if(self.extract_type_id(i).__contains__("elektro")):
+            return "electric"
+        else:
+            return "combustion"
+
 
     def load_stations(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         """
