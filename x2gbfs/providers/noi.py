@@ -24,20 +24,6 @@ class Counter:
             self.cars[station_id][type] = count + 1
 
 class NoiProvider(BaseProvider):
-    """
-    This is an ExampleProvider which demonstrates how to implement a free-floatig only, e.g. scooter,
-    provider.
-
-    As it is not station based, only vehicles and one sigle vehicle type need to e extracted
-    from the base system. This demo just returns some fake objects.
-
-    System information and pricing information is read from config/example.json.
-
-    Note: to be able to run this via x2gbfs, this ExampleProvider needs to
-    is added to x2gbfs.py's build_extractor method.
-
-    """
-
     STATION_URL = "https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingStation?limit=500&offset=0&shownull=false&distinct=true"
     CAR_URL = "https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar?limit=500&offset=0&shownull=false&distinct=true"
 
