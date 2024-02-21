@@ -9,6 +9,7 @@ Currently supported providers:
 * Stadtmobil Südbaden (via Cantamen IXSI API, provider id: `stadtmobil_suedbaden`)
 * my-e-car (via Cantamen IXSI API, provider id: `my-e-car`)
 * Lastenvelo Freiburg (via custom CSV, provider id: `lastenvelo_fr`)
+* NOI OpenDataHub (provider id: `noi`)
 
 To generate a feed for e.g. deer network, switch to the `x2gbfs` project basee dir and execute
 
@@ -70,6 +71,11 @@ To generate the voi raumobil GBFS feed, you need to provide the following enviro
 * `VOI_API_URL=https://url.org`
 * `VOI_USER=<your username>`
 * `VOI_PASSWORD=<your password>`
+ 
+### NOI OpenDataHub
+
+Converts NOI's OpenDataHub carsharing feed to GBFS.
+
 
 ## Implementing a new provider
 To implement a new provider, you should take the following steps:
