@@ -1,4 +1,4 @@
-from .cantamen import MyECarProvider, StadtmobilSuedbadenProvider
+from .cantamen import CantamenIXSIProvider
 from .deer import Deer
 from .example import ExampleProvider
 from .fleetster import FleetsterAPI

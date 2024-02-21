@@ -11,12 +11,11 @@ from requests.exceptions import HTTPError
 
 from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
 from x2gbfs.providers import (
+    CantamenIXSIProvider,
     Deer,
     ExampleProvider,
     FleetsterAPI,
     LastenVeloFreiburgProvider,
-    MyECarProvider,
-    StadtmobilSuedbadenProvider,
     VoiRaumobil,
 )
 
@@ -43,10 +42,8 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         api_password = config('VOI_PASSWORD')
 
         return VoiRaumobil(api_url, api_user, api_password)
-    if provider in ['stadtmobil_suedbaden']:
-        return StadtmobilSuedbadenProvider(feed_config)
-    if provider in ['my-e-car']:
-        return MyECarProvider(feed_config)
+    if provider in ['my-e-car'] or provider.startswith('stadtmobil_'):
+        return CantamenIXSIProvider(feed_config)
 
     raise ValueError(f'Unknown config {provider}')
 

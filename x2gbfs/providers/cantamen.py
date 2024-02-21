@@ -55,6 +55,8 @@ class CantamenIXSIProvider(BaseProvider):
         'childsafetyseat15to36': 'child_seat_c',
         # propulsion_type mappings (hybrid/electric are already GBFS conformant)
         'diesel': 'combustion_diesel',
+        'gasoline': 'combustion',
+        'dieselfromeuro6': 'combustion_diesel',
     }
 
     # attributes that map to GBFS `vehicle_accessories` entries
@@ -72,21 +74,22 @@ class CantamenIXSIProvider(BaseProvider):
     # attributes that map to GBFS `vehicle_equipment` entries
     EQUIPMENT_ATTRIBUTES = ['winter_tires', 'child_seat_c']
     # attributes that map to GBFS `propulsion_type` (naturalgas is no GBFS ppropulsion type yet)
-    PROPULSION_ATTRIBUTES = ['hybrid', 'combustion_diesel', 'electric']
-    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
-    PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter']
+    PROPULSION_ATTRIBUTES = ['hybrid', 'combustion', 'combustion_diesel', 'electric']
 
     cached_response: Optional[Dict[str, Any]] = None
     attributes: Dict[str, str] = {}
     # maps IXSI color attributes' IDs to their respective color names, e.g. "10648" (with Code COL_RED) -> "Rot"
     colors: Dict[str, str] = {}
     seats: Dict[str, int] = {}
+    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
+    pricing_plan_ids: List[str] = []
 
     def __init__(self, feed_config):
         self.api_url = config('CANTAMEN_IXSI_API_URL')
-        self.api_timeout = config('CANTAMEN_IXSI_API_TIMEOUT', 10)
+        self.api_timeout = int(config('CANTAMEN_IXSI_API_TIMEOUT', 10))
         self.api_response_max_size = config('CANTAMEN_IXSI_RESPONSE_MAX_SIZE', 2**24)
         self.config = feed_config
+        self.pricing_plan_ids = [plan['plan_id'] for plan in feed_config['feed_data']['pricing_plans']]
 
     def _load_response(self) -> Dict[str, Any]:
         if not self.cached_response:
@@ -121,6 +124,9 @@ class CantamenIXSIProvider(BaseProvider):
     def _all_bookees(self) -> Generator[Dict[str, Any], None, None]:
         bookees = self._load_response()['Bookee']
         for bookee in bookees:
+            if bookee.get('Class') is None:
+                logger.info(f'Bookee {bookee["ID"]} has no Class and will be ignored')
+                continue
             yield bookee
 
     def _all_places(self) -> Generator[Dict[str, Any], None, None]:
@@ -181,17 +187,22 @@ class CantamenIXSIProvider(BaseProvider):
 
         # first propulsion_type attribute ot None, if None declared for this bookee
         propulsion_type = next(iter(self._filter_and_map_attributes(attributes, self.PROPULSION_ATTRIBUTES)), None)
+        is_hybrid = next(iter(self._filter_and_map_attributes(attributes, ['hybrid'])), None)
 
-        if form_factor == 'cargo_bicycle':
+        if is_hybrid == 'hybrid':
+            propulsion_type = 'hybrid'
+        elif form_factor == 'cargo_bicycle':
             propulsion_type = 'electric_assist'
             max_range_meters = self.DEFAULT_CARGO_BIKE_MAX_RANGE_METERS
-        elif propulsion_type == 'electric' or 'CurrentStateOfCharge' in bookee or 'km' in name:
+        elif propulsion_type == 'electric' or (
+            propulsion_type is None and ('CurrentStateOfCharge' in bookee or 'km' in name)
+        ):
             propulsion_type = 'electric'
             pattern = re.compile(r'.*\< ?(\d*) ?km')
             match = pattern.match(name)
             if match:
                 max_range_meters = int(match.group(1)) * 1000
-        else:
+        elif propulsion_type is None:
             propulsion_type = 'combustion'  # if no combustion type can be derived, we assume combustion
 
         return propulsion_type, max_range_meters
@@ -199,8 +210,12 @@ class CantamenIXSIProvider(BaseProvider):
     def _extract_pricing_plan_id(self, bookee: Dict, attributes: List[str]) -> str:
         # if this bookee is a stationwagen, pricing_plan_id `stationwagen` is returned.
         # Otherwise, the bookee's lowercased `Class`. This needs to be a supported pricing_plan_id
-        pricing_plan_id = 'stationwagon' if self._is_stationwagon(attributes) else bookee['Class'].lower()
-        if pricing_plan_id not in self.PRICING_PLAN_IDS:
+        pricing_plan_id = (
+            'stationwagon'
+            if self._is_stationwagon(attributes) and 'stationwagon' in self.pricing_plan_ids
+            else bookee['Class'].lower()
+        )
+        if pricing_plan_id not in self.pricing_plan_ids:
             raise ValueError('Unexpected bookee class {} is no pricing_plan_id'.format(pricing_plan_id))
 
         return pricing_plan_id
@@ -215,7 +230,9 @@ class CantamenIXSIProvider(BaseProvider):
         # Vehicles usually have their license plate (in parentheses) appended in their name.
         # We cut this of by cutting of all text starting from the rightmost opening parenthesis.
         # A single license plate (X-XXX XXX (BÜ)) is handled explicitly here
-        name = bookee_name[0 : bookee_name.replace('(BÜ)', '').rfind('(')].strip()
+        name = bookee_name.replace('(BÜ)', '')
+        name = re.sub(r'\(\d+\)', '', name)
+        name = name[0 : name.rfind('(')].strip() if name.rfind('(') > 0 else name.strip()
         # range is spelled in various ways (e.g. 'bis XXXkm', '< XXXkm', '<XXXkm'), we homogenize ot '<XXXkm'':
         return name.replace(' bis ', ' <').replace('< ', '<')
 
@@ -338,13 +355,3 @@ class CantamenIXSIProvider(BaseProvider):
             self._add_rental_uris(station_infos_map, vehicles_map)
 
         return station_infos_map, station_status_map, vehicle_types_map, vehicles_map
-
-
-class MyECarProvider(CantamenIXSIProvider):
-    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
-    PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter', 'bike']
-
-
-class StadtmobilSuedbadenProvider(CantamenIXSIProvider):
-    # Currently supported pricing plan IDs (These need to be configured in config/<provider>.json)
-    PRICING_PLAN_IDS = ['stationwagon', 'micro', 'mini', 'small', 'large', 'transporter']
