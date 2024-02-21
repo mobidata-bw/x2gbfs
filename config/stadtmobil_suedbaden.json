@@ -1,5 +1,13 @@
 {
     "feed_data": {
+        "alerts": [
+           {
+            "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
         "pricing_plans": [
             {
                 "currency": "EUR",
@@ -275,8 +283,7 @@
             "terms_last_updated": "2021-02-01",
             "terms_url": "https://www.stadtmobil-suedbaden.de/agb/",
             "timezone": "Europe/Berlin",
-            "url": "https://www.stadtmobil-suedbaden.de/",
-	    "_feed_notice": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar."
+            "url": "https://www.stadtmobil-suedbaden.de/"
         }
     },
     "system_id": "10024",
