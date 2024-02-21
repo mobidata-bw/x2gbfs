@@ -23,6 +23,16 @@ class Counter:
             count = self.cars[station_id][type]
             self.cars[station_id][type] = count + 1
 
+    def total_cars(self, station_id):
+        cars = self.cars.get(station_id)
+        if cars is None:
+            return 0
+        else:
+            count = 0
+            for i in cars:
+                count = count + cars[i]
+        return count
+
 class NoiProvider(BaseProvider):
     STATION_URL = "https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingStation?limit=500&offset=0&shownull=false&distinct=true"
     CAR_URL = "https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar?limit=500&offset=0&shownull=false&distinct=true"
@@ -49,8 +59,10 @@ class NoiProvider(BaseProvider):
         return types, {}
 
     def extract_type_id(self, i):
-        stripped = i["smetadata"]["brand"].lower().strip().replace("!", "")
-        return re.sub(r'[^a-z0-9]+', '-', stripped)
+        output = i["smetadata"]["brand"].lower().strip().replace("!", "")
+        output =  re.sub(r'[^a-z0-9]+', '-', output)
+        output =  re.sub(r'-$', '', output)
+        return output
 
     def extract_propulsion(self, i):
         if(self.extract_type_id(i).__contains__("elektro")):
@@ -102,7 +114,7 @@ class NoiProvider(BaseProvider):
 
             infos[station_id] = {
                 "station_id": station_id,
-                "num_bikes_available" : 1,
+                "num_bikes_available" : counter.total_cars(station_id),
                 "is_installed": True,
                 "is_renting": True,
                 "is_returning": True,
@@ -110,7 +122,3 @@ class NoiProvider(BaseProvider):
                 "vehicle_types_available": avail
         }
         return infos
-
-
-
-
