@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Counter:
     """
-    A utiltiy class to group certain cars by their station id.
+    A utility class to group certain cars by their station id.
     """
     cars = {}
     def __init__(self):
