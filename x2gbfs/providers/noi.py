@@ -93,7 +93,7 @@ class NoiProvider(BaseProvider):
     def load_status(self, last_reported: int) -> Optional[Dict]:
         response = requests.get(self.CAR_URL, timeout=20)
         raw_cars = response.json()["data"]
-        infos = {}
+        statuses = {}
         counter = Counter()
         for i in raw_cars:
 
@@ -112,7 +112,7 @@ class NoiProvider(BaseProvider):
                     "count": counts[type_id]
                 })
 
-            infos[station_id] = {
+            statuses[station_id] = {
                 "station_id": station_id,
                 "num_bikes_available" : counter.total_cars(station_id),
                 "is_installed": True,
@@ -121,4 +121,4 @@ class NoiProvider(BaseProvider):
                 "last_reported": last_reported,
                 "vehicle_types_available": avail
         }
-        return infos
+        return statuses
