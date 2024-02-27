@@ -6,33 +6,6 @@ from x2gbfs.gbfs.base_provider import BaseProvider
 
 logger = logging.getLogger(__name__)
 
-class Counter:
-    """
-    A utility class to group certain cars by their station id.
-    """
-    cars = {}
-    def __init__(self):
-        pass
-
-    def count_car(self, station_id, type):
-        if self.cars.get(station_id) is None:
-            self.cars[station_id] = { type: 1 }
-        elif self.cars[station_id].get(type) is None:
-            self.cars[station_id][type] = 1
-        else:
-            count = self.cars[station_id][type]
-            self.cars[station_id][type] = count + 1
-
-    def total_cars(self, station_id):
-        cars = self.cars.get(station_id)
-        if cars is None:
-            return 0
-
-        count = 0
-        for i in cars:
-            count = count + cars[i]
-        return count
-
 class NoiProvider(BaseProvider):
     STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingStation?limit=500&offset=0&shownull=false&distinct=true'
     CAR_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar?limit=500&offset=0&shownull=false&distinct=true'
@@ -44,22 +17,38 @@ class NoiProvider(BaseProvider):
         response = requests.get(self.CAR_URL, timeout=20)
         raw_cars = response.json()['data']
         types = {}
+        vehicles = {}
         for i in raw_cars:
 
-                id = self.extract_type_id(i)
-                types[id] = {
-                    # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
-                    'vehicle_type_id': id,
-                    'form_factor': 'car',
-                    'propulsion_type': self.extract_propulsion(i),
-                    'max_range_meters': 500000,
-                    'name': i['smetadata']['brand'].strip(),
-                    'wheel_count': 4
+            type_id = self.extract_type_id(i)
+            types[type_id] = {
+                # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
+                'vehicle_type_id': type_id,
+                'form_factor': 'car',
+                'propulsion_type': self.extract_propulsion(i),
+                'max_range_meters': 500000,
+                'name': i['smetadata']['brand'].strip(),
+                'wheel_count': 4
+            }
+
+            if i.get('pcode') is not None:
+                id = self.slugify(i['smetadata']['licensePlate'])
+                vehicles[id] = {
+                    "bike_id": id,
+                    "station_id": i['pcode'],
+                    "vehicle_type_id": type_id,
+                    "is_reserved": False,
+                    "is_disabled": False,
+                    "current_range_meters": 500000
                 }
-        return types, {}
+
+        return types, vehicles
 
     def extract_type_id(self, i):
-        output = i['smetadata']['brand'].lower().strip().replace('!', '')
+        return self.slugify(i['smetadata']['brand'])
+
+    def slugify(self, input):
+        output = input.lower().strip().replace('!', '')
         output = re.sub(r'[^a-z0-9]+', '-', output)
         return re.sub(r'-$', '', output)
 
@@ -86,37 +75,23 @@ class NoiProvider(BaseProvider):
             }
 
         status = self.load_status(default_last_reported)
-        return info, status,
+        return info, status
 
     def load_status(self, last_reported: int) -> Optional[Dict]:
         response = requests.get(self.CAR_URL, timeout=20)
         raw_cars = response.json()['data']
         statuses = {}
-        counter = Counter()
+
         for i in raw_cars:
 
             if i.get('pcode') is not None:
-                id = i['pcode']
-                type_id = self.extract_type_id(i)
-                counter.count_car(id, type_id)
 
-        for station_id, counts in counter.cars.items():
-
-            avail = []
-
-            for type_id in counts:
-                avail.append({
-                    'vehicle_type_id': type_id,
-                    'count': counts[type_id]
-                })
-
-            statuses[station_id] = {
-                'station_id': station_id,
-                'num_bikes_available' : counter.total_cars(station_id),
-                'is_installed': True,
-                'is_renting': True,
-                'is_returning': True,
-                'last_reported': last_reported,
-                'vehicle_types_available': avail
-        }
+                station_id = i['pcode']
+                statuses[station_id] = {
+                    'station_id': station_id,
+                    'is_installed': True,
+                    'is_renting': True,
+                    'is_returning': True,
+                    'last_reported': last_reported
+                }
         return statuses
