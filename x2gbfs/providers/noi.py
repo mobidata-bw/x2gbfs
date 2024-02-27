@@ -34,12 +34,12 @@ class NoiProvider(BaseProvider):
             if i.get('pcode') is not None:
                 id = self.slugify(i['smetadata']['licensePlate'])
                 vehicles[id] = {
-                    "bike_id": id,
-                    "station_id": i['pcode'],
-                    "vehicle_type_id": type_id,
-                    "is_reserved": False,
-                    "is_disabled": False,
-                    "current_range_meters": 500000
+                    'bike_id': id,
+                    'station_id': i['pcode'],
+                    'vehicle_type_id': type_id,
+                    'is_reserved': False,
+                    'is_disabled': False,
+                    'current_range_meters': 500000
                 }
 
         return types, vehicles
