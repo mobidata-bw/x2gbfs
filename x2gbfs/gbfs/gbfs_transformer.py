@@ -70,9 +70,11 @@ class GbfsTransformer:
                 }
             )
 
-        for station_id in vehicle_types_per_station.keys():
-            if station_id in status_map:
+        for station_id in status_map.keys():
+            if station_id in vehicle_types_per_station:
                 self._update_station_availability_status(vehicle_types_per_station[station_id], status_map[station_id])
+            else:
+                status_map[station_id]['vehicle_types_available'] = []
 
     def _update_station_availability_status(
         self, vt_available: List[Dict[str, Any]], station_status: Dict[str, Any]

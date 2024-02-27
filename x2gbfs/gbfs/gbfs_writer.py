@@ -34,6 +34,7 @@ class GbfsWriter:
     ) -> None:
         base_url = base_url or config['publication_base_url']
         pricing_plans = config['feed_data'].get('pricing_plans')
+        alerts = config['feed_data'].get('alerts')
         system_information = copy.deepcopy(config['feed_data']['system_information'])
         feed_language = system_information['language']
 
@@ -64,4 +65,7 @@ class GbfsWriter:
         if pricing_plans:
             feeds.append('system_pricing_plans')
             self.write_gbfs_file(destFolder + '/system_pricing_plans.json', {'plans': pricing_plans}, timestamp, ttl)
+        if alerts:
+            feeds.append('system_alerts')
+            self.write_gbfs_file(destFolder + '/system_alerts.json', {'alerts': alerts}, timestamp, ttl)
         self.write_gbfs_file(destFolder + '/gbfs.json', self.gbfs_data(feed_language, base_url, feeds), timestamp, ttl)
