@@ -1,10 +1,13 @@
 import logging
-import requests
 import re
 from typing import Dict, Optional, Tuple
+
+import requests
+
 from x2gbfs.gbfs.base_provider import BaseProvider
 
 logger = logging.getLogger(__name__)
+
 
 class NoiProvider(BaseProvider):
     STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingStation?limit=500&offset=0&shownull=false&distinct=true'
@@ -28,7 +31,7 @@ class NoiProvider(BaseProvider):
                 'propulsion_type': self.extract_propulsion(i),
                 'max_range_meters': 500000,
                 'name': i['smetadata']['brand'].strip(),
-                'wheel_count': 4
+                'wheel_count': 4,
             }
 
             if i.get('pcode') is not None:
@@ -39,7 +42,7 @@ class NoiProvider(BaseProvider):
                     'vehicle_type_id': type_id,
                     'is_reserved': False,
                     'is_disabled': False,
-                    'current_range_meters': 500000
+                    'current_range_meters': 500000,
                 }
 
         return types, vehicles
@@ -53,10 +56,9 @@ class NoiProvider(BaseProvider):
         return re.sub(r'-$', '', output)
 
     def extract_propulsion(self, i):
-        if(self.extract_type_id(i).__contains__('elektro')):
+        if self.extract_type_id(i).__contains__('elektro'):
             return 'electric'
         return 'combustion'
-
 
     def load_stations(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
 
@@ -92,6 +94,6 @@ class NoiProvider(BaseProvider):
                     'is_installed': True,
                     'is_renting': True,
                     'is_returning': True,
-                    'last_reported': last_reported
+                    'last_reported': last_reported,
                 }
         return statuses

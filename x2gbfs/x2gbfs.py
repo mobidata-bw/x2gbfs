@@ -16,9 +16,9 @@ from x2gbfs.providers import (
     ExampleProvider,
     FleetsterAPI,
     LastenVeloFreiburgProvider,
+    NoiProvider,
     StadtwerkTauberfrankenProvider,
     VoiRaumobil,
-    NoiProvider
 )
 
 logging.basicConfig()
