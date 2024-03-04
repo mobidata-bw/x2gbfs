@@ -32,6 +32,7 @@ class NoiProvider(BaseProvider):
                 'max_range_meters': 500000,
                 'name': i['smetadata']['brand'].strip(),
                 'wheel_count': 4,
+                'return_constraint': 'roundtrip_station',
             }
 
             if i.get('pcode') is not None:
