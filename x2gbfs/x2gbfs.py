@@ -16,6 +16,7 @@ from x2gbfs.providers import (
     ExampleProvider,
     FleetsterAPI,
     LastenVeloFreiburgProvider,
+    NoiProvider,
     StadtwerkTauberfrankenProvider,
     VoiRaumobil,
 )
@@ -47,6 +48,8 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         return CantamenIXSIProvider(feed_config)
     if provider in ['stadtwerk_tauberfranken']:
         return StadtwerkTauberfrankenProvider(feed_config)
+    if provider in ['noi']:
+        return NoiProvider()
 
     raise ValueError(f'Unknown config {provider}')
 
