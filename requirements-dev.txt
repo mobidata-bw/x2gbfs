@@ -4,4 +4,4 @@ types-xmltodict==0.13.0.3
 
 ruff~=0.2.2
 black~=24.2.0
-mypy~=1.8.0
+mypy~=1.9.0
