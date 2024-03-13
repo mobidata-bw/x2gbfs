@@ -185,7 +185,7 @@ GBFS Field | Mapping
 `parking_type` | -
 `parking_hoop` | -
 `contact_phone` | -
-`capacity` | -
+`capacity` | `place/Capacity`
 `vehicle_capacity`  | -
 `vehicle_type_capacity` | -
 `is_valet_station`  | -
