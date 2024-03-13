@@ -116,8 +116,8 @@ GBFS Field | Mapping
 `parking_type` | -
 `parking_hoop` | -
 `contact_phone` | -
-`capacity` | -
-`vehicle_capacity`  |  `row['capacity_max']`
+`capacity` | `row['capacity_max']`
+`vehicle_capacity`  |  -
 `vehicle_type_capacity` | _deduced from vehicles assigned to this station free_bike_status.station_id_
 `is_valet_station`  | -
 `is_charging_station` |  -
