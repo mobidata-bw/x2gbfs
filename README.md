@@ -33,7 +33,14 @@ be provided via config/<provider>.json and needs to be updated when that informa
 
 ## Available providers
 
-Currently, a couple of providers are supported: deer, which uses Fleetster as backend provider, Lastenvelo Freiburg, VOI Karlsruhe via backend provider Raumobil, and my-e-car and Stadtmobil Südbaden via backend provider IXSI.
+Currently, a couple of providers are supported:
+
+* deer, which uses Fleetster as backend provider,
+* Lastenvelo Freiburg
+* VOI Karlsruhe via backend provider Raumobil
+* Stadtwerk Tauberfranken via backend provider MOQO
+* Carsharing Südtirol via Nature Of Innovation (NOI)'s OpenDataHub
+* and my-e-car, stadtmobil Südbaden and stadtmobil Stuttgart via backend provider Cantamen/IXSI.
 
 ### deer (Fleetster)
 
@@ -53,9 +60,9 @@ Lastenvelo Freiburg publishes a regularly updated [CSV file](https://www.lastenv
 For details, see the [mapping documentation](./docs/mappings/lastenvelo_fr_gbfs_2.3_mapping.md).
 
 
-### Stadtmobil Südbaden and my-e-car (Cantamen)
+### Various Stadtmobil agencies and my-e-car (Cantamen)
 
-To generate the stadtmobil_suedbaden and my-e-car GBFS feed, you need to provide the following environment variables:
+To generate the stadtmobil_suedbaden, stadtmobil_stuttgart and my-e-car GBFS feed, you need to provide the following environment variables:
 
 * `CANTAMEN_IXSI_API_URL=https://url.de`
 
@@ -76,6 +83,13 @@ To generate the voi raumobil GBFS feed, you need to provide the following enviro
 
 Converts NOI's OpenDataHub carsharing feed to GBFS.
 
+
+
+### Stadtwerk Tauberfranken (MOQO)
+
+To generate the Stadtwerk Tauberfranken GBFS feed, you need to provide the following environment variable:
+
+* `MOQO_API_TOKEN=<MOQO Token>`
 
 ## Implementing a new provider
 To implement a new provider, you should take the following steps:
