@@ -190,7 +190,7 @@ class MoqoProvider(BaseProvider):
     @classmethod
     def _extract_vehicle_type(cls, vehicle_types: dict[str, Any], vehicle: dict[str, Any]) -> str:
         vehicle_model = vehicle['car_model_name']
-        id = vehicle_model.replace(' ', '_').lower()
+        id = cls._normalize_id(vehicle_model)
         gbfs_make, gbfs_model = vehicle_model.split(' ')[0], ' '.join(vehicle_model.split(' ')[1:])
         form_factor = cls._map_car_type(vehicle['vehicle_type'])
         if not vehicle_types.get(id):
