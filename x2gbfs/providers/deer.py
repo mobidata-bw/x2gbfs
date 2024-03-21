@@ -118,12 +118,6 @@ class Deer(BaseProvider):
         normalized_model = re.sub(r'(?i)e[ -]up!?', 'e-up!', normalized_model)
         return re.sub(r'(?i)e[ -]golf', 'e-Golf', normalized_model)
 
-    def normalize_id(self, id: str) -> str:
-        """
-        Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
-        """
-        return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
-
     def pricing_plan_id(self, vehicle: Dict) -> Optional[str]:
         """
         Maps deer's vehicle categories to pricing plans (provided viaa config).
@@ -186,7 +180,7 @@ class Deer(BaseProvider):
         vehicle_id = str(fleetster_vehicle['_id'])
         normalized_brand = self._normalize_brand(fleetster_vehicle['brand'])
         normalized_model = self._normalize_model(fleetster_vehicle['model'])
-        vehicle_type_id = self.normalize_id(normalized_brand + '_' + normalized_model)
+        vehicle_type_id = self._normalize_id(normalized_brand + '_' + normalized_model)
 
         extended_properties = fleetster_vehicle['extended']['Properties']
         accessories = []
