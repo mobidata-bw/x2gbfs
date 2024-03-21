@@ -1,4 +1,5 @@
 import logging
+import re
 from typing import Any, Dict, Generator, Optional, Tuple
 
 logger = logging.getLogger('x2gbfs.base_provider')
@@ -74,3 +75,10 @@ class BaseProvider:
             'vehicle_types_available': [],
             'last_reported': last_reported,
         }
+
+    @staticmethod
+    def _normalize_id(id: str) -> str:
+        """
+        Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
+        """
+        return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
