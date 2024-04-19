@@ -49,13 +49,17 @@ class CantamenIXSIProvider(BaseProvider):
         'manualgear': 'manual',
         'allseasontyres': 'winter_tires',  # map allseasontyres to winter_tyres, as allseasontyres is not supported in GBFS yet
         'winter_tyres': 'winter_tires',
+        'snowchains': 'snow_chains',
+        'doors2': 'doors_2',
         'doors3': 'doors_3',
         'doors4': 'doors_4',
         'doors5': 'doors_5',
+        'childsafetyseat', 'child_seat_b',
         'childsafetyseat15to36': 'child_seat_c',
         # propulsion_type mappings (hybrid/electric are already GBFS conformant)
-        'diesel': 'combustion_diesel',
         'gasoline': 'combustion',
+        'combustion_engine', 'combustion',
+        'diesel': 'combustion_diesel',
         'dieselfromeuro6': 'combustion_diesel',
     }
 
@@ -65,6 +69,7 @@ class CantamenIXSIProvider(BaseProvider):
         'cruise_control',
         'automatic',
         'manual',
+        'convertible',
         'navigation',
         'doors_2',
         'doors_3',
@@ -72,7 +77,7 @@ class CantamenIXSIProvider(BaseProvider):
         'doors_5',
     ]
     # attributes that map to GBFS `vehicle_equipment` entries
-    EQUIPMENT_ATTRIBUTES = ['winter_tires', 'child_seat_c']
+    EQUIPMENT_ATTRIBUTES = ['winter_tires', 'snow_chains', 'child_seat_b', 'child_seat_c']
     # attributes that map to GBFS `propulsion_type` (naturalgas is no GBFS ppropulsion type yet)
     PROPULSION_ATTRIBUTES = ['hybrid', 'combustion', 'combustion_diesel', 'electric']
 
