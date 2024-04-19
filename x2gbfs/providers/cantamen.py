@@ -54,7 +54,7 @@ class CantamenIXSIProvider(BaseProvider):
         'doors3': 'doors_3',
         'doors4': 'doors_4',
         'doors5': 'doors_5',
-        'childsafetyseat', 'child_seat_b',
+        'childsafetyseat': 'child_seat_b',
         'childsafetyseat15to36': 'child_seat_c',
         # propulsion_type mappings (hybrid/electric are already GBFS conformant)
         'gasoline': 'combustion',
