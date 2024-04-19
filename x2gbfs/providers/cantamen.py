@@ -58,7 +58,7 @@ class CantamenIXSIProvider(BaseProvider):
         'childsafetyseat15to36': 'child_seat_c',
         # propulsion_type mappings (hybrid/electric are already GBFS conformant)
         'gasoline': 'combustion',
-        'combustion_engine', 'combustion',
+        'combustion_engine': 'combustion',
         'diesel': 'combustion_diesel',
         'dieselfromeuro6': 'combustion_diesel',
     }
