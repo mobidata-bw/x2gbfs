@@ -166,7 +166,7 @@ GBFS Field | Mapping
 `bike_id` |  `vehicle['_id']`
 `lat` |  -
 `lon` |  -
-`is_reserved` | `False`, if bookings request does not return any active booking having startDate < now < endDate for this vehicle, else true (see also `available_until`). An active booking is a booking which is not in any of the following states: canceled, rejected, keyreturned
+`is_reserved` | `False`, if bookings request does not return any active booking having startDate < now < endDate for this vehicle, else `True` (see also `available_until`). An active booking is a booking which is not in any of the following states: `canceled`, `rejected`, `keyreturned`.
 `is_disabled` | -
 `rental_uris` | None. fleetster/deer do not provide rental uris for now
 `vehicle_type_id` | normalized, lower cased `vehicle['brand']` + '_' + normalized, lower cased `vehicle['model']`
