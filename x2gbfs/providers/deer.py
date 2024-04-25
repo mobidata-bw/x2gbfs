@@ -37,6 +37,7 @@ class Deer(BaseProvider):
     }
     MAX_RANGE_METERS = 200000
     CURRENT_RANGE_METERS = 50000
+    IGNORABLE_BOOKING_STATES = ['canceled', 'rejected', 'keyreturned']
 
     def __init__(self, api):
         self.api = api
@@ -79,6 +80,9 @@ class Deer(BaseProvider):
         bookings = self.api.all_bookings_ending_after(timestamp)
         next_booking_per_vehicle = {}
         for booking in bookings:
+            if booking.get('state') in self.IGNORABLE_BOOKING_STATES:
+                continue
+
             vehicle_id = booking['vehicleId']
             if vehicle_id not in next_booking_per_vehicle:
                 next_booking_per_vehicle[vehicle_id] = booking
@@ -277,10 +281,11 @@ class Deer(BaseProvider):
     def _update_booking_state(self, gbfs_vehicles_map: Dict) -> Dict:
         """
         For every vehicle in gbfs_vehicles_map, this function
-        sets is_reserved to true, if there is an ongoing booking (startDate < now < endDate),
+        sets is_reserved to true, if there is an active, ongoing booking (startDate < now < endDate),
         or, if not, available_until to the startDate of the earliest booking in the future.
         If no booking for a vehicle id exists, is_reserved is false and no available_until
-        information.
+        information. A booking is considered active, if it's not in any of the following states:
+        canceled, rejected, keyreturned.
         """
         timestamp = self._utcnow()
 

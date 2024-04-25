@@ -166,7 +166,7 @@ GBFS Field | Mapping
 `bike_id` |  `vehicle['_id']`
 `lat` |  -
 `lon` |  -
-`is_reserved` | `False`, if bookings request does not return any booking having startDate < now < endDate for this vehicle, else true (see also `available_until`)
+`is_reserved` | `False`, if bookings request does not return any active booking having startDate < now < endDate for this vehicle, else `True` (see also `available_until`). An active booking is a booking which is not in any of the following states: `canceled`, `rejected`, `keyreturned`.
 `is_disabled` | -
 `rental_uris` | None. fleetster/deer do not provide rental uris for now
 `vehicle_type_id` | normalized, lower cased `vehicle['brand']` + '_' + normalized, lower cased `vehicle['model']`
@@ -177,7 +177,7 @@ GBFS Field | Mapping
 `home_station_id` | -
 `pricing_plan_id` | -
 `vehicle_equipment` | `winter_tires` if `extended.Properties.winterTires`
-`available_until` | `/bookings?endDate%5B%24gte%5D={now}Z` returns all bookings ending in the future. If there is no booking for this vehicle (`vehicleId == booking['vehicleId']`) which has already started (`bookings['startDate'] < now`) ), available_until is the earliest booking's `bookings['startDate']`. Unset else.
+`available_until` | `/bookings?endDate%5B%24gte%5D={now}Z` returns all bookings ending in the future. If there is no active booking (see above for a definition of an active booking) for this vehicle (`vehicleId == booking['vehicleId']`) which has already started (`bookings['startDate'] < now`) ), available_until is the earliest booking's `bookings['startDate']`. Unset else.
 
 
 ### system_hours.json
