@@ -232,7 +232,7 @@ class CantamenIXSIProvider(BaseProvider):
         return 'cargo_bicycle' if bookee['Class'] == 'bike' else 'car'
 
     def _as_vehicle_type_id(self, vehicle_name: str) -> str:
-        return vehicle_name.lower().translate({ord(c): None for c in ',< ().äöüß/'})
+        return vehicle_name.lower().translate({ord(c): None for c in ',< ().äöüß/+-'})
 
     def _extract_vehicle_name(self, bookee_name: str) -> str:
         # Vehicles usually have their license plate (in parentheses) appended in their name.
