@@ -3,5 +3,5 @@ types-urllib3==1.26.25.14
 types-xmltodict==0.13.0.3
 
 ruff~=0.4.2
-black~=24.4.0
+black~=24.4.2
 mypy~=1.10.0
