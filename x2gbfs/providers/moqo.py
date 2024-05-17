@@ -158,6 +158,9 @@ class MoqoProvider(BaseProvider):
             vehicle['fuel_level'] / 100.0 if 'fuel_level' in vehicle else self.DEFAULT_CURRENT_FUEL_PERCENT
         )
         current_range_meters = vehicle_types[vehicle_type_id]['max_range_meters'] * current_fuel_percent
+
+        deeplink = f'https://go.moqo.de/deeplink/createBooking?teamId={self.team_id}&carId={vehicle_id}'
+
         gbfs_vehicle = {
             'bike_id': str(vehicle_id),
             'is_reserved': vehicle['available'] is not True,
@@ -166,6 +169,11 @@ class MoqoProvider(BaseProvider):
             'license_plate': vehicle['license'].split('|')[0].strip(),
             'current_range_meters': current_range_meters,
             'current_fuel_percent': current_fuel_percent,
+            'rental_uris': {
+                'web': deeplink,
+                'ios': deeplink,
+                'android': deeplink,
+            },
         }
 
         if vehicle.get('latest_parking') is not None and vehicle.get('latest_parking', {}).get('id') is not None:
