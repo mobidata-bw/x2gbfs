@@ -11,249 +11,135 @@
         "pricing_plans": [
             {
                 "currency": "EUR",
-                "description": "Klassik-Tarif: Am ersten Tag 1,50€/h, am 2. Tag 0,95€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,26€/km bis 100km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "A 4-Sitzer-Kleinstwagen (KLASSIK/AKTIV)",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 1.5
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    },
-                    {
-                        "interval": 60,
-                        "rate": 0.95,
-                        "start": 1440
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.26
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.22
-                    }
-                ],
-                "plan_id": "micro",
+                "name": "A 4-Sitzer-Kleinstwagen (KLASSIK/AKTIV) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.26 }, { "start": 101, "interval": 1,"rate": 0.22} ],
+                "plan_id": "micro_hour_nighttime",
                 "price": 0,
-                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2023/11/PK-Tarife-Preise-Zusatzkosten_ab_15_11_23.pdf"
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Klassik-Tarif: Am ersten Tag 2,00€/h, am 2. Tag 1,20€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,26€/km bis 100km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV)",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 2.0
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    },
-                    {
-                        "interval": 60,
-                        "rate": 1.20,
-                        "start": 1440
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.26
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.22
-                    }
-                ],
-                "plan_id": "mini",
+                "name": "A 4-Sitzer-Kleinstwagen (KLASSIK/AKTIV) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 1.50 }, { "start": 1021, "interval": 60, "rate": 0.95 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.26 }, { "start": 101, "interval": 1,"rate": 0.22} ],
+                "plan_id": "micro_hour_daytime",
                 "price": 0,
-                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2023/11/PK-Tarife-Preise-Zusatzkosten_ab_15_11_23.pdf"
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Klassik-Tarif: Am ersten Tag 2,00€/h, am 2. Tag 1,20€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,26€/km bis 100km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV)",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 2.0
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    },
-                    {
-                        "interval": 60,
-                        "rate": 1.20,
-                        "start": 1440
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.26
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.22
-                    }
-                ],
-                "plan_id": "small",
+                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.26 }, { "start": 101, "interval": 1,"rate": 0.22} ],
+                "plan_id": "mini_hour_nighttime",
                 "price": 0,
-                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2023/11/PK-Tarife-Preise-Zusatzkosten_ab_15_11_23.pdf"
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Klassik-Tarif: Am ersten Tag 2,70€/h, am 2. Tag 1,55€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,30€/km bis 100km, danach 0,26€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "C/D Kombi/Hochdachkombi (KLASSIK/AKTIV)",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 2.70
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    },
-                    {
-                        "interval": 60,
-                        "rate": 1.55,
-                        "start": 1440
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.3
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.26
-                    }
-                ],
-                "plan_id": "stationwagon",
+                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.00 }, { "start": 1021, "interval": 60, "rate": 1.20 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.26 }, { "start": 101, "interval": 1,"rate": 0.22} ],
+                "plan_id": "mini_hour_daytime",
                 "price": 0,
-                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2023/11/PK-Tarife-Preise-Zusatzkosten_ab_15_11_23.pdf"
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Klassik-Tarif: Am ersten Tag 3,90€/h, am 2. Tag 2,15€/h. Nachtpreis zwischen 0h und 7h: 0,50€. 0,35€/km bis 100km, danach 0,31€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "E 9-Sitzer-Bus (KLASSIK/AKTIV)",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 3.90
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0.5
-                    },
-                    {
-                        "interval": 60,
-                        "rate": 2.15,
-                        "start": 1440
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.35
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.31
-                    }
-                ],
-                "plan_id": "large",
+                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.26 }, { "start": 101, "interval": 1,"rate": 0.22} ],
+                "plan_id": "small_hour_nighttime",
                 "price": 0,
-                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2023/11/PK-Tarife-Preise-Zusatzkosten_ab_15_11_23.pdf"
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Klassik-Tarif: Am ersten Tag 4,40€/h, am 2. Tag 2,40€/h. Nachtpreis zwischen 0h und 7h: 0,50€. 0,35€/km bis 100km, danach 0,31€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "F Transporter (KLASSIK/AKTIV)",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 4.40
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0.5
-                    },
-                    {
-                        "interval": 60,
-                        "rate": 2.40,
-                        "start": 1440
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.35
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.31
-                    }
-                ],
-                "plan_id": "transporter",
+                "name": "B 5-Sitzer-Kleinwagen (KLASSIK/AKTIV) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.00 }, { "start": 1021, "interval": 60, "rate": 1.20 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.26 }, { "start": 101, "interval": 1,"rate": 0.22} ],
+                "plan_id": "small_hour_daytime",
                 "price": 0,
-                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2023/11/PK-Tarife-Preise-Zusatzkosten_ab_15_11_23.pdf"
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "C/D Kombi/Hochdachkombi (KLASSIK/AKTIV) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "plan_id": "stationwagon_hour_nighttime",
+                "price": 0,
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "C/D Kombi/Hochdachkombi (KLASSIK/AKTIV) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.70 }, { "start": 1021, "interval": 60, "rate": 1.55 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "plan_id": "stationwagon_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "E 9-Sitzer-Bus (KLASSIK/AKTIV) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0.50 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.35 }, { "start": 101, "interval": 1,"rate": 0.31} ],
+                "plan_id": "large_hour_nighttime",
+                "price": 0,
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "E 9-Sitzer-Bus (KLASSIK/AKTIV) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 3.90 }, { "start": 1021, "interval": 60, "rate": 2.15 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.35 }, { "start": 101, "interval": 1,"rate": 0.31} ],
+                "plan_id": "large_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "F Transporter (KLASSIK/AKTIV) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0.50 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.35 }, { "start": 101, "interval": 1,"rate": 0.31} ],
+                "plan_id": "transporter_hour_nighttime",
+                "price": 0,
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "F Transporter (KLASSIK/AKTIV) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 4.40 }, { "start": 1021, "interval": 60, "rate": 2.40 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.35 }, { "start": 101, "interval": 1,"rate": 0.31} ],
+                "plan_id": "transporter_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtmobil-suedbaden.de/wp-content/uploads/2024/04/PK-Tarife-Preise-Zusatzkosten_ab_18_04_24.pdf"
             }
         ],
         "system_information": {
