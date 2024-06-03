@@ -215,18 +215,24 @@ class CantamenIXSIProvider(BaseProvider):
 
         return propulsion_type, max_range_meters
 
-    def _extract_pricing_plan_id(self, bookee: Dict, attributes: List[str]) -> str:
+    def _extract_pricing_plan_ids(self, bookee: Dict, attributes: List[str]) -> Tuple[str, List[str]]:
         # if this bookee is a stationwagen, pricing_plan_id `stationwagen` is returned.
         # Otherwise, the bookee's lowercased `Class`. This needs to be a supported pricing_plan_id
-        pricing_plan_id = (
+        vehicle_class = (
             'stationwagon'
             if self._is_stationwagon(attributes) and 'stationwagon' in self.pricing_plan_ids
             else bookee['Class'].lower()
         )
-        if pricing_plan_id not in self.pricing_plan_ids:
-            raise ValueError('Unexpected bookee class {} is no pricing_plan_id'.format(pricing_plan_id))
+        default_pricing_plan_id = f'{vehicle_class}_hour_daytime'
+        if default_pricing_plan_id not in self.pricing_plan_ids:
+            raise ValueError(f'Unexpected bookee class {default_pricing_plan_id} is no pricing_plan_id')
 
-        return pricing_plan_id
+        pricing_plan_ids = []
+        for pricing_plan_id in self.pricing_plan_ids:
+            if pricing_plan_id.startswith('all_') or pricing_plan_id.startswith(f'{vehicle_class}_'):
+                pricing_plan_ids.append(pricing_plan_id)
+
+        return default_pricing_plan_id, pricing_plan_ids
 
     def _extract_form_factor(self, bookee: Dict) -> str:
         return 'cargo_bicycle' if bookee['Class'] == 'bike' else 'car'
@@ -252,7 +258,7 @@ class CantamenIXSIProvider(BaseProvider):
         propulsion_type, max_range_meters = self._extract_propulsion_type_and_range(
             name, attributes, form_factor, bookee
         )
-        default_pricing_plan_id = self._extract_pricing_plan_id(bookee, attributes)
+        default_pricing_plan_id, pricing_plan_ids = self._extract_pricing_plan_ids(bookee, attributes)
 
         vehicle_type = {
             'vehicle_type_id': vehicle_type_id,
@@ -264,6 +270,7 @@ class CantamenIXSIProvider(BaseProvider):
             'make': name[0 : name.find(' ')],
             'model': name[name.find(' ') + 1 :],
             'default_pricing_plan_id': default_pricing_plan_id,
+            'pricing_plan_ids': pricing_plan_ids,
             'propulsion_type': propulsion_type,
             'max_range_meters': max_range_meters,
         }
