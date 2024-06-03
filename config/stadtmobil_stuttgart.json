@@ -11,193 +11,221 @@
         "pricing_plans": [
             {
                 "currency": "EUR",
-                "description": "Classik-Tarif: 1,40€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,25€/km bis 100km, danach 0,23€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "A Toyota Aygo",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 1.40
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.25
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.23
-                    }
-                ],
-                "plan_id": "mini",
+                "name": "A Toyota Aygo - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.25 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_hour_nighttime",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Classik-Tarif: 2,20€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,27€/km bis 100km, danach 0,24€/km bis 700km, danach 0,21€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "B Opel Corsa, Opel Corsa (Elektro), Opel Adam, Renault ZOE (Elektro), Toyota Yaris Hybrid, Opel Cargo Kastenwagen, Renault Kangoo Kastenwagen",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 2.20
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.27
-                    },
-                    {
-                        "start": 100,
-                        "end": 700,
-                        "interval": 1,
-                        "rate": 0.24
-                    },
-                    {
-                        "start": 700,
-                        "interval": 1,
-                        "rate": 0.21
-                    }
-                ],
-                "plan_id": "small",
+                "name": "A Toyota Aygo - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 1.40 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.25 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_hour_daytime",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Classik-Tarif: 2,80€/h. Nachtpreis zwischen 0h und 7h: 0€. 0,31€/km bis 100km, danach 0,26€/km bis 700km, danach 0,22€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
                 "is_taxable": false,
-                "name": "C Opel Astra Kombi, Toyota Auris/Corolla Kombi Hybrid, Opel Life Hochdachkombi",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 2.80
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 0
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.31
-                    },
-                    {
-                        "start": 100,
-                        "end": 700,
-                        "interval": 1,
-                        "rate": 0.26
-                    },
-                    {
-                        "start": 700,
-                        "interval": 1,
-                        "rate": 0.22
-                    }
-                ],
-                "plan_id": "medium",
+                "name": "A Toyota Aygo - 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "end": 10080, "interval": 1440, "rate": 21.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.25 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_24hours",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Classik-Tarif: 3,20€/h. Nachtpreis zwischen 0h und 7h: 1,00€. 0,34€/km bis 100km, danach 0,30€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
                 "is_taxable": false,
-                "name": "D BMW 216d Active Tourer Opel Zafira Kleinbus, Ford Custom Kleinbus, Renault Trafic (8-Sitzer), Renault Trafic (9-Sitzer",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 3.20
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 1.00
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.34
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.30
-                    }
-                ],
-                "plan_id": "van",
+                "name": "A Toyota Aygo - Woche",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 125.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.25 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_week",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             },
             {
                 "currency": "EUR",
-                "description": "Classik-Tarif: 4,20€/h. Nachtpreis zwischen 0h und 7h: 2,00€. 0,38€/km bis 100km, danach 0,32€/km. Zuzüglich Grundgebühr. Alle Angaben ohne Gewähr.",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
-                "name": "F Ford Transit Transporter",
-                "per_min_pricing": [
-                    {
-                        "start": 0,
-                        "end": 1020,
-                        "interval": 60,
-                        "rate": 4.20
-                    },
-                    {
-                        "start": 1020,
-                        "end": 1440,
-                        "interval": 60,
-                        "rate": 2.00
-                    }
-                ],
-                "per_km_pricing": [
-                    {
-                        "start": 0,
-                        "end": 100,
-                        "interval": 1,
-                        "rate": 0.38
-                    },
-                    {
-                        "start": 100,
-                        "interval": 1,
-                        "rate": 0.32
-                    }
-                ],
-                "plan_id": "transporter",
+                "name": "B Opel Corsa, Opel Corsa (Elektro), Opel Adam, Renault ZOE (Elektro), Toyota Yaris Hybrid, Opel Cargo Kastenwagen, Renault Kangoo Kastenwagen - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.27 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.24 }, { "start": 701, "interval": 1, "rate": 0.21 } ],
+                "plan_id": "small_hour_nighttime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "B Opel Corsa, Opel Corsa (Elektro), Opel Adam, Renault ZOE (Elektro), Toyota Yaris Hybrid, Opel Cargo Kastenwagen, Renault Kangoo Kastenwagen - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.20 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.27 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.24 }, { "start": 701, "interval": 1, "rate": 0.21 } ],
+                "plan_id": "small_hour_daytime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "B Opel Corsa, Opel Corsa (Elektro), Opel Adam, Renault ZOE (Elektro), Toyota Yaris Hybrid, Opel Cargo Kastenwagen, Renault Kangoo Kastenwagen - 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "end": 10080, "interval": 1440, "rate": 25.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.27 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.24 }, { "start": 701, "interval": 1, "rate": 0.21 } ],
+                "plan_id": "small_24hours",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "B Opel Corsa, Opel Corsa (Elektro), Opel Adam, Renault ZOE (Elektro), Toyota Yaris Hybrid, Opel Cargo Kastenwagen, Renault Kangoo Kastenwagen - Woche",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 140.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.27 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.24 }, { "start": 701, "interval": 1, "rate": 0.21 } ],
+                "plan_id": "small_week",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "C Opel Astra Kombi, Toyota Auris/Corolla Kombi Hybrid, Opel Life Hochdachkombi - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.31 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.26 }, { "start": 701, "interval": 1, "rate": 0.22 } ],
+                "plan_id": "medium_hour_nighttime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "C Opel Astra Kombi, Toyota Auris/Corolla Kombi Hybrid, Opel Life Hochdachkombi - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.80 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.31 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.26 }, { "start": 701, "interval": 1, "rate": 0.22 } ],
+                "plan_id": "medium_hour_daytime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "C Opel Astra Kombi, Toyota Auris/Corolla Kombi Hybrid, Opel Life Hochdachkombi - 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "end": 10080, "interval": 1440, "rate": 32.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.31 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.26 }, { "start": 701, "interval": 1, "rate": 0.22 } ],
+                "plan_id": "medium_24hours",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "C Opel Astra Kombi, Toyota Auris/Corolla Kombi Hybrid, Opel Life Hochdachkombi - Woche",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 160.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.31 }, { "start": 101, "end": 700, "interval": 1, "rate": 0.26 }, { "start": 701, "interval": 1, "rate": 0.22 } ],
+                "plan_id": "medium_week",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "D BMW 216d Active Tourer Opel Zafira Kleinbus, Ford Custom Kleinbus, Renault Trafic (8-Sitzer), Renault Trafic (9-Sitzer) - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 1.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.34 }, { "start": 101, "interval": 1, "rate": 0.30 } ],
+                "plan_id": "van_hour_nighttime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "D BMW 216d Active Tourer Opel Zafira Kleinbus, Ford Custom Kleinbus, Renault Trafic (8-Sitzer), Renault Trafic (9-Sitzer) - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 3.20 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.34 }, { "start": 101, "interval": 1, "rate": 0.30 } ],
+                "plan_id": "van_hour_daytime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "D BMW 216d Active Tourer Opel Zafira Kleinbus, Ford Custom Kleinbus, Renault Trafic (8-Sitzer), Renault Trafic (9-Sitzer) - 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "end": 10080, "interval": 1440, "rate": 35.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.34 }, { "start": 101, "interval": 1, "rate": 0.30 } ],
+                "plan_id": "van_24hours",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "D BMW 216d Active Tourer Opel Zafira Kleinbus, Ford Custom Kleinbus, Renault Trafic (8-Sitzer), Renault Trafic (9-Sitzer) - Woche",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 190.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.34 }, { "start": 101, "interval": 1, "rate": 0.30 } ],
+                "plan_id": "van_week",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "F Ford Transit Transporter - Nacht pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 2.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.32 } ],
+                "plan_id": "transporter_hour_nighttime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "F Ford Transit Transporter - Tag pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 4.20 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.32 } ],
+                "plan_id": "transporter_hour_daytime",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "F Ford Transit Transporter - 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "end": 10080, "interval": 1440, "rate": 44.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.32 } ],
+                "plan_id": "transporter_24hours",
+                "price": 0,
+                "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Normalfahrer Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif. Beginn beliebig.",
+                "is_taxable": false,
+                "name": "F Ford Transit Transporter - Woche",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 245.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.32 } ],
+                "plan_id": "transporter_week",
                 "price": 0,
                 "url": "https://stuttgart.stadtmobil.de/media/user_upload/downloads_privatkunden/stuttgart/Tarifordnung_05_2022.pdf"
             }
