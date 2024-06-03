@@ -11,391 +11,364 @@
 		"pricing_plans": [
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Zwischen 0 und 7 Uhr beträgt der Zeittarif für alle Fahrzeugklassen 0,50 € / Stunde.",
 				"is_taxable": false,
-				"name": "A Mini",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 1020,
-						"interval": 60,
-						"rate": 1.10
-					},
-					{
-						"start": 1020,
-						"end": 1140,
-						"interval": 60,
-						"rate": 0.50
-					},
-					{
-						"start": 1140,
-						"end": 1440,
-						"interval": 300,
-						"rate": 0.30
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 20.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 12.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.21
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.15
-					}
-				],
-				"plan_id": "micro",
+				"name": "Nacht - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0.50 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "all_hour_nighttime",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
 				"is_taxable": false,
-				"name": "B Smart",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 900,
-						"interval": 60,
-						"rate": 1.40
-					},
-					{
-						"start": 900,
-						"end": 1440,
-						"interval": 540,
-						"rate": 1.00
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 22.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 12.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.22
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.16
-					}
-				],
-				"plan_id": "mini",
+				"name": "A Mini - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 1.10 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "micro_hour_daytime",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
 				"is_taxable": false,
-				"name": "C Klein",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 840,
-						"interval": 60,
-						"rate": 1.70
-					},
-					{
-						"start": 840,
-						"end": 1440,
-						"interval": 600,
-						"rate": 0.20
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 24.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 12.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.23
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.17
-					}
-				],
-				"plan_id": "small",
+				"name": "A Mini - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 20.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "micro_24hours",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
 				"is_taxable": false,
-				"name": "D Mittel",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 780,
-						"interval": 60,
-						"rate": 2.00
-					},
-					{
-						"start": 780,
-						"end": 1440,
-						"interval": 6660,
-						"rate": 0.00
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 26.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 12.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.24
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.18
-					}
-				],
-				"plan_id": "medium",
+				"name": "A Mini - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 40.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "micro_weekend",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
 				"is_taxable": false,
-				"name": "E Kombi",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 720,
-						"interval": 60,
-						"rate": 2.20
-					},
-					{
-						"start": 720,
-						"end": 1440,
-						"interval": 720,
-						"rate": 1.60
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 28.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 12.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.25
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.19
-					}
-				],
-				"plan_id": "stationwagon",
+				"name": "A Mini - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 112.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "micro_week",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
 				"is_taxable": false,
-				"name": "F Groß",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 720,
-						"interval": 60,
-						"rate": 2.50
-					},
-					{
-						"start": 720,
-						"end": 1440,
-						"interval": 720,
-						"rate": 2.00
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 32.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 12.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.26
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.12
-					}
-				],
-				"plan_id": "large",
+				"name": "B Smart - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 1.40 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "mini_hour_daytime",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
 				"is_taxable": false,
-				"name": "G Maxi",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 720,
-						"interval": 60,
-						"rate": 3.50
-					},
-					{
-						"start": 720,
-						"end": 1440,
-						"interval": 720,
-						"rate": 0.00
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 42.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 2.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.30
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.24
-					}
-				],
-				"plan_id": "van",
+				"name": "B Smart - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 22.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "mini_24hours",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			},
 			{
 				"currency": "EUR",
-				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr.",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
 				"is_taxable": false,
-				"name": "H Transport",
-				"per_min_pricing": [
-					{
-						"start": 0,
-						"end": 600,
-						"interval": 60,
-						"rate": 4.50
-					},
-					{
-						"start": 600,
-						"end": 1440,
-						"interval": 840,
-						"rate": 3.00
-					},
-					{
-						"start": 1440,
-						"end": 7200,
-						"interval": 1440,
-						"rate": 48.00
-					},
-					{
-						"start": 7200,
-						"end": 10080,
-						"interval": 2880,
-						"rate": 2.00
-					}
-				],
-				"per_km_pricing": [
-					{
-						"start": 0,
-						"end": 100,
-						"interval": 1,
-						"rate": 0.32
-					},
-					{
-						"start": 101,
-						"interval": 1,
-						"rate": 0.26
-					}
-				],
-				"plan_id": "transporter",
+				"name": "B Smart - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 44.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "mini_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "B Smart - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 122.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "mini_week",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
+				"is_taxable": false,
+				"name": "C Klein - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 1.70 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "small_hour_daytime",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
+				"is_taxable": false,
+				"name": "C Klein - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 24.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "small_24hours",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
+				"is_taxable": false,
+				"name": "C Klein - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 48.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "small_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "C Klein - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 132.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "small_week",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
+				"is_taxable": false,
+				"name": "D Mittel - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "medium_hour_daytime",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
+				"is_taxable": false,
+				"name": "D Mittel - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 26.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "medium_24hours",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
+				"is_taxable": false,
+				"name": "D Mittel - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 52.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "medium_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "D Mittel - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 142.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "medium_week",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
+				"is_taxable": false,
+				"name": "E Kombi - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.20 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "stationwagon_hour_daytime",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
+				"is_taxable": false,
+				"name": "E Kombi - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 28.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "stationwagon_24hours",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
+				"is_taxable": false,
+				"name": "E Kombi - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 56.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "stationwagon_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "E Kombi - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 152.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "stationwagon_week",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
+				"is_taxable": false,
+				"name": "F Groß - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.50 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "large_hour_daytime",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
+				"is_taxable": false,
+				"name": "F Groß - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 32.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "large_24hours",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
+				"is_taxable": false,
+				"name": "F Groß - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 64.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "large_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "F Groß - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 172.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "large_week",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
+				"is_taxable": false,
+				"name": "G Maxi - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 3.50 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "van_hour_daytime",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
+				"is_taxable": false,
+				"name": "G Maxi - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 42.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "van_24hours",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
+				"is_taxable": false,
+				"name": "G Maxi - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 84.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "van_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "G Maxi - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 212.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "van_week",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Der Stundenpreis gilt von 7 - 24 Uhr.",
+				"is_taxable": false,
+				"name": "H Transport - pro Stunde",
+				"per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 4.50 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "transporter_hour_daytime",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Bei 24 Stunden ist der Beginn beliebig (z.B. Dienstag 18:00 Uhr bis Mittwoch 18:00 Uhr).",
+				"is_taxable": false,
+				"name": "H Transport - 24 Stunden",
+				"per_min_pricing": [ { "start": 0, "end": 7200, "interval": 1440, "rate": 48.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "transporter_24hours",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Das Wochenende gilt von Freitag 17:00 Uhr bis Montag 07:00 Uhr.",
+				"is_taxable": false,
+				"name": "H Transport - Wochenende",
+				"per_min_pricing": [ { "start": 0, "end": 3720, "interval": 3720, "rate": 96.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "transporter_weekend",
+				"price": 1.20,
+				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
+			},
+			{
+				"currency": "EUR",
+				"description": "Standard Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif + 1,20 € Grundgebühr. Beginn beliebig.",
+				"is_taxable": false,
+				"name": "H Transport - Woche",
+				"per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 242.00 } ],
+				"per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.21 }, { "start": 101, "interval": 1, "rate": 0.15 } ],
+				"plan_id": "transporter_week",
 				"price": 1.20,
 				"url": "https://karlsruhe.stadtmobil.de/privatkunden/preise-tarife/"
 			}
