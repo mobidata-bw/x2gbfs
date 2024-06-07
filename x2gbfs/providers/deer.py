@@ -251,10 +251,16 @@ class Deer(BaseProvider):
         gbfs_vehicle_types_map = {}
 
         for elem in self.all_vehicles():
-            (gbfs_vehicle, gbfs_vehicle_type) = self._extract_vehicle_and_type(elem)
+            try:
+                vehicle_id = str(elem.get('_id'))
+                (gbfs_vehicle, gbfs_vehicle_type) = self._extract_vehicle_and_type(elem)
 
-            gbfs_vehicles_map[gbfs_vehicle['bike_id']] = gbfs_vehicle
-            gbfs_vehicle_types_map[gbfs_vehicle_type['vehicle_type_id']] = gbfs_vehicle_type
+                gbfs_vehicles_map[gbfs_vehicle['bike_id']] = gbfs_vehicle
+                gbfs_vehicle_types_map[gbfs_vehicle_type['vehicle_type_id']] = gbfs_vehicle_type
+            except Exception:
+                logger.warning(
+                    f'Could not extract vehicle/vehicle_type for vehicle {vehicle_id} due to exception:', exc_info=True
+                )
 
         gbfs_vehicles_map = self._update_booking_state(gbfs_vehicles_map)
 
