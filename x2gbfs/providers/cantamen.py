@@ -329,12 +329,18 @@ class CantamenIXSIProvider(BaseProvider):
         vehicle_types = {}
 
         for bookee in self._all_bookees():
-            vehicle_type = self._extract_vehicle_type(bookee)
-            gbfs_vehicle = self._extract_vehicle(
-                bookee, vehicle_type['vehicle_type_id'], vehicle_type['max_range_meters']
-            )
-            vehicles[gbfs_vehicle['bike_id']] = gbfs_vehicle
-            vehicle_types[vehicle_type['vehicle_type_id']] = vehicle_type
+            bookee_id = bookee.get('ID')
+            try:
+                vehicle_type = self._extract_vehicle_type(bookee)
+                gbfs_vehicle = self._extract_vehicle(
+                    bookee, vehicle_type['vehicle_type_id'], vehicle_type['max_range_meters']
+                )
+                vehicles[gbfs_vehicle['bike_id']] = gbfs_vehicle
+                vehicle_types[vehicle_type['vehicle_type_id']] = vehicle_type
+            except Exception:
+                logger.warning(
+                    f'Could not extract vehicle/vehicle_type for bookee {bookee_id} due to exception:', exc_info=True
+                )
 
         return vehicle_types, vehicles
 
