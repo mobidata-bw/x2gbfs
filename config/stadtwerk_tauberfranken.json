@@ -51,11 +51,11 @@
             "purchase_url": "https://portal.moqo.de/js_sign_up/tauberfranken-car-sharing-offentlich?context=in_app&scheme=moqo#/account",
             "rental_apps": {
                 "android": {
-                    "discovery_uri": "https://moqo.de/yet_unknown",
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
                     "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work&hl=de"
                 },
                 "ios": {
-                    "discovery_uri": "https://moqo.de/yet_unknown",
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
                     "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
                 }
             },
