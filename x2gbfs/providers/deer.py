@@ -186,16 +186,6 @@ class Deer(BaseProvider):
         normalized_model = self._normalize_model(fleetster_vehicle['model'])
         vehicle_type_id = self._normalize_id(normalized_brand + '_' + normalized_model)
 
-        extended_properties = fleetster_vehicle['extended']['Properties']
-        accessories = []
-        if 'doors' in extended_properties and isinstance(extended_properties['doors'], int):
-            doors = extended_properties['doors']
-            accessories.append(f'doors_{doors}')
-        if 'aircondition' in extended_properties and extended_properties['aircondition'] is True:
-            accessories.append('air_conditioning')
-        if 'navigation' in extended_properties and extended_properties['navigation'] is True:
-            accessories.append('navigation')
-
         gbfs_vehicle_type = {
             'vehicle_type_id': vehicle_type_id,
             'form_factor': 'car',
@@ -208,8 +198,20 @@ class Deer(BaseProvider):
             'wheel_count': 4,
             'return_type': 'roundtrip',
             'default_pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
-            'vehicle_accessories': accessories,
         }
+
+        extended_properties = fleetster_vehicle.get('extended', {}).get('Properties', {})
+
+        accessories = []
+        if 'doors' in extended_properties and isinstance(extended_properties['doors'], int):
+            doors = extended_properties['doors']
+            accessories.append(f'doors_{doors}')
+        if 'aircondition' in extended_properties and extended_properties['aircondition'] is True:
+            accessories.append('air_conditioning')
+        if 'navigation' in extended_properties and extended_properties['navigation'] is True:
+            accessories.append('navigation')
+        if len(accessories) > 0:
+            gbfs_vehicle_type['vehicle_accessories'] = accessories
 
         if 'horsepower' in extended_properties and isinstance(extended_properties['horsepower'], int):
             gbfs_vehicle_type['rated_power'] = extended_properties['horsepower'] * WATT_PER_PS
