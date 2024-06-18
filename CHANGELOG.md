@@ -3,6 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## Upcoming release (under development)
+- add pricing  plans for my-e-car e-carGOsharing
 
 ## 2024-06-03
 - add deeplinks for MOQO based providers, i.e. `stadtwerk_tauberfranken`
