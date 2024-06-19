@@ -140,6 +140,26 @@
                 "plan_id": "transporter_hour_daytime",
                 "price": 0,
                 "url": "https://www.my-e-car.de/wp-content/uploads/sites/3/2023/06/myD-PK-Preise-Tarife-Zusatzkosten.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Lastenrad ausleihen. Mindestbuchungszeit 1 Stunde",
+                "is_taxable": false,
+                "name": "e-carGOsharing - pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 480, "interval": 60, "rate": 2.00 } ],
+                "plan_id": "bike_hour_daytime",
+                "price": 0,
+                "url": "https://www.my-e-car.de/lastenrad-e-cargosharing/#lastenrad-preise"
+            },
+            {
+                "currency": "EUR",
+                "description": "Lastenrad ausleihen. Mindestbuchungszeit 1 Stunde",
+                "is_taxable": false,
+                "name": "e-carGOsharing - 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 18.00 } ],
+                "plan_id": "bike_24hours",
+                "price": 0,
+                "url": "https://www.my-e-car.de/lastenrad-e-cargosharing/#lastenrad-preise"
             }
         ],
         "system_information": {
