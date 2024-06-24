@@ -1,4 +1,4 @@
-types-requests==2.32.0.20240602
+types-requests==2.32.0.20240622
 types-urllib3==1.26.25.14
 types-xmltodict==0.13.0.3
 
