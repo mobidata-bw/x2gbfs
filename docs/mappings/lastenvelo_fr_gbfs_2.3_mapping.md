@@ -95,7 +95,7 @@ GBFS Field | Mapping
 `max_permitted_speed` | -
 `rated_power` | -
 `default_reserve_time` | -
-`return_constraint`| `roundtrip`
+`return_constraint`| `roundtrip_station`
 `vehicle_assets`| -
 `default_pricing_plan_id`| `kostenfrei`
 `pricing_plan_ids`| -

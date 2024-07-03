@@ -210,7 +210,7 @@ class MoqoProvider(BaseProvider):
                 'name': vehicle_model,
                 'make': gbfs_make,
                 'model': gbfs_model,
-                'return_type': 'roundtrip',
+                'return_constraint': 'roundtrip_station',
                 'default_pricing_plan_id': cls._default_pricing_plan_id(vehicle['car_type']),
             }
         return id

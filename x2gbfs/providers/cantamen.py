@@ -264,7 +264,7 @@ class CantamenIXSIProvider(BaseProvider):
             'vehicle_type_id': vehicle_type_id,
             'form_factor': form_factor,
             'wheel_count': 4 if form_factor == 'car' else 2,
-            'return_type': 'roundtrip',
+            'return_constraint': 'roundtrip_station',
             'vehicle_accessories': self._filter_and_map_attributes(attributes, self.ACCESSORIES_ATTRIBUTES),
             'name': name,
             'make': name[0 : name.find(' ')],

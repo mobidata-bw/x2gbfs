@@ -30,7 +30,7 @@ class ExampleProvider(BaseProvider):
             'max_range_meters': 10000,
             'name': 'Scooter',
             'wheel_count': 2,
-            'return_type': 'free_floating',
+            'return_constraint': 'free_floating',
             'default_pricing_plan_id': 'basic',  # refers to a pricing plan specified in config/example.json
         }
     }
