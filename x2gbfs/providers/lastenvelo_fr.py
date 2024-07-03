@@ -75,7 +75,7 @@ class LastenVeloFreiburgProvider(BaseProvider):
             'form_factor': 'cargo_bicycle',
             'propulsion_type': 'electric_assist' if has_engine else 'human',
             'name': self._vehicle_name_for_type(vehicle_type_id),
-            'return_type': 'roundtrip',
+            'return_constraint': 'roundtrip_station',
             'default_pricing_plan_id': 'kostenfrei',
             'wheel_count': self._extract_wheel_count(further_information),
             'rider_capacity': 2 if 'Kindertransport' in further_information or '4-rädrig' in further_information else 1,

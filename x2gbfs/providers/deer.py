@@ -196,7 +196,7 @@ class Deer(BaseProvider):
             'make': normalized_brand,
             'model': normalized_model,
             'wheel_count': 4,
-            'return_type': 'roundtrip',
+            'return_constraint': 'roundtrip_station',
             'default_pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
         }
 
