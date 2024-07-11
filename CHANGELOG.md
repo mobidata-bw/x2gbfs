@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## [Unreleased]
+- add Cantamen providers stadtmobil_rhein-neckar, oekostadt_renningen, teilauto_neckar-alb, teilauto_biberach, swu2go, conficars_ulm, gruene_flotte_freiburg
+
 ## 2024-07-03
 - add pricing  plans for my-e-car e-carGOsharing
 - fix: for some feeds, the vehicle_type.return_constraint was mis-spelled and is now fixed. (https://github.com/mobidata-bw/x2gbfs/pull/129)
