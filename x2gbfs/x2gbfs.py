@@ -45,7 +45,7 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
 
         return VoiRaumobil(api_url, api_user, api_password)
     if (
-        provider in ['my-e-car', 'oekostadt_renningen']
+        provider in ['my-e-car', 'oekostadt_renningen', 'swu2go', 'conficars_ulm', 'gruene_flotte_freiburg']
         or provider.startswith('stadtmobil_')
         or provider.startswith('teilauto_')
     ):
