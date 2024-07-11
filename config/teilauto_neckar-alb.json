@@ -1,0 +1,57 @@
+{
+    "feed_data": {
+        "alerts": [
+           {
+            "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
+        "pricing_plans": [
+        ],
+        "system_information": {
+            "email": "info@teilauto-neckar-alb.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "license_id": "DL-DE-BY-2.0",
+            "attribution_organization_name": "teilAuto Neckar-Alb eG",
+            "attribution_url": "https://www.teilauto-neckar-alb.de/",
+            "name": "teilAuto Neckar-Alb",
+            "operator": "teilAuto Neckar-Alb eG",
+            "phone_number": "+49 (0)7071 360306",
+            "privacy_url": "https://www.teilauto-neckar-alb.de/datenschutz/",
+            "purchase_url": "https://www.teilauto-neckar-alb.de/kunde-werden/",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                },
+                "ios": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                }
+            },
+            "system_id": "teilauto_neckar-alb",
+            "terms_last_updated": "2021-07-21",
+            "terms_url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/downloads/teilAuto_AGB_2021_web.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.teilauto-neckar-alb.de/"
+        }
+    },
+    "system_id": "10024",
+    "provider_id": 19,
+    "url_templates": {
+        "station": {
+            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+        },
+        "vehicle": {
+            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+        }
+    }
+}
