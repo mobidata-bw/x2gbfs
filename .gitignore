@@ -1,4 +1,7 @@
 *.py[cod]
+*.egg-info/
+.installed.cfg
+*.egg
 /.idea
 /Makefile.env
 /venv
