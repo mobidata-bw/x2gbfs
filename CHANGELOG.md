@@ -3,7 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [Unreleased]
-- add Cantamen providers stadtmobil_rhein-neckar, oekostadt_renningen, teilauto_neckar-alb, teilauto_biberach, swu2go, conficars_ulm, gruene_flotte_freiburg
+- add Cantamen provider stadtmobil_rhein-neckar
 
 ## 2024-07-03
 - add pricing  plans for my-e-car e-carGOsharing
