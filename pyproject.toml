@@ -1,3 +1,16 @@
+[tool.setuptools]
+packages = ["x2gbfs"]
+
+[project]
+name = "x2gbfs"
+version = "0.0.1"
+dependencies = [
+    "requests",
+    "python-decouple",
+    "websockets",
+    "xmltodict",
+]
+
 [tool.black]
 line-length = 120
 skip-string-normalization = 1
