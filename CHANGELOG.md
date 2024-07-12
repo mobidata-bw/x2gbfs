@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## [Unreleased]
+- stabilize cantamen providers against attributes data error
+
 ## 2024-07-03
 - add pricing  plans for my-e-car e-carGOsharing
 - fix: for some feeds, the vehicle_type.return_constraint was mis-spelled and is now fixed. (https://github.com/mobidata-bw/x2gbfs/pull/129)
