@@ -3,6 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [Unreleased]
+- add Cantamen provider stadtmobil_rhein-neckar
 - stabilize cantamen providers against attributes data error
 
 ## 2024-07-03
