@@ -4,6 +4,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## [Unreleased]
 - stabilize cantamen providers against attributes data error
+- add CambioProvider and feed `cambio_aachen`.
 
 ## 2024-07-03
 - add pricing  plans for my-e-car e-carGOsharing
