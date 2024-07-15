@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2024-11-29
+- add CambioProvider and feed `cambio_aachen`.
+
 ## 2024-11-26
 - add MOQO provider flinkster_carsharing
 - use latest-parking cache for MOQO provider cars

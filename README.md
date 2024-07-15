@@ -72,6 +72,19 @@ Note: the Cantamen IXSI service is IP restricted.
 For details, see the [mapping documentation](./docs/mappings/ixsi_gbfs_2.3_mapping.md).
 
 
+### Cambio
+
+Cambio provides publicly available static feeds for the cities they provide their service in.
+Currently, only `cambio_aachen` is available. To extend `x2gbfs` for other cambio cities,
+copy the config/cambio_aachen config and adapt accordingly.
+
+Note that the pricing plans don't reflect the various available tarifs.
+
+Note also, that Cambio asks users to only request their information once per 24 hours.
+
+For details, see the [mapping documentation](./docs/mappings/cambio_gbfs_2.3_mapping.md).
+
+
 ### VOI (Raumobil)
 
 To generate the voi raumobil GBFS feed, you need to provide the following environment variables:
