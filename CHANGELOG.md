@@ -2,8 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## [Unreleased]
+
+## 2024-09-05
 - add Flinkster provider
+- add CambioProvider and feed `cambio_aachen`.
 
 ## 2024-07-23
 - add Cantamen provider stadtmobil_rhein-neckar, ignore its bookees having a pool name instead of a vehicle name
