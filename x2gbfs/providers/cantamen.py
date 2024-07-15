@@ -174,13 +174,13 @@ class CantamenIXSIProvider(BaseProvider):
     def _filter_and_map_attributes(self, attributes: List[str], filter: List[str]) -> List[str]:
         filtered_attributes = []
         for attribute in attributes:
-            if self.attributes[attribute] in filter:
+            if self.attributes.get(attribute) in filter:
                 filtered_attributes.append(self.attributes[attribute])
         return filtered_attributes
 
     def _is_stationwagon(self, attributes: List[str]) -> bool:
         for attribute in attributes:
-            if self.attributes[attribute] in ['stationwagon', 'stationwagonhighroof']:
+            if self.attributes.get(attribute) in ['stationwagon', 'stationwagonhighroof']:
                 return True
         return False
 
