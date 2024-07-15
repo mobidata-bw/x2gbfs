@@ -4,6 +4,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## [Unreleased]
 - add Cantamen provider stadtmobil_rhein-neckar
+- stabilize cantamen providers against attributes data error
 
 ## 2024-07-03
 - add pricing  plans for my-e-car e-carGOsharing
