@@ -338,6 +338,10 @@ class CantamenIXSIProvider(BaseProvider):
         for bookee in self._all_bookees():
             bookee_id = bookee.get('ID')
             try:
+                name = bookee['Name']['Text']
+                if 'Pool' in name:  # No make and model in name
+                    logger.info(f'Bookee {bookee_id} has Pool name "{name}" and will be ignored')
+                    continue
                 vehicle_type = self._extract_vehicle_type(bookee)
                 gbfs_vehicle = self._extract_vehicle(
                     bookee, vehicle_type['vehicle_type_id'], vehicle_type['max_range_meters']
