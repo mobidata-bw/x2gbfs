@@ -75,6 +75,10 @@ class GbfsTransformer:
                 self._update_station_availability_status(vehicle_types_per_station[station_id], status_map[station_id])
             else:
                 status_map[station_id]['vehicle_types_available'] = []
+                if 'num_bikes_available' not in status_map[station_id]:
+                    # num_bikes_available might have been set by provider,
+                    # so we only redefine if this is not the case
+                    status_map[station_id]['num_bikes_available'] = 0
 
     def _update_station_availability_status(
         self, vt_available: List[Dict[str, Any]], station_status: Dict[str, Any]
