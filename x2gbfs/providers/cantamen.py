@@ -238,7 +238,10 @@ class CantamenIXSIProvider(BaseProvider):
         return 'cargo_bicycle' if bookee['Class'] == 'bike' else 'car'
 
     def _as_vehicle_type_id(self, vehicle_name: str) -> str:
-        return vehicle_name.lower().translate({ord(c): None for c in ',< ().äöüßé/+-'})
+        # returns the vehicle name as lowercased string, filtered to alpha-numeric characters only.
+        # (Restrictive filtering is required as consuming systems like lamassu do only support a subset
+        # of characters allowed by the GBFS spec.)
+        return re.sub('[^a-z0-9]+', '', vehicle_name.lower())
 
     def _extract_vehicle_name(self, bookee_name: str) -> str:
         # Vehicles usually have their license plate (in parentheses) appended in their name.
