@@ -67,12 +67,12 @@ Flinkster API has no explicit endpoint for vehicle types, so they need to be col
 
 GBFS Field | Mapping
 --- | ---
-`vehicle_type_id` | uncapitalized `vehicle_type['make'] + '_' + vehicle_type['model']`
+`vehicle_type_id` | uncapitalized, normalized `rentalObject['name']` (not only make and model, as name provides additional infos like number of doors or capacity)
 `form_factor` | `car`
 `rider_capacity`| Extracted from rentalObject['name'] if `X-Sitzer` or `X Sitze` are contained.
 `cargo_volume_capacity` | -
 `cargo_load_capacity` | -
-`propulsion_type` | rentalObject['fuelType']<br /><ul><li>`electric => electric`</li><li>`petrol => combustion`</li><li>`diesel => combustion_diesel`</li><li>`multifuel => combustion`</li></ul>
+`propulsion_type` | rentalObject['fuelType']<br /><ul><li>`electric => electric`</li><li>`petrol => combustion`</li><li>`diesel => combustion_diesel`</li><li>`multifuel => combustion`</li><li>`hybrid => hybrid`</li></ul>
 `eco_label` | -
 `max_range_meters` | Not provided by Flinkster. Set to `200000` for all vehicle types (200km)
 `name` | `vehicle_type['make'] + ' ' + vehicle_type['model']`
@@ -107,7 +107,7 @@ GBFS Field | Mapping
 `address` | `area['address']['street'] + ' ' + area['address']['number']`
 `cross_street` | -
 `region_id` | -
-`post_code` | `area['address']['zip']`
+`post_code` | `area['address']['zip']`, if present
 `rental_methods` | `key`
 `is_virtual_station`| -
 `station_area` | -
@@ -120,7 +120,7 @@ GBFS Field | Mapping
 `is_valet_station`  | -
 `is_charging_station` | -
 `rental_uris` | -
-`web` | `area['_links']['self']['href']`
+`web` | -
 
 
 ### station_status.json
@@ -160,13 +160,15 @@ GBFS Field | Mapping
 `rental_uris` | -
 `vehicle_type_id` | uncapitalized `vehicle_type['make'] + '_' + vehicle_type['model']`
 `last_reported` |  Not part of API. Setting to current timestamp.
-`current_range_meters` | Hard coded to `50000` (50km) as no realtime info is available
-`current_fuel_percent` | -
+`current_range_meters` | `max_range_meters` * `current_fuel_percent` (Will be `50000` (50km) if no realtime info is available)
+`current_fuel_percent` | `rentalObject['fillLevel']/100.0` if existant, 0.25 if not
 `station_id` | `rentalObject['areaUid']`
 `home_station_id` | -
 `pricing_plan_id` | -
 `vehicle_equipment` | -
 `available_until` | -
+`license_plate` | `rentalObject['licensePlate']`
+
 
 
 ### system_hours.json
