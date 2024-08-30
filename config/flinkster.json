@@ -149,18 +149,5 @@
             "url": "https://www.flinkster.de/"
         }
     },
-    "system_id": "10024",
-    "provider_id": 79,
-    "url_templates": {
-        "station": {
-            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
-        },
-        "vehicle": {
-            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
-        }
-    }
+    "ttl": 3600
 }
