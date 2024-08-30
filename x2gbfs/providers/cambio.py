@@ -1,6 +1,5 @@
 import json
 import logging
-from typing import Dict, Optional, Tuple
 
 from x2gbfs.gbfs.base_provider import BaseProvider
 from x2gbfs.util import get
@@ -19,7 +18,7 @@ class CambioProvider(BaseProvider):
     STATIONS_URL = 'https://cwapi.cambio-carsharing.com/opendata/v1/mandator/{city_id}/stations'
     VEHICLE_TYPES_URL = 'https://cwapi.cambio-carsharing.com/opendata/v1/mandator/{city_id}/vehicles'
 
-    def __init__(self, feed_config):
+    def __init__(self, feed_config: dict):
         self.city_id = feed_config['provider-info']['city_id']
         self.config = feed_config
 
@@ -33,7 +32,7 @@ class CambioProvider(BaseProvider):
         response.raise_for_status()
         return response.json()
 
-    def load_stations(self, default_last_reported: int) -> Tuple[Dict, Dict]:
+    def load_stations(self, default_last_reported: int) -> tuple[dict, dict]:
         """
         Retrieves stations from cambio API and converts them
         into gbfs station infos and station status.
@@ -76,7 +75,7 @@ class CambioProvider(BaseProvider):
 
         return gbfs_station_infos_map, gbfs_station_status_map
 
-    def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
+    def load_vehicles(self, default_last_reported: int) -> tuple[dict | None, dict | None]:
         """
         Returns vehicle_types_map (with a single vehicle type)
         and vehicles_map, both keyed by the vehicle's/vehicle type's ID.
