@@ -78,31 +78,26 @@ class FlinksterProvider(BaseProvider):
 
         return gbfs_vehicle_types_map, gbfs_vehicles_map
 
-    def _all_areas(self) -> Generator[Dict, None, None]:
-        areas = self._get_with_authorization(f'{self.api_url}/areas?size=2000&profileUid={self.profileUid}')
-        for elem in areas['_embedded']['areas']:
-            if elem['areaType'] in ['noparkingarea', 'operationarea']:
-                continue
-            yield elem
-
-    def _all_vehicles(self) -> Generator[Dict, None, None]:
-        page = 0
+    def _all_elements(self, url: str, element_name: str, filter) -> Generator[Dict, None, None]:
         while True:
-            vehicles = self._get_with_authorization(
-                f'{self.api_url}/availableRentalObjects?expands=name,type,fillLevel,fuelType,position,category,licensePlate&size=2000&page={page}&profileUid={self.profileUid}'
-            )
-            for elem in vehicles['_embedded']['rentalObjects']:
-                if elem['type'] not in ['vehicle', 'vehicle_electric', 'vehiclepool']:
-                    continue
-                yield elem
-            if vehicles['_links'].get('next'):
-                # next URL is wrong
-                # vehicles_url = vehicles['_links'].get('next')['href']
-                page += 1
+            response = self._get_with_authorization(url)
+            for elem in response['_embedded'][element_name]:
+                if filter(elem):
+                    yield elem
+            if response['_links'].get('next'):
+                url = response['_links'].get('next')['href']
             else:
                 break
 
-    cnt = 1
+    def _all_areas(self) -> Generator[Dict, None, None]:
+        areas_url = f'{self.api_url}/areas?size=2000&profileUid={self.profileUid}'
+        return self._all_elements(areas_url, 'areas', lambda e: e['areaType'] in ['noparkingarea', 'operationarea'])
+
+    def _all_vehicles(self) -> Generator[Dict, None, None]:
+        vehicles_url = f'{self.api_url}/availableRentalObjects?expands=name,type,fillLevel,fuelType,position,category,licensePlate&size=2000&profileUid={self.profileUid}'
+        return self._all_elements(
+            vehicles_url, 'rentalObjects', lambda e: e['type'] in ['vehicle', 'vehicle_electric', 'vehiclepool']
+        )
 
     def _get_with_authorization(self, url: str) -> dict:
         headers = {'db-client-id': self.client_id, 'db-api-key': self.secret}
