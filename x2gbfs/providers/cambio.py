@@ -2,7 +2,7 @@ import json
 import logging
 
 from x2gbfs.gbfs.base_provider import BaseProvider
-from x2gbfs.util import get
+from x2gbfs.util import get, unidecode_with_german_umlauts
 
 logger = logging.getLogger(__name__)
 
@@ -119,14 +119,6 @@ class CambioProvider(BaseProvider):
         vehicle_classes_at_station = elem.get('vehicleClasses', [])
         return [{'vehicle_type_id': vehicle_class['id'], 'count': 1} for vehicle_class in vehicle_classes_at_station]
 
-    def _replace_umlauts(self, string: str) -> str:
-        substitions = (('ü', 'ue'), ('ä', 'ae'), ('ö', 'oe'), ('é', 'e'), ('ß', 'ss'))
-
-        for orig, subst in substitions:
-            string = string.replace(orig, subst)
-
-        return string
-
     def _extract_propulsion_type(self, elem: dict) -> str:
         """
         Guesses the propulsion type from vehicle name.
@@ -144,7 +136,7 @@ class CambioProvider(BaseProvider):
         """
         Guesses the propulsion type from vehicle name.
         """
-        station_name = self._replace_umlauts(elem['name'].lower())
+        station_name = unidecode_with_german_umlauts(elem['name'].lower())
         station_url = f"https://www.cambio-carsharing.de/stationen/station/{station_name}-{elem['id']}"
 
         return {
