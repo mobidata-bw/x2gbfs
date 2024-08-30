@@ -2,6 +2,18 @@ from datetime import datetime, timezone
 from typing import Any, Dict, Generator, Optional, Tuple
 
 import requests
+from unidecode import unidecode
+
+GERMAN_UMLAUTS_TRANSLATIONS = str.maketrans({'ä': 'ae', 'Ä': 'Ae', 'ö': 'oe', 'Ö': 'Oe', 'ü': 'ue', 'Ü': 'Ue'})
+
+
+def unidecode_with_german_umlauts(string: str) -> str:
+    """
+    Represents non-ascii Unicode string as their closest matching ascii variants.
+    As unidecode transliters German umlauts incorrectly (see the FAQ section of https://pypi.org/project/Unidecode/),
+    unidecode_with_german_umlauts first replaces them explicitly.
+    """
+    return unidecode(string.translate(GERMAN_UMLAUTS_TRANSLATIONS))
 
 
 def timestamp_to_isoformat(utctimestamp: datetime):
