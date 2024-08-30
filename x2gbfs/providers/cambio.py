@@ -23,12 +23,12 @@ class CambioProvider(BaseProvider):
         self.config = feed_config
 
     def _all_stations(self) -> dict:
-        response = get(self.STATIONS_URL.replace('{city_id}', self.city_id))
+        response = get(self.STATIONS_URL.format(city_id=self.city_id))
         response.raise_for_status()
         return response.json()
 
     def _all_vehicle_types(self) -> dict:
-        response = get(self.VEHICLE_TYPES_URL.replace('{city_id}', self.city_id))
+        response = get(self.VEHICLE_TYPES_URL.format(city_id=self.city_id))
         response.raise_for_status()
         return response.json()
 
