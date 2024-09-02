@@ -188,7 +188,7 @@ Not provided for now.
 
 ### system_pricing_plans.json
 
-Information is manually extracted from the providers website. See [config/flinkster.json](config/flinkster.json).
+Information is manually extracted from the providers website. See [config/flinkster.json](../../config/flinkster.json).
 
 
 ### system_alerts.json
