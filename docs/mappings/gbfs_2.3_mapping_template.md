@@ -55,7 +55,7 @@ Optional file, will not be provided. Only GBFSv2.3 supported.
 
 ### system_information.json
 
-System information is manually extracted from the providers homepage. Only the real configuration in [config/xyz.json](config/xyz.json) is relevant.
+System information is manually extracted from the providers homepage. Only the real configuration in [config/xyz.json](../../config/xyz.json) is relevant.
 
 
 ### vehicle_types.json

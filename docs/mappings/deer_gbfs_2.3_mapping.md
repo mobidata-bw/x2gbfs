@@ -57,7 +57,7 @@ Optional file, will not be provided. Only GBFSv2.3 supported.
 
 ### system_information.json
 
-System information is manually extracted from the providers homepage. Only the real configuration in [config/deer.json](config/deer.json) is relevant.
+System information is manually extracted from the providers homepage. Only the real configuration in [config/deer.json](../../config/deer.json) is relevant.
 
 Note: According to fleetster/deer, currently no rental_app uri's exist.
 

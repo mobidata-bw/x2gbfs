@@ -40,6 +40,7 @@ Currently, a couple of providers are supported:
 * VOI Karlsruhe via backend provider Raumobil
 * Stadtwerk Tauberfranken via backend provider MOQO
 * Carsharing Südtirol via Nature Of Innovation (NOI)'s OpenDataHub
+* Flinkster via db-connect API,
 * and my-e-car, stadtmobil Südbaden and stadtmobil Stuttgart via backend provider Cantamen/IXSI.
 
 ### deer (Fleetster)
@@ -91,6 +92,15 @@ To generate the Stadtwerk Tauberfranken GBFS feed, you need to provide the follo
 
 * `MOQO_API_TOKEN=<MOQO Token>`
 
+
+### Flinkster (DB-Connect)
+
+To generate the Flinkster GBFS feed, you need to provide the following environment variables:
+
+* `FLINKSTER_CLIENT_ID=<FLINKSTER_CLIENT_ID>`
+* `FLINKSTER_SECRET=<FLINKSTER_SECRET>`
+
+
 ## Implementing a new provider
 To implement a new provider, you should take the following steps:
 
@@ -109,11 +119,15 @@ The following command demonstrates how to run x2gbfs in a Docker container which
 - only generates the `deer` GBFS feed (`-p deer`),
 - writes into a directory that is mounted from the host machine (`-v …`),
 - has access to the necessary Deer API credentials (`--env-file .env`),
-- runs indefinetly and updates all feeds every 30 seconds (`-i 30`).
+- runs indefinetly and updates all feeds every n seconds (`-i 60 or -i 3600`).
 
 ```sh
 docker build -t x2gbfs .
-docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p deer,my-e-car,stadmobil_suedbaden,voi-raumobil,lastenvelo_fr -b 'file:out' -i 60
+# For dynamic feeds, update every 60 seconds (-i 60)
+docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p deer,voi-raumobil,lastenvelo_fr -b 'file:out' -i 60
+# For static feeds, an update every hour (3600 seconds) should be sufficient (-i 3600)
+docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p my-e-car,stadmobil_suedbaden,flinkster -b 'file:out' -i 3600
+
 ```
 
 
@@ -123,4 +137,4 @@ docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p deer,my-e-car,sta
 
 * [fleetster-API-Documentation](https://my.fleetster.net/swagger/)
 * [IXSI v5 - Interface for X-Sharing Information Version 5 Specification](https://carsharing.de/sites/default/files/uploads/ixsi-v5_docu_v0.9_bcs.pdf)
-
+* [db-connect API](https://dbconnect-b2b-prod.service.dbrent.net/customer-b2b-api/docs/customer-b2b-api.html#resources-for-available-rental-objects-and-areas)
