@@ -56,11 +56,11 @@ The following fragment is an example of the Cambio station document:
     "addressCountry" : "DE"
   },
   "information" : {
-    "description" : "Karte zum Ã–ffnen der Schranken bei Ein- und Ausfahrt befindet sich am SchlÃ¼sselbund. Karte direkt vor das Lesefeld halten. Lesefeld am jeweiligen Schrankenautomaten rechts unten ausgewiesen. Karte mindestens eine Sekunde vorhalten.\n\nBeim Verlassen des Stellplatzes unbedingt den rotweiÃŸen Poller aufrichten. Der Dreikant-SchlÃ¼ssel zum Entriegeln und Niederlegen des Pollers liegt im Fahrzeug (Handschuhfach oder TÃ¼rablage).",
+    "description" : "Karte zum Öffnen der Schranken bei Ein- und Ausfahrt befindet sich am Schlüsselbund. Karte direkt vor das Lesefeld halten. Lesefeld am jeweiligen Schrankenautomaten rechts unten ausgewiesen. Karte mindestens eine Sekunde vorhalten.\n\nBeim Verlassen des Stellplatzes unbedingt den rotweißen Poller aufrichten. Der Dreikant-Schlüssel zum Entriegeln und Niederlegen des Pollers liegt im Fahrzeug (Handschuhfach oder Türablage).",
     "access" : "per cambio-App",
     "ptLines" : "2, 5, 11, 11E, 12, 14, 14E, 21, 22, 23, 24, 25, 31, 35, 43, 45, 51, 53, 55, 75, E, N2, N4, N5, N7, N60, SB63, 11V, 24V, 31V, V, SB63V",
     "ptStops" : "Alter Posthof",
-    "location" : "Reservierte StellplÃ¤tze im Parkhaus am Dom. ACHTUNG: Bitte Haupttreppenhaus benutzen. Parkdeck 3, PlÃ¤tze 301 bis 304."
+    "location" : "Reservierte Stellplätze im Parkhaus am Dom. ACHTUNG: Bitte Haupttreppenhaus benutzen. Parkdeck 3, Plätze 301 bis 304."
   },
   "geoposition" : {
     "longitude" : 6.08171223,
@@ -85,7 +85,7 @@ and this is an example extract of Cambio's vehicle document:
 [ {
   "id" : "15-604",
   "displayName" : "L Citroen Transport",
-  "description" : "3-Sitzer, Transporter, 4 TÃ¼ren, groÃŸes Ladevolumen",
+  "description" : "3-Sitzer, Transporter, 4 Türen, großes Ladevolumen",
   "availableAtStations" : [ {
     "id" : "15-28",
     "displayName" : "Rothe-Erde"
@@ -98,7 +98,7 @@ and this is an example extract of Cambio's vehicle document:
     "displayName" : "Fahrer-Airbag"
   }, {
     "id" : "15-135",
-    "displayName" : "KopfstÃ¼tzen vorn"
+    "displayName" : "Kopfstützen vorn"
   }, {
     "id" : "15-136",
     "displayName" : "Radio"
