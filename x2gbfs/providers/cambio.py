@@ -1,5 +1,6 @@
 import json
 import logging
+from typing import Any
 
 from x2gbfs.gbfs.base_provider import BaseProvider
 from x2gbfs.util import get, unidecode_with_german_umlauts
@@ -18,21 +19,23 @@ class CambioProvider(BaseProvider):
     STATIONS_URL = 'https://cwapi.cambio-carsharing.com/opendata/v1/mandator/{city_id}/stations'
     VEHICLE_TYPES_URL = 'https://cwapi.cambio-carsharing.com/opendata/v1/mandator/{city_id}/vehicles'
 
-    def __init__(self, feed_config: dict):
+    def __init__(self, feed_config: dict[str, Any]):
         self.city_id = feed_config['provider-info']['city_id']
         self.config = feed_config
 
-    def _all_stations(self) -> dict:
+    def _all_stations(self) -> list[dict[str, Any]]:
         response = get(self.STATIONS_URL.format(city_id=self.city_id))
         response.raise_for_status()
-        return response.json()
+        ret: list[dict[str, Any]] = response.json()
+        return ret
 
-    def _all_vehicle_types(self) -> dict:
+    def _all_vehicle_types(self) -> list[dict[str, Any]]:
         response = get(self.VEHICLE_TYPES_URL.format(city_id=self.city_id))
         response.raise_for_status()
-        return response.json()
+        ret: list[dict[str, Any]] = response.json()
+        return ret
 
-    def load_stations(self, default_last_reported: int) -> tuple[dict, dict]:
+    def load_stations(self, default_last_reported: int) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
         """
         Retrieves stations from cambio API and converts them
         into gbfs station infos and station status.
@@ -42,8 +45,8 @@ class CambioProvider(BaseProvider):
 
         result = self._all_stations()
 
-        gbfs_station_infos_map = {}
-        gbfs_station_status_map = {}
+        gbfs_station_infos_map: dict[str, dict[str, Any]] = {}
+        gbfs_station_status_map: dict[str, dict[str, Any]] = {}
 
         for elem in result:
             geo_position = elem['geoposition']
@@ -75,7 +78,9 @@ class CambioProvider(BaseProvider):
 
         return gbfs_station_infos_map, gbfs_station_status_map
 
-    def load_vehicles(self, default_last_reported: int) -> tuple[dict | None, dict | None]:
+    def load_vehicles(
+        self, default_last_reported: int
+    ) -> tuple[dict[str, dict[str, Any]] | None, dict[str, dict[str, Any]] | None]:
         """
         Returns vehicle_types_map (with a single vehicle type)
         and vehicles_map, both keyed by the vehicle's/vehicle type's ID.
@@ -85,8 +90,8 @@ class CambioProvider(BaseProvider):
 
         result = self._all_vehicle_types()
 
-        gbfs_vehicle_types_map: dict[str, dict] = {}
-        gbfs_vehicles_map: dict[str, dict] = {}
+        gbfs_vehicle_types_map: dict[str, dict[str, Any]] = {}
+        gbfs_vehicles_map: dict[str, dict[str, Any]] = {}
         for elem in result:
             # Note: usually you would iterate over a data source retrieve from a proprietary
             # system and convert it to vehicles, reflectig theit real-time properties.
@@ -111,7 +116,7 @@ class CambioProvider(BaseProvider):
 
         return gbfs_vehicle_types_map, gbfs_vehicles_map
 
-    def _extract_vehicle_types_available(self, elem: dict) -> list[dict]:
+    def _extract_vehicle_types_available(self, elem: dict[str, Any]) -> list[dict[str, str | int]]:
         """
         Extracts a list of vehicle_types_available from station. As it is static,
         we declare an availability of 1 per vehicle_type, though this incorrect.
@@ -119,7 +124,7 @@ class CambioProvider(BaseProvider):
         vehicle_classes_at_station = elem.get('vehicleClasses', [])
         return [{'vehicle_type_id': vehicle_class['id'], 'count': 1} for vehicle_class in vehicle_classes_at_station]
 
-    def _extract_propulsion_type(self, elem: dict) -> str:
+    def _extract_propulsion_type(self, elem: dict[str, str]) -> str:
         """
         Guesses the propulsion type from vehicle name.
         """
@@ -132,7 +137,7 @@ class CambioProvider(BaseProvider):
 
         return 'combustion'
 
-    def _extract_station_rental_uris(self, elem: dict) -> dict:
+    def _extract_station_rental_uris(self, elem: dict[str, str]) -> dict[str, str]:
         """
         Guesses the propulsion type from vehicle name.
         """
