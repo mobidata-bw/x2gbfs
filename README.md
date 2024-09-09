@@ -124,9 +124,9 @@ The following command demonstrates how to run x2gbfs in a Docker container which
 ```sh
 docker build -t x2gbfs .
 # For dynamic feeds, update every 60 seconds (-i 60)
-docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p deer,voi-raumobil,lastenvelo_fr -b 'file:out' -i 60
+docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p deer,voi-raumobil,lastenvelo_fr,flinkster -b 'file:out' -i 60
 # For static feeds, an update every hour (3600 seconds) should be sufficient (-i 3600)
-docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p my-e-car,stadmobil_suedbaden,flinkster -b 'file:out' -i 3600
+docker run --rm -v $PWD/out:/app/out --env-file .env x2gbfs -p my-e-car,stadmobil_suedbaden -b 'file:out' -i 3600
 
 ```
 
