@@ -156,7 +156,7 @@ GBFS Field | Mapping
 `propulsion_type` | Not explicitly provided by Cambio. We assume electric for those vehicleClasses which habe an `e-auto` in their lowercased name, or `smart ed`
 `cargo_volume_capacity` | -
 `eco_label` | -
-`max_range_meters` | Not provided by Cambio. We assume 200km für vehicles with propulsion `electric`, 600km for those with `combustion`/`combustion_diesel`
+`max_range_meters` | Not provided by Cambio. We assume 200km for vehicles with propulsion `electric`, 600km for those with `combustion`/`combustion_diesel`
 `g_CO2_km` | -
 `vehicle_image` | -
 `make` | -
