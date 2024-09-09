@@ -80,7 +80,7 @@ copy the config/cambio_aachen config and adapt accordingly.
 
 Note that the pricing plans don't reflect the various available tarifs.
 
-Note also, that Cambio asks users to only request their information once per 24 hours.
+Note also, that Cambio asks users to request their feeds only once per 24 hours.
 
 For details, see the [mapping documentation](./docs/mappings/cambio_gbfs_2.3_mapping.md).
 
