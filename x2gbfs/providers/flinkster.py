@@ -91,7 +91,7 @@ class FlinksterProvider(BaseProvider):
 
     def _all_areas(self) -> Generator[Dict, None, None]:
         areas_url = f'{self.api_url}/areas?size=2000&profileUid={self.profileUid}'
-        return self._all_elements(areas_url, 'areas', lambda e: e['areaType'] in ['noparkingarea', 'operationarea'])
+        return self._all_elements(areas_url, 'areas', lambda e: e['areaType'] not in ['noparkingarea', 'operationarea'])
 
     def _all_vehicles(self) -> Generator[Dict, None, None]:
         vehicles_url = f'{self.api_url}/availableRentalObjects?expands=name,type,fillLevel,fuelType,position,category,licensePlate&size=2000&profileUid={self.profileUid}'
