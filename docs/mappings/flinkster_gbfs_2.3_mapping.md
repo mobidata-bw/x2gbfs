@@ -146,7 +146,7 @@ GBFS Field | Mapping
 
 ### free_bike_status.json
 
-Returns all vehicles of `/availableRentalObjects` endpoint.
+Returns all (currently available) vehicles of `/availableRentalObjects` endpoint.
 
 #### Field Mappings
 
