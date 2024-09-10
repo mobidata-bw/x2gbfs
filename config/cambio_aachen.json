@@ -1,0 +1,90 @@
+{
+    "feed_data": {
+        "alerts": [
+            {
+                "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Gebühren sind abhängig von Uhrzeit- und Wochentag. Details auf der Seite des Anbieters. Registrierung und Vorabbuchung erforderlich. Alle Angaben ohne Gewähr",
+                "is_taxable": false,
+                "name": "Preisklasse S Basis",
+                "per_min_pricing": [
+                    {
+                        "interval": 60,
+                        "rate": 3.30,
+                        "start": 0
+                    }
+                ],
+                "per_km_pricing": [
+                        { "start": 0, "end": 100, "interval": 1, "rate": 0.29 },
+                        { "start": 101, "interval": 1, "rate": 0.22 } ],
+                "plan_id": "15-25",
+                "price": 0,
+                "url": "https://www.cambio-carsharing.de/fahrzeuge/fahrzeug/e-auto-zoe-corsa-e-15-995"
+            },
+            {
+                "currency": "EUR",
+                "description": "Gebühren sind abhängig von Uhrzeit- und Wochentag. Details auf der Seite des Anbieters. Registrierung und Vorabbuchung erforderlich. Alle Angaben ohne Gewähr",
+                "is_taxable": false,
+                "name": "Preisklasse M Basis",
+                "per_min_pricing": [
+                    {
+                        "interval": 60,
+                        "rate": 4.30,
+                        "start": 0
+                    }
+                ],
+                "per_km_pricing": [
+                        { "start": 0, "end": 100, "interval": 1, "rate": 0.30 },
+                        { "start": 101, "interval": 1, "rate": 0.22 } ],
+                "plan_id": "15-27",
+                "price": 0,
+                "url": "https://www.cambio-carsharing.de/fahrzeuge/fahrzeug/e-auto-env200-15-939"
+            },
+            {
+                "currency": "EUR",
+                "description": "Gebühren sind abhängig von Uhrzeit- und Wochentag. Details auf der Seite des Anbieters. Registrierung und Vorabbuchung erforderlich. Alle Angaben ohne Gewähr",
+                "is_taxable": false,
+                "name": "Preisklasse L Basis",
+                "per_min_pricing": [
+                    {
+                        "interval": 60,
+                        "rate": 7.15,
+                        "start": 0
+                    }
+                ],
+                "per_km_pricing": [
+                        { "start": 0, "end": 100, "interval": 1, "rate": 0.40 },
+                        { "start": 101, "interval": 1, "rate": 0.24 } ],
+                "plan_id": "15-30",
+                "price": 0,
+                "url": "https://www.cambio-carsharing.de/fahrzeuge/fahrzeug/ford-9-sitzer-15-823"
+            }
+        ],
+        "system_information": {
+            "email": "aachen@cambio-CarSharing.de",
+            "feed_contact_email": "holger.bruch@systect.de",
+            "phone_number": "+49 241 510510",
+            "language": "de",
+            "name": "Cambio Aachen",
+            "operator": "cambio Mobilitätsservice GmbH & Co. KG",
+            "privacy_url": "https://www.cambio-carsharing.de/datenschutz",
+            "purchase_url": "https://www.cambio-carsharing.de/anmelden",
+            "system_id": "cambio_aachen",
+            "terms_last_updated": "2020-04-29",
+            "terms_url": "https://www.cambio-carsharing.de/faq",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.cambio-carsharing.de/aachen"
+        }
+    },
+    "provider-info": {
+        "city_id": "AAC"
+    },
+    "ttl": 86400
+}

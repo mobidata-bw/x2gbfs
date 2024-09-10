@@ -1,3 +1,4 @@
+from .cambio import CambioProvider
 from .cantamen import CantamenIXSIProvider
 from .deer import Deer
 from .example import ExampleProvider
