@@ -65,6 +65,9 @@ def main(providers: List[str], output_dir: str, base_url: str, interval: int = 0
         for provider in providers:
             try:
                 generate_feed_for(provider, output_dir, base_url)
+            except TimeoutError:
+                logger.error(f'Generating feed for {provider} failed due to timeout error!')
+                error_occured = True
             except Exception:
                 logger.exception(f'Generating feed for {provider} failed!')
                 error_occured = True

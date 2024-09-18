@@ -3,6 +3,9 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [Unreleased]
+- log timeout errors as error without stacktrace
+
+## 2024-09-05
 - add Flinkster provider
 
 ## 2024-07-23
