@@ -16,7 +16,7 @@
                 "name": "Tarif XXS",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 1.65 }, { "start": 780, "interval": 60, "rate": 0.80 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.37 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.33 }, { "start": 501, "interval": 1,"rate": 0.28 } ],
-                "plan_id": "micro_hour",
+                "plan_id": "micro_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             },
@@ -27,7 +27,7 @@
                 "name": "Tarif XS",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 1.85 }, { "start": 780, "interval": 60, "rate": 0.90 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.39 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.35 }, { "start": 501, "interval": 1,"rate": 0.30 } ],
-                "plan_id": "mini_hour",
+                "plan_id": "mini_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             },
@@ -38,7 +38,7 @@
                 "name": "Tarif S",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.05 }, { "start": 780, "interval": 60, "rate": 1.00 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.42 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.38 }, { "start": 501, "interval": 1,"rate": 0.32 } ],
-                "plan_id": "small_hour",
+                "plan_id": "small_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             },
@@ -49,7 +49,7 @@
                 "name": "Tarif M",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.15 }, { "start": 780, "interval": 60, "rate": 1.05 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.43 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.40 }, { "start": 501, "interval": 1,"rate": 0.33 } ],
-                "plan_id": "medium_hour",
+                "plan_id": "medium_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             },
@@ -60,7 +60,7 @@
                 "name": "Tarif L",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.35 }, { "start": 780, "interval": 60, "rate": 1.15 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.45 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.41 }, { "start": 501, "interval": 1,"rate": 0.35 } ],
-                "plan_id": "large_hour",
+                "plan_id": "large_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             },
@@ -71,7 +71,7 @@
                 "name": "Tarif XL",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.55 }, { "start": 780, "interval": 60, "rate": 1.25 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.47 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.43 }, { "start": 501, "interval": 1,"rate": 0.37 } ],
-                "plan_id": "van_hour",
+                "plan_id": "van_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             },
@@ -82,7 +82,7 @@
                 "name": "Tarif XXL",
                 "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 3.85 }, { "start": 780, "interval": 60, "rate": 1.55 } ],
                 "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.57 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.51 }, { "start": 501, "interval": 1,"rate": 0.46 } ],
-                "plan_id": "transporter_hour",
+                "plan_id": "transporter_hour_daytime",
                 "price": 0,
                 "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
             }
