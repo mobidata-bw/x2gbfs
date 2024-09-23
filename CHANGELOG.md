@@ -3,6 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [Unreleased]
+- log timeout errors as error without stacktrace
 - add Cantamen provider teilneckar_neckar-alb
 
 ## 2024-09-10
