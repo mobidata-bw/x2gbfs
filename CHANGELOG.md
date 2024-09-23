@@ -4,7 +4,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## [Unreleased]
 - add Cantamen provider teilneckar_neckar-alb
-- 
+
 ## 2024-09-10
 - add Flinkster provider
 
