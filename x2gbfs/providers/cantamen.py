@@ -353,8 +353,7 @@ class CantamenIXSIProvider(BaseProvider):
                 vehicle_types[vehicle_type['vehicle_type_id']] = vehicle_type
             except ValueError as ex:
                 logger.warning(
-                    f'Could not extract vehicle/vehicle_type for bookee {bookee_id} due to ValueError: {ex.args}',
-                    exc_info=False,
+                    f'Could not extract vehicle/vehicle_type for bookee {bookee_id} due to ValueError: {ex.args}'
                 )
             except Exception:
                 logger.warning(
