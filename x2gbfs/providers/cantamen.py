@@ -351,6 +351,11 @@ class CantamenIXSIProvider(BaseProvider):
                 )
                 vehicles[gbfs_vehicle['bike_id']] = gbfs_vehicle
                 vehicle_types[vehicle_type['vehicle_type_id']] = vehicle_type
+            except ValueError as ex:
+                logger.warning(
+                    f'Could not extract vehicle/vehicle_type for bookee {bookee_id} due to ValueError: {ex.args}',
+                    exc_info=False,
+                )
             except Exception:
                 logger.warning(
                     f'Could not extract vehicle/vehicle_type for bookee {bookee_id} due to exception:', exc_info=True
