@@ -3,8 +3,11 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [Unreleased]
+- add Cantamen provider teilauto_biberach
+
+## 2024-09-24
 - log timeout errors as error without stacktrace
-- add Cantamen provider teilneckar_neckar-alb
+- add Cantamen provider teilauto_neckar-alb
 
 ## 2024-09-10
 - add Flinkster provider
