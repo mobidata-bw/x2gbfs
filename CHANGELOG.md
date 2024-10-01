@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## [Unreleased]
+## 2024-10-01
 - add Cantamen provider teilauto_biberach
 
 ## 2024-09-24
