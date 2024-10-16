@@ -88,8 +88,8 @@ GBFS Field | Mapping
 `default_reserve_time` | -
 `return_constraint`| `roundtrip_station`
 `vehicle_assets`| -
-`default_pricing_plan_id`| `tarif` (current provided only has one pricing plan, might be overwritten in subclasses)
-`pricing_plan_ids`| -
+`default_pricing_plan_id`| `all_hour_daytime` or, if defined in the provider's config, `{vehicle_type}_hour_daytime`. Both values are defined as constants in the `MoqoProvider` implementation (DEFAULT_PRICING_PLAN_ID and DEFAULT_PRICING_PLAN_PATTERN) and may be overwritten by subclasses, if necessary
+`pricing_plan_ids`| All pricing plans defined in the provider's config, if they start with `{vehicle_type}`. If none matches, all pricing plan ids starting with `all_`, or, if still none matches, none.
 
 
 ### station_information.json
@@ -184,7 +184,7 @@ No endpoint.
 
 ### system_pricing_plans.json
 
-No endpoint. Manually de
+No endpoint. Manually defined in the provider's config in `feed_data/pricing_plans`.
 
 ### system_alerts.json
 
