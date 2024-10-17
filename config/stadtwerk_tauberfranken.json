@@ -3,7 +3,7 @@
         "pricing_plans": [
             {
                 "currency": "EUR",
-                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "description": "Tarif: 0,20€/km zzgl. 3€/Stunde. Einmalige Registrierung für 4,90€ erforderlich. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
                 "name": "Pro Stunde",
                 "per_min_pricing": [ { "start": 0, "end": 600, "interval": 60, "rate": 3.00 }, { "start": 601, "end": 1440, "interval": 60, "rate": 0 } ],
@@ -14,7 +14,7 @@
             },
             {
                 "currency": "EUR",
-                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "description": "Tarif: 0,20€/km zzgl. 30€/Tag. (Freitag 17:00 Uhr bis Sonntag 23:59 Uhr). Einmalige Registrierung für 4,90€ erforderlich. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
                 "name": "Pro Tag",
                 "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 30.00 } ],
@@ -25,7 +25,7 @@
             },
             {
                 "currency": "EUR",
-                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "description": "Tarif: 0,20€/km zzgl. 50€ am Wochenende (Freitag 17:00 Uhr bis Sonntag 23:59 Uhr). Einmalige Registrierung für 4,90€ erforderlich. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
                 "name": "Wochenendpreis",
                 "per_min_pricing": [ { "start": 0, "end": 3300, "interval": 3300, "rate": 50.00 } ],
