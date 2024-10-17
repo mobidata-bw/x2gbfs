@@ -34,6 +34,8 @@ class MoqoProvider(BaseProvider):
 
     DEFAULT_CURRENT_FUEL_PERCENT = 0.5
     DEFAULT_MAX_RANGE_METERS = 250000
+    DEFAULT_PRICING_PLAN_ID = 'all_hour_daytime'
+    DEFAULT_PRICING_PLAN_PATTERN = '{vehicle_type}_hour_daytime'
     MINIMUM_REQUIRED_AVAILABLE_TIMESPAN_IN_SECONDS = 60 * 60 * 3  # 3 hours
 
     def __init__(self, feed_config: dict[str, Any]):
@@ -195,24 +197,26 @@ class MoqoProvider(BaseProvider):
 
         vehicles[vehicle_id] = gbfs_vehicle
 
-    @classmethod
-    def _extract_vehicle_type(cls, vehicle_types: dict[str, Any], vehicle: dict[str, Any]) -> str:
+    def _extract_vehicle_type(self, vehicle_types: dict[str, Any], vehicle: dict[str, Any]) -> str:
         vehicle_model = vehicle['car_model_name']
-        id = cls._normalize_id(vehicle_model)
+        id = self._normalize_id(vehicle_model)
         gbfs_make, gbfs_model = vehicle_model.split(' ')[0], ' '.join(vehicle_model.split(' ')[1:])
-        form_factor = cls._map_car_type(vehicle['vehicle_type'])
+        form_factor = self._map_car_type(vehicle['vehicle_type'])
         if not vehicle_types.get(id):
             vehicle_types[id] = {
                 'vehicle_type_id': id,
                 'form_factor': form_factor,
-                'propulsion_type': cls._map_fuel_type(vehicle['fuel_type']),
-                'max_range_meters': cls.DEFAULT_MAX_RANGE_METERS,
+                'propulsion_type': self._map_fuel_type(vehicle['fuel_type']),
+                'max_range_meters': self.DEFAULT_MAX_RANGE_METERS,
                 'name': vehicle_model,
                 'make': gbfs_make,
                 'model': gbfs_model,
                 'return_constraint': 'roundtrip_station',
-                'default_pricing_plan_id': cls._default_pricing_plan_id(vehicle['car_type']),
+                'default_pricing_plan_id': self._default_pricing_plan_id(vehicle['car_type']),
             }
+            pricing_plan_ids = self._pricing_plan_ids(vehicle['car_type'])
+            if pricing_plan_ids:
+                vehicle_types[id]['pricing_plan_ids'] = pricing_plan_ids
         return id
 
     @staticmethod
@@ -255,8 +259,38 @@ class MoqoProvider(BaseProvider):
         return 'combustion'
 
     @staticmethod
-    def _default_pricing_plan_id(car_type: str) -> str:
-        return 'tarif'
+    def _defined_pricing_plan_ids(config) -> set[str]:
+        return {pricing_plans['plan_id'] for pricing_plans in config.get('feed_data', {}).get('pricing_plans', [])}
+
+    def _default_pricing_plan_id(self, vehicle_type: str) -> str:
+        """
+        Returns the default pricing plan defined in the providers config.
+        If a pricing plan with plan_id matching the DEFAULT_PRICING_PLAN_PATTERN is defined,
+        it is return, otherwise DEFAULT_PRICING_PLAN_ID. If neither of them is defined in the config,
+        a ValueError is raised.
+        """
+        defined_pricing_plan_ids = self._defined_pricing_plan_ids(self.config)
+        vehicle_type_default_pricing_plan_id = self.DEFAULT_PRICING_PLAN_PATTERN.format(vehicle_type=vehicle_type)
+        if vehicle_type_default_pricing_plan_id in defined_pricing_plan_ids:
+            return vehicle_type_default_pricing_plan_id
+        if self.DEFAULT_PRICING_PLAN_ID in defined_pricing_plan_ids:
+            return self.DEFAULT_PRICING_PLAN_ID
+
+        raise ValueError(
+            'Neither for "{vehicle_type_default_pricing_plan_id}" nor "{self.DEFAULT_PRICING_PLAN_ID}" a pricing plan was defined in config'
+        )
+
+    def _pricing_plan_ids(self, vehicle_type: str) -> list[str]:
+        """
+        Returns a list of all pricing plan defined in the providers config, if their plan_id
+        start with the vehicle_type. If this set is empty, all pricing plans starting with `all_`
+        are returned. This might be an empty list.
+        """
+        defined_pricing_plan_ids = self._defined_pricing_plan_ids(self.config)
+        pricing_plan_ids = [plan_id for plan_id in defined_pricing_plan_ids if plan_id.startswith(vehicle_type)]
+        if not pricing_plan_ids:
+            pricing_plan_ids = [plan_id for plan_id in defined_pricing_plan_ids if plan_id.startswith('all_')]
+        return pricing_plan_ids
 
 
 class StadtwerkTauberfrankenProvider(MoqoProvider):
