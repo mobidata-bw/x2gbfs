@@ -122,9 +122,15 @@ class CantamenIXSIProvider(BaseProvider):
             if lowercasedClass.startswith('seats'):
                 # seats are encoded differently per provider: SEATSX, seats_x
                 seatsClass = lowercasedClass.replace('_', '')
-                numberOfSeats_str = seatsClass[len('seats') :]
-                numberOfSeats = 7 if numberOfSeats_str == '5plus2' else int(numberOfSeats_str)
-                self.seats[attributeId] = numberOfSeats
+                numberOfSeats = seatsClass[len('seats') :]
+                if numberOfSeats == '5plus2':
+                    self.seats[attributeId] = 7
+                elif numberOfSeats == '6bus':
+                    self.seats[attributeId] = 6
+                elif numberOfSeats.isdigit():
+                    self.seats[attributeId] = int(numberOfSeats)
+                else:
+                    logger.info(f'Seat attribute {attribute["Class"]} is unknown and will be ignored')
 
     def _all_bookees(self) -> Generator[Dict[str, Any], None, None]:
         bookees = self._load_response()['Bookee']
