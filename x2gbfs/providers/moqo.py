@@ -134,7 +134,7 @@ class MoqoProvider(BaseProvider):
             + elem['town']
             + ', '
             + elem['street']
-            + (' ' + elem['street_number'] if elem['street_number'] != None else ''),
+            + (' ' + elem['street_number'] if elem['street_number'] is not None else ''),
             'post_code': elem['zipcode'],
             'rental_methods': ['key'],
         }
