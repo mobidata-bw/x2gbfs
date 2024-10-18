@@ -1,4 +1,5 @@
 import logging
+import re
 from datetime import datetime
 from typing import Any, Dict, Generator, Optional, Tuple
 
@@ -128,7 +129,12 @@ class MoqoProvider(BaseProvider):
             'lon': center['lng'],
             'name': elem['name'],
             'station_id': str(elem['id']),
-            'address': elem['town'] + ', ' + elem['street'] + ' ' + elem['street_number'],
+            'address': elem['zipcode']
+            + ' '
+            + elem['town']
+            + ', '
+            + elem['street']
+            + (' ' + elem['street_number'] if elem['street_number'] != None else ''),
             'post_code': elem['zipcode'],
             'rental_methods': ['key'],
         }
@@ -168,7 +174,7 @@ class MoqoProvider(BaseProvider):
             'is_reserved': vehicle['available'] is not True,
             'is_disabled': False,
             'vehicle_type_id': vehicle_type_id,
-            'license_plate': vehicle['license'].split('|')[0].strip(),
+            'license_plate': re.split(r'[(|]', vehicle['license'])[0].strip(),
             'current_range_meters': current_range_meters,
             'current_fuel_percent': current_fuel_percent,
             'rental_uris': {
@@ -294,4 +300,8 @@ class MoqoProvider(BaseProvider):
 
 
 class StadtwerkTauberfrankenProvider(MoqoProvider):
+    pass
+
+
+class ZeagEnergieProvider(MoqoProvider):
     pass
