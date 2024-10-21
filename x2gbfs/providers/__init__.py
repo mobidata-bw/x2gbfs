@@ -4,6 +4,6 @@ from .example import ExampleProvider
 from .fleetster import FleetsterAPI
 from .flinkster import FlinksterProvider
 from .lastenvelo_fr import LastenVeloFreiburgProvider
-from .moqo import StadtwerkTauberfrankenProvider
+from .moqo import MoqoProvider
 from .noi import NoiProvider
 from .voi_raumobil import VoiRaumobil
