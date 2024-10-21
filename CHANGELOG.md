@@ -3,6 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [unreleased]
+- add MOQO provider zeag_energie
 - change pricing for MOQO provider stadtwerk_tauberfranken
 
 ## 2024-10-01
