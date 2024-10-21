@@ -17,10 +17,9 @@ from x2gbfs.providers import (
     FleetsterAPI,
     FlinksterProvider,
     LastenVeloFreiburgProvider,
+    MoqoProvider,
     NoiProvider,
-    StadtwerkTauberfrankenProvider,
     VoiRaumobil,
-    ZeagEnergieProvider,
 )
 
 logging.basicConfig()
@@ -48,10 +47,8 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         return VoiRaumobil(api_url, api_user, api_password)
     if provider in ['my-e-car'] or provider.startswith('stadtmobil_') or provider.startswith('teilauto_'):
         return CantamenIXSIProvider(feed_config)
-    if provider in ['stadtwerk_tauberfranken']:
-        return StadtwerkTauberfrankenProvider(feed_config)
-    if provider in ['zeag_energie']:
-        return ZeagEnergieProvider(feed_config)
+    if provider in ['stadtwerk_tauberfranken', 'zeag_energie']:
+        return MoqoProvider(feed_config)
     if provider in ['noi']:
         return NoiProvider()
     if provider in ['flinkster']:

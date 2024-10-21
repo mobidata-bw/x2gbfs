@@ -129,9 +129,7 @@ class MoqoProvider(BaseProvider):
             'lon': center['lng'],
             'name': elem['name'],
             'station_id': str(elem['id']),
-            'address': elem['zipcode']
-            + ' '
-            + elem['town']
+            'address': elem['town']
             + ', '
             + elem['street']
             + (' ' + elem['street_number'] if elem['street_number'] is not None else ''),
@@ -297,11 +295,3 @@ class MoqoProvider(BaseProvider):
         if not pricing_plan_ids:
             pricing_plan_ids = [plan_id for plan_id in defined_pricing_plan_ids if plan_id.startswith('all_')]
         return pricing_plan_ids
-
-
-class StadtwerkTauberfrankenProvider(MoqoProvider):
-    pass
-
-
-class ZeagEnergieProvider(MoqoProvider):
-    pass
