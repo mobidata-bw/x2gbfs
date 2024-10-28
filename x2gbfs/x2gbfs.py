@@ -45,7 +45,11 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         api_password = config('VOI_PASSWORD')
 
         return VoiRaumobil(api_url, api_user, api_password)
-    if provider in ['my-e-car'] or provider.startswith('stadtmobil_') or provider.startswith('teilauto_'):
+    if (
+        provider in ['my-e-car', 'oekostadt_renningen']
+        or provider.startswith('stadtmobil_')
+        or provider.startswith('teilauto_')
+    ):
         return CantamenIXSIProvider(feed_config)
     if provider in ['stadtwerk_tauberfranken', 'zeag_energie']:
         return MoqoProvider(feed_config)
