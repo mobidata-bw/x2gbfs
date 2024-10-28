@@ -11,6 +11,26 @@
         "pricing_plans": [
             {
                 "currency": "EUR",
+                "description": "Lastenrad Tarif: 2,00€/h.",
+                "is_taxable": false,
+                "name": "Lastenrad - pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 540, "interval": 60, "rate": 2.00 } ],
+                "plan_id": "bike_hour_daytime",
+                "price": 0,
+                "url": "https://www.my-e-car.de/lastenrad-e-cargosharing/#lastenrad-preise"
+            },
+            {
+                "currency": "EUR",
+                "description": "Lastenrad Tarif: 18,00€/d.",
+                "is_taxable": false,
+                "name": "Lastenrad - pro Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 18.00 } ],
+                "plan_id": "bike_24hours",
+                "price": 0,
+                "url": "https://www.my-e-car.de/lastenrad-e-cargosharing/#lastenrad-preise"
+            },
+            {
+                "currency": "EUR",
                 "description": "Klassik-Tarif. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "A 4-Sitzer-Kleinstwagen (KLASSIK/AKTIV) - Nacht pro Stunde",
