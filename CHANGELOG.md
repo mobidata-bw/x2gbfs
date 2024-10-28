@@ -4,6 +4,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## [unreleased]
 - add Cantamen provider oekostadt_renningen
+- extend Cantamen provider stadtmobil_suedbaden with pricing for bookee class 'bike'
 
 ## 2024-10-22
 - add MOQO provider zeag_energie
