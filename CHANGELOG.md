@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## [unreleased]
+## 2024-10-30
 - add Cantamen provider oekostadt_renningen
 - extend Cantamen provider stadtmobil_suedbaden with pricing for bookee class 'bike'
 
