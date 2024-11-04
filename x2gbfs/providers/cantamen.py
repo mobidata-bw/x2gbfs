@@ -130,16 +130,18 @@ class CantamenIXSIProvider(BaseProvider):
                 elif numberOfSeats.isdigit():
                     self.seats[attributeId] = int(numberOfSeats)
                 else:
-                    logger.info(f'Seat attribute {attribute["Class"]} is unknown and will be ignored')
+                    logger.warning(f'Seat attribute {attribute["Class"]} is unknown and will be ignored')
 
     def _all_bookees(self) -> Generator[Dict[str, Any], None, None]:
         bookees = self._load_response()['Bookee']
         for bookee in bookees:
+            if bookee.get('DomainID') is not None:  # free-floating cars are out of scope
+                continue
             if bookee.get('Class') is None:
-                logger.info(f'Bookee {bookee["ID"]} has no Class and will be ignored')
+                logger.warning(f'Bookee {bookee["ID"]} has no Class and will be ignored')
                 continue
             if bookee.get('PlaceID') is None:
-                logger.info(f'Bookee {bookee["ID"]} has no PlaceID and will be ignored')
+                logger.warning(f'Bookee {bookee["ID"]} has no PlaceID and will be ignored')
                 continue
             yield bookee
 
