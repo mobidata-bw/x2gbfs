@@ -1,0 +1,234 @@
+{
+    "feed_data": {
+        "alerts": [
+           {
+            "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XS - Stunde (0-7 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_hour_nighttime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XS - Stunde (7-24 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 1.60 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_hour_daytime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XS - Tag (24 Stunden)",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 26.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_hour_24hours",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XS - Woche (7 Tage)",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 130.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "mini_week",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif S - Stunde (0-7 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "small_hour_nighttime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif S - Stunde (7-24 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 2.10 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "small_hour_daytime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif S - Tag (24 Stunden)",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 33.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "small_hour_24hours",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif S - Woche (7 Tage)",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 165.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1, "rate": 0.23 } ],
+                "plan_id": "small_week",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif L - Stunde (0-7 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.36 }, { "start": 101, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "large_hour_nighttime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif L - Stunde (7-24 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 3.40 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.36 }, { "start": 101, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "large_hour_daytime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif L - Tag (24 Stunden)",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 51.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.36 }, { "start": 101, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "large_hour_24hours",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif L - Woche (7 Tage)",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 260.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.36 }, { "start": 101, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "large_week",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XL - Stunde (0-7 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 1.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "transporter_hour_nighttime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XL - Stunde (7-24 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 1020, "interval": 60, "rate": 4.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "transporter_hour_daytime",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XL - Tag (24 Stunden)",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 64.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "transporter_hour_24hours",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Tarif XL - Woche (7 Tage)",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 310.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.38 }, { "start": 101, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "transporter_week",
+                "price": 0,
+                "url": "https://gruene-flotte.com/carsharing/mietpreise-gruene-flotte/"
+            }
+        ],
+        "system_information": {
+            "email": "info@gruene-flotte-carsharing.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "license_id": "DL-DE-BY-2.0",
+            "attribution_organization_name": "Die Grüne Flotte",
+            "attribution_url": "https://gruene-flotte.com/carsharing/",
+            "name": "Die Grüne Flotte",
+            "operator": "Autohaus Schmid Waldkirch GmbH",
+            "phone_number": "+49 (0)7681 4740080",
+            "privacy_url": "https://gruene-flotte.com/datenschutzerklaerung/",
+            "purchase_url": "https://gruene-flotte.com/carsharing/registrierung/",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                },
+                "ios": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                }
+            },
+            "system_id": "gruene-flotte_freiburg",
+            "terms_last_updated": "2023-01-18",
+            "terms_url": "https://gruene-flotte.com/agb/",
+            "timezone": "Europe/Berlin",
+            "url": "https://gruene-flotte.com/carsharing/"
+        }
+    },
+    "system_id": "10024",
+    "provider_id": 131,
+    "url_templates": {
+        "station": {
+            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+        },
+        "vehicle": {
+            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+        }
+    }
+}
+
