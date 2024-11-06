@@ -27,6 +27,7 @@ class Deer(BaseProvider):
     COLOR_NAMES = {
         '#ffffff': 'weiß',
         '#b50d17': 'rot',
+        '#b3020c': 'rot',
         '#000000': 'schwarz',
         '#f6f6f6': 'hellgrau',
         '#929292': 'mittelgrau',
