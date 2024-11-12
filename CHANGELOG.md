@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## [unreleased]
+## 2024-11-12
 - add Cantamen provider gruene-flotte_freiburg
 
 ## 2024-10-30
