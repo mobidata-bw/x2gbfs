@@ -44,6 +44,8 @@ class MoqoProvider(BaseProvider):
     DEFAULT_PRICING_PLAN_PATTERN = '{vehicle_type}_hour_daytime'
     MINIMUM_REQUIRED_AVAILABLE_TIMESPAN_IN_SECONDS = 60 * 60 * 3  # 3 hours
 
+    cars_latest_parking_cache: dict[str, int] = {}
+
     def __init__(self, feed_config: dict[str, Any]):
         self.api_token = config('MOQO_API_TOKEN')
         self.config = feed_config
@@ -168,6 +170,7 @@ class MoqoProvider(BaseProvider):
         vehicle_types: dict[str, Any],
     ) -> None:
         vehicle_id = vehicle['id']
+        vehicle_id_str = str(vehicle_id)
         if not vehicle.get('vehicle_type'):  # flinkster data issue
             logger.warning('Vehicle %s has incomplete data and will be ignored', vehicle_id)
             return
@@ -180,7 +183,7 @@ class MoqoProvider(BaseProvider):
         deeplink = f'https://go.moqo.de/deeplink/createBooking?teamId={self.team_id}&carId={vehicle_id}'
 
         gbfs_vehicle = {
-            'bike_id': str(vehicle_id),
+            'bike_id': vehicle_id_str,
             'is_reserved': vehicle['available'] is not True,
             'is_disabled': False,
             'vehicle_type_id': vehicle_type_id,
@@ -197,7 +200,11 @@ class MoqoProvider(BaseProvider):
             gbfs_vehicle['license_plate'] = re.split(r'[(|]', vehicle['license'])[0].strip()
 
         if vehicle.get('latest_parking') is not None and vehicle.get('latest_parking', {}).get('id') is not None:
-            gbfs_vehicle['station_id'] = vehicle.get('latest_parking', {}).get('id')
+            gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str] = vehicle.get(
+                'latest_parking', {}
+            ).get('id')
+        elif self.cars_latest_parking_cache.get(vehicle_id_str):
+            gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str]
         else:
             logger.info('Vehicle %s has no station (is in use), will be removed from feed', vehicle_id)
             return  # ignore vehicle without station
