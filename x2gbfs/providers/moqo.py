@@ -184,7 +184,6 @@ class MoqoProvider(BaseProvider):
 
         gbfs_vehicle = {
             'bike_id': vehicle_id_str,
-            'is_reserved': vehicle['available'] is not True,
             'is_disabled': False,
             'vehicle_type_id': vehicle_type_id,
             'current_range_meters': current_range_meters,
@@ -200,10 +199,12 @@ class MoqoProvider(BaseProvider):
             gbfs_vehicle['license_plate'] = re.split(r'[(|]', vehicle['license'])[0].strip()
 
         if vehicle.get('latest_parking') is not None and vehicle.get('latest_parking', {}).get('id') is not None:
+            gbfs_vehicle['is_reserved'] = vehicle['available'] is not True
             gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str] = vehicle.get(
                 'latest_parking', {}
             ).get('id')
         elif self.cars_latest_parking_cache.get(vehicle_id_str):
+            gbfs_vehicle['is_reserved'] = True
             gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str]
         else:
             logger.info('Vehicle %s has no station (is in use), will be removed from feed', vehicle_id)
