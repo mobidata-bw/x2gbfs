@@ -51,7 +51,7 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         or provider.startswith('teilauto_')
     ):
         return CantamenIXSIProvider(feed_config)
-    if provider in ['stadtwerk_tauberfranken', 'zeag_energie']:
+    if provider in ['stadtwerk_tauberfranken', 'zeag_energie', 'flinkster_carsharing']:
         return MoqoProvider(feed_config)
     if provider in ['noi']:
         return NoiProvider()

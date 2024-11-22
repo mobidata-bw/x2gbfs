@@ -30,6 +30,11 @@ class MoqoProvider(BaseProvider):
         'extra_fields[cars]': 'car_model_name,available',
         'include': 'latest_parking',  # vehicle_categories is not helpful for stadtwerke-tauberfranken
         'fields[latest_parking]': 'id',
+        'page[size]': '500',
+    }
+
+    PARKINGS_REQUEST_PARAMS = {
+        'fields[parkings]': 'id,name,town,zipcode,street,street_number,capacity_max,center',
         'page[size]': '200',
     }
 
@@ -62,7 +67,9 @@ class MoqoProvider(BaseProvider):
         gbfs_station_infos_map: dict[str, dict] = {}
         gbfs_station_status_map: dict[str, dict] = {}
 
-        for elem in self._get_paginated('parkings'):
+        params = dict(self.PARKINGS_REQUEST_PARAMS)
+
+        for elem in self._get_paginated('parkings', params):
             self._extract_from_parkings(elem, gbfs_station_infos_map, gbfs_station_status_map, default_last_reported)
 
         return gbfs_station_infos_map, gbfs_station_status_map
@@ -122,22 +129,24 @@ class MoqoProvider(BaseProvider):
         default_last_reported: int,
     ) -> None:
         station_id = elem['id']
-
         center = elem['center']
+        address = elem['town']
+        if elem.get('street'):
+            address += ', ' + elem['street']
+            if elem.get('street_number'):
+                address += ' ' + elem['street_number']
+
         station = {
+            'station_id': str(station_id),
+            'name': elem['name'],
             'lat': center['lat'],
             'lon': center['lng'],
-            'name': elem['name'],
-            'station_id': str(elem['id']),
-            'address': elem['town']
-            + ', '
-            + elem['street']
-            + (' ' + elem['street_number'] if elem['street_number'] is not None else ''),
+            'address': address,
             'post_code': elem['zipcode'],
             'rental_methods': ['key'],
         }
 
-        if elem['capacity_max']:
+        if elem.get('capacity_max'):
             station['capacity'] = elem['capacity_max']
 
         gbfs_station_infos_map[station_id] = station
@@ -148,7 +157,7 @@ class MoqoProvider(BaseProvider):
             'is_renting': True,
             'is_installed': True,
             'is_returning': True,
-            'station_id': str(elem['id']),
+            'station_id': str(station_id),
             'last_reported': default_last_reported,
         }
 
@@ -158,10 +167,13 @@ class MoqoProvider(BaseProvider):
         vehicles: dict[str, Any],
         vehicle_types: dict[str, Any],
     ) -> None:
-        vehicle_type_id = self._extract_vehicle_type(vehicle_types, vehicle)
         vehicle_id = vehicle['id']
+        if not vehicle.get('vehicle_type'):  # flinkster data issue
+            logger.warning('Vehicle %s has incomplete data and will be ignored', vehicle_id)
+            return
+        vehicle_type_id = self._extract_vehicle_type(vehicle_types, vehicle)
         current_fuel_percent = (
-            vehicle['fuel_level'] / 100.0 if 'fuel_level' in vehicle else self.DEFAULT_CURRENT_FUEL_PERCENT
+            vehicle['fuel_level'] / 100.0 if vehicle.get('fuel_level') else self.DEFAULT_CURRENT_FUEL_PERCENT
         )
         current_range_meters = vehicle_types[vehicle_type_id]['max_range_meters'] * current_fuel_percent
 
@@ -172,7 +184,6 @@ class MoqoProvider(BaseProvider):
             'is_reserved': vehicle['available'] is not True,
             'is_disabled': False,
             'vehicle_type_id': vehicle_type_id,
-            'license_plate': re.split(r'[(|]', vehicle['license'])[0].strip(),
             'current_range_meters': current_range_meters,
             'current_fuel_percent': current_fuel_percent,
             'rental_uris': {
@@ -181,6 +192,9 @@ class MoqoProvider(BaseProvider):
                 'android': deeplink,
             },
         }
+
+        if vehicle.get('license'):
+            gbfs_vehicle['license_plate'] = re.split(r'[(|]', vehicle['license'])[0].strip()
 
         if vehicle.get('latest_parking') is not None and vehicle.get('latest_parking', {}).get('id') is not None:
             gbfs_vehicle['station_id'] = vehicle.get('latest_parking', {}).get('id')
@@ -203,6 +217,8 @@ class MoqoProvider(BaseProvider):
 
     def _extract_vehicle_type(self, vehicle_types: dict[str, Any], vehicle: dict[str, Any]) -> str:
         vehicle_model = vehicle['car_model_name']
+        if vehicle_model.find(' Benzin') >= 0:
+            vehicle_model = vehicle_model[: vehicle_model.find(' Benzin')]  # flinkster naming convention
         id = self._normalize_id(vehicle_model)
         gbfs_make, gbfs_model = vehicle_model.split(' ')[0], ' '.join(vehicle_model.split(' ')[1:])
         form_factor = self._map_car_type(vehicle['vehicle_type'])
