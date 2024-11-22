@@ -44,7 +44,8 @@ class MoqoProvider(BaseProvider):
     DEFAULT_PRICING_PLAN_PATTERN = '{vehicle_type}_hour_daytime'
     MINIMUM_REQUIRED_AVAILABLE_TIMESPAN_IN_SECONDS = 60 * 60 * 3  # 3 hours
 
-    cars_latest_parking_cache: dict[str, int] = {}
+    # this cache ensures that each car knows its station - which not provided by the API for cars that are in use
+    cars_latest_parking_cache: dict[str, str] = {}
 
     def __init__(self, feed_config: dict[str, Any]):
         self.api_token = config('MOQO_API_TOKEN')
@@ -198,11 +199,11 @@ class MoqoProvider(BaseProvider):
         if vehicle.get('license'):
             gbfs_vehicle['license_plate'] = re.split(r'[(|]', vehicle['license'])[0].strip()
 
-        if vehicle.get('latest_parking') is not None and vehicle.get('latest_parking', {}).get('id') is not None:
+        latest_parking = vehicle.get('latest_parking')
+        latest_parking_id = latest_parking.get('id') if latest_parking is not None else None
+        if latest_parking_id is not None:
             gbfs_vehicle['is_reserved'] = vehicle['available'] is not True
-            gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str] = vehicle.get(
-                'latest_parking', {}
-            ).get('id')
+            gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str] = latest_parking_id
         elif self.cars_latest_parking_cache.get(vehicle_id_str):
             gbfs_vehicle['is_reserved'] = True
             gbfs_vehicle['station_id'] = self.cars_latest_parking_cache[vehicle_id_str]
