@@ -168,6 +168,7 @@ class Deer(BaseProvider):
                 '_city': elem.get('city'),  # Non-standard
                 'rental_methods': ['key'],
                 'is_charging_station': True,
+                'capacity': 2,  # not provided by API
             }
 
             gbfs_station_infos_map[station_id] = gbfs_station
