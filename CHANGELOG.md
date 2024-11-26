@@ -2,6 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2024-11-26
+- add MOQO provider flinkster_carsharing
+- use latest-parking cache for MOQO provider cars
+
 ## 2024-11-12
 - add Cantamen provider gruene-flotte_freiburg
 
