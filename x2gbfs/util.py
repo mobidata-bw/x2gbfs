@@ -23,4 +23,6 @@ def get(
 ):
     request_headers = dict(headers) if headers is not None else {}
     request_headers['User-Agent'] = user_agent
-    return requests.get(url, headers=request_headers, timeout=timeout, params=params)
+    response = requests.get(url, headers=request_headers, timeout=timeout, params=params)
+    response.raise_for_status()
+    return response.raw
