@@ -26,3 +26,4 @@ def get(
     response = requests.get(url, headers=request_headers, timeout=timeout, params=params)
     response.raise_for_status()
     return response
+
