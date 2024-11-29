@@ -8,6 +8,28 @@
                 "name": "Kleinwagen - Stundentarif",
                 "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 5.50 } ],
                 "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "mini_car_hour_daytime",
+                "price": 1.00,
+                "url": "https://www.flinkster.de/de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagestarif: 55,00€ / 34,00€ (ab dem 2. Tag) zzgl. 0,34€/km und 1,00€ pro Ausleihvorgang. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Tagestarif",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 55.00 }, { "start": 1441, "interval": 1440, "rate": 34.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "mini_car_day",
+                "price": 1.00,
+                "url": "https://www.flinkster.de/de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundentarif: 5,50€ zzgl. 0,34€/km und 1,00€ pro Ausleihvorgang. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Stundentarif",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 5.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
                 "plan_id": "small_family_car_hour_daytime",
                 "price": 1.00,
                 "url": "https://www.flinkster.de/de/tarife"
