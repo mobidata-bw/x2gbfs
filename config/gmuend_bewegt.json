@@ -1,0 +1,60 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundentarif: 5,90€ zzgl. 0,19€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Stundentarif",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 5.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "compact_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.stwgd.de/files/stadtwerke_gd/userfiles/pdf/Mobilit%C3%A4t/E-Carsharing/Preisblatt_Stand%2001.05.2023.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagestarif: 47,90€ zzgl. 0,19€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 47.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "compact_car_day",
+                "price": 0,
+                "url": "https://www.stwgd.de/files/stadtwerke_gd/userfiles/pdf/Mobilit%C3%A4t/E-Carsharing/Preisblatt_Stand%2001.05.2023.pdf"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Stadtwerke Schwäbisch Gmünd GmbH",
+            "attribution_url": "https://www.stwgd.de/",
+            "email": "energiedienstleistungen@stwgd.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "name": "Gmünd bewegt!",
+            "operator": "Stadtwerke Schwäbisch Gmünd GmbH",
+            "phone_number": "+49 (0)7171 603-8222",
+            "privacy_url": "https://www.stwgd.de/datenschutz.html",
+            "purchase_url": "https://portal.moqo.de/js_sign_up/gmund-bewegt#/account",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
+                }
+            },
+            "system_id": "gmuend_bewegt",
+            "terms_url": "https://www.stwgd.de/files/stadtwerke_gd/userfiles/pdf/Mobilit%C3%A4t/E-Carsharing/AGB%20Gm%C3%BCnd%20bewegt!.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.stwgd.de/privatkunden/mobilitaet/e-carsharing.html"
+        }
+    },
+    "provider_data": {
+        "team_id": "196572225"
+    }
+}
+
