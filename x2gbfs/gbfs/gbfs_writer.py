@@ -28,6 +28,7 @@ class GbfsWriter:
         station_status: Optional[List[Dict]],
         vehicle_types: Optional[List[Dict]],
         vehicles: Optional[List[Dict]],
+        geofencing_zones: Optional[List[Dict]],
         base_url: str,
         timestamp: int,
         ttl: int = 60,
@@ -65,6 +66,10 @@ class GbfsWriter:
         if pricing_plans:
             feeds.append('system_pricing_plans')
             self.write_gbfs_file(destFolder + '/system_pricing_plans.json', {'plans': pricing_plans}, timestamp, ttl)
+        if geofencing_zones:
+            feeds.append('geofencing_zones')
+            self.write_gbfs_file(destFolder + '/geofencing_zones.json', {'geofencing_zones': {'type': 'FeatureCollection', 'features': geofencing_zones}}, timestamp, ttl)
+
         if alerts:
             feeds.append('system_alerts')
             self.write_gbfs_file(destFolder + '/system_alerts.json', {'alerts': alerts}, timestamp, ttl)

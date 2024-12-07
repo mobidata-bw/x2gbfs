@@ -30,6 +30,14 @@ class BaseProvider:
         """
         return None, None
 
+    def load_geofencing_zones(self) -> Optional[Dict]:
+        """
+        Retrieves geofencing_zones.
+        Returns a list of features complying with the GBFS 2.3 geofencing zone feature spec
+        https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson or None.
+        """
+        return None
+
     def _filter_vehicles_at_inexistant_stations(self, vehicles_map, station_infos_map):
         """
         Filters vehicles which have a station assigned that is not contained in station_info_map

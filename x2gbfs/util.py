@@ -1,8 +1,11 @@
 from datetime import datetime, timezone
 from typing import Any, Dict, Generator, Optional, Tuple
 
+import logging
 import requests
 from unidecode import unidecode
+
+logger = logging.getLogger(__name__)
 
 GERMAN_UMLAUTS_TRANSLATIONS = str.maketrans({'ä': 'ae', 'Ä': 'Ae', 'ö': 'oe', 'Ö': 'Oe', 'ü': 'ue', 'Ü': 'Ue'})
 
@@ -38,3 +41,11 @@ def get(
     response = requests.get(url, headers=request_headers, timeout=timeout, params=params)
     response.raise_for_status()
     return response
+
+def reverse_multipolygon(geometry):
+    if geometry and geometry.get('type')=='MultiPolygon':
+        for single_polygon in geometry.get('coordinates',[]):
+            for inner_polygon in single_polygon:
+                inner_polygon.reverse()
+    else:
+        logger.exception(f'Geometry is of type {geometry.get("type")}, not MultiPolygon, did not reverse!')
