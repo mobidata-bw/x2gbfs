@@ -1,7 +1,7 @@
+import logging
 from datetime import datetime, timezone
 from typing import Any, Dict, Generator, Optional, Tuple
 
-import logging
 import requests
 from unidecode import unidecode
 
@@ -42,9 +42,25 @@ def get(
     response.raise_for_status()
     return response
 
+
+def post(
+    url: str,
+    params: Optional[dict[str, str]] = None,
+    headers: Optional[dict[str, str]] = None,
+    json: Optional[Dict] = None,
+    timeout: int = 5,
+    user_agent: str = 'x2gbfs +https://github.com/mobidata-bw/',
+):
+    request_headers = dict(headers) if headers is not None else {}
+    request_headers['User-Agent'] = user_agent
+    response = requests.post(url, headers=request_headers, timeout=timeout, params=params, json=json)
+    response.raise_for_status()
+    return response
+
+
 def reverse_multipolygon(geometry):
-    if geometry and geometry.get('type')=='MultiPolygon':
-        for single_polygon in geometry.get('coordinates',[]):
+    if geometry and geometry.get('type') == 'MultiPolygon':
+        for single_polygon in geometry.get('coordinates', []):
             for inner_polygon in single_polygon:
                 inner_polygon.reverse()
     else:

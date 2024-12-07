@@ -68,7 +68,12 @@ class GbfsWriter:
             self.write_gbfs_file(destFolder + '/system_pricing_plans.json', {'plans': pricing_plans}, timestamp, ttl)
         if geofencing_zones:
             feeds.append('geofencing_zones')
-            self.write_gbfs_file(destFolder + '/geofencing_zones.json', {'geofencing_zones': {'type': 'FeatureCollection', 'features': geofencing_zones}}, timestamp, ttl)
+            self.write_gbfs_file(
+                destFolder + '/geofencing_zones.json',
+                {'geofencing_zones': {'type': 'FeatureCollection', 'features': geofencing_zones}},
+                timestamp,
+                ttl,
+            )
 
         if alerts:
             feeds.append('system_alerts')

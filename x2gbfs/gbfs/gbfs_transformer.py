@@ -23,7 +23,9 @@ class GbfsTransformer:
             default_last_reported
         )
 
-        geofencing_zones = provider.load_geofencing_zones() if callable(getattr(provider, 'load_geofencing_zones', None)) else None
+        geofencing_zones = (
+            provider.load_geofencing_zones() if callable(getattr(provider, 'load_geofencing_zones', None)) else None
+        )
 
         if station_status_map and vehicles_map:
             # if feed has stations and vehicles, we deduce vehicle_types_available

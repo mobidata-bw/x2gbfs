@@ -1,0 +1,96 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "",
+                "is_taxable": false,
+                "name": "Pro Minute",
+                "per_min_pricing": [ { "start": 0, "interval": 1, "rate": 0.24 } ],
+                "plan_id": "standard_minute",
+                "price": 0,
+                "url": "https://www.free2move.com/de/de/car-sharing/stuttgart-ppc1/"
+            },
+            {
+                "currency": "EUR",
+                "description": "",
+                "is_taxable": false,
+                "name": "Standard - pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 600, "interval": 60, "rate": 7.99 } ],
+                "plan_id": "standard_hour",
+                "price": 0,
+                "url": "https://www.free2move.com/de/de/car-sharing/stuttgart-ppc1/"
+            },
+            {
+                "currency": "EUR",
+                "description": "",
+                "is_taxable": false,
+                "name": "Pro Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 33.33 } ],
+                "plan_id": "standard_24hours",
+                "price": 0,
+                "url": "https://www.free2move.com/de/de/car-sharing/stuttgart-ppc1/"
+            },
+            {
+                "currency": "EUR",
+                "description": "",
+                "is_taxable": false,
+                "name": "Pro Minute",
+                "per_min_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "mini_minute",
+                "price": 0,
+                "url": "https://www.free2move.com/de/de/car-sharing/stuttgart-ppc1/"
+            },
+            {
+                "currency": "EUR",
+                "description": "",
+                "is_taxable": false,
+                "name": "Standard - pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 600, "interval": 60, "rate": 6.99 } ],
+                "plan_id": "mini_hour",
+                "price": 0,
+                "url": "https://www.free2move.com/de/de/car-sharing/stuttgart-ppc1/"
+            },
+            {
+                "currency": "EUR",
+                "description": "",
+                "is_taxable": false,
+                "name": "Pro Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 30.0 } ],
+                "plan_id": "mini_24hours",
+                "price": 0,
+                "url": "https://www.free2move.com/de/de/car-sharing/stuttgart-ppc1/"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Free2move",
+            "attribution_url": "https://www.free2move.com/",
+            "email": "hallo@free2move.com",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "name": "Free2move Stuttgart",
+            "operator": "Free2move Deutschland GmbH",
+            "privacy_url": "https://www.free2move.com/de/de/legal/#privacy",
+            "purchase_url": "https://www.free2move.com/customer/registration/?locale=de_DE",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "share-now://",
+                    "store_uri": "https://play.google.com/store/apps/details?id=com.car2go"
+                },
+                "ios": {
+                    "discovery_uri": "share-now://",
+                    "store_uri": "https://apps.apple.com/us/app/free2move-formerly-share-now/id514921710"
+                }
+            },
+            "system_id": "free2move_stuttgart",
+            "terms_last_updated": "2024-10-07",
+            "terms_url": "https://www.free2move.com/de/de/car-sharing/global-terms/",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.free2move.com/de/de/car-sharing/stuttgart/"
+        }
+    },
+    "provider_data": {
+        "location_alias": "stuttgart",
+        "location_id": 18
+    }
+}
