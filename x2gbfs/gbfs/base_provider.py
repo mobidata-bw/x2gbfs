@@ -90,3 +90,7 @@ class BaseProvider:
         Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
         """
         return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
+
+    @staticmethod
+    def _defined_pricing_plan_ids(config) -> set[str]:
+        return {pricing_plans['plan_id'] for pricing_plans in config.get('feed_data', {}).get('pricing_plans', [])}
