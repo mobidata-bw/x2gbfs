@@ -118,7 +118,7 @@ GBFS Field | Mapping
 `max_range_meters` | Not availabe via API, set to default, currently `400.000`
 `name` | Combination of `make` and `model`, which are extracted from `row['buildSeries']` and mapped in the code. If no mapping is defined, `buildSeries` is split at the first underscore, and first part is used as `make`, last as `model`.
 `g_CO2_km` | -
-`vehicle_image` | -
+`vehicle_image` | `row['imageUrl']`, `{density}` is set to `2x`, as only one image may be specified.
 `make` | extracted from `row['buildSeries']` and mapped in the code.
 `model` | extracted from `row['buildSeries']` and mapped in the code.
 `color` | `row['primaryColor']` mapped to `weiß`, `silber`, `schwarz` or `grau`. In case no mapping is defined, we return the last part of the `imageUrl`, as this seems to contain the color string (in English). If no `imageUrl` is provided, we return `unbekannt`.

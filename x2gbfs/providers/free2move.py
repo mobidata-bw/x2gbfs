@@ -371,6 +371,7 @@ class Free2moveProvider(BaseProvider):
             'model': model,
             'color': color,
             'return_constraint': 'free_floating',
+            'vehicle_image': elem['imageUrl'].format(density='2x'),
         }
 
         if elem.get('seats'):
