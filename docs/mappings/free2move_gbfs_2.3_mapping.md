@@ -134,11 +134,70 @@ GBFS Field | Mapping
 
 ### station_information.json
 
-No stations, as Free2move is free floating.
+`parkings` and `charging_stations` endpoints return GeoJSON like the following example:
+
+```json
+{
+    "type":"FeatureCollection",
+    "features":[
+        {
+            "id":"60443_18",
+            "type":"Feature",
+            "geometry": {
+                "coordinates": [9.19127,48.750264],
+                "type":"Point"
+            },
+            "properties": {
+                "type":"parking_spot",
+                "location":"stuttgart",
+                "capacity":1,
+                "name":"P - Waldhotel Stuttgart, Guts-Muths-Weg 18"
+            }
+        }
+    ]
+}
+```
+
+We convert all of them into stations.
+
+#### Field Mappings
+
+GBFS Field | Mapping
+--- | ---
+`station_id` | `feature['id']`
+`name` | `feature['properties']['name']`
+`short_name` | -
+`lat` | `feature['geometry']['position']['coordinates'][1]`
+`lon` | `feature['geometry']['position']['coordinates'][0]`
+`rental_methods` | `key`
+`capacity` | `feature['properties']['capacity']`
+`vehicle_capacity`  | -
+`vehicle_type_capacity` | -
+`is_valet_station`  | -
+`is_charging_station` | `feature['properties']['type']=='charging_station`
+`rental_uris` | -
+`web` | -
+
 
 ### station_status.json
 
-No stations, as Free2move is free floating.
+`parkings` and `charging_stations` endpoints return GeoJSON (see above).
+
+#### Field Mappings
+GBFS Field | Mapping
+--- | ---
+`station_id` | `feature['id']`
+`num_bikes_available` | no need to provide, will be deduced from `x2gbfs` via vehicles' stationIds and availability
+`vehicle_types_available` | no need to provide, will be deduced from `x2gbfs` via vehicles' stationIds and availability
+`num_bikes_disabled` | -
+`num_docks_available` | -
+`vehicle_docks_available` | -
+`num_docks_disabled` | -
+`is_installed` | `true`
+`is_renting` | `true`
+`is_returning` | `true`
+`last_reported` | Not part of API. Setting to current timestamp.
+
 
 ### free_bike_status.json
 

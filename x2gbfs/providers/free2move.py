@@ -5,7 +5,7 @@ import os
 import re
 import time
 from pathlib import Path
-from typing import Generator, Optional, Tuple
+from typing import Any, Generator, Optional, Tuple
 from urllib.error import HTTPError
 
 from decouple import config
@@ -30,6 +30,14 @@ class Free2moveAPI:
     # URL to retrieve operation area.
     OPERATING_AREA_URL_TEMPLATE = (
         'https://external.share-now.com/api/geo/geodata/v1/locations/{location_alias}/operating_area'
+    )
+    # URL to retrieve parking spots
+    PARKING_SPOT_URL_TEMPLATE = (
+        'https://external.share-now.com/api/geo/geodata/v1/locations/{location_alias}/parking_spots'
+    )
+    # URL to retrieve charging stations
+    CHARGING_POINT_URL_TEMPLATE = (
+        'https://external.share-now.com/api/geo/geodata/v1/locations/{location_alias}/charging_stations'
     )
 
     def __init__(self):
@@ -79,6 +87,16 @@ class Free2moveAPI:
     def operating_area(self, location_alias) -> dict:
         # Retrieves the operation area, a single geojson feature.
         return get(self.OPERATING_AREA_URL_TEMPLATE.format(location_alias=location_alias)).json()
+
+    def parking_spots(self, location_alias) -> Generator[dict, None, None]:
+        feature_collection = get(self.PARKING_SPOT_URL_TEMPLATE.format(location_alias=location_alias)).json()
+        for feature in feature_collection.get('features', {}):
+            yield feature
+
+    def charging_stations(self, location_alias) -> Generator[dict, None, None]:
+        feature_collection = get(self.CHARGING_POINT_URL_TEMPLATE.format(location_alias=location_alias)).json()
+        for feature in feature_collection.get('features', {}):
+            yield feature
 
     def all_vehicles(self, location_alias) -> Generator[dict, None, None]:
         """
@@ -275,6 +293,64 @@ class Free2moveProvider(BaseProvider):
 
         return gbfs_vehicle_types_map, gbfs_vehicles_map
 
+    def load_stations(self, default_last_reported: int) -> Tuple[Optional[dict], Optional[dict]]:
+        """
+        Retrieves stations from the providers API and converts them
+        into gbfs station infos and station status.
+        Returns dicts where the key is the station_id and values
+        are station_info/station_status.
+
+        Note: station status' vehicle availabilty currently will be calculated
+        using vehicle information's station_id, in case it is defined by this
+        provider.
+        """
+
+        gbfs_station_infos_map: dict[str, dict] = {}
+        gbfs_station_status_map: dict[str, dict] = {}
+
+        for elem in self.api.parking_spots(self.location_alias):
+            self._extract_from_parkings(elem, gbfs_station_infos_map, gbfs_station_status_map, default_last_reported)
+        for elem in self.api.charging_stations(self.location_alias):
+            self._extract_from_parkings(elem, gbfs_station_infos_map, gbfs_station_status_map, default_last_reported)
+
+        return gbfs_station_infos_map, gbfs_station_status_map
+
+    def _extract_from_parkings(
+        self,
+        elem: dict[str, Any],
+        gbfs_station_infos_map: dict[str, dict],
+        gbfs_station_status_map: dict[str, dict],
+        default_last_reported: int,
+    ) -> None:
+        try:
+            station_id = elem['id']
+            center = elem['geometry']['coordinates']
+            properties = elem['properties']
+
+            station = {
+                'station_id': station_id,
+                'name': properties['name'],
+                'lat': center[1],
+                'lon': center[0],
+                'capacity': properties['capacity'],
+                'is_charging_station': properties['type'] == 'charging_station',
+                'rental_methods': ['key'],
+            }
+
+            gbfs_station_infos_map[station_id] = station
+
+            gbfs_station_status_map[station_id] = {
+                'num_bikes_available': 0,
+                'vehicle_types_available': {},
+                'is_renting': True,
+                'is_installed': True,
+                'is_returning': True,
+                'station_id': station_id,
+                'last_reported': default_last_reported,
+            }
+        except Exception:
+            logger.exception('Error extracting parking.')
+
     def _extract_from_vehicle(self, elem: dict, gbfs_vehicles_map: dict, gbfs_vehicle_types_map: dict) -> None:
         """
         Extract `vehicle` and `vehicle_type` from elem and add it to `gbfs_vehicles_map` and `gbfs_vehicle_types_map`
@@ -312,6 +388,9 @@ class Free2moveProvider(BaseProvider):
                     for key, uri in self.RENTAL_URI_TEMPLATES.items()
                 },
             }
+
+            if 'parkingId' in elem and len(elem['parkingId']) > 0:
+                gbfs_vehicle['station_id'] = elem['parkingId']
 
             gbfs_vehicles_map[vehicle_id] = gbfs_vehicle
             gbfs_vehicle_types_map[vehicle_type_id] = gbfs_vehicle_type

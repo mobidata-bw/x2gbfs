@@ -48,7 +48,7 @@ class BaseProvider:
             for vehicle_id in list(vehicles_map.keys()):
                 station_id = vehicles_map[vehicle_id].get('station_id')
 
-                if station_id not in station_infos_map:
+                if station_id and station_id not in station_infos_map:
                     logger.info(
                         f'Vehicle {vehicle_id} is assigned to inexistant station {station_id}, it will be removed from feed'
                     )

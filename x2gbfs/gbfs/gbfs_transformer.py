@@ -57,9 +57,9 @@ class GbfsTransformer:
         """
 
         station_vehicle_type_free_cnt = self._count_vehicle_types_at_station(
-            vehicles_map, lambda v: not v['is_reserved'] and not v['is_disabled']
+            vehicles_map, lambda v: not v['is_reserved'] and not v['is_disabled'] and 'station_id' in v
         )
-        station_vehicle_type_cnt = self._count_vehicle_types_at_station(vehicles_map, lambda v: True)
+        station_vehicle_type_cnt = self._count_vehicle_types_at_station(vehicles_map, lambda v: 'station_id' in v)
 
         vehicle_types_per_station: Dict[str, list] = {}
         for station_vehicle_type in station_vehicle_type_cnt:
