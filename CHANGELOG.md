@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## Still unreleased
+- add `Free2moveProvider` and feed `free2move_stuttgart`.
+
 ## 2024-11-29
 - add CambioProvider and feed `cambio_aachen`.
 

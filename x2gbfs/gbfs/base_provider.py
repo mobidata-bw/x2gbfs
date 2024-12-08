@@ -2,6 +2,8 @@ import logging
 import re
 from typing import Any, Dict, Generator, Optional, Tuple
 
+from x2gbfs.util import unidecode_with_german_umlauts
+
 logger = logging.getLogger('x2gbfs.base_provider')
 
 
@@ -30,6 +32,14 @@ class BaseProvider:
         """
         return None, None
 
+    def load_geofencing_zones(self) -> Optional[Dict]:
+        """
+        Retrieves geofencing_zones.
+        Returns a list of features complying with the GBFS 2.3 geofencing zone feature spec
+        https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson or None.
+        """
+        return None
+
     def _filter_vehicles_at_inexistant_stations(self, vehicles_map, station_infos_map):
         """
         Filters vehicles which have a station assigned that is not contained in station_info_map
@@ -38,7 +48,7 @@ class BaseProvider:
             for vehicle_id in list(vehicles_map.keys()):
                 station_id = vehicles_map[vehicle_id].get('station_id')
 
-                if station_id not in station_infos_map:
+                if station_id and station_id not in station_infos_map:
                     logger.info(
                         f'Vehicle {vehicle_id} is assigned to inexistant station {station_id}, it will be removed from feed'
                     )
@@ -79,6 +89,10 @@ class BaseProvider:
     @staticmethod
     def _normalize_id(id: str) -> str:
         """
-        Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
+        Normalizes the ID by converting to lowercae, rewriting German umlauts and restricting chars to a-z_0-9. Whitespaces are converted to _.
         """
-        return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
+        return re.sub('[^a-z_0-9]', '', unidecode_with_german_umlauts(id.lower()).replace(' ', '_')).replace('__', '_')
+
+    @staticmethod
+    def _defined_pricing_plan_ids(config) -> set[str]:
+        return {pricing_plans['plan_id'] for pricing_plans in config.get('feed_data', {}).get('pricing_plans', [])}
