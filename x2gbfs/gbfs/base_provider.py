@@ -2,6 +2,8 @@ import logging
 import re
 from typing import Any, Dict, Generator, Optional, Tuple
 
+from x2gbfs.util import unidecode_with_german_umlauts
+
 logger = logging.getLogger('x2gbfs.base_provider')
 
 
@@ -87,9 +89,9 @@ class BaseProvider:
     @staticmethod
     def _normalize_id(id: str) -> str:
         """
-        Normalizes the ID by restricting chars to A-Za-z_0-9. Whitespaces are converted to _.
+        Normalizes the ID by converting to lowercae, rewriting German umlauts and restricting chars to a-z_0-9. Whitespaces are converted to _.
         """
-        return re.sub('[^A-Za-z_0-9]', '', id.lower().replace(' ', '_')).replace('__', '_')
+        return re.sub('[^a-z_0-9]', '', unidecode_with_german_umlauts(id.lower()).replace(' ', '_')).replace('__', '_')
 
     @staticmethod
     def _defined_pricing_plan_ids(config) -> set[str]:
