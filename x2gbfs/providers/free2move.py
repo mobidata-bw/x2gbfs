@@ -230,6 +230,30 @@ class Free2moveProvider(BaseProvider):
         'OPEL_CROSSLAND': ['Opel', 'Crossland'],
     }
 
+    COLOR_MAPPING = {
+        # colors listed in documentation
+        'EN3': 'weiß',
+        '650': 'weiß',
+        'EAZ': 'weiß',
+        'EN2': 'silber',
+        'EB2': 'silber',
+        '761': 'silber',
+        'EDA': 'silber',
+        'EAD': 'silber',
+        '191': 'schwarz',
+        '696': 'schwarz',
+        '787': 'grau',
+        # colors currently used in Stuttgart
+        '268U': 'weiß',
+        'P0WP': 'weiß',
+        '601U': 'schwarz',
+        '205U': 'grau',  # mineralgrey
+        'M0V9': 'schwarz',  # carbon black
+        '278U': 'blau',  # celestialblue,
+        '230U': 'grün',  # oceangreen
+        '237U': 'gold',
+    }
+
     def __init__(self, feed_config: dict, api: Free2moveAPI):
         self.config = feed_config
         self.location_alias = feed_config['provider_data']['location_alias']
@@ -304,6 +328,22 @@ class Free2moveProvider(BaseProvider):
         splitted_build_series = build_series.split('_', 1)
         return splitted_build_series[0], splitted_build_series[-1]
 
+    def _extract_color(self, elem: dict) -> str:
+        primary_color = elem.get('primaryColor')
+        if primary_color in self.COLOR_MAPPING:
+            return self.COLOR_MAPPING[primary_color]
+        if 'imageUrl' not in elem:
+            logger.info(f'No mapping defined for primaryColor {primary_color} and no image url to deduce it from')
+            return 'unbekannt'
+
+        # No color mapping, so we try to deduce from image url which apparently end with color name.
+        url_suffix = elem['imageUrl'].split('_')[-1].split('.')[0]
+        # To not return complete urls in case this changes one day,
+        # we only return a maximum of 20 chars
+        url_suffix = url_suffix[-20] if len(url_suffix) > 20 else url_suffix
+        logger.info(f'No mapping defined for primaryColor {elem["primaryColor"]}, image url ends on {url_suffix}')
+        return url_suffix
+
     def _extract_vehicle_type(self, elem: dict) -> dict:
         """
         Returns a gbfs vehicle_type dict extracted from elem
@@ -312,10 +352,11 @@ class Free2moveProvider(BaseProvider):
         max_range_meters = self.DEFAULT_MAX_RANGE_METERS
 
         build_series = str(elem['buildSeries'])
-        vehicle_type_id = build_series
-        
+        color = self._extract_color(elem)
+        vehicle_type_id = self._normalize_id(f'{build_series}_{color}')
+
         make, model = self.BUILD_SERIES_TO_MAKE_MODEL_MAPPING.get(build_series, ('', ''))
-        default_pricing_plan_id, pricing_plan_ids = self._extract_pricing_plan_ids(vehicle_type_id)
+        default_pricing_plan_id, pricing_plan_ids = self._extract_pricing_plan_ids(build_series)
 
         gbfs_vehicle_type = {
             'vehicle_type_id': vehicle_type_id,
@@ -328,6 +369,7 @@ class Free2moveProvider(BaseProvider):
             'wheel_count': 4,
             'make': make,
             'model': model,
+            'color': color,
             'return_constraint': 'free_floating',
         }
 

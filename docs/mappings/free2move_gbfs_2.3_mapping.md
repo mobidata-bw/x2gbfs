@@ -108,7 +108,7 @@ Example extract of a vehicle:
 
 GBFS Field | Mapping
 --- | ---
-`vehicle_type_id` |  `row['buildSeries']`
+`vehicle_type_id` |  `row['buildSeries']` appended with the vehicle's primaryColor.
 `form_factor` | Always `car`.
 `rider_capacity`| -
 `cargo_volume_capacity` | -
@@ -121,6 +121,7 @@ GBFS Field | Mapping
 `vehicle_image` | -
 `make` | extracted from `row['buildSeries']` and mapped in the code.
 `model` | extracted from `row['buildSeries']` and mapped in the code.
+`color` | `row['primaryColor']` mapped to `weiß`, `silber`, `schwarz` or `grau`. In case no mapping is defined, we return the last part of the `imageUrl`, as this seems to contain the color string (in English). If no `imageUrl` is provided, we return `unbekannt`.
 `wheel_count` | Always `4`.
 `max_permitted_speed` | -
 `rated_power` | -
