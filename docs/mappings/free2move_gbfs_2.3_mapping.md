@@ -260,7 +260,7 @@ GBFS Field | Mapping
 \-&nbsp;`ride_allowed` | `false` - Undocked (“free floating”) ride cannot start or end in this zone.
 \-&nbsp;`ride_through_allowed` | `true` - Ride can travel through this zone.
 \-&nbsp;`maximum_speed_kph` | No maximum speed to observe, thus omitted.
-\-&nbsp;`station_parking`| -
+\-&nbsp;`station_parking`| `true` - There are stations outside the main operating area, which can be used.
 
 ## Deep Links
 

@@ -506,6 +506,7 @@ class Free2moveProvider(BaseProvider):
                 {
                     'ride_allowed': False,
                     'ride_through_allowed': True,
+                    'station_parking': True,
                 }
             ],
         }
