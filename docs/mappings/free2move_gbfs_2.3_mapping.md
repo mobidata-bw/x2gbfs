@@ -246,7 +246,7 @@ No endpoint.
 
 ### geofencing_zones.json
 
-Geofencing zones are extracted from the `operation_area` endpoint, which returns a single GeoJSON feature.
+Geofencing zones are extracted from the `operation_area` endpoint, which returns a single GeoJSON feature. Therefore, `geofencing_zones.json` will be a list of only one `MultiPolygon`.
 
 The geofencing zones are generated as a one element collection with a MultiPolygon counterclockwise ordered lists of coordinates (to reflect the restrictions outside the service area) and the following properties:
 
