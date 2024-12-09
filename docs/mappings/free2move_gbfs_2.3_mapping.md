@@ -207,7 +207,7 @@ Free vehicles are extracted from `vehicles` endpoint.
 
 GBFS Field | Mapping
 --- | ---
-`bike_id` | `row['vid']` (NOTE: the vin is not rotated by Free2move. As a consequence, this feed should not be published publicly for GDBR reasons. The generated GBFS is, in consequence, not appropriate for unrestriced use. Users must handle GDPR requirements.)
+`bike_id` | `row['vid']` (NOTE: the [VIN](https://en.wikipedia.org/wiki/Vehicle_identification_number) is not rotated by Free2Move. As a consequence, the generated GBFS feed *should not* be published publicly to be GDPR-compliant. It is, in consequence, not appropriate for unrestriced use. Consumers must handle GDPR requirements.)
 `lat` | - `row['geoCoordinate']['latitude']`
 `lon` | - `row['geoCoordinate']['longitude']`
 `is_reserved` | `not row['freeForRental']`
