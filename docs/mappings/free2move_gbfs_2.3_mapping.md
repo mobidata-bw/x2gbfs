@@ -55,7 +55,7 @@ Optional file, will not be provided. Only GBFSv2.3 supported.
 
 ### system_information.json
 
-System information is manually extracted from the providers homepage. Only the real configuration in e.g. [config/free2move_stuttgart.json](../../config/free2move_stuttgart.json) is relevant.
+System information is manually extracted from the providers homepage. It is hard-coded in [config/free2move_stuttgart.json](../../config/free2move_stuttgart.json), so changes on Free2Move's website will not be reflected in the GBFS feed without manual changes.
 
 
 ### vehicle_types.json
