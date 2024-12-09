@@ -24,7 +24,7 @@ class Free2moveAPI:
     TOKEN_GENERATION_URL = (
         'https://external.share-now.com/api/rental/externalapi/login'  # noqa: S105 (this is no secret)
     )
-    # URL to retrieve vehicle information. Note: access to this is URL requires login and is rate limited
+    # URL to retrieve vehicle information. Note: Access to this URL requires login and is rate limited.
     # (1/min per default, 1/s if only delta is requested (via additional globalVersion parameter))
     VEHICLES_URL_TEMPLATE = 'https://external.share-now.com/api/rental/externalapi/v1/vehicles/{location_alias}'
     # URL to retrieve operation area.
