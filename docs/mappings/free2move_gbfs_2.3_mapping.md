@@ -1,6 +1,6 @@
 # Free2move to GBFS Mapping
 
-This document map Free2move's sharing API to GBFS.
+This document map Free2move's sharing API to GBFS. Free2move is the parent company of [Share Now GmbH](https://en.wikipedia.org/wiki/Share_Now), a merger of former Car2Go and [DriveNow](https://en.wikipedia.org/wiki/DriveNow).
 
 # Reference version
 
@@ -60,7 +60,7 @@ System information is manually extracted from the providers homepage. It is hard
 
 ### vehicle_types.json
 
-Vehicle Types, vehicles are extracted from the `vehicles` endpoint, extracting this from the returned cars.
+Vehicle Types, vehicles are extracted from the `/api/rental/externalapi/v1/vehicles/{location_alias}` endpoint, extracting this from the returned cars.
 
 Example extract of a vehicle:
 
@@ -134,7 +134,7 @@ GBFS Field | Mapping
 
 ### station_information.json
 
-`parkings` and `charging_stations` endpoints return GeoJSON like the following example:
+`/api/geo/geodata/v1/locations/{location_alias}/parking_spots` and `/api/geo/geodata/v1/locations/{location_alias}/charging_stations` endpoints return GeoJSON like the following example:
 
 ```json
 {
@@ -181,7 +181,7 @@ GBFS Field | Mapping
 
 ### station_status.json
 
-`parkings` and `charging_stations` endpoints return GeoJSON (see above).
+`/api/geo/geodata/v1/locations/{location_alias}/parking_spots` and `/api/geo/geodata/v1/locations/{location_alias}/charging_stations` endpoints return GeoJSON (see above).
 
 #### Field Mappings
 GBFS Field | Mapping
@@ -201,7 +201,7 @@ GBFS Field | Mapping
 
 ### free_bike_status.json
 
-Free vehicles are extracted from `vehicles` endpoint.
+Free vehicles are extracted from `/api/rental/externalapi/v1/vehicles/{location_alias}` endpoint.
 
 #### Field Mappings
 
@@ -246,7 +246,7 @@ No endpoint.
 
 ### geofencing_zones.json
 
-Geofencing zones are extracted from the `operation_area` endpoint, which returns a single GeoJSON feature. Therefore, `geofencing_zones.json` will be a list of only one `MultiPolygon`.
+Geofencing zones are extracted from the `/api/geo/geodata/v1/locations/{location_alias}/operating_area` endpoint, which returns a single GeoJSON feature. Therefore, `geofencing_zones.json` will be a list of only one `MultiPolygon`.
 
 The geofencing zones are generated as a one element collection with a MultiPolygon counterclockwise ordered lists of coordinates (to reflect the restrictions outside the service area) and the following properties:
 
