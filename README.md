@@ -113,6 +113,17 @@ To generate the Flinkster GBFS feed, you need to provide the following environme
 * `FLINKSTER_CLIENT_ID=<FLINKSTER_CLIENT_ID>`
 * `FLINKSTER_SECRET=<FLINKSTER_SECRET>`
 
+### Free2move
+
+To generate a GBFS feed for a Free2move location, you need to provide the following environment variables:
+
+* `FREE2MOVE_USER=<FREE2MOVE_USER>`
+* `FREE2MOVE_PASSWORD=<FREE2MOVE_PASSWORD>`
+
+Besides this, a CACHE_DIR env variable must be provided, which is used to store the last retrieved vehicles information, so only delta updates need to be requested.
+
+For details, see the [mapping documentation](./docs/mappings/free2move_gbfs_2.3_mapping.md).
+
 
 ## Implementing a new provider
 To implement a new provider, you should take the following steps:
