@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## unreleased
+## 2024-12-11
 - add MOQO providers oberschwabenmobil, gmuend_beweg
 
 ## 2024-11-29
