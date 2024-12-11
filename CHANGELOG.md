@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## unreleased
+- add MOQO providers oberschwabenmobil, gmuend_beweg
+
 ## 2024-11-29
 - add CambioProvider and feed `cambio_aachen`.
 
