@@ -203,6 +203,14 @@ GBFS Field | Mapping
 
 Free vehicles are extracted from `/api/rental/externalapi/v1/vehicles/{location_alias}` endpoint.
 
+Note: free2move imposes a rate limit of 1 request/min to this endpoint. For more frequent updates,
+only deltas since the last `globalVersion` should be requested (by adding the latest retrieved
+`globalVersion` as parameter to the endpoint url). The provider requests a full request
+every 60 minutes. Between two full requests, only delta information is requested and merged with the
+last complete update. As only information for existing vehicles is published, but no delete
+information for disappearing, this might lead to "ghost" vehicles, which are still in the data though
+not available any longer. By performing a full request every hour, this effect should be minimized.
+
 #### Field Mappings
 
 GBFS Field | Mapping
