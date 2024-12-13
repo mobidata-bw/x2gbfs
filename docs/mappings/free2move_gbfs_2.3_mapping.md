@@ -202,6 +202,7 @@ GBFS Field | Mapping
 ### free_bike_status.json
 
 Free vehicles are extracted from `/api/rental/externalapi/v1/vehicles/{location_alias}` endpoint.
+This endpoint also returns vehicles which are not available for rental (`freeForRental=false`), which will be skipped.
 
 Note: free2move imposes a rate limit of 1 request/min to this endpoint. For more frequent updates,
 only deltas since the last `globalVersion` should be requested (by adding the latest retrieved
@@ -218,14 +219,14 @@ GBFS Field | Mapping
 `bike_id` | `row['vid']` (NOTE: the [VIN](https://en.wikipedia.org/wiki/Vehicle_identification_number) is not rotated by Free2Move. As a consequence, the generated GBFS feed *should not* be published publicly to be GDPR-compliant. It is, in consequence, not appropriate for unrestriced use. Consumers must handle GDPR requirements.)
 `lat` | - `row['geoCoordinate']['latitude']`
 `lon` | - `row['geoCoordinate']['longitude']`
-`is_reserved` | `not row['freeForRental']`
+`is_reserved` | `False`, as vehicle with `row['freeForRental']==False` are skipped
 `is_disabled` | `False`
 `rental_uris` | -
 `vehicle_type_id` | see section vehicle_types
 `last_reported` | curent time
 `current_range_meters` | `row['remainingRange']`, if set, otherwise `row['fuelLevel'] * max_range_meters/ 100.0`
 `current_fuel_percent` | `row['fuelLevel'] / 100.0`
-`station_id` | -
+`station_id` | `row['parkingId']`, if set
 `home_station_id` | -
 `pricing_plan_id` | -
 `vehicle_equipment` | -
