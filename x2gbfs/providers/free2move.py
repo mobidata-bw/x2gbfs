@@ -408,12 +408,18 @@ class Free2moveProvider(BaseProvider):
         return splitted_build_series[0], splitted_build_series[-1]
 
     def _extract_color(self, elem: dict) -> str:
+        """
+        Extracts color from primaryColor and maps it to the color name defined in COLOR_MAPPING.
+        If no mapping is defined / no primaryColor is set, the last part of the imageUrl
+        splitted at underscores is used as color name. If there is no image url,
+        an empty string is returned,
+        """
         primary_color = elem.get('primaryColor')
         if primary_color in self.COLOR_MAPPING:
             return self.COLOR_MAPPING[primary_color]
         if 'imageUrl' not in elem:
             logger.info(f'No mapping defined for primaryColor {primary_color} and no image url to deduce it from')
-            return 'unbekannt'
+            return ''
 
         # No color mapping, so we try to deduce from image url which apparently end with color name.
         url_suffix = elem['imageUrl'].split('_')[-1].split('.')[0]
@@ -448,10 +454,12 @@ class Free2moveProvider(BaseProvider):
             'wheel_count': 4,
             'make': make,
             'model': model,
-            'color': color,
             'return_constraint': 'free_floating',
             'vehicle_image': elem['imageUrl'].format(density='2x'),
         }
+
+        if color:
+            gbfs_vehicle_type['color'] = color
 
         if elem.get('seats'):
             gbfs_vehicle_type['seats'] = elem.get('seats')
