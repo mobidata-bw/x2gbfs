@@ -367,7 +367,7 @@ class Free2moveProvider(BaseProvider):
             gbfs_vehicle_type = self._extract_vehicle_type(elem)
             vehicle_type_id = gbfs_vehicle_type['vehicle_type_id']
 
-            current_fuel_percent = elem.get('fuelLevel', 25.0) / 100.0
+            current_fuel_percent = elem['fuelLevel']
             current_range_meters = (
                 elem['remainingRange']
                 if 'remainingRange' in elem

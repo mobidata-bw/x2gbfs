@@ -223,8 +223,8 @@ GBFS Field | Mapping
 `rental_uris` | -
 `vehicle_type_id` | see section vehicle_types
 `last_reported` | curent time
-`current_range_meters` | `row['remainingRange']`, if set
-`current_fuel_percent` | `row['fuelLevel'] / 100.0`, or `.25` if unset
+`current_range_meters` | `row['remainingRange']`, if set, otherwise `row['fuelLevel'] * max_range_meters/ 100.0`
+`current_fuel_percent` | `row['fuelLevel'] / 100.0`
 `station_id` | -
 `home_station_id` | -
 `pricing_plan_id` | -
