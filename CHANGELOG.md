@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## Still unreleased
+## 2024-12-18
 - add `Free2moveProvider` and feed `free2move_stuttgart`.
 
 ## 2024-11-29
