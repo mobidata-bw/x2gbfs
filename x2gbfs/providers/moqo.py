@@ -144,11 +144,13 @@ class MoqoProvider(BaseProvider):
             'name': elem['name'],
             'lat': center['lat'],
             'lon': center['lng'],
-            'address': address,
-            'post_code': elem['zipcode'],
             'rental_methods': ['key'],
         }
 
+        if address:
+            station['address'] = address
+        if elem.get('zipcode'):
+            station['post_code'] = elem['zipcode']
         if elem.get('capacity_max'):
             station['capacity'] = elem['capacity_max']
 

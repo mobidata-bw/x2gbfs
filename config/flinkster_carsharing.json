@@ -83,11 +83,11 @@
             "rental_apps": {
                 "android": {
                     "discovery_uri": "https://go.moqo.de/deeplink/openApp",
-                    "store_uri": "https://play.google.com/store/apps/details?id=de.zeagenergie.sharing.app&gl=DE"
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.flinkster.sharing.app"
                 },
                 "ios": {
                     "discovery_uri": "https://go.moqo.de/deeplink/openApp",
-                    "store_uri": "https://apps.apple.com/de/app/zeag-carsharing/id1579488967"
+                    "store_uri": "https://apps.apple.com/us/app/flinkster/id6639612291?mt=8"
                 }
             },
             "system_id": "flinkster",
