@@ -289,10 +289,6 @@ class MoqoProvider(BaseProvider):
         logger.warning('Unknown fuel_type: %s, will use combustion', fuel_type)
         return 'combustion'
 
-    @staticmethod
-    def _defined_pricing_plan_ids(config) -> set[str]:
-        return {pricing_plans['plan_id'] for pricing_plans in config.get('feed_data', {}).get('pricing_plans', [])}
-
     def _default_pricing_plan_id(self, vehicle_type: str) -> str:
         """
         Returns the default pricing plan defined in the providers config.

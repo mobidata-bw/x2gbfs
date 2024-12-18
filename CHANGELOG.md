@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2024-12-18
+- add `Free2moveProvider` and feed `free2move_stuttgart`.
+
 ## 2024-12-11
 - add MOQO providers oberschwabenmobil, gmuend_beweg
 

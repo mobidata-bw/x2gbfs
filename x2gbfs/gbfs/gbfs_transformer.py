@@ -8,7 +8,7 @@ from .base_provider import BaseProvider
 class GbfsTransformer:
     def load_stations_and_vehicles(
         self, provider: BaseProvider
-    ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List], int]:
+    ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List], Optional[List], int]:
         """
         Load stations and vehicles from provider, updates vehicle availabilities at stations
         and returns gbfs collections station_infos, station_status, vehicle_types, vehicles.
@@ -23,6 +23,10 @@ class GbfsTransformer:
             default_last_reported
         )
 
+        geofencing_zones = (
+            provider.load_geofencing_zones() if callable(getattr(provider, 'load_geofencing_zones', None)) else None
+        )
+
         if station_status_map and vehicles_map:
             # if feed has stations and vehicles, we deduce vehicle_types_available
             # information from vehicle.station_id information
@@ -34,6 +38,7 @@ class GbfsTransformer:
             # Note: if vehicle_types are not provided, all vehicles are assumed to be non motorized bikes https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#files
             list(vehicle_types_map.values()) if vehicle_types_map else None,
             list(vehicles_map.values()) if vehicles_map else None,
+            list(geofencing_zones) if geofencing_zones else None,
             default_last_reported,
         )
 
@@ -52,9 +57,9 @@ class GbfsTransformer:
         """
 
         station_vehicle_type_free_cnt = self._count_vehicle_types_at_station(
-            vehicles_map, lambda v: not v['is_reserved'] and not v['is_disabled']
+            vehicles_map, lambda v: not v['is_reserved'] and not v['is_disabled'] and 'station_id' in v
         )
-        station_vehicle_type_cnt = self._count_vehicle_types_at_station(vehicles_map, lambda v: True)
+        station_vehicle_type_cnt = self._count_vehicle_types_at_station(vehicles_map, lambda v: 'station_id' in v)
 
         vehicle_types_per_station: Dict[str, list] = {}
         for station_vehicle_type in station_vehicle_type_cnt:

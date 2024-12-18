@@ -17,6 +17,8 @@ from x2gbfs.providers import (
     ExampleProvider,
     FleetsterAPI,
     FlinksterProvider,
+    Free2moveAPI,
+    Free2moveProvider,
     LastenVeloFreiburgProvider,
     MoqoProvider,
     NoiProvider,
@@ -64,6 +66,8 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         return MoqoProvider(feed_config)
     if provider in ['noi']:
         return NoiProvider()
+    if provider.startswith('free2move_'):
+        return Free2moveProvider(feed_config, Free2moveAPI())
 
     raise ValueError(f'Unknown config {provider}')
 
@@ -100,7 +104,9 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
     transformer = GbfsTransformer()
     extractor = build_extractor(provider, feed_config)
 
-    (info, status, vehicle_types, vehicles, last_reported) = transformer.load_stations_and_vehicles(extractor)
+    (info, status, vehicle_types, vehicles, geofencing_zones, last_reported) = transformer.load_stations_and_vehicles(
+        extractor
+    )
     GbfsWriter().write_gbfs_feed(
         feed_config,
         f'{output_dir}/{provider}',
@@ -108,6 +114,7 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str) -> None:
         status,
         vehicle_types,
         vehicles,
+        geofencing_zones,
         f'{base_url}/{provider}',
         last_reported,
         ttl=feed_config.get('ttl', 60),
