@@ -16,7 +16,6 @@ from x2gbfs.providers import (
     Deer,
     ExampleProvider,
     FleetsterAPI,
-    FlinksterProvider,
     Free2moveAPI,
     Free2moveProvider,
     LastenVeloFreiburgProvider,
