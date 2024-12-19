@@ -1,0 +1,122 @@
+{
+    "feed_data": {
+        "alerts": [
+           {
+            "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "klein - Zeittarif pro Stunde (0:00 Uhr - 7:00 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1,"rate": 0.24} ],
+                "plan_id": "mini_hour_nighttime",
+                "price": 1.00,
+                "url": "https://www.teilauto-hall.de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "klein - Zeittarif pro Stunde (7:00 Uhr - 24:00 Uhr)",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 1.50 } ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1,"rate": 0.24} ],
+                "plan_id": "mini_hour_daytime",
+                "price": 1.00,
+                "url": "https://www.teilauto-hall.de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "klein - Zeittarif pro 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 20.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1,"rate": 0.24} ],
+                "plan_id": "mini_day",
+                "price": 1.00,
+                "url": "https://www.teilauto-hall.de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "groß/kombi - Zeittarif pro Stunde (0:00 Uhr - 7:00 Uhr)",
+                "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "plan_id": "medium_hour_nighttime",
+                "price": 1.00,
+                "url": "https://www.teilauto-hall.de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "groß/kombi - Zeittarif pro Stunde (7:00 Uhr - 24:00 Uhr)",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 1.80 } ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "plan_id": "medium_hour_daytime",
+                "price": 1.00,
+                "url": "https://www.teilauto-hall.de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "groß/kombi - Zeittarif pro 24 Stunden",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 24.00 } ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "plan_id": "medium_day",
+                "price": 1.00,
+                "url": "https://www.teilauto-hall.de/tarife"
+            }
+        ],
+        "system_information": {
+            "email": "info@teilauto-hall.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "license_id": "DL-DE-BY-2.0",
+            "attribution_organization_name": "teilAuto e.V.",
+            "attribution_url": "https://www.teilauto-hall.de/",
+            "name": "teilAuto Schwäbisch Hall",
+            "operator": "teilAuto e.V",
+            "phone_number": "+49 (0)791 97010-0",
+            "privacy_url": "https://www.teilauto-hall.de/datenschutzerklärung",
+            "purchase_url": "https://www.teilauto-hall.de/anmeldung",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                },
+                "ios": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                }
+            },
+            "system_id": "teilauto_schwaebisch_hall",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.teilauto-hall.de/"
+        }
+    },
+    "system_id": "10024",
+    "provider_id": 4,
+    "url_templates": {
+        "station": {
+            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+        },
+        "vehicle": {
+            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+        }
+    }
+}
+

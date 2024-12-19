@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2024-12-19
+- add Cantamen provider teilauto_schwaebisch_hall
+
 ## 2024-12-18
 - add `Free2moveProvider` and feed `free2move_stuttgart`.
 
