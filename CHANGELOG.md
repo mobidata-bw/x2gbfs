@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2024-12-19
+- rename Cantamen provider stadtmobil_suedbaden to naturenergie_sharing
+
 ## 2024-12-18
 - add `Free2moveProvider` and feed `free2move_stuttgart`.
 
