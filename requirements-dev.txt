@@ -1,6 +1,6 @@
 types-requests==2.32.0.20241016
 types-urllib3==1.26.25.14
-types-xmltodict==0.13.0.3
+types-xmltodict==0.14.0.20241009
 
 ruff~=0.8.1
 black~=24.8.0
