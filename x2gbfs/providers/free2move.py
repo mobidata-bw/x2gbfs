@@ -270,7 +270,7 @@ class Free2moveProvider(BaseProvider):
         'M0V9': 'schwarz',  # carbon black
         '278U': 'blau',  # celestialblue,
         '230U': 'grün',  # oceangreen
-        '237U': 'gold',
+        '237U': 'rose gold',
     }
 
     def __init__(self, feed_config: dict, api: Free2moveAPI):
