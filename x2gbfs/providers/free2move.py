@@ -21,26 +21,19 @@ class Free2moveAPI:
     REFRESH_AFTER_SECONDS = 3600
 
     # URL to generate tokens
-    TOKEN_GENERATION_URL = (
-        'https://external.share-now.com/api/rental/externalapi/login'  # noqa: S105 (this is no secret)
-    )
+    TOKEN_GENERATION_URL = '{base_url}/api/rental/externalapi/login'  # noqa: S105 (this is no secret)
     # URL to retrieve vehicle information. Note: Access to this URL requires login and is rate limited.
     # (1/min per default, 1/s if only delta is requested (via additional globalVersion parameter))
-    VEHICLES_URL_TEMPLATE = 'https://external.share-now.com/api/rental/externalapi/v1/vehicles/{location_alias}'
+    VEHICLES_URL_TEMPLATE = '{base_url}/api/rental/externalapi/v1/vehicles/{location_alias}'
     # URL to retrieve operation area.
-    OPERATING_AREA_URL_TEMPLATE = (
-        'https://external.share-now.com/api/geo/geodata/v1/locations/{location_alias}/operating_area'
-    )
+    OPERATING_AREA_URL_TEMPLATE = '{base_url}/api/geo/geodata/v1/locations/{location_alias}/operating_area'
     # URL to retrieve parking spots
-    PARKING_SPOT_URL_TEMPLATE = (
-        'https://external.share-now.com/api/geo/geodata/v1/locations/{location_alias}/parking_spots'
-    )
+    PARKING_SPOT_URL_TEMPLATE = '{base_url}/api/geo/geodata/v1/locations/{location_alias}/parking_spots'
     # URL to retrieve charging stations
-    CHARGING_POINT_URL_TEMPLATE = (
-        'https://external.share-now.com/api/geo/geodata/v1/locations/{location_alias}/charging_stations'
-    )
+    CHARGING_POINT_URL_TEMPLATE = '{base_url}/api/geo/geodata/v1/locations/{location_alias}/charging_stations'
 
     def __init__(self):
+        self.base_url = config('FREE2MOVE_BASE_URL')
         self.user = config('FREE2MOVE_USER')
         self.password = config('FREE2MOVE_PASSWORD')
         self.token = None
@@ -52,7 +45,9 @@ class Free2moveAPI:
         Submits a login request and stores the retrieved token
         """
         login_response = post(
-            self.TOKEN_GENERATION_URL, json={'username': self.user, 'password': self.password}, timeout=10
+            self.TOKEN_GENERATION_URL.format(base_url=self.base_url),
+            json={'username': self.user, 'password': self.password},
+            timeout=10,
         )
         self.token = login_response.json().get('token')
 
@@ -86,15 +81,21 @@ class Free2moveAPI:
 
     def operating_area(self, location_alias) -> dict:
         # Retrieves the operation area, a single geojson feature.
-        return get(self.OPERATING_AREA_URL_TEMPLATE.format(location_alias=location_alias)).json()
+        return get(
+            self.OPERATING_AREA_URL_TEMPLATE.format(base_url=self.base_url, location_alias=location_alias)
+        ).json()
 
     def parking_spots(self, location_alias) -> Generator[dict, None, None]:
-        feature_collection = get(self.PARKING_SPOT_URL_TEMPLATE.format(location_alias=location_alias)).json()
+        feature_collection = get(
+            self.PARKING_SPOT_URL_TEMPLATE.format(base_url=self.base_url, location_alias=location_alias)
+        ).json()
         for feature in feature_collection.get('features', {}):
             yield feature
 
     def charging_stations(self, location_alias) -> Generator[dict, None, None]:
-        feature_collection = get(self.CHARGING_POINT_URL_TEMPLATE.format(location_alias=location_alias)).json()
+        feature_collection = get(
+            self.CHARGING_POINT_URL_TEMPLATE.format(base_url=self.base_url, location_alias=location_alias)
+        ).json()
         for feature in feature_collection.get('features', {}):
             yield feature
 
@@ -126,7 +127,7 @@ class Free2moveAPI:
             refresh_base_file = True
 
         vehicles_response = self._get_with_authorization(
-            self.VEHICLES_URL_TEMPLATE.format(location_alias=location_alias), params=parameters
+            self.VEHICLES_URL_TEMPLATE.format(base_url=self.base_url, location_alias=location_alias), params=parameters
         )
         vehicles_delta_file_path = cachedir_for_location / f'vehicles_{location_alias}_delta.json'
         vehicles_delta_file_path.write_text(json.dumps(vehicles_response))
