@@ -190,7 +190,7 @@ class Free2moveProvider(BaseProvider):
     }
 
     # Assumed max range of vehicles, as API does not provide it
-    DEFAULT_MAX_RANGE_METERS = 400000
+    DEFAULT_MAX_RANGE_METERS = 200000
 
     # Free2move fueltypes to GBFS mapping
     FUELTYPE_TO_PROPULSION_MAPPING = {
@@ -368,8 +368,8 @@ class Free2moveProvider(BaseProvider):
             gbfs_vehicle_type = self._extract_vehicle_type(elem)
             vehicle_type_id = gbfs_vehicle_type['vehicle_type_id']
 
-            current_fuel_percent = elem['fuelLevel']
-            current_range_meters = (
+            current_fuel_percent = elem['fuelLevel'] / 100.0
+            current_range_meters = int(
                 elem['remainingRange']
                 if 'remainingRange' in elem
                 else gbfs_vehicle_type['max_range_meters'] * current_fuel_percent
