@@ -189,8 +189,11 @@ class Free2moveProvider(BaseProvider):
         'ios': 'share-now://vehicle/{VIN}?location={locationId}',
     }
 
-    # Assumed max range of vehicles, as API does not provide it
-    DEFAULT_MAX_RANGE_METERS = 200000
+    # Assumed max range of vehicles with combustion engine, as API does not provide it
+    DEFAULT_COMBUSTION_MAX_RANGE_METERS = 400000
+
+    # Assumed max range of vehicles with electric engine, as API does not provide it
+    DEFAULT_ELECTRIC_MAX_RANGE_METERS = 200000
 
     # Free2move fueltypes to GBFS mapping
     FUELTYPE_TO_PROPULSION_MAPPING = {
@@ -435,7 +438,11 @@ class Free2moveProvider(BaseProvider):
         Returns a gbfs vehicle_type dict extracted from elem
         """
         propulsion_type = self.FUELTYPE_TO_PROPULSION_MAPPING[elem['fuelType']] if 'fuelType' in elem else 'combustion'
-        max_range_meters = self.DEFAULT_MAX_RANGE_METERS
+        max_range_meters = (
+            self.DEFAULT_COMBUSTION_MAX_RANGE_METERS
+            if propulsion_type == 'combustion'
+            else self.DEFAULT_ELECTRIC_MAX_RANGE_METERS
+        )
 
         build_series = str(elem['buildSeries'])
         color = self._extract_color(elem)
