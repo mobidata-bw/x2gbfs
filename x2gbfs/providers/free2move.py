@@ -33,7 +33,11 @@ class Free2moveAPI:
     CHARGING_POINT_URL_TEMPLATE = '{base_url}/api/geo/geodata/v1/locations/{location_alias}/charging_stations'
 
     def __init__(self):
-        self.base_url = config('FREE2MOVE_BASE_URL')
+        self.base_url = (
+            config('FREE2MOVE_BASE_URL')[:-1]
+            if config('FREE2MOVE_BASE_URL').endswith('/')
+            else config('FREE2MOVE_BASE_URL')
+        )
         self.user = config('FREE2MOVE_USER')
         self.password = config('FREE2MOVE_PASSWORD')
         self.token = None
