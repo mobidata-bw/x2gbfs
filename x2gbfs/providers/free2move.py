@@ -439,9 +439,9 @@ class Free2moveProvider(BaseProvider):
         """
         propulsion_type = self.FUELTYPE_TO_PROPULSION_MAPPING[elem['fuelType']] if 'fuelType' in elem else 'combustion'
         max_range_meters = (
-            self.DEFAULT_COMBUSTION_MAX_RANGE_METERS
-            if propulsion_type == 'combustion'
-            else self.DEFAULT_ELECTRIC_MAX_RANGE_METERS
+            self.DEFAULT_ELECTRIC_MAX_RANGE_METERS
+            if propulsion_type == 'electric'
+            else self.DEFAULT_COMBUSTION_MAX_RANGE_METERS
         )
 
         build_series = str(elem['buildSeries'])
