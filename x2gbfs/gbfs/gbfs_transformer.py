@@ -1,11 +1,17 @@
 from collections import Counter
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Collection, Dict, List, Optional, Tuple
 
 from .base_provider import BaseProvider
 
 
 class GbfsTransformer:
+
+    # Max coordinate precision is used to round coordinates of vehicles and stations.
+    # Six decimal places correspond, depending on the position, roughly to 0.1m
+    # see https://wiki.openstreetmap.org/wiki/Precision_of_coordinates
+    MAX_COORDINATE_PRECISION = 6
+
     def load_stations_and_vehicles(
         self, provider: BaseProvider
     ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List], Optional[List], int]:
@@ -32,6 +38,11 @@ class GbfsTransformer:
             # information from vehicle.station_id information
             self._update_stations_availability_status(station_status_map, vehicles_map)
 
+        if vehicles_map:
+            self._round_coordinates(vehicles_map.values())
+        if station_infos_map:
+            self._round_coordinates(station_infos_map.values())
+
         return (
             list(station_infos_map.values()) if station_infos_map else None,
             list(station_status_map.values()) if station_status_map else None,
@@ -41,6 +52,17 @@ class GbfsTransformer:
             list(geofencing_zones) if geofencing_zones else None,
             default_last_reported,
         )
+
+    @staticmethod
+    def _round_coordinates(vehicles_or_stations: Collection[dict[str, Any]]) -> None:
+        """
+        Rounds lat/lon properties of the given list of vehicles or station dicts.
+        """
+        for vehicle_or_station in vehicles_or_stations:
+            if isinstance(vehicle_or_station.get('lat'), float):
+                vehicle_or_station['lat'] = round(vehicle_or_station['lat'], GbfsTransformer.MAX_COORDINATE_PRECISION)
+            if isinstance(vehicle_or_station.get('lon'), float):
+                vehicle_or_station['lon'] = round(vehicle_or_station['lon'], GbfsTransformer.MAX_COORDINATE_PRECISION)
 
     def _count_vehicle_types_at_station(self, vehicles_map, filter) -> Counter:
         filtered_vehicle_map = {k: v for k, v in vehicles_map.items() if filter(v)}
