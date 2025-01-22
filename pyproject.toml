@@ -27,7 +27,7 @@ line-length = 120
 skip-string-normalization = 1
 
 [tool.ruff]
-select = [
+lint.select = [
     "E", # pycodestyle errors
     "W", # pycodestyle warnings
     "F", # pyflakes
@@ -40,7 +40,7 @@ select = [
     "B", # flake8-bugbear
 ]
 
-ignore = [
+lint.ignore = [
     "E501", # line too long, handled by black
     "B008", # do not perform function calls in argument defaults
     "C901", # too complex
@@ -48,7 +48,7 @@ ignore = [
     "S101", # use of assert detected
 ]
 
-fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
+lint.fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
 
 exclude = [
     ".bzr",
@@ -75,10 +75,10 @@ exclude = [
 
 line-length = 120
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 
-[tool.ruff.flake8-quotes]
+[tool.ruff.lint.flake8-quotes]
 inline-quotes = "single"
 multiline-quotes = "single"
 docstring-quotes = "double"
