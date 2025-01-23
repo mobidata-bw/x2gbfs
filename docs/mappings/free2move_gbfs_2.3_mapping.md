@@ -115,7 +115,7 @@ GBFS Field | Mapping
 `cargo_load_capacity` | -
 `propulsion_type` | `row['fuelType']` mapped to GBFS vehicle types (`ELECTRIC`: `electric`, `SUPER_95`: `combustion`, `GASOLINE`: `combustion`, `DIESEL`: `combustion_diesel`).
 `eco_label` | -
-`max_range_meters` | Not availabe via API, set to default, currently `400.000`
+`max_range_meters` | Not availabe via API, set to default (currently `200.000` for vehicles with `propulsion_type` `electric`,  `400.000` else).
 `name` | Combination of `make` and `model`, which are extracted from `row['buildSeries']` and mapped in the code. If no mapping is defined, `buildSeries` is split at the first underscore, and first part is used as `make`, last as `model`.
 `g_CO2_km` | -
 `vehicle_image` | `row['imageUrl']`, `{density}` is set to `2x`, as only one image may be specified.

@@ -117,6 +117,7 @@ To generate the Flinkster GBFS feed, you need to provide the following environme
 
 To generate a GBFS feed for a Free2move location, you need to provide the following environment variables:
 
+* `FREE2MOVE_BASE_URL=<FREE2MOVE_BASE_URL>`
 * `FREE2MOVE_USER=<FREE2MOVE_USER>`
 * `FREE2MOVE_PASSWORD=<FREE2MOVE_PASSWORD>`
 
