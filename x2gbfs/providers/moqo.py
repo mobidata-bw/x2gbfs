@@ -41,7 +41,7 @@ class MoqoProvider(BaseProvider):
     DEFAULT_CURRENT_FUEL_PERCENT = 0.5
     DEFAULT_MAX_RANGE_METERS = 250000
     DEFAULT_PRICING_PLAN_ID = 'all_hour_daytime'
-    DEFAULT_PRICING_PLAN_PATTERN = '{vehicle_type}_hour_daytime'
+    DEFAULT_PRICING_PLAN_PATTERNS = ['{vehicle_type}_hour_daytime', '{vehicle_type}_minute']
     MINIMUM_REQUIRED_AVAILABLE_TIMESPAN_IN_SECONDS = 60 * 60 * 3  # 3 hours
 
     # this cache ensures that each car knows its station - which not provided by the API for cars that are in use
@@ -292,14 +292,15 @@ class MoqoProvider(BaseProvider):
     def _default_pricing_plan_id(self, vehicle_type: str) -> str:
         """
         Returns the default pricing plan defined in the providers config.
-        If a pricing plan with plan_id matching the DEFAULT_PRICING_PLAN_PATTERN is defined,
+        If a pricing plan with plan_id matching one of the DEFAULT_PRICING_PLAN_PATTERNS is defined,
         it is return, otherwise DEFAULT_PRICING_PLAN_ID. If neither of them is defined in the config,
         a ValueError is raised.
         """
         defined_pricing_plan_ids = self._defined_pricing_plan_ids(self.config)
-        vehicle_type_default_pricing_plan_id = self.DEFAULT_PRICING_PLAN_PATTERN.format(vehicle_type=vehicle_type)
-        if vehicle_type_default_pricing_plan_id in defined_pricing_plan_ids:
-            return vehicle_type_default_pricing_plan_id
+        for default_pricing_plan_pattern in self.DEFAULT_PRICING_PLAN_PATTERNS:
+            vehicle_type_default_pricing_plan_id = default_pricing_plan_pattern.format(vehicle_type=vehicle_type)
+            if vehicle_type_default_pricing_plan_id in defined_pricing_plan_ids:
+                return vehicle_type_default_pricing_plan_id
         if self.DEFAULT_PRICING_PLAN_ID in defined_pricing_plan_ids:
             return self.DEFAULT_PRICING_PLAN_ID
 
