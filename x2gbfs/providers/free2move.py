@@ -486,7 +486,7 @@ class Free2moveProvider(BaseProvider):
         """
         pricing_plan_prefix = self.BUILD_SERIES_PRICING_PLAN_MAPPING.get(buildSeries)
         if not pricing_plan_prefix:
-            logger.warn(f'No pricing_plan_prefix for buildSeries {buildSeries}, using "standard"')
+            logger.warning(f'No pricing_plan_prefix for buildSeries {buildSeries}, using "standard"')
             pricing_plan_prefix = 'standard'
 
         defined_pricing_plan_ids = self._defined_pricing_plan_ids(self.config)
@@ -497,7 +497,7 @@ class Free2moveProvider(BaseProvider):
 
         # Log potentially missing pricing_plan definitions
         if default_pricing_plan_id not in defined_pricing_plan_ids:
-            logger.warn(f'default_pricing_plan_id {default_pricing_plan_id} not defined in config')
+            logger.warning(f'default_pricing_plan_id {default_pricing_plan_id} not defined in config')
 
         return default_pricing_plan_id, all_pricing_plan_ids
 

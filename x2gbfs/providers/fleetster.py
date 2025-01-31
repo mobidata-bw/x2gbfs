@@ -86,7 +86,7 @@ class FleetsterAPI:
                 seconds_to_sleep = (
                     0.5 * (1 + random() / 10) * no_of_login_attempts**2  # noqa: S311 (no cryptographic purpose)
                 )
-                logger.warn(
+                logger.warning(
                     f'Requested token {self.token} was invalid, waiting for {seconds_to_sleep} seconds before retry'
                 )
                 sleep(seconds_to_sleep)
