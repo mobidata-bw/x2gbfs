@@ -6,6 +6,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 - make FREE2MOVE_BASE_URL configurable (must now be provided as env var for free2move providers)
 - round vehicle and station coords to at most six decimal places
 - fix: `free2move_stuttgart` pricing plan, color naming, range and fuel level issues
+- add MOQO provider coono. the MOQO converter still must be extended to support static data
 
 ## 2024-12-19
 - rename Cantamen provider stadtmobil_suedbaden to naturenergie_sharing and update it's system / pricing information
