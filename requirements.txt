@@ -1,5 +1,5 @@
 requests~=2.32.3
 python-decouple~=3.8
-websockets~=14.1
+websockets~=14.2
 xmltodict~=0.13
 unidecode~=1.3
