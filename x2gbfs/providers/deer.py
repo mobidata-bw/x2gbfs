@@ -125,17 +125,12 @@ class Deer(BaseProvider):
 
     def pricing_plan_id(self, vehicle: Dict) -> Optional[str]:
         """
-        Maps deer's vehicle categories to pricing plans (provided viaa config).
-        Note: category seems not to match exactly to the pricing plans, as Tesla
-        is caategorized premium, but only Porsche is listed as exclusive line product.
+        Maps deer's vehicle categories to pricing plans (provided via config).
+        Note: all categories share the same pricing plan
         """
         category = vehicle['category']
-        if category in {'compact', 'midsize', 'city', 'economy', 'fullsize'}:
-            return 'basic_line'
-        if vehicle['brand'] in {'Porsche'}:
-            return 'exclusive_line'
-        if category in {'business', 'premium'}:
-            return 'business_line'
+        if category in {'compact', 'midsize', 'city', 'economy', 'fullsize', 'premium'}:
+            return 'basic_line_hour'
 
         raise OSError(f'No default_pricing_plan mapping for category {category}')
 
@@ -199,6 +194,7 @@ class Deer(BaseProvider):
             'wheel_count': 4,
             'return_constraint': 'roundtrip_station',
             'default_pricing_plan_id': self.pricing_plan_id(fleetster_vehicle),
+            'pricing_plan_ids': ['basic_line_hour', 'basic_line_day', 'basic_line_weekend'],
         }
 
         extended_properties = fleetster_vehicle.get('extended', {}).get('Properties', {})
@@ -224,7 +220,7 @@ class Deer(BaseProvider):
             color_hex = extended_properties['color']
             if color_hex in self.COLOR_NAMES:
                 gbfs_vehicle_type['color'] = self.COLOR_NAMES[color_hex]
-            else:
+            elif color_hex is not None:  # ignore "color": null
                 logger.warning(f'No color hex-to-name mapping for color {color_hex}')
 
         gbfs_vehicle = {
