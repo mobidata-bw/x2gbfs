@@ -17,7 +17,7 @@
                 "per_min_pricing": [ { "start": 0, "end": 0, "interval": 1, "rate": 0 }, { "start": 1, "interval": 1, "rate": 0.38 } ],
                 "plan_id": "compact_car_minute",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22632"
+                "url": "https://www.coono-sharing.de/preise.html#c39600"
             },
             {
                 "currency": "EUR",
@@ -28,7 +28,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 200, "interval": 1, "rate": 0 }, { "start": 201, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "compact_car_day",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22632"
+                "url": "https://www.coono-sharing.de/preise.html#c39600"
             },
             {
                 "currency": "EUR",
@@ -39,7 +39,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 500, "interval": 1, "rate": 0 }, { "start": 501, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "compact_car_week",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22632"
+                "url": "https://www.coono-sharing.de/preise.html#c39600"
             },
             {
                 "currency": "EUR",
@@ -50,7 +50,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 2000, "interval": 1, "rate": 0 }, { "start": 2001, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "compact_car_4weeks",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22632"
+                "url": "https://www.coono-sharing.de/preise.html#c39600"
             },
             {
                 "currency": "EUR",
@@ -60,7 +60,7 @@
                 "per_min_pricing": [ { "start": 0, "end": 0, "interval": 1, "rate": 0 }, { "start": 1, "interval": 1, "rate": 0.42 } ],
                 "plan_id": "small_family_car_minute",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22635"
+                "url": "https://www.coono-sharing.de/preise.html#c39620"
             },
             {
                 "currency": "EUR",
@@ -71,7 +71,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 200, "interval": 1, "rate": 0 }, { "start": 201, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "small_family_car_day",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22635"
+                "url": "https://www.coono-sharing.de/preise.html#c39620"
             },
             {
                 "currency": "EUR",
@@ -82,7 +82,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 500, "interval": 1, "rate": 0 }, { "start": 501, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "small_family_car_week",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22635"
+                "url": "https://www.coono-sharing.de/preise.html#c39620"
             },
             {
                 "currency": "EUR",
@@ -93,7 +93,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 2000, "interval": 1, "rate": 0 }, { "start": 2001, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "small_family_car_4weeks",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c22635"
+                "url": "https://www.coono-sharing.de/preise.html#c39620"
             },
             {
                 "currency": "EUR",
@@ -103,7 +103,7 @@
                 "per_min_pricing": [ { "start": 0, "end": 0, "interval": 1, "rate": 0 }, { "start": 1, "interval": 1, "rate": 0.49 } ],
                 "plan_id": "transporter_minute",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c23468"
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
             },
             {
                 "currency": "EUR",
@@ -114,7 +114,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 200, "interval": 1, "rate": 0 }, { "start": 201, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "transporter_day",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c23468"
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
             },
             {
                 "currency": "EUR",
@@ -125,7 +125,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 500, "interval": 1, "rate": 0 }, { "start": 501, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "transporter_week",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c23468"
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
             },
             {
                 "currency": "EUR",
@@ -136,7 +136,7 @@
                 "per_km_pricing": [ { "start": 0, "end": 2000, "interval": 1, "rate": 0 }, { "start": 2001, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "transporter_4weeks",
                 "price": 2.50,
-                "url": "https://www.coono-sharing.de/preise#c23468"
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
             }
         ],
         "system_information": {
