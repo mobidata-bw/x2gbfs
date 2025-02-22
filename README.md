@@ -4,14 +4,17 @@ x2gbfs is a library, which generates GBFS feed's from various providers.
 
 Currently supported providers:
 
-* deer (via it's fleetster API, provider id: `deer`)
-* VOI Karlsruhe (via Raumobil API, provider id: `voi-raumobil`)
-* Stadtmobil Südbaden (via Cantamen IXSI API, provider id: `stadtmobil_suedbaden`)
-* my-e-car (via Cantamen IXSI API, provider id: `my-e-car`)
+* deer (via it's fleetster API)
+* VOI Karlsruhe (via Raumobil API)
+* various Stadtmobil/Teilauto providers (via Cantamen IXSI API)
+* various MOQO based providers (e.g. Stadtwerke Tauberfranken)
+* DB Flinkster
+* Free2move
+* Cambio Aachen (via Cambio API)
 * Lastenvelo Freiburg (via custom CSV, provider id: `lastenvelo_fr`)
 * NOI OpenDataHub (provider id: `noi`)
 
-To generate a feed for e.g. deer network, switch to the `x2gbfs` project basee dir and execute
+To generate a feed for e.g. deer network, switch to the `x2gbfs` project base dir and execute
 
 ```sh
 DEER_API_URL=URL DEER_USER=USER DEER_PASSWORD=PASSWORD python -m x2gbfs.x2gbfs -p deer -b 'file:out'
@@ -33,15 +36,8 @@ be provided via config/<provider>.json and needs to be updated when that informa
 
 ## Available providers
 
-Currently, a couple of providers are supported:
+Currently, more than 20 providers are supported. For details, see the current state in folder [config/](https://github.com/mobidata-bw/x2gbfs/tree/main/config)
 
-* deer, which uses Fleetster as backend provider,
-* Lastenvelo Freiburg
-* VOI Karlsruhe via backend provider Raumobil
-* Stadtwerk Tauberfranken via backend provider MOQO
-* Carsharing Südtirol via Nature Of Innovation (NOI)'s OpenDataHub
-* Flinkster via db-connect API,
-* and my-e-car, stadtmobil Südbaden and stadtmobil Stuttgart via backend provider Cantamen/IXSI.
 
 ### deer (Fleetster)
 
@@ -80,7 +76,9 @@ copy the config/cambio_aachen config and adapt accordingly.
 
 Note that the pricing plans don't reflect the various available tarifs.
 
-Note also, that Cambio asks users to only request their information once per 24 hours.
+Note also, that Cambio asks users to only request their information
+once per 24 hours. To reflect this in the generated GBFS, it uses a
+[`ttl` of `86400`](https://github.com/mobidata-bw/x2gbfs/blob/main/config/cambio_aachen.json#L89-91) which deviates from x2gbfs' default value (60).
 
 For details, see the [mapping documentation](./docs/mappings/cambio_gbfs_2.3_mapping.md).
 
@@ -105,6 +103,7 @@ To generate the Stadtwerk Tauberfranken GBFS feed, you need to provide the follo
 
 * `MOQO_API_TOKEN=<MOQO Token>`
 
+For details, see the [mapping documentation](./docs/mappings/moqo_gbfs_2.3_mapping.md).
 
 ### Flinkster (DB-Connect)
 
@@ -112,6 +111,8 @@ To generate the Flinkster GBFS feed, you need to provide the following environme
 
 * `FLINKSTER_CLIENT_ID=<FLINKSTER_CLIENT_ID>`
 * `FLINKSTER_SECRET=<FLINKSTER_SECRET>`
+
+For details, see the [mapping documentation](./docs/mappings/flinkster_gbfs_2.3_mapping.md).
 
 ### Free2move
 
