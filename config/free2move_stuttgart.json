@@ -92,5 +92,8 @@
     "provider_data": {
         "location_alias": "stuttgart",
         "location_id": 18
+    },
+    "x2gbfs": {
+        "useCustomBaseUrl": true
     }
 }
