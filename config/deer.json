@@ -61,7 +61,6 @@
             "timezone": "Europe/Berlin",
             "url": "https://www.deer-mobility.de/"
         }
-    },
-    "publication_base_url": "https://data.mfdz.de/mobidata-bw/deer"
+    }
 }
 
