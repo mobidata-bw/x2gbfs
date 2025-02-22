@@ -86,5 +86,7 @@
     "provider-info": {
         "city_id": "AAC"
     },
-    "ttl": 86400
+    "x2gbfs": {
+        "ttl": 86400
+    }
 }

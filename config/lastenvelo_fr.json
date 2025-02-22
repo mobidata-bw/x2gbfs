@@ -34,5 +34,7 @@
             "url": "https://www.lastenvelofreiburg.de/"
         }
     },
-    "ttl": 300
+    "x2gbfs": {
+        "ttl": 300
+    }
 }
