@@ -212,6 +212,7 @@ class Free2moveProvider(BaseProvider):
     # Note: these are deduced from https://www.free2move.com/de/de/car-sharing/stuttgart/
     # and may change from time to time and should be regularly checked.
     BUILD_SERIES_PRICING_PLAN_MAPPING = {
+        'FIAT_500': 'mini',
         'FIAT_500_BEV': 'mini',
         'OPEL_ASTRA': 'standard',
         'OPEL_CORSA': 'standard',
@@ -272,6 +273,7 @@ class Free2moveProvider(BaseProvider):
         # colors currently used in Stuttgart
         '268U': 'weiß',
         'P0WP': 'weiß',
+        '650U': 'weiß',
         '601U': 'schwarz',
         '205U': 'grau',  # mineralgrey
         'M0V9': 'schwarz',  # carbon black

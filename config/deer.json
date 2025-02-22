@@ -85,6 +85,5 @@
             "timezone": "Europe/Berlin",
             "url": "https://www.deer-carsharing.de/"
         }
-    },
-    "publication_base_url": "https://data.mfdz.de/mobidata-bw/deer"
+    }
 }
