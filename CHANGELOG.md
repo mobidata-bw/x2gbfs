@@ -3,6 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## Upcoming release
+- fix: update `deer` pricing plans
 - make FREE2MOVE_BASE_URL configurable (must now be provided as env var for free2move providers)
 - round vehicle and station coords to at most six decimal places
 - fix: `free2move_stuttgart` pricing plan, color naming, range and fuel level issues
