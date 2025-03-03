@@ -4,7 +4,8 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## 2024-03-03
 - fix: update `deer` pricing plans
-- add new option `protected` option (`boolean`, default is `False`), which can be configured per feed in the config section (e.g. `'x2gbfs: { "protected": True }`). If set, instead of x2gbfs parameter `baseUrl` the optional parameter `protectedBaseUrl` is used in gbfs.json`
+- moved (optional) feed config property `ttl` to `x2gbfs` section.
+- add new option `useCustomBaseUrl` option (`boolean`, default is `False`), which can be configured per feed in the config section (e.g. `'x2gbfs: { "useCustomBaseUrl": True }`). If set, instead of x2gbfs parameter `baseUrl` the optional parameter `customBaseUrl` is used in gbfs.json`
 - make FREE2MOVE_BASE_URL configurable (must now be provided as env var for free2move providers)
 - round vehicle and station coords to at most six decimal places
 - fix: `free2move_stuttgart` pricing plan, color naming, range and fuel level issues

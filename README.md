@@ -128,9 +128,9 @@ Note that Free2move is a feed that contains GDPR relevant vehicle
 information (the vehicle Id of free floating vehicles is not rotated by
 free2move after rentals). This feed should not be made publicly
 available.
-For this reason, property `x2gbfs/protected` is set to `true`. When
-`x2gbfs` is started with param  `--protectedBaseUrl` (shorthand `-r`),
-this base URL is used in gbfs.json.
+For this reason, property `x2gbfs/useCustomBaseUrl` is set to `true`. When
+`x2gbfs` is started with param  `--customBaseUrl` (shorthand `-r`),
+this base URL is used in gbfs.json. The service under this URL should be access protected.
 
 For details, see the [mapping documentation](./docs/mappings/free2move_gbfs_2.3_mapping.md).
 
