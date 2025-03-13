@@ -82,14 +82,6 @@ once per 24 hours. To reflect this in the generated GBFS, it uses a
 
 For details, see the [mapping documentation](./docs/mappings/cambio_gbfs_2.3_mapping.md).
 
-
-### VOI (Raumobil)
-
-To generate the voi raumobil GBFS feed, you need to provide the following environment variables:
-
-* `VOI_API_URL=https://url.org`
-* `VOI_USER=<your username>`
-* `VOI_PASSWORD=<your password>`
  
 ### NOI OpenDataHub
 
