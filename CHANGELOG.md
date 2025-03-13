@@ -2,7 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## 2024-03-03
+## 2025-03-13
+- remove voi_raumobil provider
+
+## 2025-03-03
 - fix: update `deer` pricing plans
 - moved (optional) feed config property `ttl` to `x2gbfs` section.
 - add new option `useCustomBaseUrl` option (`boolean`, default is `False`), which can be configured per feed in the config section (e.g. `'x2gbfs: { "useCustomBaseUrl": True }`). If set, instead of x2gbfs parameter `baseUrl` the optional parameter `customBaseUrl` is used in gbfs.json`

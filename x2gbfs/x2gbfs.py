@@ -22,7 +22,6 @@ from x2gbfs.providers import (
     LastenVeloFreiburgProvider,
     MoqoProvider,
     NoiProvider,
-    VoiRaumobil,
 )
 
 logging.basicConfig()
@@ -51,12 +50,6 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
 
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
         return Deer(fleetsterApi)
-    if provider == 'voi-raumobil':
-        api_url = config('VOI_API_URL')
-        api_user = config('VOI_USER')
-        api_password = config('VOI_PASSWORD')
-
-        return VoiRaumobil(api_url, api_user, api_password)
     if provider.startswith('cambio_'):
         return CambioProvider(feed_config)
     if (
