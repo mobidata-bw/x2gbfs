@@ -213,6 +213,10 @@ class MoqoProvider(BaseProvider):
             logger.info('Vehicle %s has no station (is in use), will be removed from feed', vehicle_id)
             return  # ignore vehicle without station
 
+        # set is_reserved to False if realtime information shall not be provided
+        if self.config['feed_data'].get('alerts'):
+            gbfs_vehicle['is_reserved'] = False
+
         if vehicle.get('cruising_range') is not None and vehicle['cruising_range'].get('value'):
             gbfs_vehicle['current_range_meters'] = vehicle['cruising_range']['value']['cents'] * 1000
 

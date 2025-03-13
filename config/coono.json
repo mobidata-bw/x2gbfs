@@ -99,7 +99,50 @@
                 "currency": "EUR",
                 "description": "COONO 2 RENT Minutentarif: 0,49€, 1. Minute frei. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
-                "name": " Kategorie XXL - pro Minute",
+                "name": " Kategorie XL - pro Minute",
+                "per_min_pricing": [ { "start": 0, "end": 0, "interval": 1, "rate": 0 }, { "start": 1, "interval": 1, "rate": 0.49 } ],
+                "plan_id": "van_minute",
+                "price": 2.50,
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
+            },
+            {
+                "currency": "EUR",
+                "description": "COONO 2 RENT Tagestarif: 94,00€ inkl. 200km, danach 0,25€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": " Kategorie XL - pro Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 94.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 200, "interval": 1, "rate": 0 }, { "start": 201, "interval": 1, "rate": 0.25 } ],
+                "plan_id": "van_day",
+                "price": 2.50,
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
+            },
+            {
+                "currency": "EUR",
+                "description": "COONO 2 RENT Wochentarif: 470,00€ inkl. 500km, danach 0,25€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": " Kategorie XL - pro Woche",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 470.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 500, "interval": 1, "rate": 0 }, { "start": 501, "interval": 1, "rate": 0.25 } ],
+                "plan_id": "van_week",
+                "price": 2.50,
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
+            },
+            {
+                "currency": "EUR",
+                "description": "COONO 2 RENT 4-Wochentarif: 1880,00€ inkl. 2000km, danach 0,25€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": " Kategorie XL - pro 4 Wochen",
+                "per_min_pricing": [ { "start": 0, "interval": 40320, "rate": 1880.0 } ],
+                "per_km_pricing": [ { "start": 0, "end": 2000, "interval": 1, "rate": 0 }, { "start": 2001, "interval": 1, "rate": 0.25 } ],
+                "plan_id": "van_4weeks",
+                "price": 2.50,
+                "url": "https://www.coono-sharing.de/preise.html#c39628"
+            },
+            {
+                "currency": "EUR",
+                "description": "COONO 2 RENT Minutentarif: 0,49€, 1. Minute frei. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": " Kategorie XL - pro Minute",
                 "per_min_pricing": [ { "start": 0, "end": 0, "interval": 1, "rate": 0 }, { "start": 1, "interval": 1, "rate": 0.49 } ],
                 "plan_id": "transporter_minute",
                 "price": 2.50,
@@ -109,7 +152,7 @@
                 "currency": "EUR",
                 "description": "COONO 2 RENT Tagestarif: 94,00€ inkl. 200km, danach 0,25€/km. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
-                "name": " Kategorie XXL - pro Tag",
+                "name": " Kategorie XL - pro Tag",
                 "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 94.0 } ],
                 "per_km_pricing": [ { "start": 0, "end": 200, "interval": 1, "rate": 0 }, { "start": 201, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "transporter_day",
@@ -120,7 +163,7 @@
                 "currency": "EUR",
                 "description": "COONO 2 RENT Wochentarif: 470,00€ inkl. 500km, danach 0,25€/km. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
-                "name": " Kategorie XXL - pro Woche",
+                "name": " Kategorie XL - pro Woche",
                 "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 470.0 } ],
                 "per_km_pricing": [ { "start": 0, "end": 500, "interval": 1, "rate": 0 }, { "start": 501, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "transporter_week",
@@ -131,7 +174,7 @@
                 "currency": "EUR",
                 "description": "COONO 2 RENT 4-Wochentarif: 1880,00€ inkl. 2000km, danach 0,25€/km. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
-                "name": " Kategorie XXL - pro 4 Wochen",
+                "name": " Kategorie XL - pro 4 Wochen",
                 "per_min_pricing": [ { "start": 0, "interval": 40320, "rate": 1880.0 } ],
                 "per_km_pricing": [ { "start": 0, "end": 2000, "interval": 1, "rate": 0 }, { "start": 2001, "interval": 1, "rate": 0.25 } ],
                 "plan_id": "transporter_4weeks",
@@ -172,3 +215,4 @@
         "team_id": "1883427003"
     }
 }
+
