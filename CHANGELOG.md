@@ -3,6 +3,7 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## 2025-03-13
+- transform coono into static feed
 - remove voi_raumobil provider
 
 ## 2025-03-03
