@@ -214,7 +214,7 @@ class MoqoProvider(BaseProvider):
             return  # ignore vehicle without station
 
         # set is_reserved to False if realtime information shall not be provided
-        if self.config['feed_data'].get('alerts'):
+        if self.config.get('x2gbfs', {}).get('static', False):
             gbfs_vehicle['is_reserved'] = False
 
         if vehicle.get('cruising_range') is not None and vehicle['cruising_range'].get('value'):

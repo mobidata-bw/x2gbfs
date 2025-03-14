@@ -213,6 +213,8 @@
     },
     "provider_data": {
         "team_id": "1883427003"
+    },
+    "x2gbfs": {
+        "static": true
     }
 }
-
