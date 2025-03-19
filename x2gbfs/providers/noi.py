@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 import requests
 
@@ -13,8 +13,8 @@ class NoiProvider(BaseProvider):
     STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingStation?limit=500&offset=0&shownull=false&distinct=true'
     CAR_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar?limit=500&offset=0&shownull=false&distinct=true'
 
-    def __init__(self):
-        pass
+    def __init__(self, feed_config: dict[str, Any]):
+        self.config = feed_config
 
     def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         response = requests.get(self.CAR_URL, timeout=20)

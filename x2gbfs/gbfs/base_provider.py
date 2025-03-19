@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Any, Dict, Generator, Optional, Tuple
+from typing import Any, Dict, Generator, List, Optional, Tuple
 
 from x2gbfs.util import unidecode_with_german_umlauts
 
@@ -8,6 +8,47 @@ logger = logging.getLogger('x2gbfs.base_provider')
 
 
 class BaseProvider:
+
+    def __init__(self, feed_config: dict[str, Any]):
+        self.config = feed_config
+
+    def load_system_information(self) -> Dict[str, Any]:
+        """
+        Retrieves the system_information for this provider.
+        The default implementation returns the provider config's
+        feed_data/system_information section.
+
+        If the subclassed provider does not overwrite this
+        method, the config MUST contain a feed_data/system_information
+        section.
+
+        Custom implementations might use provider specific data
+        to provide system_information.
+        """
+        return self.config['feed_data']['system_information']
+
+    def load_pricing_plans(self) -> Optional[List[Dict[str, Any]]]:
+        """
+        Retrieves a list of pricing_plans for this provider.
+        The default implementation returns the provider config's
+        feed_data/pricing_plans section, if defined.
+
+        Custom implementations might use provider specific data
+        to provide pricing_plans.
+        """
+        return self.config.get('feed_data', {}).get('pricing_plans')
+
+    def load_alerts(self) -> Optional[List[Dict[str, Any]]]:
+        """
+        Retrieves a list of alerts for this provider.
+        The default implementation returns the provider config's
+        feed_data/alerts section, if defined.
+
+        Custom implementations might use provider specific data
+        to provide alerts.
+        """
+        return self.config.get('feed_data', {}).get('alerts')
+
     def load_stations(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         """
         Retrieves stations from the providers API and converts them

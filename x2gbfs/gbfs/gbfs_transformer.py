@@ -12,6 +12,24 @@ class GbfsTransformer:
     # see https://wiki.openstreetmap.org/wiki/Precision_of_coordinates
     MAX_COORDINATE_PRECISION = 6
 
+    def load_system_information(self, provider: BaseProvider) -> Dict[str, Any]:
+        """
+        Loads system_information information from the provider.
+        """
+        return provider.load_system_information()
+
+    def load_pricing_plans(self, provider: BaseProvider) -> Optional[List[Dict[str, Any]]]:
+        """
+        Loads pricing plans information from the provider.
+        """
+        return provider.load_pricing_plans()
+
+    def load_alerts(self, provider: BaseProvider) -> Optional[List[Dict[str, Any]]]:
+        """
+        Loads alerts information from the provider.
+        """
+        return provider.load_alerts()
+
     def load_stations_and_vehicles(
         self, provider: BaseProvider
     ) -> Tuple[Optional[List], Optional[List], Optional[List], Optional[List], Optional[List], int]:

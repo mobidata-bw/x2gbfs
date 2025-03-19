@@ -1,4 +1,3 @@
-import copy
 import json
 import logging
 from datetime import datetime
@@ -22,21 +21,19 @@ class GbfsWriter:
 
     def write_gbfs_feed(
         self,
-        config: Dict,
         destFolder: str,
+        system_information: Dict,
         station_information: Optional[List[Dict]],
         station_status: Optional[List[Dict]],
         vehicle_types: Optional[List[Dict]],
         vehicles: Optional[List[Dict]],
         geofencing_zones: Optional[List[Dict]],
+        pricing_plans: Optional[List[Dict]],
+        alerts: Optional[List[Dict]],
         base_url: str,
         timestamp: int,
         ttl: int = 60,
     ) -> None:
-        base_url = base_url or config['publication_base_url']
-        pricing_plans = config['feed_data'].get('pricing_plans')
-        alerts = config['feed_data'].get('alerts')
-        system_information = copy.deepcopy(config['feed_data']['system_information'])
         feed_language = system_information['language']
 
         Path(destFolder).mkdir(parents=True, exist_ok=True)
