@@ -1,3 +1,4 @@
+import copy
 import json
 import logging
 import os
@@ -40,16 +41,16 @@ X2GBFS_DEFAULT_CONFIG = {
 
 def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
     if provider == 'example':
-        return ExampleProvider()
+        return ExampleProvider(feed_config)
     if provider == 'lastenvelo_fr':
-        return LastenVeloFreiburgProvider()
+        return LastenVeloFreiburgProvider(feed_config)
     if provider == 'deer':
         api_url = config('DEER_API_URL')
         api_user = config('DEER_USER')
         api_password = config('DEER_PASSWORD')
 
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
-        return Deer(fleetsterApi)
+        return Deer(feed_config, fleetsterApi)
     if provider.startswith('cambio_'):
         return CambioProvider(feed_config)
     if (
@@ -67,7 +68,7 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
     ]:
         return MoqoProvider(feed_config)
     if provider in ['noi']:
-        return NoiProvider()
+        return NoiProvider(feed_config)
     if provider.startswith('free2move_'):
         return Free2moveProvider(feed_config, Free2moveAPI())
 
@@ -135,14 +136,20 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str, custom_base
     else:
         feed_base_url = f'{base_url}/{provider}'
 
+    system_information = transformer.load_system_information(extractor)
+    pricing_plans = transformer.load_pricing_plans(extractor)
+    alerts = transformer.load_alerts(extractor)
+
     GbfsWriter().write_gbfs_feed(
-        feed_config,
         f'{output_dir}/{provider}',
+        system_information,
         info,
         status,
         vehicle_types,
         vehicles,
         geofencing_zones,
+        pricing_plans,
+        alerts,
         feed_base_url,
         last_reported,
         ttl=get_x2gbfs_config_value(feed_config, 'ttl'),
