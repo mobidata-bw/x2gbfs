@@ -20,6 +20,7 @@ from x2gbfs.providers import (
     FleetsterAPI,
     Free2moveAPI,
     Free2moveProvider,
+    GbfsLightProvider,
     LastenVeloFreiburgProvider,
     MoqoProvider,
     NoiProvider,
@@ -71,6 +72,8 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         return NoiProvider(feed_config)
     if provider.startswith('free2move_'):
         return Free2moveProvider(feed_config, Free2moveAPI())
+    if feed_config.get('x2gbfs', {}).get('provider') == 'gbfs-light':
+        return GbfsLightProvider(feed_config)
 
     raise ValueError(f'Unknown config {provider}')
 

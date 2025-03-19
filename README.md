@@ -8,11 +8,13 @@ Currently supported providers:
 * VOI Karlsruhe (via Raumobil API)
 * various Stadtmobil/Teilauto providers (via Cantamen IXSI API)
 * various MOQO based providers (e.g. Stadtwerke Tauberfranken)
+* various cargo bike systems of Herrenberg city, provided in a static, lightweight json close to GBFS ("gbfs-light")
 * DB Flinkster
 * Free2move
 * Cambio Aachen (via Cambio API)
 * Lastenvelo Freiburg (via custom CSV, provider id: `lastenvelo_fr`)
 * NOI OpenDataHub (provider id: `noi`)
+
 
 To generate a feed for e.g. deer network, switch to the `x2gbfs` project base dir and execute
 
