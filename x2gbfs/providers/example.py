@@ -1,5 +1,5 @@
 import logging
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 from x2gbfs.gbfs.base_provider import BaseProvider
 
@@ -35,8 +35,8 @@ class ExampleProvider(BaseProvider):
         }
     }
 
-    def __init__(self):
-        pass
+    def __init__(self, feed_config: dict[str, Any]):
+        self.config = feed_config
 
     def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         """
