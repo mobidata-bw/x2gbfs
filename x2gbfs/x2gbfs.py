@@ -23,6 +23,7 @@ from x2gbfs.providers import (
     GbfsLightProvider,
     LaraToGoProvider,
     LastenVeloFreiburgProvider,
+    MikarProvider,
     MoqoProvider,
     OpenDataHubProvider,
 )
@@ -53,6 +54,13 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
 
         fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
         return Deer(feed_config, fleetsterApi)
+    if provider == 'mikar':
+        api_url = config('MIKAR_API_URL')
+        api_user = config('MIKAR_USER')
+        api_password = config('MIKAR_PASSWORD')
+
+        fleetsterApi = FleetsterAPI(api_url, api_user, api_password)
+        return MikarProvider(feed_config, fleetsterApi)
     if provider.startswith('cambio_'):
         return CambioProvider(feed_config)
     if (

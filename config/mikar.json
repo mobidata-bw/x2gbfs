@@ -1,0 +1,99 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Transporter Stundentarif, 7,90 EUR je Stunde, 0,15 €/km",
+                "is_taxable": false,
+                "name": "Transporter Stundentarif",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 7.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.15 } ],
+                "plan_id": "transporter_hour",
+                "price": 0,
+                "url": "https://mikar.de/fahrzeuge-tarife/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Transporter Tagestarif, 7,90 EUR je Stunde, 300km inklusive, danach 300km: 0,15 €/km",
+                "is_taxable": false,
+                "name": "Transporter Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 79.90 } ],
+                "per_km_pricing": [ { "start": 0, "end": 300, "interval": 1, "rate": 0.0 }, { "start": 300, "interval": 1, "rate": 0.15 }  ],
+                "plan_id": "transporter_day",
+                "price": 0,
+                "url": "https://mikar.de/fahrzeuge-tarife/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Fullsize Stundentarif, 6,90 EUR je Stunde, 0,38 €/km",
+                "is_taxable": false,
+                "name": "Fullsize Stundentarif",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 6.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "fullsize_hour",
+                "price": 0,
+                "url": "https://mikar.de/fahrzeuge-tarife/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Fullsize Tagestarif, 6,90 EUR je Stunde, 0,38 €/km",
+                "is_taxable": false,
+                "name": "Fullsize Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 49.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "fullsize_day",
+                "price": 0,
+                "url": "https://mikar.de/fahrzeuge-tarife/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Economy Stundentarif, 5,50 EUR je Stunde, 0,33 €/km",
+                "is_taxable": false,
+                "name": "Economy Stundentarif",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 5.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "economy_hour",
+                "price": 0,
+                "url": "https://mikar.de/fahrzeuge-tarife/"
+            },
+            {
+                "currency": "EUR",
+                "description": "Economy Tagestarif, 39,90 EUR je Tag, 0,33 €/km",
+                "is_taxable": false,
+                "name": "Economy Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 39.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "economy_day",
+                "price": 0,
+                "url": "https://mikar.de/fahrzeuge-tarife/"
+            }
+        ],
+        "system_information": {
+            "email": "info@mikar.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "license_id": "DL-DE-BY-2.0",
+            "attribution_organization_name": "mikar GmbH",
+            "attribution_url": "https://mikar.de/",
+            "name": "mikar",
+            "operator": "mikar GmbH",
+            "privacy_url": "https://mikar.de/datenschutz/",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://mikar.de/yet_unknown",
+                    "store_uri": "https://apps.apple.com/de/app/mikar/id1361199550"
+                },
+                "ios": {
+                    "discovery_uri": "https://mikar.de/yet_unknown",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.fleetster.mikar"
+                }
+            },
+            "system_id": "mikar",
+            "terms_last_updated": "2025-03-25",
+            "terms_url": "https://mikar.de/agb/",
+            "timezone": "Europe/Berlin",
+            "url": "https://mikar.de/"
+        }
+    }
+}
