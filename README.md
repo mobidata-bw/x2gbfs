@@ -49,8 +49,17 @@ To generate the deer GBFS feed, you need to provide the following environment va
 * `DEER_USER=<your username>`
 * `DEER_PASSWORD=<your password>`
 
-For details, see the [mapping documentation](./docs/mappings/deer_gbfs_2.3_mapping.md).
+For details, see the [mapping documentation](./docs/mappings/fleetster_gbfs_2.3_mapping.md).
 
+### mikar (Fleetster)
+
+To generate the mikar GBFS feed, you need to provide the following environment variables:
+
+* `MIKAR_API_URL=https://mikar.fleetster.de`
+* `MIKAR_USER=<your username>`
+* `MIKAR_PASSWORD=<your password>`
+
+For details, see the [mapping documentation](./docs/mappings/fleetster_gbfs_2.3_mapping.md).
 
 ### Lastenvelo Freiburg (Custom)
 

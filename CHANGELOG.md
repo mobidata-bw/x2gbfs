@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## Upcoming release
+- add (Fleetster-based) mikar carsharing service. With this change, the Deer provider code has been generalized to `FleetsterProvider` so other Fleetster based car sharing providers should be able to reuse it via subclassing.
+
 ## 2025-06-25
 - update teilauto_neckar-alb pricing
 
