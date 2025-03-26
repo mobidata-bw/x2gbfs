@@ -1,6 +1,6 @@
 # GBFS-Light to GBFS Mapping
 
-This document map "[GBFS-Light](https://oda-8059lnsdc-jens-ochsenmeiers-projects.vercel.app/schema/gbfs-light)" format intended for simple static feeds to GBFS.
+This document maps "[GBFS-Light](https://oda-8059lnsdc-jens-ochsenmeiers-projects.vercel.app/schema/gbfs-light)" format intended for simple static feeds to GBFS.
 Credits to Jens Ochsenmeier for suggesting this simplyfied version, which can be
 generated from a simple CSV table easily maintainable by responsible parties.
 
@@ -38,7 +38,7 @@ This specification describes the mapping of "GBFS-Light" format to GBFS.
 
 This section gives a high level overview of the "GBFS-Light" format and the defined mapping to GBFS.
 
-The GBFS-Light endpoint returns a JSON file. It's `system` property lists. For a single system entry, this mapping describes how it is mapped to a complete GBFS feed.
+The GBFS-Light endpoint returns a JSON file. It provides a `system` property which lists all available systems. For a single system entry, this mapping describes how it is mapped to a complete GBFS feed.
 
 ## Files
 
@@ -48,11 +48,28 @@ Standard file, feed will be provided in feed language `de` only.
 
 ### gbfs_versions.json
 
-Optional file, will not be provided. Only GBFSv2.3 supported.
+Optional file, will not be provided. Only GBFS v2.3 supported.
 
 ### system_information.json
 
 System information is provided via GBFS-Light and augmented by statically defined defaults from the feed_config (e.g. [config/herrenberg_stadtrad.json](../../config/herrenberg_stadtrad.json).
+The following properties are copied from the gbfs light system, if provided:
+
+* attribution_organization_name
+* attribution_url
+* feed_contact_email
+* opening_hours
+* language
+* license_id
+* license_url
+* name
+* operator
+* phone_number
+* privacy_url
+* purchase_url
+* terms_url
+* url
+
 
 ### vehicle_types.json
 
@@ -110,9 +127,9 @@ GBFS Field | Mapping
 `parking_type` | -
 `parking_hoop` | -
 `contact_phone` | -
-`capacity` | -
+`capacity` | `station['capacity']`
 `vehicle_capacity`  |  -
-`vehicle_type_capacity` | -
+`vehicle_type_capacity` | for every vehicle type listed in `station['vehicle_types']` an entry with key corresponding to normalized vehicle type name and `station['vehicle_types'][n][available]`
 `is_valet_station`  | -
 `is_charging_station` |  -
 `rental_uris` | for web, `station['url']`, if provided
