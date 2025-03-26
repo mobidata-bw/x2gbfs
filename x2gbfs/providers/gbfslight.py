@@ -99,6 +99,11 @@ class GbfsLightProvider(BaseProvider):
                 'addresss': ' '.join([elem['address'].get('street'), elem['address'].get('houseNo')]),
                 'post_code': elem['address'].get('post_code') or elem['address'].get('plz'),
                 'city': elem['address'].get('city'),
+                'capacity': elem['capacity'],
+                'vehicle_type_capacity': [
+                    {self._normalize_id(vt['name']): vt['available_count']}
+                    for vt in elem['vehicle_types']
+                ],
             }
 
             if 'url' in elem:
