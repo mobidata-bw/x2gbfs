@@ -19,20 +19,11 @@ class GbfsLightProvider(BaseProvider):
         self.url = feed_config['provider_data']['url']
         # TODO gbfs-light should publish a system_id which can be used to match system
         self.system_index = feed_config['provider_data']['index']
-        self.vehicle_name_to_id_map = {}
-        self.vehicle_type_cnt = 0
 
     def _load_system(self):
         if self.gbfslight is None:
             self.gbfslight = get(self.url).json()
         return self.gbfslight['system'][self.system_index]
-
-    def _map_vehicle_name_to_id(self, vehicle_name: str) -> str:
-        if vehicle_name not in self.vehicle_name_to_id_map:
-            self.vehicle_type_cnt += 1
-            self.vehicle_name_to_id_map[vehicle_name] = f'vehicle_type_{self.vehicle_type_cnt}'
-
-        return self.vehicle_name_to_id_map[vehicle_name]
 
     def load_system_information(self) -> dict[str, Any]:
         """
@@ -40,7 +31,6 @@ class GbfsLightProvider(BaseProvider):
         It merges the provider config's
         feed_data/system_information section with information
         provided via gbfs-light system.
-
         """
         system = self._load_system()
 
@@ -79,7 +69,7 @@ class GbfsLightProvider(BaseProvider):
         gbfs_vehicles_map: dict[str, Any] = {}
 
         for vt in system['vehicle_types']:
-            vehicle_type_id = self._map_vehicle_name_to_id(vt['name'])
+            vehicle_type_id = self._normalize_id(vt['name'])
 
             gbfs_vehicle_type = {
                 'vehicle_type_id': vehicle_type_id,
@@ -122,7 +112,7 @@ class GbfsLightProvider(BaseProvider):
                 'last_reported': default_last_reported,
                 'num_bikes_available': sum([vt['available_count'] for vt in elem['vehicle_types']]),
                 'vehicle_types_available': [
-                    {'vehicle_type_id': self._map_vehicle_name_to_id(vt['name']), 'count': vt['available_count']}
+                    {'vehicle_type_id': self._normalize_id(vt['name']), 'count': vt['available_count']}
                     for vt in elem['vehicle_types']
                 ],
             }

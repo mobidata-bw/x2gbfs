@@ -63,7 +63,7 @@ Vehicle Types are extracted from the `system/vehicle_types` section:
 
 GBFS Field | Mapping
 --- | ---
-`vehicle_type_id` |  Generated id (`vehicle_type_<cnt>`), for every new vehicle_type name, a new id is generated.
+`vehicle_type_id` |  Normalized vehicle_type name.
 `form_factor` | `vehicle_type['form_factor']`
 `rider_capacity`| -
 `cargo_volume_capacity` | -
@@ -129,7 +129,7 @@ GBFS Field | Mapping
 --- | ---
 `station_id` | `station['id']`
 `num_bikes_available` | sum of all `station["vehicle_types"]["available_count"]`
-`vehicle_types_available` | Per `station["vehicle_types"]`: `station["vehicle_types"]["available_count"]`, `vehicle_type_id` is generated, see `vehicle_types.json` above
+`vehicle_types_available` | Per `station["vehicle_types"]`: `station["vehicle_types"]["available_count"]`, `vehicle_type_id` corresponds to normalised vehicle typr name, see `vehicle_types.json` above
 `num_docks_available` | -
 `vehicle_docks_available` | -
 `num_docks_disabled` | -
