@@ -1,0 +1,29 @@
+{
+    "feed_data": {
+        "alerts": [
+           {
+            "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
+        "pricing_plans": [],
+        "system_information": {
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "system_id": "herrenberg_stadtrad",
+            "timezone": "Europe/Berlin"
+        }
+    },
+    "provider_data": {
+        "url": "https://www.munigrid.de/api/dataset/download?key=lastenraeder&org=hbg&distribution=gbfs",
+        "index": 0
+    },
+    "x2gbfs": {
+        "static": true,
+        "provider": "gbfs-light"
+    }
+}

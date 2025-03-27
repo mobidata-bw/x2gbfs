@@ -40,9 +40,10 @@ class Deer(BaseProvider):
     CURRENT_RANGE_METERS = 50000
     IGNORABLE_BOOKING_STATES = ['canceled', 'rejected', 'keyreturned']
 
-    def __init__(self, api):
+    def __init__(self, feed_config: dict[str, Any], api):
+        self.config = feed_config
         self.api = api
-        self.stationIdCache = set()
+        self.stationIdCache: set[str] = set()
 
     def all_stations(self) -> Generator[Dict, None, None]:
         """

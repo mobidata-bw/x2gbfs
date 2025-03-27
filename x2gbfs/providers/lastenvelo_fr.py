@@ -36,6 +36,9 @@ class LastenVeloFreiburgProvider(BaseProvider):
 
     lastenvelo_csv: str = ''
 
+    def __init__(self, feed_config: dict[str, Any]):
+        self.config = feed_config
+
     def _load_lastenvelo_csv(self) -> None:
         response = requests.get(
             self.LASTENVELO_API_URL, headers={'User-Agent': 'x2gbfs +https://github.com/mobidata-bw/'}, timeout=5
