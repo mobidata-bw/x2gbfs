@@ -1,7 +1,7 @@
 
-# deer to GBFS Mapping
+# Fleetster to GBFS Mapping
 
-This document map deer's sharing API to GBFS.
+This document map Fleetster's sharing API to GBFS.
 
 # Reference version
 
@@ -29,7 +29,7 @@ This documentation refers to **[v2.3](https://github.com/MobilityData/gbfs/blob/
 
 ## Introduction
 
-This specification describes the mapping of car-sharing provider [deer](https://www.deer-carsharing.de/)'s API to GBFS.
+This specification describes the mapping of fleetster-baseds car-sharing providers like [deer](https://www.deer-carsharing.de/) or [mikar](https://www.mikar.de/) to GBFS.
 
 deer GmbH uses Fleetster as booking service provider. Besides the standard Fleetster API, deer defines a
 couple of custom properties, that should e taken into account when mapping to GBFS.
@@ -57,9 +57,9 @@ Optional file, will not be provided. Only GBFSv2.3 supported.
 
 ### system_information.json
 
-System information is manually extracted from the providers homepage. Only the real configuration in [config/deer.json](../../config/deer.json) is relevant.
+System information is manually extracted from the providers homepage.
 
-Note: According to fleetster/deer, currently no rental_app uri's exist.
+Note: According to fleetster, currently no rental_app uri's exist.
 
 
 ### vehicle_types.json
@@ -83,13 +83,13 @@ GBFS Field | Mapping
 `cargo_load_capacity` | -
 `propulsion_type` | vehicle[‘engine’]<br /><br /><ul><li>`electric => electric`</li></ul>Others currently not in use. Converter should report an error if not and ignore this vehicle.
 `eco_label` | -
-`max_range_meters` | Not provided by fleetster/deer. Set to `200000` for all vehicle types (200km)
+`max_range_meters` | Not provided by fleetster. Set to `200000` for all vehicle types (200km)
 `name` | normalized vehicle['brand'] + normalized vehicle['model']
 `vehicle_accessories` | `air_conditioning` if `vehicle['extended']['Properties']['aircondition']`<br/>`doors_${vehicle['extended']['Properties']['doors']}` <br/> `navigation` if `vehicle['extended']['Properties']['navigation']`
 `g_CO2_km` |
 `vehicle_image` |
 `make` | normalized `brand`
-`model` | `vehicle.extended.Properties.color` mapped to a (German language) color name. For specific mappings, see [deer.py](x2gbfs/providers/deer.py)
+`model` | `vehicle.extended.Properties.color` mapped to a (German language) color name. For specific mappings, see [fleetster.py](x2gbfs/providers/fleetster.py)
 `wheel_count` | `4`
 `max_permitted_speed` | `vehicle['extended']['Properties']['vMax']`
 `rated_power` | `vehicle['extended']['Properties']['horsepower'] * 736` (1 PS = 0,736 kW)
@@ -130,7 +130,7 @@ GBFS Field | Mapping
 `vehicle_capacity`  |
 `vehicle_type_capacity` |
 `is_valet_station`  |
-`is_charging_station` | `true` (every deer station has at least one charging point)
+`is_charging_station` | Fleetster does not provide this information. For some providers, external knowledge allows setting it to `true` (i.e. for deer).
 `rental_uris` | No information available
 
 
