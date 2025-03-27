@@ -101,8 +101,7 @@ class GbfsLightProvider(BaseProvider):
                 'city': elem['address'].get('city'),
                 'capacity': elem['capacity'],
                 'vehicle_type_capacity': [
-                    {self._normalize_id(vt['name']): vt['available_count']}
-                    for vt in elem['vehicle_types']
+                    {self._normalize_id(vt['name']): vt['available_count']} for vt in elem['vehicle_types']
                 ],
             }
 
