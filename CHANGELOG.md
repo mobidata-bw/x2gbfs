@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-##
+## 2025-03-28
 - set free2move return_constraint to `hybrid`
 - remove zeag_energie provider
 
