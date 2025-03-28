@@ -60,7 +60,6 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         return CantamenIXSIProvider(feed_config)
     if provider in [
         'stadtwerk_tauberfranken',
-        'zeag_energie',
         'flinkster_carsharing',
         'oberschwabenmobil',
         'gmuend_bewegt',
