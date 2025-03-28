@@ -126,7 +126,7 @@ GBFS Field | Mapping
 `max_permitted_speed` | -
 `rated_power` | -
 `default_reserve_time` | -
-`return_constraint`| Always `free_floating`
+`return_constraint`| Always `hybrid`
 `vehicle_assets`| -
 `seats` | `row['seats']`
 `default_pricing_plan_id`| `{pricing_plan_prefix}_minutes`, where `pricing_plan_prefix` is deduced from a hard coded `buildSeries to prefix mapping, and `standard`, if none matches.

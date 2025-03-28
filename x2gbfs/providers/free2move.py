@@ -464,7 +464,7 @@ class Free2moveProvider(BaseProvider):
             'wheel_count': 4,
             'make': make,
             'model': model,
-            'return_constraint': 'free_floating',
+            'return_constraint': 'hybrid',
             'vehicle_image': elem['imageUrl'].format(density='2x'),
         }
 
