@@ -51,7 +51,9 @@ class Deer(BaseProvider):
         * declare extended.PublicCarsharing.hasPublicCarsharing == true
         """
         for location in self.api.all_stations():
-            if not location['deleted'] and location['extended']['PublicCarsharing']['hasPublicCarsharing']:
+            if not location.get('deleted', False) and location.get('extended', {}).get('PublicCarsharing', {}).get(
+                'hasPublicCarsharing', False
+            ):
                 self.stationIdCache.add(location['_id'])
                 yield location
 
