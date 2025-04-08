@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-04-08
+- update gruene-flotte_freiburg pricing
+
 ## 2025-04-03
 - fix: set default value for `deer` hasPublicCarsharing
 
