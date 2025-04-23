@@ -350,6 +350,9 @@ class FleetsterProvider(BaseProvider):
             accessories.append('air_conditioning')
         if 'navigation' in extended_properties and extended_properties['navigation'] is True:
             accessories.append('navigation')
+        transmission = fleetster_vehicle.get('transmission')
+        if transmission in ['automatic', 'manuel']:
+            accessories.append(transmission)
         if len(accessories) > 0:
             gbfs_vehicle_type['vehicle_accessories'] = accessories
 
