@@ -138,7 +138,9 @@ class FleetsterProvider(BaseProvider):
         '#bebbbb': 'silber',
         '#242424': 'dunkelgrau',
         '#4693b6': 'blau',
+        '#025f8a': 'blau',
         '#4ba003': 'dunkelgrün',
+        '#367303': 'dunkelgrün',
     }
     MAX_RANGE_METERS = 200000
     CURRENT_RANGE_METERS = 50000
@@ -303,7 +305,7 @@ class FleetsterProvider(BaseProvider):
                 'post_code': elem.get('postcode'),
                 'city': elem.get('city'),  # Non-standard
                 'rental_methods': ['key'],
-                'is_charging_station': True, # TODO for deer, True was ok, for others, we can't assume this
+                'is_charging_station': True,  # TODO for deer, True was ok, for others, we can't assume this
             }
 
             gbfs_station_infos_map[station_id] = gbfs_station
