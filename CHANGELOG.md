@@ -5,7 +5,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 ## Upcoming release
 - feat: add support for "GBFS-Light", a single file json format suggested by the city of Herrenberg to provide static bikesharing data via a single JSON file.
 - refactor: `pricing_plan`, `system_information` and `alerts` data retrieval moved form `GbfsWriter` to Provider, so these can return dynamic information. Per default, these feeds are still retrieved from the feed config.
-- add (Fleetster-based) mikar carsharing service. With this change, the Deer provider code has been generalized to `FleetsterProvider` so other Fleetster based car sharing provider should be able to reuse it via subclassing.
+- add (Fleetster-based) mikar carsharing service. With this change, the Deer provider code has been generalized to `FleetsterProvider` so other Fleetster based car sharing providers should be able to reuse it via subclassing.
 
 ## 2025-03-13
 - transform coono into static feed

@@ -51,7 +51,7 @@ For details, see the [mapping documentation](./docs/mappings/fleetster_gbfs_2.3_
 
 ### mikar (Fleetster)
 
-To generate the deer GBFS feed, you need to provide the following environment variables:
+To generate the mikar GBFS feed, you need to provide the following environment variables:
 
 * `MIKAR_API_URL=https://mikar.fleetster.de`
 * `MIKAR_USER=<your username>`

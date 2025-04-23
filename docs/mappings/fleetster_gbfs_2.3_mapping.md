@@ -1,7 +1,7 @@
 
 # Fleetster to GBFS Mapping
 
-This document map Fleetster's sharing API to GBFS.
+This document maps Fleetster's sharing API to GBFS.
 
 # Reference version
 
@@ -29,10 +29,10 @@ This documentation refers to **[v2.3](https://github.com/MobilityData/gbfs/blob/
 
 ## Introduction
 
-This specification describes the mapping of fleetster-baseds car-sharing providers like [deer](https://www.deer-carsharing.de/) or [mikar](https://www.mikar.de/) to GBFS.
+This specification describes the mapping of fleetster-based car-sharing providers like [deer](https://www.deer-carsharing.de/) or [mikar](https://www.mikar.de/) to GBFS.
 
 deer GmbH uses Fleetster as booking service provider. Besides the standard Fleetster API, deer defines a
-couple of custom properties, that should e taken into account when mapping to GBFS.
+couple of custom properties, that should be taken into account when mapping to GBFS.
 
 ## General Information
 
@@ -42,7 +42,7 @@ The Fleetster API is described via a [Swagger API documentation](https://my.flee
 
 ## Open Issues or Questions
 
-Open questions are now managed as [issues](https://github.com/mobidata-bw/x2gbfs/issues?q=is%3Aissue+is%3Aopen+label%3Adeer). They should be tagged with `deer`.
+Open questions are now managed as [issues](https://github.com/mobidata-bw/x2gbfs/issues?q=is%3Aissue+is%3Aopen+label%3Adeer). They should be tagged with the specific provider, e.g. `deer` or `mikar`.
 
 
 ## Files
@@ -64,7 +64,7 @@ Note: According to fleetster, currently no rental_app uri's exist.
 
 ### vehicle_types.json
 
-fleetster API has no explicit endpoint for vehicle types, so the need to be collected from vehicle’s information.
+fleetster API has no explicit endpoint for vehicle types, so they need to be collected from vehicle’s information.
 The vehicles endpoint returns an array, each element is a vehicle, only vehicles meeting the following conditions are considered:
 
 * `vehicle['active'] is True`
@@ -89,7 +89,7 @@ GBFS Field | Mapping
 `g_CO2_km` |
 `vehicle_image` |
 `make` | normalized `brand`
-`model` | `vehicle.extended.Properties.color` mapped to a (German language) color name. For specific mappings, see [fleetster.py](x2gbfs/providers/fleetster.py)
+`model` | `vehicle.extended.Properties.color` mapped to a (German language) color name. For specific mappings, see [fleetster.py](https://github.com/mobidata-bw/x2gbfs/blob/main/x2gbfs/providers/fleetster.py)
 `wheel_count` | `4`
 `max_permitted_speed` | `vehicle['extended']['Properties']['vMax']`
 `rated_power` | `vehicle['extended']['Properties']['horsepower'] * 736` (1 PS = 0,736 kW)
