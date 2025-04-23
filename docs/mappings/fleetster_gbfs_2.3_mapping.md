@@ -85,7 +85,7 @@ GBFS Field | Mapping
 `eco_label` | -
 `max_range_meters` | Not provided by fleetster. Set to `200000` for all vehicle types (200km)
 `name` | normalized vehicle['brand'] + normalized vehicle['model']
-`vehicle_accessories` | `air_conditioning` if `vehicle['extended']['Properties']['aircondition']`<br/>`doors_${vehicle['extended']['Properties']['doors']}` <br/> `navigation` if `vehicle['extended']['Properties']['navigation']`
+`vehicle_accessories` | `air_conditioning` if `vehicle['extended']['Properties']['aircondition']`<br/>`doors_${vehicle['extended']['Properties']['doors']}` <br/> `navigation` if `vehicle['extended']['Properties']['navigation']`, <br/> `rentalObject['transmission']` if it equals `manual` or `automatic`
 `g_CO2_km` |
 `vehicle_image` |
 `make` | normalized `brand`
