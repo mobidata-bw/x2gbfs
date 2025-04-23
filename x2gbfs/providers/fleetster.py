@@ -307,7 +307,7 @@ class FleetsterProvider(BaseProvider):
                 'post_code': elem.get('postcode'),
                 'city': elem.get('city'),  # Non-standard
                 'rental_methods': ['key'],
-                'is_charging_station': True, # TODO for deer, True was ok, for others, we can't assume this
+                'is_charging_station': True,  # TODO for deer, True was ok, for others, we can't assume this
             }
 
             gbfs_station_infos_map[station_id] = gbfs_station
@@ -353,7 +353,7 @@ class FleetsterProvider(BaseProvider):
         if 'navigation' in extended_properties and extended_properties['navigation'] is True:
             accessories.append('navigation')
         transmission = fleetster_vehicle.get('transmission')
-        if transmission in ['automatic','manuel']:
+        if transmission in ['automatic', 'manuel']:
             accessories.append(transmission)
         if len(accessories) > 0:
             gbfs_vehicle_type['vehicle_accessories'] = accessories
