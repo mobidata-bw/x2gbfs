@@ -145,7 +145,9 @@ class FleetsterProvider(BaseProvider):
         '#bebbbb': 'silber',
         '#242424': 'dunkelgrau',
         '#4693b6': 'blau',
+        '#025f8a': 'blau',
         '#4ba003': 'dunkelgrün',
+        '#367303': 'dunkelgrün',
     }
     MAX_RANGE_METERS = 200000
     CURRENT_RANGE_METERS = 50000
