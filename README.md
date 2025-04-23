@@ -8,7 +8,7 @@ Currently supported providers:
 * VOI Karlsruhe (via Raumobil API)
 * various Stadtmobil/Teilauto providers (via Cantamen IXSI API)
 * various MOQO based providers (e.g. Stadtwerke Tauberfranken)
-* various cargo bike systems of Herrenberg city, provided in a static, lightweight json close to GBFS ("gbfs-light")
+* various cargo bike systems of Herrenberg city, provided in a static, lightweight json close to GBFS ("[gbfs-light](https://oda-git-jens-ox-gbfs-light-jens-ochsenmeiers-projects.vercel.app/schema/gbfs-light)")
 * DB Flinkster
 * Free2move
 * Cambio Aachen (via Cambio API)
