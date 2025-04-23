@@ -117,6 +117,7 @@ GBFS Field | Mapping
 `lat` | `location['extended']['GeoPosition']['latitude']`
 `lon` | `location['extended']['GeoPosition']['longitude']`
 `address` | `location['streetName'] + ' ' + station['streetNumber']`
+`city` | `location['city']` Note that this property is not part of GBFS v2.3 and will become official only with GBFSv3.2. We include it nevertheless.
 `cross_street` |
 `region_id` |
 `post_code` | `location['postcode']`
