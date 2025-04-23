@@ -36,7 +36,7 @@ class BaseProvider:
         Custom implementations might use provider specific data
         to provide pricing_plans.
         """
-        return self.config.get('feed_data', {}).get('pricing_plans') or []
+        return self.config.get('feed_data', {}).get('pricing_plans', [])
 
     def load_alerts(self) -> Optional[List[Dict[str, Any]]]:
         """
