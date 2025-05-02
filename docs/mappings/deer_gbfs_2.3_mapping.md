@@ -94,7 +94,7 @@ GBFS Field | Mapping
 `max_permitted_speed` | `vehicle['extended']['Properties']['vMax']`
 `rated_power` | `vehicle['extended']['Properties']['horsepower'] * 736` (1 PS = 0,736 kW)
 `default_reserve_time` |
-`return_constraint`| `"roundtrip_station"`
+`return_constraint`| `"any_station"` (called `Stationsflexibel` at https://www.deer-mobility.de/so-einfach-gehts/)
 `vehicle_assets`| -
 `default_pricing_plan_id`| <ul><li>`business_line`>`business_line` if category in {'business', 'premium'}</li><li>`exclusive_line` if vehicle['brand'] in {'Porsche'}</li><li>`basic_line` if category in {'compact', 'midsize', 'city', 'economy', 'fullsize'}</li></ul>
 `pricing_plan_ids`| -
