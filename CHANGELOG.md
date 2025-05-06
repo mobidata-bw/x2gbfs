@@ -2,7 +2,7 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## Upcoming release
+## 2025-05-06
 - feat: add support for "GBFS-Light", a single file json format suggested by the city of Herrenberg to provide static bikesharing data via a single JSON file.
 - providers: config for new systems `herrenberg_lastenrad`, `herrenberg_alf`, `herrenberg_guelf`, `herrenberg_fare`.
 - refactor: `pricing_plan`, `system_information` and `alerts` data retrieval moved form `GbfsWriter` to Provider, so these can return dynamic information. Per default, these feeds are still retrieved from the feed config.
