@@ -2,6 +2,6 @@ types-requests==2.32.0.20250328
 types-urllib3==1.26.25.14
 types-xmltodict==0.14.0.20241009
 
-ruff~=0.11.6
+ruff~=0.11.9
 black~=25.1.0
 mypy~=1.15.0
