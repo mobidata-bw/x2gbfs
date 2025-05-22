@@ -1,0 +1,58 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundentarif: 1,20€ (über Nacht von 20 Uhr bis 7 Uhr kostenlos). Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Stundentarif",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 1.20 } ],
+                "plan_id": "bike_hour_daytime",
+                "price": 0,
+                "url": "https://energieagentur-remsmurr.de/sites/default/files/page_attachments/onepager_standort_neu.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagestarif: 9,00€ (über Nacht von 20 Uhr bis 7 Uhr kostenlos). Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 9.00 } ],
+                "plan_id": "bike_day",
+                "price": 0,
+                "url": "https://energieagentur-remsmurr.de/sites/default/files/page_attachments/onepager_standort_neu.pdf"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Energieagentur Rems-Murr gGmbH",
+            "attribution_url": "https://energieagentur-remsmurr.de",
+            "email": "info@ea-rm.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "name": "LaRa to go",
+            "operator": "Energieagentur Rems-Murr gGmbH",
+            "phone_number": "+49 (0)7151 975173-0",
+            "privacy_url": "https://energieagentur-remsmurr.de/sites/default/files/page_attachments/20240924_datenschutzerklaerung.pdf",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
+                }
+            },
+            "system_id": "lara_to_go",
+            "terms_last_updated": "2024-08-14",
+            "terms_url": "https://energieagentur-remsmurr.de/sites/default/files/page_attachments/20240814_agb_lara.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://energieagentur-remsmurr.de/projekte/Lastenradverleih"
+        }
+    },
+    "provider_data": {
+        "team_id": "443362879"
+    }
+}
+
