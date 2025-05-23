@@ -44,8 +44,6 @@ class MoqoProvider(BaseProvider):
     DEFAULT_PRICING_PLAN_PATTERNS = ['{vehicle_type}_hour_daytime', '{vehicle_type}_minute']
     MINIMUM_REQUIRED_AVAILABLE_TIMESPAN_IN_SECONDS = 60 * 60 * 3  # 3 hours
 
-    TEAM_ID_LARA_TO_GO = '443362879'
-
     # this cache ensures that each car knows its station - which not provided by the API for cars that are in use
     cars_latest_parking_cache: dict[str, str] = {}
 
@@ -200,7 +198,7 @@ class MoqoProvider(BaseProvider):
             },
         }
 
-        if vehicle.get('license') and self.team_id != self.TEAM_ID_LARA_TO_GO:
+        if vehicle.get('license'):
             gbfs_vehicle['license_plate'] = re.split(r'[(|]', vehicle['license'])[0].strip()
 
         latest_parking = vehicle.get('latest_parking')
@@ -251,12 +249,6 @@ class MoqoProvider(BaseProvider):
                 'return_constraint': 'roundtrip_station',
                 'default_pricing_plan_id': self._default_pricing_plan_id(vehicle['car_type']),
             }
-            if self.team_id == self.TEAM_ID_LARA_TO_GO:
-                vehicle_types[id]['form_factor'] = 'cargo_bicycle'
-                vehicle_types[id]['max_range_meters'] = 100000
-                vehicle_types[id]['make'] = 'Urban Arrow'
-                vehicle_types[id]['model'] = 'Cargo'
-                vehicle_types[id]['cargo_load_capacity'] = 125
             pricing_plan_ids = self._pricing_plan_ids(vehicle['car_type'])
             if pricing_plan_ids:
                 vehicle_types[id]['pricing_plan_ids'] = pricing_plan_ids

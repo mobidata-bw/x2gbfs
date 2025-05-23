@@ -21,6 +21,7 @@ from x2gbfs.providers import (
     Free2moveAPI,
     Free2moveProvider,
     GbfsLightProvider,
+    LaraToGoProvider,
     LastenVeloFreiburgProvider,
     MoqoProvider,
     NoiProvider,
@@ -66,9 +67,10 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         'oberschwabenmobil',
         'gmuend_bewegt',
         'coono',
-        'lara_to_go',
     ]:
         return MoqoProvider(feed_config)
+    if provider == 'lara_to_go':
+        return LaraToGoProvider(feed_config)
     if provider in ['noi']:
         return NoiProvider(feed_config)
     if provider.startswith('free2move_'):
