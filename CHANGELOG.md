@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-06-06:
+- flinkster_carsharing fix: pricing plans for `other`
+
 ## 2025-05-23
 - add moqo provider `lara_to_go`
 
