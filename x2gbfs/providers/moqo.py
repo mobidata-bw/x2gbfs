@@ -247,8 +247,10 @@ class MoqoProvider(BaseProvider):
                 'make': gbfs_make,
                 'model': gbfs_model,
                 'return_constraint': 'roundtrip_station',
-                'default_pricing_plan_id': self._default_pricing_plan_id(vehicle['car_type']),
             }
+            default_pricing_plan_id = self._default_pricing_plan_id(vehicle['car_type'])
+            if default_pricing_plan_id:
+                vehicle_types[id]['default_pricing_plan_id'] = default_pricing_plan_id
             pricing_plan_ids = self._pricing_plan_ids(vehicle['car_type'])
             if pricing_plan_ids:
                 vehicle_types[id]['pricing_plan_ids'] = pricing_plan_ids
@@ -293,7 +295,7 @@ class MoqoProvider(BaseProvider):
         logger.warning('Unknown fuel_type: %s, will use combustion', fuel_type)
         return 'combustion'
 
-    def _default_pricing_plan_id(self, vehicle_type: str) -> str:
+    def _default_pricing_plan_id(self, vehicle_type: str) -> Optional[str]:
         """
         Returns the default pricing plan defined in the providers config.
         If a pricing plan with plan_id matching one of the DEFAULT_PRICING_PLAN_PATTERNS is defined,
@@ -308,9 +310,10 @@ class MoqoProvider(BaseProvider):
         if self.DEFAULT_PRICING_PLAN_ID in defined_pricing_plan_ids:
             return self.DEFAULT_PRICING_PLAN_ID
 
-        raise ValueError(
-            'Neither for "{vehicle_type_default_pricing_plan_id}" nor "{self.DEFAULT_PRICING_PLAN_ID}" a pricing plan was defined in config'
+        logger.error(
+            f'Neither for "{vehicle_type_default_pricing_plan_id}" nor "{self.DEFAULT_PRICING_PLAN_ID}" a pricing plan was defined in config'
         )
+        return None
 
     def _pricing_plan_ids(self, vehicle_type: str) -> list[str]:
         """
