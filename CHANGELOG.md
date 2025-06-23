@@ -5,6 +5,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 ## 2025-06-23:
 - update flinkster pricing
 - make moqo provider robust against unknown car_type values
+- skip gruene-flotte_freiburg free floating stations
 
 ## 2025-06-06:
 - flinkster_carsharing fix: pricing plans for `other`
