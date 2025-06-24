@@ -148,6 +148,9 @@ class CantamenIXSIProvider(BaseProvider):
     def _all_places(self) -> Generator[Dict[str, Any], None, None]:
         places = self._load_response()['Place']
         for place in places:
+            name = place['Name']['Text']
+            if name.endswith(' (flott)'):  # gruene-flotte_freiburg free-floating cars are out of scope
+                continue
             yield place
 
     def _extract_station_info_and_state(self, place, default_last_reported) -> Tuple[Dict[str, Any], Dict[str, Any]]:
