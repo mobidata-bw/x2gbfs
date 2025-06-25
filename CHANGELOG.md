@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-06-25
+- update teilauto_neckar-alb pricing
+
 ## 2025-06-23:
 - update flinkster pricing
 - make moqo provider robust against unknown car_type values
