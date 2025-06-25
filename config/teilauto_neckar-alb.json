@@ -14,77 +14,87 @@
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif XXS",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 1.65 }, { "start": 780, "interval": 60, "rate": 0.80 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.37 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.33 }, { "start": 501, "interval": 1,"rate": 0.28 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 1.70 }, { "start": 780, "interval": 60, "rate": 0.85 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.40 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.36 }, { "start": 501, "interval": 1,"rate": 0.31 } ],
                 "plan_id": "micro_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             },
             {
                 "currency": "EUR",
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif XS",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 1.85 }, { "start": 780, "interval": 60, "rate": 0.90 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.39 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.35 }, { "start": 501, "interval": 1,"rate": 0.30 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 1.90 }, { "start": 780, "interval": 60, "rate": 0.95 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.42 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.38 }, { "start": 501, "interval": 1,"rate": 0.33 } ],
                 "plan_id": "mini_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             },
             {
                 "currency": "EUR",
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif S",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.05 }, { "start": 780, "interval": 60, "rate": 1.00 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.42 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.38 }, { "start": 501, "interval": 1,"rate": 0.32 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.10 }, { "start": 780, "interval": 60, "rate": 1.05 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.45 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.41 }, { "start": 501, "interval": 1,"rate": 0.35 } ],
                 "plan_id": "small_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             },
             {
                 "currency": "EUR",
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif M",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.15 }, { "start": 780, "interval": 60, "rate": 1.05 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.43 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.40 }, { "start": 501, "interval": 1,"rate": 0.33 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.20 }, { "start": 780, "interval": 60, "rate": 1.10 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.46 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.43 }, { "start": 501, "interval": 1,"rate": 0.36 } ],
                 "plan_id": "medium_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             },
             {
                 "currency": "EUR",
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif L",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.35 }, { "start": 780, "interval": 60, "rate": 1.15 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.45 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.41 }, { "start": 501, "interval": 1,"rate": 0.35 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.40 }, { "start": 780, "interval": 60, "rate": 1.20 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.48 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.44 }, { "start": 501, "interval": 1,"rate": 0.38 } ],
                 "plan_id": "large_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             },
             {
                 "currency": "EUR",
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif XL",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.55 }, { "start": 780, "interval": 60, "rate": 1.25 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.47 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.43 }, { "start": 501, "interval": 1,"rate": 0.37 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 2.60 }, { "start": 780, "interval": 60, "rate": 1.30 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.50 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.46 }, { "start": 501, "interval": 1,"rate": 0.40 } ],
                 "plan_id": "van_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             },
             {
                 "currency": "EUR",
                 "description": "Tarif Clever. Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Tarif XXL",
-                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 3.85 }, { "start": 780, "interval": 60, "rate": 1.55 } ],
-                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.57 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.51 }, { "start": 501, "interval": 1,"rate": 0.46 } ],
+                "per_min_pricing": [ { "start": 0, "end": 720, "interval": 60, "rate": 3.90 }, { "start": 780, "interval": 60, "rate": 1.60 } ],
+                "per_km_pricing": [ { "start": 0, "end": 100, "interval": 1, "rate": 0.60 }, { "start": 101, "end": 500, "interval": 1, "rate": 0.54 }, { "start": 501, "interval": 1,"rate": 0.49 } ],
                 "plan_id": "transporter_hour_daytime",
                 "price": 0,
-                "url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/teilAuto_tarifordnung.pdf"
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tarif Clever.",
+                "is_taxable": false,
+                "name": "Lastenrad",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 1.50 } ],
+                "plan_id": "bike_hour_daytime",
+                "price": 0,
+                "url": "https://www.teilauto-neckar-alb.de/tarife"
             }
         ],
         "system_information": {
@@ -111,7 +121,7 @@
                 }
             },
             "system_id": "teilauto_neckar-alb",
-            "terms_last_updated": "2021-07-21",
+            "terms_last_updated": "2021-07-01",
             "terms_url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/AGB.pdf",
             "timezone": "Europe/Berlin",
             "url": "https://www.teilauto-neckar-alb.de/"
@@ -132,3 +142,4 @@
         }
     }
 }
+
