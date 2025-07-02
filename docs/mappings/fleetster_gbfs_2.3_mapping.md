@@ -96,9 +96,16 @@ GBFS Field | Mapping
 `default_reserve_time` |
 `return_constraint`| `"any_station"` (called `Stationsflexibel` at https://www.deer-mobility.de/so-einfach-gehts/)
 `vehicle_assets`| -
-`default_pricing_plan_id`| <ul><li>`business_line`>`business_line` if category in {'business', 'premium'}</li><li>`exclusive_line` if vehicle['brand'] in {'Porsche'}</li><li>`basic_line` if category in {'compact', 'midsize', 'city', 'economy', 'fullsize'}</li></ul>
-`pricing_plan_ids`| -
+`default_pricing_plan_id`| <ul></li><li>deer: `basic_line_hour` if category in {'compact', 'midsize', 'city', 'economy', 'fullsize'}</li><li>mikar: `<category>_hour`, where category mapping requires some custom implementation (see below)</li></ul>
+`pricing_plan_ids`| <ul></li><li>deer: All pricing_plan ids given in deer.config which start with `basic_line` if category in {'compact', 'midsize', 'city', 'economy', 'fullsize'}</li><li>mikar: All pricing_plan ids given in mikar.config which start with `<category>`, where category mapping requires some custom implementation (see below)</li></ul>
 
+#### Mikar category mapping
+Mikar categores per vehicle announced at https://mikar.de/fahrzeuge-tarife/ don't match those retrieved via API, and pricing is not only related to category but also on location.
+To reflect the pricing announced at https://mikar.de/fahrzeuge-tarife/, we map the different categories to three pricing categories economy, midsize and transporter. Vehicle types are assigned to categories as follows:
+
+* categories 'city' and 'fullsize' are mapped to 'midsize', 'midsize' and 'compact' to 'economy'
+* models 'Transit' is mapped to 'transporter', 'Megane E Tech': to 'economy'
+* Monheim based vehicles renault_megane_e_tech_monheim and renault_zoe_monheim to 'midsize'
 
 ### station_information.json
 
@@ -170,7 +177,7 @@ GBFS Field | Mapping
 `is_reserved` | `False`, if bookings request does not return any active booking having startDate < now < endDate for this vehicle, else `True` (see also `available_until`). An active booking is a booking which is not in any of the following states: `canceled`, `rejected`, `keyreturned`.
 `is_disabled` | -
 `rental_uris` | None. fleetster/deer do not provide rental uris for now
-`vehicle_type_id` | normalized, lower cased `vehicle['brand']` + '_' + normalized, lower cased `vehicle['model']`
+`vehicle_type_id` | normalized, lower cased `vehicle['brand']` + '_' + normalized, lower cased `vehicle['model']`, and, as exception for mikar: + '_monheim', if vehicle is assigned a station in Monheim (see pricing_plans for details)
 `last_reported` |
 `current_range_meters` | Hard coded to `50000` (50km) as no realtime info is available
 `current_fuel_percent` | -

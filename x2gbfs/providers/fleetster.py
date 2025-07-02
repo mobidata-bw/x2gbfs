@@ -314,6 +314,12 @@ class FleetsterProvider(BaseProvider):
 
         return gbfs_station_infos_map, gbfs_station_status_map
 
+    def _vehicle_type_id(self, fleetster_vehicle: Dict[str, Any]):
+        normalized_brand = self._normalize_brand(fleetster_vehicle['brand'])
+        normalized_model = self._normalize_model(fleetster_vehicle['model'])
+
+        return self._normalize_id(normalized_brand + '_' + normalized_model)
+
     def _extract_vehicle_and_type(self, fleetster_vehicle: Dict[str, Any]) -> Tuple[Dict, Dict]:
         """
         Extracts vehicle and vehicle_type from the given fleetster vehicle dict.
@@ -323,7 +329,7 @@ class FleetsterProvider(BaseProvider):
         vehicle_id = str(fleetster_vehicle['_id'])
         normalized_brand = self._normalize_brand(fleetster_vehicle['brand'])
         normalized_model = self._normalize_model(fleetster_vehicle['model'])
-        vehicle_type_id = self._normalize_id(normalized_brand + '_' + normalized_model)
+        vehicle_type_id = self._vehicle_type_id(fleetster_vehicle)
 
         gbfs_vehicle_type = {
             'vehicle_type_id': vehicle_type_id,
