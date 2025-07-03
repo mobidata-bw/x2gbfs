@@ -4,6 +4,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## 2025-07-16
 - add (Fleetster-based) mikar carsharing service. With this change, the Deer provider code has been generalized to `FleetsterProvider` so other Fleetster based car sharing providers should be able to reuse it via subclassing.
+- change custom `station_information` property from `_city` to `city` for cambio and deer, to unify across different providers.
 
 ## 2025-07-03
 - add cantamen provider `swu2go`
