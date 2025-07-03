@@ -58,8 +58,8 @@
                 "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Transporter - 20-7 Uhr pro Stunde",
-                "per_min_pricing": [ { "start": 0, "end": 660, "interval": 60, "rate": 2.00 } ],
-                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "per_min_pricing": [ { "start": 0, "end": 660, "interval": 60, "rate": 1.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.36 } ],
                 "plan_id": "van_hour_nighttime",
                 "price": 0,
                 "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
@@ -69,8 +69,8 @@
                 "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Transporter - 7-20 Uhr pro Stunde",
-                "per_min_pricing": [ { "start": 0, "end": 780, "interval": 60, "rate": 4.60 } ],
-                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "per_min_pricing": [ { "start": 0, "end": 780, "interval": 60, "rate": 3.60 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.36 } ],
                 "plan_id": "van_hour_daytime",
                 "price": 0,
                 "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
@@ -80,8 +80,8 @@
                 "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Transporter - pro Tag (24h)",
-                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 46.00 } ],
-                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 40.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.36 } ],
                 "plan_id": "van_day",
                 "price": 0,
                 "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
@@ -91,8 +91,8 @@
                 "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
                 "is_taxable": false,
                 "name": "Transporter - pro Woche (7 Tage)",
-                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 240.00 } ],
-                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 200.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.36 } ],
                 "plan_id": "van_week",
                 "price": 0,
                 "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
