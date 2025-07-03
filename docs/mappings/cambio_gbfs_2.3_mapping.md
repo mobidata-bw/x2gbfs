@@ -188,7 +188,7 @@ GBFS Field | Mapping
 `cross_street` | -
 `region_id` | -
 `post_code` | `address`.`postalCode`
-`_city` | custom attribute extracted from `address`.`addressLocation`
+`city` | custom attribute extracted from `address`.`addressLocation`. Note that this property is not part of GBFS v2.3 and will become official only with GBFSv3.2. We include it nevertheless.
 `rental_methods` | -
 `is_virtual_station`| -
 `station_area` | -
