@@ -1,0 +1,145 @@
+{
+    "feed_data": {
+        "alerts": [
+           {
+            "alert_id": "mobidatabw_1",
+                "description": "Keine Echtzeitdaten zum Buchungsstatus der Fahrzeuge. Verfügbarkeit ist im Buchungssystem des Anbieters sichtbar.",
+                "summary": "Keine Echtzeitdaten",
+                "type": "other"
+            }
+        ],
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "eCompact - 20-7 Uhr pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 660, "interval": 60, "rate": 1.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "small_hour_nighttime",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "eCompact - 7-20 Uhr pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 780, "interval": 60, "rate": 2.70 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "small_hour_daytime",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "eCompact - pro Tag (24h)",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "small_day",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "eCompact - pro Woche (7 Tage)",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 145.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.19 } ],
+                "plan_id": "small_week",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Transporter - 20-7 Uhr pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 660, "interval": 60, "rate": 2.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "plan_id": "van_hour_nighttime",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Transporter - 7-20 Uhr pro Stunde",
+                "per_min_pricing": [ { "start": 0, "end": 780, "interval": 60, "rate": 4.60 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "plan_id": "van_hour_daytime",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Transporter - pro Tag (24h)",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 46.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "plan_id": "van_day",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            },
+            {
+                "currency": "EUR",
+                "description": "Für jede Buchung setzen sich die Nutzungskosten zusammen aus Zeittarif + Kilometertarif.",
+                "is_taxable": false,
+                "name": "Transporter - pro Woche (7 Tage)",
+                "per_min_pricing": [ { "start": 0, "interval": 10080, "rate": 240.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.41 } ],
+                "plan_id": "van_week",
+                "price": 0,
+                "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go#c3759"
+            }
+        ],
+        "system_information": {
+            "email": "swu2go@swu.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "license_id": "DL-DE-BY-2.0",
+            "attribution_organization_name": "SWU Stadtwerke Ulm/Neu-Ulm GmbH",
+            "attribution_url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go",
+            "name": "swu2go - E-Carsharing in Ulm",
+            "operator": "SWU Stadtwerke Ulm/Neu-Ulm GmbH",
+            "phone_number": "+49 (0)731 166-2860",
+            "privacy_url": "https://www.swu.de/datenschutz",
+            "purchase_url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go/registrierung-swu2go",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                },
+                "ios": {
+                    "discovery_uri": "cantamen-interapp-csd://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                }
+            },
+            "system_id": "swu2go",
+            "terms_last_updated": "2024-12-01",
+            "terms_url": "https://www.swu.de/fileadmin/content/mobilitaet/swu2go/SWU_swu2go_AGBs_2025.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go"
+        }
+    },
+    "system_id": "10024",
+    "provider_id": 115,
+    "url_templates": {
+        "station": {
+            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
+            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+        },
+        "vehicle": {
+            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
+            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+        }
+    }
+}
