@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-07-04
+- correct `per_min_pricing`, `per_km_pricing` for various providers
+
 ## 2025-07-03
 - add cantamen provider `swu2go`
 

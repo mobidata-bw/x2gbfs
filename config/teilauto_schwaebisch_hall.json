@@ -15,7 +15,7 @@
                 "is_taxable": false,
                 "name": "klein - Zeittarif pro Stunde (0:00 Uhr - 7:00 Uhr)",
                 "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
-                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1,"rate": 0.24} ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 30, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 100, "interval": 1,"rate": 0.24} ],
                 "plan_id": "mini_hour_nighttime",
                 "price": 1.00,
                 "url": "https://www.teilauto-hall.de/tarife"
@@ -26,7 +26,7 @@
                 "is_taxable": false,
                 "name": "klein - Zeittarif pro Stunde (7:00 Uhr - 24:00 Uhr)",
                 "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 1.50 } ],
-                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1,"rate": 0.24} ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 30, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 100, "interval": 1,"rate": 0.24} ],
                 "plan_id": "mini_hour_daytime",
                 "price": 1.00,
                 "url": "https://www.teilauto-hall.de/tarife"
@@ -37,7 +37,7 @@
                 "is_taxable": false,
                 "name": "klein - Zeittarif pro 24 Stunden",
                 "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 20.00 } ],
-                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 101, "interval": 1,"rate": 0.24} ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.32 }, { "start": 30, "end": 100, "interval": 1, "rate": 0.28 }, { "start": 100, "interval": 1,"rate": 0.24} ],
                 "plan_id": "mini_day",
                 "price": 1.00,
                 "url": "https://www.teilauto-hall.de/tarife"
@@ -48,7 +48,7 @@
                 "is_taxable": false,
                 "name": "groß/kombi - Zeittarif pro Stunde (0:00 Uhr - 7:00 Uhr)",
                 "per_min_pricing": [ { "start": 0, "end": 420, "interval": 60, "rate": 0 } ],
-                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 30, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 100, "interval": 1,"rate": 0.26} ],
                 "plan_id": "medium_hour_nighttime",
                 "price": 1.00,
                 "url": "https://www.teilauto-hall.de/tarife"
@@ -59,7 +59,7 @@
                 "is_taxable": false,
                 "name": "groß/kombi - Zeittarif pro Stunde (7:00 Uhr - 24:00 Uhr)",
                 "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 1.80 } ],
-                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 30, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 100, "interval": 1,"rate": 0.26} ],
                 "plan_id": "medium_hour_daytime",
                 "price": 1.00,
                 "url": "https://www.teilauto-hall.de/tarife"
@@ -70,7 +70,7 @@
                 "is_taxable": false,
                 "name": "groß/kombi - Zeittarif pro 24 Stunden",
                 "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 24.00 } ],
-                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 31, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 101, "interval": 1,"rate": 0.26} ],
+                "per_km_pricing": [ { "start": 0, "end": 30, "interval": 1, "rate": 0.34 }, { "start": 30, "end": 100, "interval": 1, "rate": 0.30 }, { "start": 100, "interval": 1,"rate": 0.26} ],
                 "plan_id": "medium_day",
                 "price": 1.00,
                 "url": "https://www.teilauto-hall.de/tarife"
