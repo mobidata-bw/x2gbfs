@@ -9,9 +9,9 @@ from x2gbfs.gbfs.base_provider import BaseProvider
 logger = logging.getLogger(__name__)
 
 
-class NoiProvider(BaseProvider):
-    STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingStation?limit=500&offset=0&shownull=false&distinct=true'
-    CAR_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar?limit=500&offset=0&shownull=false&distinct=true'
+class OpenDataHubProvider(BaseProvider):
+    STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat,node/CarsharingStation?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
+    CAR_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar/current-station,availability/latest?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
 
     def __init__(self, feed_config: dict[str, Any]):
         self.config = feed_config
@@ -22,24 +22,23 @@ class NoiProvider(BaseProvider):
         types = {}
         vehicles = {}
         for i in raw_cars:
+            if i["tname"] == "availability":
+                type_id = self.extract_type_id(i)
+                types[type_id] = {
+                    # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
+                    'vehicle_type_id': type_id,
+                    'form_factor': 'car',
+                    'propulsion_type': self.extract_propulsion(i),
+                    'max_range_meters': 500000,
+                    'name': i['smetadata']['vehicle_model']['model_name'].strip(),
+                    'wheel_count': 4,
+                    'return_constraint': 'roundtrip_station',
+                }
 
-            type_id = self.extract_type_id(i)
-            types[type_id] = {
-                # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
-                'vehicle_type_id': type_id,
-                'form_factor': 'car',
-                'propulsion_type': self.extract_propulsion(i),
-                'max_range_meters': 500000,
-                'name': i['smetadata']['brand'].strip(),
-                'wheel_count': 4,
-                'return_constraint': 'roundtrip_station',
-            }
-
-            if i.get('pcode') is not None:
-                id = self.slugify(i['smetadata']['licensePlate'])
+                id = self.slugify(i['sname'])
                 vehicles[id] = {
                     'bike_id': id,
-                    'station_id': i['pcode'],
+                    'station_id': i['scode'],
                     'vehicle_type_id': type_id,
                     'is_reserved': False,
                     'is_disabled': False,
@@ -49,7 +48,7 @@ class NoiProvider(BaseProvider):
         return types, vehicles
 
     def extract_type_id(self, i):
-        return self.slugify(i['smetadata']['brand'])
+        return self.slugify(i['smetadata']['vehicle_model']['model_name'])
 
     def slugify(self, input):
         output = input.lower().strip().replace('!', '')
@@ -57,7 +56,7 @@ class NoiProvider(BaseProvider):
         return re.sub(r'-$', '', output)
 
     def extract_propulsion(self, i):
-        if self.extract_type_id(i).__contains__('elektro'):
+        if i['smetadata']["fuel_type"] == 'electric':
             return 'electric'
         return 'combustion'
 
@@ -87,9 +86,9 @@ class NoiProvider(BaseProvider):
 
         for i in raw_cars:
 
-            if i.get('pcode') is not None:
+            if i.get('scode') is not None:
 
-                station_id = i['pcode']
+                station_id = i['scode']
                 statuses[station_id] = {
                     'station_id': station_id,
                     'is_installed': True,
