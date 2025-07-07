@@ -13,7 +13,7 @@ Currently supported providers:
 * Free2move
 * Cambio Aachen (via Cambio API)
 * Lastenvelo Freiburg (via custom CSV, provider id: `lastenvelo_fr`)
-* NOI OpenDataHub (provider id: `noi`)
+* NOI OpenDataHub (provider id: `opendatahub`)
 
 
 To generate a feed for e.g. deer network, switch to the `x2gbfs` project base dir and execute
