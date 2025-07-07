@@ -34,6 +34,9 @@ class OpenDataHubProvider(BaseProvider):
         response = requests.get(self.CAR_URL, headers=HEADERS, timeout=20)
         self.raw_cars = response.json()['data']['CarsharingCar']['stations']
 
+        response = requests.get(self.STATION_URL, headers=HEADERS, timeout=20)
+        self.raw_stations = response.json()['data']
+
     def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         types = {}
         vehicles = {}
@@ -75,11 +78,8 @@ class OpenDataHubProvider(BaseProvider):
         return 'combustion'
 
     def load_stations(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
-        response = requests.get(self.STATION_URL, headers=HEADERS, timeout=20)
-        raw_stations = response.json()['data']
-
         info = {}
-        for i in raw_stations:
+        for i in self.raw_stations:
             id = i['scode']
             coord = i['scoordinate']
             info[id] = {
@@ -93,11 +93,9 @@ class OpenDataHubProvider(BaseProvider):
         return info, status
 
     def load_status(self, last_reported: int) -> Optional[Dict]:
-        response = requests.get(self.STATION_URL, headers=HEADERS, timeout=20)
-        raw_cars = response.json()['data']
         statuses = {}
 
-        for i in raw_cars:
+        for i in self.raw_stations:
             station_id = i['scode']
             statuses[station_id] = {
                 'station_id': station_id,
@@ -105,5 +103,6 @@ class OpenDataHubProvider(BaseProvider):
                 'is_renting': True,
                 'is_returning': True,
                 'last_reported': last_reported,
+                'num_docks_available': i['smetadata']['capacity_max'],
             }
         return statuses
