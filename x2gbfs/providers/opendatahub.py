@@ -7,43 +7,42 @@ import requests
 from x2gbfs.gbfs.base_provider import BaseProvider
 
 logger = logging.getLogger(__name__)
+HEADERS = {'User-Agent': 'x2gbfs'}
 
 
 class OpenDataHubProvider(BaseProvider):
     STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat,node/CarsharingStation?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
-    CAR_URL = 'https://mobility.api.opendatahub.com/v2/flat%2Cnode/CarsharingCar/current-station,availability/latest?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
+    CAR_URL = 'https://mobility.api.opendatahub.com/v2/tree,node/CarsharingCar/current-station,availability/latest?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
 
     def __init__(self, feed_config: dict[str, Any]):
         self.config = feed_config
 
     def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
-        response = requests.get(self.CAR_URL, timeout=20)
-        raw_cars = response.json()['data']
+        response = requests.get(self.CAR_URL, headers=HEADERS, timeout=20)
+        raw_cars = response.json()['data']['CarsharingCar']['stations']
         types = {}
         vehicles = {}
-        for i in raw_cars:
-            if i["tname"] == "availability":
-                type_id = self.extract_type_id(i)
-                types[type_id] = {
-                    # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
-                    'vehicle_type_id': type_id,
-                    'form_factor': 'car',
-                    'propulsion_type': self.extract_propulsion(i),
-                    'max_range_meters': 500000,
-                    'name': i['smetadata']['vehicle_model']['model_name'].strip(),
-                    'wheel_count': 4,
-                    'return_constraint': 'roundtrip_station',
-                }
+        for key, i in raw_cars.items():
+            type_id = self.extract_type_id(i)
+            types[type_id] = {
+                # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
+                'vehicle_type_id': type_id,
+                'form_factor': 'car',
+                'propulsion_type': self.extract_propulsion(i),
+                'max_range_meters': 500000,
+                'name': i['smetadata']['vehicle_model']['model_name'].strip(),
+                'wheel_count': 4
+            }
 
-                id = self.slugify(i['sname'])
-                vehicles[id] = {
-                    'bike_id': id,
-                    'station_id': i['scode'],
-                    'vehicle_type_id': type_id,
-                    'is_reserved': False,
-                    'is_disabled': False,
-                    'current_range_meters': 500000,
-                }
+            id = self.slugify(i['sname'])
+            vehicles[id] = {
+                'bike_id': id,
+                'station_id': i['scode'],
+                'vehicle_type_id': type_id,
+                'is_reserved': False,
+                'is_disabled': False,
+                'current_range_meters': 500000,
+            }
 
         return types, vehicles
 
@@ -61,8 +60,7 @@ class OpenDataHubProvider(BaseProvider):
         return 'combustion'
 
     def load_stations(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
-
-        response = requests.get(self.STATION_URL, timeout=20)
+        response = requests.get(self.STATION_URL, headers=HEADERS, timeout=20)
         raw_stations = response.json()['data']
 
         info = {}
@@ -80,20 +78,17 @@ class OpenDataHubProvider(BaseProvider):
         return info, status
 
     def load_status(self, last_reported: int) -> Optional[Dict]:
-        response = requests.get(self.CAR_URL, timeout=20)
-        raw_cars = response.json()['data']
+        response = requests.get(self.CAR_URL, headers=HEADERS, timeout=20)
+        raw_cars = response.json()['data']['CarsharingCar']['stations']
         statuses = {}
 
-        for i in raw_cars:
-
-            if i.get('scode') is not None:
-
-                station_id = i['scode']
-                statuses[station_id] = {
-                    'station_id': station_id,
-                    'is_installed': True,
-                    'is_renting': True,
-                    'is_returning': True,
-                    'last_reported': last_reported,
-                }
+        for key, value in raw_cars.items():
+            station_id = value['scode']
+            statuses[station_id] = {
+                'station_id': station_id,
+                'is_installed': True,
+                'is_renting': True,
+                'is_returning': True,
+                'last_reported': last_reported,
+            }
         return statuses
