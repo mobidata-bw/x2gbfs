@@ -22,7 +22,7 @@ class OpenDataHubProvider(BaseProvider):
         raw_cars = response.json()['data']['CarsharingCar']['stations']
         types = {}
         vehicles = {}
-        for key, i in raw_cars.items():
+        for _, i in raw_cars.items():
             type_id = self.extract_type_id(i)
             types[type_id] = {
                 # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
@@ -37,7 +37,7 @@ class OpenDataHubProvider(BaseProvider):
             id = self.slugify(i['sname'])
             vehicles[id] = {
                 'bike_id': id,
-                'station_id': i['scode'],
+                'station_id': i['sdatatypes']['current-station']['tmeasurements'][0]['mvalue'],
                 'vehicle_type_id': type_id,
                 'is_reserved': False,
                 'is_disabled': False,
@@ -55,7 +55,7 @@ class OpenDataHubProvider(BaseProvider):
         return re.sub(r'-$', '', output)
 
     def extract_propulsion(self, i):
-        if i['smetadata']["fuel_type"] == 'electric':
+        if i['smetadata']['fuel_type'] == 'electric':
             return 'electric'
         return 'combustion'
 
@@ -78,12 +78,12 @@ class OpenDataHubProvider(BaseProvider):
         return info, status
 
     def load_status(self, last_reported: int) -> Optional[Dict]:
-        response = requests.get(self.CAR_URL, headers=HEADERS, timeout=20)
-        raw_cars = response.json()['data']['CarsharingCar']['stations']
+        response = requests.get(self.STATION_URL, headers=HEADERS, timeout=20)
+        raw_cars = response.json()['data']
         statuses = {}
 
-        for key, value in raw_cars.items():
-            station_id = value['scode']
+        for i in raw_cars:
+            station_id = i['scode']
             statuses[station_id] = {
                 'station_id': station_id,
                 'is_installed': True,
