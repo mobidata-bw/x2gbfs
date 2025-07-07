@@ -10,6 +10,17 @@ logger = logging.getLogger(__name__)
 HEADERS = {'User-Agent': 'x2gbfs'}
 
 
+'''
+A provider for the South Tyrolian OpenDataHub API.
+
+Right now, this is hard-coded for the provide Alps Go! because it is the only
+one in the data set.
+
+Once there are more than one, some URLs and perhaps the code need to be
+parameterized.
+'''
+
+
 class OpenDataHubProvider(BaseProvider):
     STATION_URL = 'https://mobility.api.opendatahub.com/v2/flat,node/CarsharingStation?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
     CAR_URL = 'https://mobility.api.opendatahub.com/v2/tree,node/CarsharingCar/current-station,availability/latest?where=sorigin.eq.%22AlpsGo%22,sactive.eq.true'
