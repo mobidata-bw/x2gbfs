@@ -1,7 +1,7 @@
 {
     "feed_data": {
         "system_information": {
-            "email": "https://www.alpsgo.it/en/#",
+            "email": "hello@AlpsGo.it",
             "feed_contact_email": "mail@leonard.io",
             "language": "de",
             "license_url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
@@ -12,9 +12,10 @@
             "operator": "AlpsGo Srl",
             "phone_number": "+39 0471 1390 502",
             "privacy_url": "https://www.alpsgo.it/en/privacy",
+            "privacy_last_updated": "2025-06-07",
             "purchase_url": "https://www.alpsgo.it",
             "system_id": "alps-go",
-            "terms_last_updated": "2025-02-15",
+            "terms_last_updated": "2025-06-07",
             "terms_url": "https://www.carsharing.bz.it/de/impressum/",
             "timezone": "Europe/Rome",
             "url": "https://www.alpsgo.it/"
