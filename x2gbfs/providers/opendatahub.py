@@ -31,12 +31,13 @@ class OpenDataHubProvider(BaseProvider):
     def __init__(self, feed_config: dict[str, Any]):
         self.config = feed_config
 
-    def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         response = requests.get(self.CAR_URL, headers=HEADERS, timeout=20)
-        raw_cars = response.json()['data']['CarsharingCar']['stations']
+        self.raw_cars = response.json()['data']['CarsharingCar']['stations']
+
+    def load_vehicles(self, default_last_reported: int) -> Tuple[Optional[Dict], Optional[Dict]]:
         types = {}
         vehicles = {}
-        for _, i in raw_cars.items():
+        for _, i in self.raw_cars.items():
             type_id = self.extract_type_id(i)
             types[type_id] = {
                 # See https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson
