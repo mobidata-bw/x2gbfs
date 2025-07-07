@@ -31,7 +31,7 @@ class OpenDataHubProvider(BaseProvider):
                 'propulsion_type': self.extract_propulsion(i),
                 'max_range_meters': 500000,
                 'name': i['smetadata']['vehicle_model']['model_name'].strip(),
-                'wheel_count': 4
+                'wheel_count': 4,
             }
 
             id = self.slugify(i['sname'])
