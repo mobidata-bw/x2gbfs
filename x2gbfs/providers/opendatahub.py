@@ -7,7 +7,10 @@ import requests
 from x2gbfs.gbfs.base_provider import BaseProvider
 
 logger = logging.getLogger(__name__)
-HEADERS = {'User-Agent': 'x2gbfs'}
+HEADERS = {
+    'User-Agent': 'x2gbfs',
+    'Referer': 'x2gbfs',
+}
 
 
 '''
