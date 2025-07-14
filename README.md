@@ -13,7 +13,7 @@ Currently supported providers:
 * Free2move
 * Cambio Aachen (via Cambio API)
 * Lastenvelo Freiburg (via custom CSV, provider id: `lastenvelo_fr`)
-* NOI OpenDataHub (provider id: `opendatahub`)
+* AlpsGo! (provider id: `opendatahub`) via NOI's OpenDataHub
 
 
 To generate a feed for e.g. deer network, switch to the `x2gbfs` project base dir and execute
@@ -94,7 +94,7 @@ once per 24 hours. To reflect this in the generated GBFS, it uses a
 For details, see the [mapping documentation](./docs/mappings/cambio_gbfs_2.3_mapping.md).
 
  
-### NOI OpenDataHub
+### AlpsGo!
 
 Converts NOI's OpenDataHub carsharing feed to GBFS.
 
