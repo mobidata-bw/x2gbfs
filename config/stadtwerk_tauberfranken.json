@@ -6,7 +6,7 @@
                 "description": "Tarif: 0,20€/km zzgl. 3€/Stunde. Einmalige Registrierung für 4,90€ erforderlich. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
                 "name": "Pro Stunde",
-                "per_min_pricing": [ { "start": 0, "end": 600, "interval": 60, "rate": 3.00 }, { "start": 601, "end": 1440, "interval": 60, "rate": 0 } ],
+                "per_min_pricing": [ { "start": 0, "end": 600, "interval": 60, "rate": 3.00 }, { "start": 600, "end": 1440, "interval": 60, "rate": 0 } ],
                 "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.20 } ],
                 "plan_id": "all_hour_daytime",
                 "price": 0,
