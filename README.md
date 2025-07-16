@@ -13,7 +13,7 @@ Currently supported providers:
 * Free2move
 * Cambio Aachen (via Cambio API)
 * Lastenvelo Freiburg (via custom CSV, provider id: `lastenvelo_fr`)
-* NOI OpenDataHub (provider id: `noi`)
+* AlpsGo! (provider id: `opendatahub`) via NOI's OpenDataHub
 
 
 To generate a feed for e.g. deer network, switch to the `x2gbfs` project base dir and execute
@@ -49,8 +49,17 @@ To generate the deer GBFS feed, you need to provide the following environment va
 * `DEER_USER=<your username>`
 * `DEER_PASSWORD=<your password>`
 
-For details, see the [mapping documentation](./docs/mappings/deer_gbfs_2.3_mapping.md).
+For details, see the [mapping documentation](./docs/mappings/fleetster_gbfs_2.3_mapping.md).
 
+### mikar (Fleetster)
+
+To generate the mikar GBFS feed, you need to provide the following environment variables:
+
+* `MIKAR_API_URL=https://mikar.fleetster.de`
+* `MIKAR_USER=<your username>`
+* `MIKAR_PASSWORD=<your password>`
+
+For details, see the [mapping documentation](./docs/mappings/fleetster_gbfs_2.3_mapping.md).
 
 ### Lastenvelo Freiburg (Custom)
 
@@ -85,7 +94,7 @@ once per 24 hours. To reflect this in the generated GBFS, it uses a
 For details, see the [mapping documentation](./docs/mappings/cambio_gbfs_2.3_mapping.md).
 
  
-### NOI OpenDataHub
+### AlpsGo!
 
 Converts NOI's OpenDataHub carsharing feed to GBFS.
 

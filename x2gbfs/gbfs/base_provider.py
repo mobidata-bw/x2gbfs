@@ -27,16 +27,16 @@ class BaseProvider:
         """
         return self.config['feed_data']['system_information']
 
-    def load_pricing_plans(self) -> Optional[List[Dict[str, Any]]]:
+    def load_pricing_plans(self) -> List[Dict[str, Any]]:
         """
-        Retrieves a list of pricing_plans for this provider.
+        Retrieves a (possibly empty) list of pricing_plans for this provider.
         The default implementation returns the provider config's
         feed_data/pricing_plans section, if defined.
 
         Custom implementations might use provider specific data
         to provide pricing_plans.
         """
-        return self.config.get('feed_data', {}).get('pricing_plans')
+        return self.config.get('feed_data', {}).get('pricing_plans', [])
 
     def load_alerts(self) -> Optional[List[Dict[str, Any]]]:
         """
