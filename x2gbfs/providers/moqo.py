@@ -18,6 +18,7 @@ class MoqoProvider(BaseProvider):
         'natural_gas': 'combustion',
         'liquid_gas': 'combustion',
         'bio_gas': 'combustion',
+        'diesel': 'combustion_diesel',
         'hybrid_electric_petrol': 'hybrid',
         'hybrid_electric_diesel': 'hybrid',
         'hydrogen': 'hydrogen_fuel_cell',

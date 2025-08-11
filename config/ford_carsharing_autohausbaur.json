@@ -1,0 +1,192 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 5,50€ zzgl. 0,33€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Klein - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 5.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "compact_car_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 55,00€(1.Tag)/34,00€(ab 2.Tag) zzgl. 0,33€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Klein - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 55.00 }, { "start": 1440, "interval": 1440, "rate": 35.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "compact_car_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 6,50€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kompakt - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 6.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "small_family_car_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 65,00€(1.Tag)/44,00€(ab 2.Tag) zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kompakt - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 65.00 }, { "start": 1440, "interval": 1440, "rate": 44.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "small_family_car_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 6,50€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kompakt - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 6.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "limousine_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 65,00€(1.Tag)/44,00€(ab 2.Tag) zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kompakt - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 65.00 }, { "start": 1440, "interval": 1440, "rate": 44.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "limousine_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 6,50€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kompakt - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 6.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "suv_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 65,00€(1.Tag)/44,00€(ab 2.Tag) zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kompakt - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 65.00 }, { "start": 1440, "interval": 1440, "rate": 44.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "suv_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 9,00€ zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Transporter - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 9.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "van_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 90,00€(1.Tag)/69,00€(ab 2.Tag) zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Transporter - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 90.00 }, { "start": 1440, "interval": 1440, "rate": 69.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "van_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 9,00€ zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Transporter - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 9.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "transporter_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 90,00€(1.Tag)/69,00€(ab 2.Tag) zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Transporter - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 90.00 }, { "start": 1440, "interval": 1440, "rate": 69.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "transporter_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 9,00€ zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Extra - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 9.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "station_wagon_hour_daytime",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 90,00€(1.Tag)/69,00€(ab 2.Tag) zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Extra - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 90.00 }, { "start": 1440, "interval": 1440, "rate": 69.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "station_wagon_day",
+                "price": 0,
+                "url": "https://autohausbaur.de/uploads/site-media/O9Khpb/files/Flyer.pdf"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Autohaus Baur GmbH",
+            "attribution_url": "https://autohausbaur.de",
+            "email": "baur-rent@autohausbaur.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "name": "Ford Carsharing (Autohaus Baur)",
+            "operator": "Ford-Händler Dienstleistungsgesellschaft mbH",
+            "privacy_url": "https://www.ford-carsharing.de/privacy-policy/",
+            "purchase_url": "https://www.ford-carsharing.de/#Kunde-werden",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.fordcarsharing.sharing.app"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/us/app/ford-carsharing/id6717600632?mt=8"
+                }
+            },
+            "system_id": "ford_carsharing_autohausbaur",
+            "terms_url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_AGB_10-24_Version_20241205.pdf",
+            "terms_last_updated": "2024-12-05",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.ford-carsharing.de/"
+        }
+    },
+    "provider_data": {
+        "team_id": "1280894566"
+    }
+}
+
