@@ -159,7 +159,7 @@ class MoqoProvider(BaseProvider):
 
         gbfs_station_status_map[station_id] = {
             'num_bikes_available': 0,
-            'vehicle_types_available': {},
+            'vehicle_types_available': [],
             'is_renting': True,
             'is_installed': True,
             'is_returning': True,
