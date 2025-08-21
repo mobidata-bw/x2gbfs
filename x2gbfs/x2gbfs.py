@@ -8,6 +8,7 @@ from random import random
 from time import sleep
 from typing import Any, Dict, List
 
+import websockets.exceptions
 from decouple import config
 from requests.exceptions import HTTPError
 
@@ -101,6 +102,11 @@ def main(providers: List[str], output_dir: str, base_url: str, custom_base_url: 
             except HTTPError as err:
                 logger.error(
                     f'Generating feed for {provider} failed due to HTTP error {err.response.status_code} for url {err.request.url}'
+                )
+                error_occured = True
+            except websockets.exceptions.InvalidMessage as err:
+                logger.error(
+                    f'Generating feed for {provider} failed due to Websockets.InvalidMessage error: {err.args}'
                 )
                 error_occured = True
             except TimeoutError:
