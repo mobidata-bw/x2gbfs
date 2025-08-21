@@ -3,6 +3,7 @@ import re
 from datetime import datetime, timezone
 from typing import Any, Dict, Generator, List, Optional, Tuple
 
+import websockets.exceptions
 import xmltodict
 from decouple import config
 
@@ -346,10 +347,15 @@ class CantamenIXSIProvider(BaseProvider):
             }
 
     def load_vehicles(self, default_last_reported: int) -> Tuple[Dict, Dict]:
+        try:
+            bookees = self._all_bookees()
+        except websockets.exceptions.InvalidMessage as ex:
+            logger.error(f'Could not load vehicles due to websockets.exceptions.InvalidMessage: {ex.args}')
+            return {}, {}
+
         vehicles = {}
         vehicle_types = {}
-
-        for bookee in self._all_bookees():
+        for bookee in bookees:
             bookee_id = bookee.get('ID')
             try:
                 name = bookee['Name']['Text']
@@ -374,10 +380,15 @@ class CantamenIXSIProvider(BaseProvider):
         return vehicle_types, vehicles
 
     def load_stations(self, default_last_reported: int) -> Tuple[Dict, Dict]:
+        try:
+            places = self._all_places()
+        except websockets.exceptions.InvalidMessage as ex:
+            logger.error(f'Could not load stations due to websockets.exceptions.InvalidMessage: {ex.args}')
+            return {}, {}
+
         status = {}
         infos = {}
-
-        for place in self._all_places():
+        for place in places:
             info, state = self._extract_station_info_and_state(place, default_last_reported)
 
             if info.get('lon') == 0.0 or info.get('lat') == 0.0:
