@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2026-08-21
+- improvement: handle cantamen websocket exceptions
+
 ## 2025-08-11
 - add moqo provider `ford_carsharing_autohausbaur`
 
