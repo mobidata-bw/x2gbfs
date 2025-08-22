@@ -5,6 +5,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 ## 2025-08-21
 
 - handle websocket errors
+- fix: MOQO provider: for stations without vehicles, `vehicle_types_available` was dict, now it's empty list
 
 ## 2025-08-11
 - add moqo provider `ford_carsharing_autohausbaur`
