@@ -289,12 +289,12 @@
             "purchase_url": "https://stuttgart.stadtmobil.de/privatkunden/kunde-werden/",
             "rental_apps": {
                 "android": {
-                    "discovery_uri": "cantamen-interapp-csd://add_booking",
-                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                    "discovery_uri": "cantamen-interapp-smb://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.stadtmobil&hl=de"
                 },
                 "ios": {
-                    "discovery_uri": "cantamen-interapp-csd://add_booking",
-                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                    "discovery_uri": "cantamen-interapp-smb://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/stadtmobil-carsharing/id1088313783"
                 }
             },
             "system_id": "stadtmobil_stuttgart",
@@ -308,14 +308,14 @@
     "provider_id": 3,
     "url_templates": {
         "station": {
-            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+            "android": "cantamen-interapp-smb://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-smb://add_booking?openPlace={placeId}",
+            "web": "https://mein.stadtmobil.de/?openPlace={placeId}"
         },
         "vehicle": {
-            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+            "android": "cantamen-interapp-smb://add_booking?openBookee={bookeeId}",
+            "ios": "cantamen-interapp-smb://add_booking?openBookee={bookeeId}",
+            "web": "https://mein.stadtmobil.de/?openBookee={bookeeId}"
         }
     }
 }

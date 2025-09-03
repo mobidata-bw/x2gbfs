@@ -134,12 +134,12 @@
         "station": {
             "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
             "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+            "web": "https://ewi3-swu2go.cantamen.de/?openPlace={placeId}"
         },
         "vehicle": {
             "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
             "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+            "web": "https://ewi3-swu2go.cantamen.de/?openBookee={bookeeId}"
         }
     }
 }
