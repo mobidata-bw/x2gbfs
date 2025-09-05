@@ -244,7 +244,11 @@ class MoqoProvider(BaseProvider):
                 'vehicle_type_id': id,
                 'form_factor': form_factor,
                 'propulsion_type': self._map_fuel_type(vehicle['fuel_type']),
-                'max_range_meters': self.DEFAULT_BIKE_MAX_RANGE_METERS if form_factor == 'bicycle' else self.DEFAULT_CAR_MAX_RANGE_METERS,
+                'max_range_meters': (
+                    self.DEFAULT_BIKE_MAX_RANGE_METERS
+                    if form_factor == 'bicycle'
+                    else self.DEFAULT_CAR_MAX_RANGE_METERS
+                ),
                 'name': vehicle_model,
                 'make': gbfs_make,
                 'model': gbfs_model,
