@@ -40,7 +40,8 @@ class MoqoProvider(BaseProvider):
     }
 
     DEFAULT_CURRENT_FUEL_PERCENT = 0.5
-    DEFAULT_MAX_RANGE_METERS = 250000
+    DEFAULT_CAR_MAX_RANGE_METERS = 300000
+    DEFAULT_BIKE_MAX_RANGE_METERS = 60000
     DEFAULT_PRICING_PLAN_ID = 'all_hour_daytime'
     DEFAULT_PRICING_PLAN_PATTERNS = ['{vehicle_type}_hour_daytime', '{vehicle_type}_minute']
     MINIMUM_REQUIRED_AVAILABLE_TIMESPAN_IN_SECONDS = 60 * 60 * 3  # 3 hours
@@ -243,7 +244,7 @@ class MoqoProvider(BaseProvider):
                 'vehicle_type_id': id,
                 'form_factor': form_factor,
                 'propulsion_type': self._map_fuel_type(vehicle['fuel_type']),
-                'max_range_meters': self.DEFAULT_MAX_RANGE_METERS,
+                'max_range_meters': self.DEFAULT_BIKE_MAX_RANGE_METERS if form_factor == 'bicycle' else self.DEFAULT_CAR_MAX_RANGE_METERS,
                 'name': vehicle_model,
                 'make': gbfs_make,
                 'model': gbfs_model,

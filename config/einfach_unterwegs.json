@@ -1,0 +1,190 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,00€. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "E-Bike/Lastenrad - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.00 } ],
+                "plan_id": "bike_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 20,00€. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "E-Bike/Lastenrad - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 20.00 } ],
+                "plan_id": "bike_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,90€ zzgl. 0,31€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "mini_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 29,00€ zzgl. 0,31€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "mini_car_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,90€ zzgl. 0,31€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "compact_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 29,00€ zzgl. 0,31€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.31 } ],
+                "plan_id": "compact_car_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,90€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "small_family_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 29,00€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "small_family_car_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,90€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "station_wagon_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 29,00€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "station_wagon_car_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,90€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "suv_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 29,00€ zzgl. 0,34€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
+                "plan_id": "suv_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,90€ zzgl. 0,49€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Stunde",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.90 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.49 } ],
+                "plan_id": "van_hour_daytime",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 29,00€ zzgl. 0,49€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Mittelklasse - Tarif FLEX je Tag",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.49 } ],
+                "plan_id": "van_day",
+                "price": 0,
+                "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "überall GmbH",
+            "attribution_url": "https://www.einfach-unterwegs.eu/",
+            "email": "betrieb@einfach-unterwegs.eu",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "name": "einfach unterwegs",
+            "operator": "überall GmbH",
+            "phone_number": "+49 (0)8051 9390880",
+            "privacy_url": "https://www.einfach-unterwegs.eu/datenschutz",
+            "purchase_url": "https://portal.moqo.de/js_sign_up/800338640#/subscription-selection",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work&hl=de"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
+                }
+            },
+            "system_id": "einfach_unterwegs",
+            "terms_last_updated": "2022-03-01",
+            "terms_url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_c157f58b6b99491a971e34826db1011b.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.einfach-unterwegs.eu/"
+        }
+    },
+    "provider_data": {
+        "team_id": "1476194573"
+    }
+}
