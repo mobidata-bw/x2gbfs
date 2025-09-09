@@ -2,6 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-09-05
+
+- add MOQO provider `einfach_unterwegs`
+
 ## 2025-08-21
 
 - handle websocket errors
