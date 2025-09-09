@@ -105,7 +105,7 @@
                 "name": "Mittelklasse - Tarif FLEX je Tag",
                 "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 29.00 } ],
                 "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.34 } ],
-                "plan_id": "station_wagon_car_day",
+                "plan_id": "station_wagon_day",
                 "price": 0,
                 "url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_78a5480009e94d5a8d7f228374f2d813.pdf"
             },
