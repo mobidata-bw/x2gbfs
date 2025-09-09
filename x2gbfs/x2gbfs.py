@@ -17,6 +17,7 @@ from x2gbfs.providers import (
     CambioProvider,
     CantamenIXSIProvider,
     Deer,
+    EinfachUnterwegsProvider,
     ExampleProvider,
     FleetsterAPI,
     Free2moveAPI,
@@ -77,11 +78,12 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         'gmuend_bewegt',
         'coono',
         'ford_carsharing_autohausbaur',
-        'einfach_unterwegs',
     ]:
         return MoqoProvider(feed_config)
     if provider == 'lara_to_go':
         return LaraToGoProvider(feed_config)
+    if provider == 'einfach_unterwegs':
+        return EinfachUnterwegsProvider(feed_config)
     if provider in ['alpsgo']:
         return OpenDataHubProvider(feed_config)
     if provider.startswith('free2move_'):
