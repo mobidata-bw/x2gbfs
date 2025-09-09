@@ -8,5 +8,6 @@ from .gbfslight import GbfsLightProvider
 from .lastenvelo_fr import LastenVeloFreiburgProvider
 from .mikar import MikarProvider
 from .moqo import MoqoProvider
+from .moqo_einfach_unterwegs import EinfachUnterwegsProvider
 from .moqo_laratogo import LaraToGoProvider
 from .opendatahub import OpenDataHubProvider
