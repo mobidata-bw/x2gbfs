@@ -245,12 +245,12 @@
             "purchase_url": "https://gruene-flotte.com/carsharing/registrierung/",
             "rental_apps": {
                 "android": {
-                    "discovery_uri": "cantamen-interapp-csd://add_booking",
-                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.carsharing.deutschland"
+                    "discovery_uri": "cantamen-interapp-gfc://add_booking",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.cantamen.ewi3.gfc&hl=de&pli=1"
                 },
                 "ios": {
-                    "discovery_uri": "cantamen-interapp-csd://add_booking",
-                    "store_uri": "https://apps.apple.com/de/app/carsharing-deutschland/id1075669223"
+                    "discovery_uri": "cantamen-interapp-gfc://add_booking",
+                    "store_uri": "https://apps.apple.com/de/app/gr%C3%BCne-flotte-carsharing/id1621260386"
                 }
             },
             "system_id": "gruene-flotte_freiburg",
@@ -264,14 +264,14 @@
     "provider_id": 131,
     "url_templates": {
         "station": {
-            "android": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openPlace={placeId}",
-            "web": "https://ewi3.cantamen.de/?openPlace={placeId}"
+            "android": "cantamen-interapp-gfc://add_booking?openPlace={placeId}",
+            "ios": "cantamen-interapp-gfc://add_booking?openPlace={placeId}",
+            "web": "https://ewi3-gruene-flotte.cantamen.de/?openPlace={placeId}"
         },
         "vehicle": {
-            "android": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "ios": "cantamen-interapp-csd://add_booking?openBookee={bookeeId}",
-            "web": "https://ewi3.cantamen.de/?openBookee={bookeeId}"
+            "android": "cantamen-interapp-gfc://add_booking?openBookee={bookeeId}",
+            "ios": "cantamen-interapp-gfc://add_booking?openBookee={bookeeId}",
+            "web": "https://ewi3-gruene-flotte.cantamen.de/?openBookee={bookeeId}"
         }
     }
 }
