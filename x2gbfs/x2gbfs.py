@@ -82,7 +82,10 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         return MoqoProvider(feed_config)
     if provider == 'lara_to_go':
         return LaraToGoProvider(feed_config)
-    if provider == 'einfach_unterwegs':
+    if provider in [
+        'einfach_unterwegs',
+        'seefahrer_ecarsharing',
+    ]:  # cargo_bicycle postprocessing
         return EinfachUnterwegsProvider(feed_config)
     if provider in ['alpsgo']:
         return OpenDataHubProvider(feed_config)

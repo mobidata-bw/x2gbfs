@@ -2,6 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-09-26
+
+- add MOQO provider `seefahrer_ecarsharing`
+
 ## 2025-09-09
 
 - fix: MOQO provider `einfach_unterwegs`: detect cargo bicycle by name

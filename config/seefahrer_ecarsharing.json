@@ -1,0 +1,102 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,00€. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif Flexi - Stunde Lastenrad",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.00 } ],
+                "plan_id": "bike_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Preisblatt_Geb%C3%BChrentabelle_Stand_01.08.2025.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 14,00€. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif Flexi - Tag Lastenrad",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 14.00 } ],
+                "plan_id": "bike_day",
+                "price": 0,
+                "url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Preisblatt_Geb%C3%BChrentabelle_Stand_01.08.2025.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,60€ zzgl. 0,27€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif Flexi - Stunde Kleinwagen",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.60 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.27 } ],
+                "plan_id": "mini_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Preisblatt_Geb%C3%BChrentabelle_Stand_01.08.2025.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 3,00€ zzgl. 0,27€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif Flexi - Stunde Mittelklasse",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 3.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.27 } ],
+                "plan_id": "compact_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Preisblatt_Geb%C3%BChrentabelle_Stand_01.08.2025.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 3,00€ zzgl. 0,27€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif Flexi - Stunde Mittelklasse",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 3.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.27 } ],
+                "plan_id": "suv_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Preisblatt_Geb%C3%BChrentabelle_Stand_01.08.2025.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 3,50€ zzgl. 0,27€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Tarif Flexi - Stunde Transporter",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 3.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.27 } ],
+                "plan_id": "transporter_hour_daytime",
+                "price": 0,
+                "url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Preisblatt_Geb%C3%BChrentabelle_Stand_01.08.2025.pdf"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Stadtwerke Radolfzell GmbH",
+            "attribution_url": "https://www.stadtwerke-radolfzell.de/",
+            "email": "seefahrer@stadtwerke-radolfzell.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "name": "SEEFAHRER E-Carsharing",
+            "operator": "Stadtwerke Radolfzell GmbH",
+            "phone_number": "+49 (0)7732 80080",
+            "privacy_url": "https://www.stadtwerke-radolfzell.de/datenschutz/",
+            "purchase_url": "https://portal.moqo.de/js_sign_up/298610894#/subscription-selection",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work&gl=DE"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
+                }
+            },
+            "system_id": "seefahrer_ecarsharing",
+            "terms_last_updated": "2024-05-01",
+            "terms_url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Carsharing_AGB_SWR_14.05.2024.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.stadtwerke-radolfzell.de/mobilitaet/e-carsharing/"
+        }
+    },
+    "provider_data": {
+        "team_id": "812289143"
+    }
+}
