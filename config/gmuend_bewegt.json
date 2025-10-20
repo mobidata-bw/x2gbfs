@@ -36,6 +36,7 @@
             "operator": "Stadtwerke Schwäbisch Gmünd GmbH",
             "phone_number": "+49 (0)7171 603-8222",
             "privacy_url": "https://www.stwgd.de/datenschutz.html",
+            "privacy_last_updated": "2024-10-01",
             "purchase_url": "https://portal.moqo.de/js_sign_up/gmund-bewegt#/account",
             "rental_apps": {
                 "android": {

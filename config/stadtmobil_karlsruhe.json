@@ -385,6 +385,7 @@
 			"operator": "Stadtmobil CarSharing GmbH & Co. KG",
 			"phone_number": "+49 (0)721 911911-1",
 			"privacy_url": "https://karlsruhe.stadtmobil.de/datenschutz/",
+			"privacy_last_updated": "2023-03-01",
 			"purchase_url": "https://karlsruhe.stadtmobil.de/privatkunden/kunde-werden/",
 			"rental_apps": {
 				"android": {

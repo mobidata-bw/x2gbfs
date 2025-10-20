@@ -79,6 +79,7 @@
             "name": "Flinkster",
             "operator": "Deutsche Bahn Connect GmbH",
             "privacy_url": "https://flinkster.de/de/datenschutz",
+            "privacy_last_updated": "2025-05-01",
             "purchase_url": "https://flinkster.de/de/registrieren",
             "rental_apps": {
                 "android": {
