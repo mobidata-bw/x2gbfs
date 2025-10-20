@@ -79,6 +79,7 @@
             "name": "mikar",
             "operator": "mikar GmbH",
             "privacy_url": "https://mikar.de/datenschutz/",
+            "privacy_last_updated": "2025-03-25",
             "rental_apps": {
                 "android": {
                     "discovery_uri": "https://mikar.de/yet_unknown",

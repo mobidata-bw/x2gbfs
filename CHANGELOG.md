@@ -2,6 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-10-20
+
+- set `privacy_last_updated` for feeds with `privacy_url`
+
 ## 2025-10-06
 
 - add MOQO provider `stadtwerke_wertheim`
@@ -20,7 +24,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## 2025-08-21
 
-- handle websocket errors
+- handle websocket InvalidMessage exceptions
 - fix: MOQO provider: for stations without vehicles, `vehicle_types_available` was dict, now it's empty list
 
 ## 2025-08-11

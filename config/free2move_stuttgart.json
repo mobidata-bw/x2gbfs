@@ -71,6 +71,7 @@
             "name": "Free2move Stuttgart",
             "operator": "Free2move Deutschland GmbH",
             "privacy_url": "https://www.free2move.com/de/de/legal/#privacy",
+            "privacy_last_updated": "2025-07-01",
             "purchase_url": "https://www.free2move.com/customer/registration/?locale=de_DE",
             "rental_apps": {
                 "android": {

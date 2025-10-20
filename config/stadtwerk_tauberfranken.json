@@ -46,6 +46,7 @@
             "name": "Stadtwerk Tauberfranken",
             "operator": "Stadtwerk Tauberfranken GmbH in Kooperation mit Taubermobil e.V.",
             "privacy_url": "https://stadtwerk-tauberfranken.de/datenschutz/",
+            "privacy_last_updated": "2021-02-11",
             "purchase_url": "https://portal.moqo.de/js_sign_up/tauberfranken-car-sharing-offentlich?context=in_app&scheme=moqo#/account",
             "rental_apps": {
                 "android": {
