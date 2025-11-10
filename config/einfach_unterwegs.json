@@ -161,10 +161,9 @@
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
             "license_id": "DL-DE-BY-2.0",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "name": "einfach unterwegs",
             "operator": "überall GmbH",
-            "phone_number": "+49 (0)8051 9390880",
+            "phone_number": "+4980519390880",
             "privacy_url": "https://www.einfach-unterwegs.eu/datenschutz",
             "privacy_last_updated": "2020-10-29",
             "purchase_url": "https://portal.moqo.de/js_sign_up/800338640#/subscription-selection",
@@ -182,7 +181,8 @@
             "terms_last_updated": "2022-03-01",
             "terms_url": "https://www.einfach-unterwegs.eu/_files/ugd/333dcb_c157f58b6b99491a971e34826db1011b.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://www.einfach-unterwegs.eu/"
+            "url": "https://www.einfach-unterwegs.eu/",
+            "opening_hours": "24/7"
         }
     },
     "provider_data": {

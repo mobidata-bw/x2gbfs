@@ -73,10 +73,9 @@
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
             "license_id": "DL-DE-BY-2.0",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "name": "SEEFAHRER E-Carsharing",
             "operator": "Stadtwerke Radolfzell GmbH",
-            "phone_number": "+49 (0)7732 80080",
+            "phone_number": "+49773280080",
             "privacy_url": "https://www.stadtwerke-radolfzell.de/datenschutz/",
             "privacy_last_updated": "2025-03-12",
             "purchase_url": "https://portal.moqo.de/js_sign_up/298610894#/subscription-selection",
@@ -94,7 +93,8 @@
             "terms_last_updated": "2024-05-01",
             "terms_url": "https://www.stadtwerke-radolfzell.de/fileadmin/user_upload/pdf/mobilitaet/ecarsharing/Carsharing_AGB_SWR_14.05.2024.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://www.stadtwerke-radolfzell.de/mobilitaet/e-carsharing/"
+            "url": "https://www.stadtwerke-radolfzell.de/mobilitaet/e-carsharing/",
+            "opening_hours": "24/7"
         }
     },
     "provider_data": {

@@ -20,5 +20,8 @@
             "timezone": "Europe/Rome",
             "url": "https://www.alpsgo.it/"
         }
+    },
+    "x2gbfs": {
+        "gbfs_version": 2
     }
 }

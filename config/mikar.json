@@ -72,7 +72,6 @@
             "email": "info@mikar.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
             "attribution_organization_name": "mikar GmbH",
             "attribution_url": "https://mikar.de/",
@@ -94,7 +93,8 @@
             "terms_last_updated": "2025-03-25",
             "terms_url": "https://mikar.de/agb/",
             "timezone": "Europe/Berlin",
-            "url": "https://mikar.de/"
+            "url": "https://mikar.de/",
+            "opening_hours": "24/7"
         }
     }
 }

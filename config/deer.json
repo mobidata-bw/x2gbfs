@@ -35,17 +35,16 @@
         "system_information": {
             "email": "carsharing@deer-mobility.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
-            "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
+            "languages": ["de"],
             "license_id": "DL-DE-BY-2.0",
-            "attribution_organization_name": "DEER GmbH",
+            "attribution_organization_name": [{"language": "de", "text": "DEER GmbH"}],
             "attribution_url": "https://www.deer-mobility.de/",
-            "name": "deer",
-            "operator": "DEER GmbH",
-            "phone_number": "+49 7051 1300-120",
-            "privacy_url": "https://www.deer-mobility.de/wp-content/uploads/2024/02/Datenschutzerklaerung-deer-Stand-01.05.2022-aktualisierter-Standort-November-2023.pdf",
+            "name": [{"language": "de", "text": "deer"}],
+            "operator": [{"language": "de", "text": "DEER GmbH"}],
+            "phone_number": "+4970511300120",
+            "privacy_url": [{"language": "de", "text": "https://www.deer-mobility.de/wp-content/uploads/2024/02/Datenschutzerklaerung-deer-Stand-01.05.2022-aktualisierter-Standort-November-2023.pdf"}],
             "privacy_last_updated": "2022-05-01",
-            "purchase_url": "https://www.deer-mobility.de/hier-gratis-registrieren/",
+            "purchase_url": "https://www.deer-mobility.de/jetzt-registrieren/",
             "rental_apps": {
                 "android": {
                     "discovery_uri": "https://deer-carsharing.de/yet_unknown",
@@ -58,9 +57,10 @@
             },
             "system_id": "deer",
             "terms_last_updated": "2023-10-31",
-            "terms_url": "https://www.deer-mobility.de/wp-content/uploads/2024/01/Deer-Carsharing-AGB_Vertragsschluss-ab-31.10.2023-3.pdf",
+            "terms_url": [{"language": "de", "text": "https://www.deer-mobility.de/wp-content/uploads/2024/01/Deer-Carsharing-AGB_Vertragsschluss-ab-31.10.2023-3.pdf"}],
             "timezone": "Europe/Berlin",
-            "url": "https://www.deer-mobility.de/"
+            "url": "https://www.deer-mobility.de/",
+            "opening_hours": "24/7"
         }
     }
 }

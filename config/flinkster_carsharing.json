@@ -75,7 +75,6 @@
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
             "license_id": "DL-DE-BY-2.0",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "name": "Flinkster",
             "operator": "Deutsche Bahn Connect GmbH",
             "privacy_url": "https://flinkster.de/de/datenschutz",
@@ -95,7 +94,8 @@
             "terms_url": "https://flinkster.de/de/agb",
             "terms_last_updated": "2024-10-16",
             "timezone": "Europe/Berlin",
-            "url": "https://www.flinkster.de/"
+            "url": "https://www.flinkster.de/",
+            "opening_hours": "24/7"
         }
     },
     "provider_data": {

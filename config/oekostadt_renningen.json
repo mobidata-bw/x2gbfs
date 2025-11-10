@@ -120,13 +120,12 @@
             "email": "info@oekostadt-renningen.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
             "attribution_organization_name": "Ökostadt Renningen e.V.",
             "attribution_url": "https://carsharing-renningen.de/",
             "name": "CarSharing Renningen",
             "operator": "Ökostadt Renningen e.V.",
-            "phone_number": "+49 (0)7159 - 8434",
+            "phone_number": "+4971598434",
             "privacy_url": "https://carsharing-renningen.de/datenschutzerklaerung/",
             "privacy_last_updated": "2024-04-19",
             "purchase_url": "https://carsharing-renningen.de/nutzer-werden/",
@@ -144,7 +143,8 @@
             "terms_last_updated": "2011-01-01",
             "terms_url": "https://carsharing-renningen.de/wp-content/uploads/2021/12/Oekostadt-RenningenCarSharing-AGB.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://carsharing-renningen.de/"
+            "url": "https://carsharing-renningen.de/",
+            "opening_hours": "24/7"
         }
     },
     "system_id": "10024",

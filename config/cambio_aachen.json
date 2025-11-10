@@ -70,7 +70,7 @@
         "system_information": {
             "email": "aachen@cambio-CarSharing.de",
             "feed_contact_email": "holger.bruch@systect.de",
-            "phone_number": "+49 241 510510",
+            "phone_number": "+49241510510",
             "language": "de",
             "name": "Cambio Aachen",
             "operator": "cambio Mobilitätsservice GmbH & Co. KG",
@@ -87,6 +87,7 @@
         "city_id": "AAC"
     },
     "x2gbfs": {
-        "ttl": 86400
+        "ttl": 86400,
+        "gbfs_version": 2
     }
 }

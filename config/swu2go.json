@@ -102,13 +102,12 @@
             "email": "swu2go@swu.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
             "attribution_organization_name": "SWU Stadtwerke Ulm/Neu-Ulm GmbH",
             "attribution_url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go",
             "name": "swu2go - E-Carsharing in Ulm",
             "operator": "SWU Stadtwerke Ulm/Neu-Ulm GmbH",
-            "phone_number": "+49 (0)731 166-2860",
+            "phone_number": "+497311662860",
             "privacy_url": "https://www.swu.de/datenschutz",
             "privacy_last_updated": "2024-12-01",
             "purchase_url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go/registrierung-swu2go",
@@ -126,7 +125,8 @@
             "terms_last_updated": "2024-12-01",
             "terms_url": "https://www.swu.de/fileadmin/content/mobilitaet/swu2go/SWU_swu2go_AGBs_2025.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go"
+            "url": "https://www.swu.de/privatkunden/produkte-leistungen/mobilitaet/swu2go",
+            "opening_hours": "24/7"
         }
     },
     "system_id": "10024",

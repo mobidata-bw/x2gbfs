@@ -166,13 +166,12 @@
             "email": "service@naturenergie-sharing.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
             "attribution_organization_name": "naturenergie sharing GmbH",
             "attribution_url": "https://www.naturenergie-sharing.de/",
             "name": "naturenergie sharing",
             "operator": "naturenergie sharing GmbH",
-            "phone_number": "+49 (0)761 23020",
+            "phone_number": "+4976123020",
             "privacy_url": "https://www.naturenergie-sharing.de/datenschutz",
             "privacy_last_updated": "2024-07-25",
             "purchase_url": "https://www.naturenergie-sharing.de/registrieren",
@@ -190,7 +189,8 @@
             "terms_last_updated": "2024-07-25",
             "terms_url": "https://cdn.prod.website-files.com/667e8f40c31ca9c912f39aba/66a3699cb1460f4efd101e8a_naturenergie-sharing_AGB_V0-4_5_2024-07-25.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://www.naturenergie-sharing.de/"
+            "url": "https://www.naturenergie-sharing.de/",
+            "opening_hours": "24/7"
         }
     },
     "system_id": "10024",

@@ -163,7 +163,6 @@
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
             "license_id": "DL-DE-BY-2.0",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "name": "Ford Carsharing (Autohaus Baur)",
             "operator": "Ford-Händler Dienstleistungsgesellschaft mbH",
             "privacy_url": "https://www.ford-carsharing.de/privacy-policy/",
@@ -183,7 +182,8 @@
             "terms_url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_AGB_10-24_Version_20241205.pdf",
             "terms_last_updated": "2024-12-05",
             "timezone": "Europe/Berlin",
-            "url": "https://www.ford-carsharing.de/"
+            "url": "https://www.ford-carsharing.de/",
+            "opening_hours": "24/7"
         }
     },
     "provider_data": {
