@@ -278,13 +278,12 @@
             "email": "rhein-neckar@stadtmobil.org",
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
             "attribution_organization_name": "Stadtmobil Rhein-Neckar AG",
             "attribution_url": "https://rhein-neckar.stadtmobil.de/",
             "name": "Stadtmobil Rhein-Neckar",
             "operator": "Stadtmobil Rhein-Neckar AG",
-            "phone_number": "+49 (0)621 12855585",
+            "phone_number": "+4962112855585",
             "privacy_url": "https://rhein-neckar.stadtmobil.de/datenschutz",
             "privacy_last_updated": "2023-10-01",
             "purchase_url": "https://rhein-neckar.stadtmobil.de/privatkunden/kunde-werden/",
@@ -302,7 +301,8 @@
             "terms_last_updated": "2023-10-01",
             "terms_url": "https://rhein-neckar.stadtmobil.de/media/user_upload/downloads_privatkunden/rhein-neckar/agb_DSE.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://rhein-neckar.stadtmobil.de/"
+            "url": "https://rhein-neckar.stadtmobil.de/",
+            "opening_hours": "24/7"
         }
     },
     "system_id": "10024",

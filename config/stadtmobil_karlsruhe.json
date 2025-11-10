@@ -377,13 +377,12 @@
 			"email": "info@karlsruhe.stadtmobil.de",
 			"feed_contact_email": "mobidata-bw@nvbw.de",
 			"language": "de",
-			"license_url": "https://www.govdata.de/dl-de/by-2-0",
 			"license_id": "DL-DE-BY-2.0",
 			"attribution_organization_name": "Stadtmobil CarSharing GmbH & Co. KG",
 			"attribution_url": "https://karlsruhe.stadtmobil.de/",
 			"name": "Stadtmobil Karlsruhe",
 			"operator": "Stadtmobil CarSharing GmbH & Co. KG",
-			"phone_number": "+49 (0)721 911911-1",
+			"phone_number": "+497219119111",
 			"privacy_url": "https://karlsruhe.stadtmobil.de/datenschutz/",
 			"privacy_last_updated": "2023-03-01",
 			"purchase_url": "https://karlsruhe.stadtmobil.de/privatkunden/kunde-werden/",
@@ -401,7 +400,8 @@
 			"terms_last_updated": "2023-03-01",
 			"terms_url": "https://karlsruhe.stadtmobil.de/agb/",
 			"timezone": "Europe/Berlin",
-			"url": "https://karlsruhe.stadtmobil.de/"
+			"url": "https://karlsruhe.stadtmobil.de/",
+            "opening_hours": "24/7"
 		}
 	},
 	"system_id": "10024",

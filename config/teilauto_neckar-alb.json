@@ -101,13 +101,12 @@
             "email": "info@teilauto-neckar-alb.de",
             "feed_contact_email": "mobidata-bw@nvbw.de",
             "language": "de",
-            "license_url": "https://www.govdata.de/dl-de/by-2-0",
             "license_id": "DL-DE-BY-2.0",
             "attribution_organization_name": "teilAuto Neckar-Alb eG",
             "attribution_url": "https://www.teilauto-neckar-alb.de/",
             "name": "teilAuto Neckar-Alb",
             "operator": "teilAuto Neckar-Alb eG",
-            "phone_number": "+49 (0)7071 360306",
+            "phone_number": "+497071360306",
             "privacy_url": "https://www.teilauto-neckar-alb.de/datenschutz",
             "privacy_last_updated": "2021-07-01",
             "purchase_url": "https://www.teilauto-neckar-alb.de/registrieren",
@@ -125,7 +124,8 @@
             "terms_last_updated": "2021-07-01",
             "terms_url": "https://www.teilauto-neckar-alb.de/fileadmin/teilauto/dokumente/downloads/AGB.pdf",
             "timezone": "Europe/Berlin",
-            "url": "https://www.teilauto-neckar-alb.de/"
+            "url": "https://www.teilauto-neckar-alb.de/",
+            "opening_hours": "24/7"
         }
     },
     "system_id": "10024",

@@ -95,6 +95,7 @@
         "location_id": 18
     },
     "x2gbfs": {
-        "useCustomBaseUrl": true
+        "useCustomBaseUrl": true,
+        "gbfs_version": 2
     }
 }
