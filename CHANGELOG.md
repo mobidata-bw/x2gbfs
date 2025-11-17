@@ -2,6 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-11-17
+
+- add Cantamen provider `conficars_ulm`
+
 ## 2025-10-20
 
 - set `privacy_last_updated` for feeds with `privacy_url`
