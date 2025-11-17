@@ -66,7 +66,7 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
     if provider.startswith('cambio_'):
         return CambioProvider(feed_config)
     if (
-        provider in ['naturenergie_sharing', 'oekostadt_renningen', 'gruene-flotte_freiburg', 'swu2go']
+        provider in ['naturenergie_sharing', 'oekostadt_renningen', 'gruene-flotte_freiburg', 'swu2go', 'conficars_ulm']
         or provider.startswith('stadtmobil_')
         or provider.startswith('teilauto_')
     ):
