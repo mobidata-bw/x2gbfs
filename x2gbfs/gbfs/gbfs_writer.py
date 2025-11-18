@@ -2,7 +2,7 @@ import copy
 import json
 import logging
 import re
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -109,7 +109,7 @@ class GbfsV3Writer(GbfsV2Writer):
     def write_gbfs_file(self, filename: str, data, timestamp: int, ttl: int = 60) -> None:
         content = {
             'data': data,
-            'last_updated': datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'last_updated': datetime.fromtimestamp(timestamp, UTC).strftime('%Y-%m-%dT%H:%M:%S%z'),
             'ttl': ttl,
             'version': '3.0',
         }
