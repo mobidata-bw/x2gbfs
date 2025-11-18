@@ -20,13 +20,16 @@ class GbfsV2Writer:
     def __init__(self):
         pass
 
+    def _dump_json(self, filename: str, content: dict):
+        with open(filename, 'w') as dest:
+            json.dump(content, dest, indent=2)
+
     def gbfs_data(self, base_url: str, feeds: List[str], feed_language: str) -> Dict:
         return {feed_language: {'feeds': [{'name': feed, 'url': f'{base_url}/{feed}.json'} for feed in feeds]}}
 
     def write_gbfs_file(self, filename: str, data, timestamp: int, ttl: int = 60) -> None:
-        with open(filename, 'w') as dest:
-            content = {'data': data, 'last_updated': timestamp, 'ttl': ttl, 'version': '2.3'}
-            json.dump(content, dest, indent=2)
+        content = {'data': data, 'last_updated': timestamp, 'ttl': ttl, 'version': '2.3'}
+        self._dump_json(filename, content)
 
     def write_gbfs_feed(
         self,
@@ -43,8 +46,6 @@ class GbfsV2Writer:
         timestamp: int,
         ttl: int = 60,
     ) -> None:
-        base_url = base_url
-
         Path(destFolder).mkdir(parents=True, exist_ok=True)
 
         feeds = ['system_information']
@@ -106,14 +107,13 @@ class GbfsV3Writer(GbfsV2Writer):
     VEHICLE_STATUS_KEY = 'vehicles'
 
     def write_gbfs_file(self, filename: str, data, timestamp: int, ttl: int = 60) -> None:
-        with open(filename, 'w') as dest:
-            content = {
-                'data': data,
-                'last_updated': datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%dT%H:%M:%SZ'),
-                'ttl': ttl,
-                'version': '3.0',
-            }
-            json.dump(content, dest, indent=2)
+        content = {
+            'data': data,
+            'last_updated': datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'ttl': ttl,
+            'version': '3.0',
+        }
+        self._dump_json(filename, content)
 
     def gbfs_data(self, base_url: str, feeds: List[str], feed_language: str) -> Dict:
         return {'feeds': [{'name': feed, 'url': f'{base_url}/{feed}.json'} for feed in feeds]}
