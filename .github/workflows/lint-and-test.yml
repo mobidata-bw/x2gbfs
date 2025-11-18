@@ -1,4 +1,4 @@
-name: lint
+name: lint & test
 
 on:
   push:
@@ -45,3 +45,7 @@ jobs:
     - name: type-check using mypy
       run: |
         mypy .
+
+    - name: Run tests
+      run: |
+        python -m pytest
