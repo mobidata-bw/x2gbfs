@@ -1,4 +1,3 @@
-import copy
 import json
 import logging
 import os
@@ -12,7 +11,7 @@ import websockets.exceptions
 from decouple import config
 from requests.exceptions import HTTPError
 
-from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsWriter
+from x2gbfs.gbfs import BaseProvider, GbfsTransformer, GbfsV2Writer, GbfsV3Writer
 from x2gbfs.providers import (
     CambioProvider,
     CantamenIXSIProvider,
@@ -41,6 +40,8 @@ X2GBFS_DEFAULT_CONFIG = {
     # Should this feed's gbfs.json use a custom base URL? If true, param `customBaseUrl`
     # must be provided on startup and will be used as feed base url instead of `baseUrl`
     'useCustomBaseUrl': False,
+    # As default, feeds are now generated in v3 (see CHANGELOG.md for further information)
+    'gbfs_version': 3,
 }
 
 
@@ -145,6 +146,40 @@ def get_x2gbfs_config_value(feed_config, key):
     return feed_config.get('x2gbfs', {}).get(key, X2GBFS_DEFAULT_CONFIG.get(key))
 
 
+def write_gbfs_feed(
+    destFolder: str,
+    system_information: Dict,
+    station_information: list[dict] | None,
+    station_status: list[dict] | None,
+    vehicle_types: list[dict] | None,
+    vehicles: list[dict] | None,
+    geofencing_zones: list[dict] | None,
+    pricing_plans: list[dict] | None,
+    alerts: list[dict] | None,
+    feed_base_url: str,
+    last_reported: int,
+    ttl: int = 60,
+    gbfs_version: int = 3,
+):
+
+    gbfs_writer = GbfsV2Writer() if gbfs_version == 2 else GbfsV3Writer()
+
+    gbfs_writer.write_gbfs_feed(
+        destFolder,
+        system_information,
+        station_information,
+        station_status,
+        vehicle_types,
+        vehicles,
+        geofencing_zones,
+        pricing_plans,
+        alerts,
+        feed_base_url,
+        last_reported,
+        ttl=ttl,
+    )
+
+
 def generate_feed_for(provider: str, output_dir: str, base_url: str, custom_base_url: str | None) -> None:
     with open(f'config/{provider}.json') as config_file:
         feed_config = json.load(config_file)
@@ -168,7 +203,7 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str, custom_base
     pricing_plans = transformer.load_pricing_plans(extractor)
     alerts = transformer.load_alerts(extractor)
 
-    GbfsWriter().write_gbfs_feed(
+    write_gbfs_feed(
         f'{output_dir}/{provider}',
         system_information,
         info,
@@ -181,6 +216,7 @@ def generate_feed_for(provider: str, output_dir: str, base_url: str, custom_base
         feed_base_url,
         last_reported,
         ttl=get_x2gbfs_config_value(feed_config, 'ttl'),
+        gbfs_version=get_x2gbfs_config_value(feed_config, 'gbfs_version'),
     )
     logger.info(f'Updated feeds for {provider}')
 
