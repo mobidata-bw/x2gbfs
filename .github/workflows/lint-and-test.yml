@@ -11,7 +11,7 @@ on:
   workflow_call:
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:

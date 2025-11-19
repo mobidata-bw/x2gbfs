@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  lint:
-    name: lint
-    uses: './.github/workflows/lint.yml'
+  lint-and-test:
+    name: lint and test
+    uses: './.github/workflows/lint-and-test.yml'
 
   build-publish:
-    needs: [lint]
+    needs: [lint-and-test]
     runs-on: ubuntu-latest
     steps:
     - name: checkout
