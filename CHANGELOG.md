@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2025-11-26
+- fix: lastUpdated timezone is now formatted with colon
+
 ## 2025-11-19
 
 - Breaking: Switches output format to [GBFSv3](https://github.com/MobilityData/gbfs/blob/v3.0/gbfs.md). For differences to [v2](https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md), check MobilityData's [migration guide](https://mobilitydata.org/how-to-upgrade-to-gbfs-v3-0/). If you intend to generate v2 feeds, you'll need to declare a `"x2gbfs": { "gbfs_version": 2}` section in those feed configs. For existing feed configs in this project, this has been added for `free2move_stuttgart` and `alpsgo` only.
