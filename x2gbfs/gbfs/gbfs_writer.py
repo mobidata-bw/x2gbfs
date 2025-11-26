@@ -109,7 +109,7 @@ class GbfsV3Writer(GbfsV2Writer):
     def write_gbfs_file(self, filename: str, data, timestamp: int, ttl: int = 60) -> None:
         content = {
             'data': data,
-            'last_updated': datetime.fromtimestamp(timestamp, UTC).strftime('%Y-%m-%dT%H:%M:%S%z'),
+            'last_updated': datetime.fromtimestamp(timestamp, UTC).isoformat(),
             'ttl': ttl,
             'version': '3.0',
         }
