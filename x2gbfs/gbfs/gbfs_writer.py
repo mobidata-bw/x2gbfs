@@ -190,7 +190,7 @@ class GbfsV3Writer(GbfsV2Writer):
             if not isinstance(element, dict):
                 logger.warning(f'Unexpected additional element: {element}')
             elif isinstance(element.get('last_reported'), int):
-                element['last_reported'] = datetime.utcfromtimestamp(element['last_reported']).isoformat()
+                element['last_reported'] = datetime.fromtimestamp(element['last_reported'], UTC).isoformat()
 
         return elements
 
