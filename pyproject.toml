@@ -5,19 +5,19 @@ packages = ["x2gbfs"]
 name = "x2gbfs"
 version = "0.0.1"
 dependencies = [
-    "requests~=2.32.3",
+    "requests~=2.32.5",
     "python-decouple~=3.8",
     "websockets~=15.0",
     "xmltodict~=0.14",
-    "unidecode~=1.3",
+    "unidecode~=1.4",
     ]
 
 [project.optional-dependencies]
 testing = [
-    "ruff~=0.11.6",
-    "mypy~=1.14.1",
+    "ruff~=0.14.5",
+    "mypy~=1.18.2",
     "black~=25.1.0",
-    "types-requests==2.32.0.20250328",
+    "types-requests==2.32.4.20250913",
     "types-urllib3==1.26.25.14",
     "types-xmltodict==0.14.0.20241009",
     ]
