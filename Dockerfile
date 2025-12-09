@@ -1,4 +1,4 @@
-FROM python:3.14.0-alpine@sha256:8373231e1e906ddfb457748bfc032c4c06ada8c759b7b62d9c73ec2a3c56e710
+FROM python:3.13.5-alpine@sha256:37b14db89f587f9eaa890e4a442a3fe55db452b69cca1403cc730bd0fbdc8aaf
 
 LABEL org.opencontainers.image.title="x2gbfs"
 LABEL org.opencontainers.image.description="Library & command line to generate GBFS feeds from various sharing providers."
