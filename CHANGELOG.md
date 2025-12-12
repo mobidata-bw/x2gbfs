@@ -3,9 +3,14 @@
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
 ## [Unreleased]
+-
+
+## 2025-12-12
+
 - fix: last_reported timezone now has timezone appended
 
 ## 2025-11-26
+
 - fix: lastUpdated timezone is now formatted with colon
 
 ## 2025-11-19
