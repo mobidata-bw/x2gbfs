@@ -2,11 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
-## [Unreleased]
--
-
 ## 2025-12-12
 
+- Breaking: remove MOQO providers `coono` and `gmuend_bewegt`
 - fix: last_reported timezone now has timezone appended
 
 ## 2025-11-26
