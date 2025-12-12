@@ -1,0 +1,47 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "is_taxable": false,
+                "plan_id": "small_family_car_hour_daytime"
+            },
+            {
+                "currency": "EUR",
+                "is_taxable": false,
+                "plan_id": "suv_hour_daytime"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Autohaus Hertlein GmbH",
+            "attribution_url": "https://www.hertlein.me/",
+            "email": "kontakt@hertlein.me",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "name": "HERTLEIN Carsharing",
+            "opening_hours": "24/7",
+            "operator": "Autohaus Hertlein GmbH",
+            "phone_number": "+49079341515",
+            "privacy_last_updated": "2025-07-20",
+            "privacy_url": "https://www.hertlein.me/datenschutz/",
+            "purchase_url": "https://portal.moqo.de/js_sign_up/740571331#/account",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work&gl=DE"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
+                }
+            },
+            "system_id": "hertlein_carsharing",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.hertlein.me/vermietung/carsharing/"
+        }
+    },
+    "provider_data": {
+        "team_id": "740571331"
+    }
+}

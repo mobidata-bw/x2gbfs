@@ -4,6 +4,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 
 ## 2025-12-12
 
+- add MOQO provider `hertlein_carsharing`
 - Breaking: remove MOQO providers `coono` and `gmuend_bewegt`
 - fix: last_reported timezone now has timezone appended
 
