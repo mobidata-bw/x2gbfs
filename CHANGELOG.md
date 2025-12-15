@@ -5,6 +5,7 @@ The changelog lists most feature changes between each release. Search GitHub iss
 ## 2025-12-15
 
 - add MOQO provider `ford_carsharing_autohauskauderer`
+- update MOQO provider `hertlein_carsharing` pricing plans
 
 ## 2025-12-12
 
