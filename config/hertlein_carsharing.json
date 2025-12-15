@@ -3,13 +3,63 @@
         "pricing_plans": [
             {
                 "currency": "EUR",
+                "description": "Stundenpreis: 2,30€ zzgl. 0,25€/km. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
-                "plan_id": "small_family_car_hour_daytime"
+                "name": "Kleinwagen - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.30 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.25 } ],
+                "plan_id": "small_family_car_hour_daytime",
+                "price": 0
             },
             {
                 "currency": "EUR",
+                "description": "Über-Nacht-Tarif (22:00 bis 07:00 Uhr): 11,00€ zzgl. 0,25€/km. Alle Angaben ohne Gewähr.",
                 "is_taxable": false,
-                "plan_id": "suv_hour_daytime"
+                "name": "Kleinwagen - Über-Nacht-Tarif",
+                "per_min_pricing": [ { "start": 0, "interval": 540, "end": 540, "rate": 11.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.25 } ],
+                "plan_id": "small_family_car_night",
+                "price": 0
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagestarif: 25,30€ zzgl. 0,25€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Kleinwagen - Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 25.30 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.25 } ],
+                "plan_id": "small_family_car_day",
+                "price": 0
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 2,30€ zzgl. 0,15€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "SUV - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 2.30 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.15 } ],
+                "plan_id": "suv_hour_daytime",
+                "price": 0
+            },
+            {
+                "currency": "EUR",
+                "description": "Über-Nacht-Tarif (22:00 bis 07:00 Uhr): 11,00€ zzgl. 0,15€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "SUV - Über-Nacht-Tarif",
+                "per_min_pricing": [ { "start": 0, "interval": 540, "end": 540, "rate": 11.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.15 } ],
+                "plan_id": "suv_night",
+                "price": 0
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagestarif: 25,30€ zzgl. 0,15€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "SUV - Tagestarif",
+                "per_min_pricing": [ { "start": 0, "interval": 1440, "rate": 25.30 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.15 } ],
+                "plan_id": "suv_day",
+                "price": 0
             }
         ],
         "system_information": {
