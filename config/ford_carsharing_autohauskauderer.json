@@ -1,0 +1,83 @@
+{
+    "feed_data": {
+        "pricing_plans": [
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 5,50€ zzgl. 0,33€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Klein - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 5.50 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "compact_car_hour_daytime",
+                "price": 0,
+                "url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_Preisliste-Privatkunden-ab-12.24_20241213.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 55,00€(1.Tag)/34,00€(ab 2.Tag) zzgl. 0,33€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Klein - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 55.00 }, { "start": 1440, "interval": 1440, "rate": 35.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.33 } ],
+                "plan_id": "compact_car_day",
+                "price": 0,
+                "url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_Preisliste-Privatkunden-ab-12.24_20241213.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Stundenpreis: 9,00€ zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Transporter - Stundenpreis",
+                "per_min_pricing": [ { "start": 0, "interval": 60, "rate": 9.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "transporter_hour_daytime",
+                "price": 0,
+                "url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_Preisliste-Privatkunden-ab-12.24_20241213.pdf"
+            },
+            {
+                "currency": "EUR",
+                "description": "Tagespreis: 90,00€(1.Tag)/69,00€(ab 2.Tag) zzgl. 0,38€/km. Alle Angaben ohne Gewähr.",
+                "is_taxable": false,
+                "name": "Transporter - Tagespreis",
+                "per_min_pricing": [ { "start": 0, "end": 1440, "interval": 1440, "rate": 90.00 }, { "start": 1440, "interval": 1440, "rate": 69.00 } ],
+                "per_km_pricing": [ { "start": 0, "interval": 1, "rate": 0.38 } ],
+                "plan_id": "transporter_day",
+                "price": 0,
+                "url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_Preisliste-Privatkunden-ab-12.24_20241213.pdf"
+            }
+        ],
+        "system_information": {
+            "attribution_organization_name": "Autohaus Kauderer GmbH & Co. KG",
+            "attribution_url": "https://www.auto-kauderer.de/",
+            "email": "support@moqo.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "name": "Ford Carsharing (Autohaus Kauderer)",
+            "opening_hours": "24/7",
+            "operator": "Ford-Händler Dienstleistungsgesellschaft mbH",
+            "phone_number": "+4907161984690",
+            "privacy_last_updated": "2025-03-01",
+            "privacy_url": "https://www.ford-carsharing.de/privacy-policy/",
+            "purchase_url": "https://portal.ford-carsharing.de/js_sign_up/privatkundentarif-5d33546e#/account",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.fordcarsharing.sharing.app"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/us/app/ford-carsharing/id6717600632"
+                }
+            },
+            "system_id": "ford_carsharing_autohauskauderer",
+            "terms_url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_AGB_10-24_Version_20241205.pdf",
+            "terms_last_updated": "2024-12-05",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.ford-carsharing.de/"
+        }
+    },
+    "provider_data": {
+        "team_id": "2049102250"
+    }
+}

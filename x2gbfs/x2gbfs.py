@@ -77,6 +77,7 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         'flinkster_carsharing',
         'oberschwabenmobil',
         'ford_carsharing_autohausbaur',
+        'ford_carsharing_autohauskauderer',
         'stadtwerke_wertheim',
         'hertlein_carsharing',
     ]:
