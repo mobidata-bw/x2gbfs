@@ -257,7 +257,7 @@ No endpoint.
 
 Geofencing zones are extracted from the `/api/geo/geodata/v1/locations/{location_alias}/operating_area` endpoint, which returns a single GeoJSON feature. Therefore, `geofencing_zones.json` will be a list of only one `MultiPolygon`.
 
-The geofencing zones are generated as a one element collection with a MultiPolygon counterclockwise ordered lists of coordinates (to reflect the restrictions outside the service area) and the following properties:
+The geofencing zones are generated as a one element collection with a MultiPolygon with clockwise(!) ordered lists of coordinates and the following properties:
 
 GBFS Field | Mapping
 --- | ---
@@ -266,10 +266,19 @@ GBFS Field | Mapping
 `end` | -
 `rules` | List of rules
 \-&nbsp;`vehicle_type_id` | None, restrictions apply to all vehicle types.
-\-&nbsp;`ride_allowed` | `false` - Undocked (“free floating”) ride cannot start or end in this zone.
+\-&nbsp;`ride_allowed` | `true` - Undocked (“free floating”) ride can start or end in this zone.
 \-&nbsp;`ride_through_allowed` | `true` - Ride can travel through this zone.
 \-&nbsp;`maximum_speed_kph` | No maximum speed to observe, thus omitted.
-\-&nbsp;`station_parking`| `true` - There are stations outside the main operating area, which can be used.
+\-&nbsp;`station_parking`| `true` - There are stations can be used.
+
+Note: This contradicts GBFSv2.3 specification which says:
+
+> By default, no restrictions apply everywhere. Geofencing zones SHOULD be modeled
+> according to restrictions rather
+> than allowance. An operational area (outside of which vehicles cannot be used)
+> SHOULD be defined with a counterclockwise polygon, and a limitation area
+> (in which vehicles can be used under certain restrictions) SHOULD
+> be defined with a clockwise polygon.
 
 ## Deep Links
 
