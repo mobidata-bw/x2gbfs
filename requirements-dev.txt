@@ -3,6 +3,6 @@ types-urllib3==1.26.25.14
 types-xmltodict==0.14.0.20241009
 pytest==9.0.1
 
-ruff~=0.14.5
+ruff~=0.14.11
 black~=25.1.0
 mypy~=1.18.2
