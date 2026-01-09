@@ -56,12 +56,3 @@ def post(
     response = requests.post(url, headers=request_headers, timeout=timeout, params=params, json=json)
     response.raise_for_status()
     return response
-
-
-def reverse_multipolygon(geometry):
-    if geometry and geometry.get('type') == 'MultiPolygon':
-        for single_polygon in geometry.get('coordinates', []):
-            for inner_polygon in single_polygon:
-                inner_polygon.reverse()
-    else:
-        logger.exception(f'Geometry is of type {geometry.get("type")}, not MultiPolygon, did not reverse!')

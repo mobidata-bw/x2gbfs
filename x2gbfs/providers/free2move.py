@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 from decouple import config
 
 from x2gbfs.gbfs.base_provider import BaseProvider
-from x2gbfs.util import get, post, reverse_multipolygon
+from x2gbfs.util import get, post
 
 logger = logging.getLogger(__name__)
 
@@ -509,20 +509,22 @@ class Free2moveProvider(BaseProvider):
         """
         operating_area = self.api.operating_area(self.location_alias)
 
-        # We reverse polygon coords, as GBFSv2.3 spec says:
+        # GBFSv2.3 spec says:
         # By default, no restrictions apply everywhere. Geofencing zones SHOULD be modeled according to restrictions rather
         # than allowance. An operational area (outside of which vehicles cannot be used)
         # SHOULD be defined with a counterclockwise polygon, and a limitation area
         # (in which vehicles can be used under certain restrictions) SHOULD
         # be defined with a clockwise polygon.
+        #
+        # NOTE: Nevertheless, upon downstream consumer request, we don't invert poylgon order
+        # and specify restrictions as they apply inside the operating area.
         # Note: GBFSv3 introduces global_rules which could be used to return standard GeoJSON with clockwise polygons.
-        reverse_multipolygon(operating_area.get('geometry'))
 
         operating_area['properties'] = {
             'name': self.location_alias,
             'rules': [
                 {
-                    'ride_allowed': False,
+                    'ride_allowed': True,
                     'ride_through_allowed': True,
                     'station_parking': True,
                 }
