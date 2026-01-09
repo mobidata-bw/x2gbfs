@@ -1,4 +1,4 @@
-types-requests==2.32.4.20250913
+types-requests==2.32.4.20260107
 types-urllib3==1.26.25.14
 types-xmltodict==0.14.0.20241009
 pytest==9.0.1
