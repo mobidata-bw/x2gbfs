@@ -19,7 +19,7 @@ testing = [
     "black~=25.1.0",
     "types-requests==2.32.4.20260107",
     "types-urllib3==1.26.25.14",
-    "types-xmltodict==0.14.0.20241009",
+    "types-xmltodict==1.0.1.20250920",
     ]
 
 [tool.black]
