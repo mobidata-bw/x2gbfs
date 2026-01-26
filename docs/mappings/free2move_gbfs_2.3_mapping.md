@@ -269,7 +269,7 @@ GBFS Field | Mapping
 \-&nbsp;`ride_allowed` | `true` - Undocked (“free floating”) ride can start or end in this zone.
 \-&nbsp;`ride_through_allowed` | `true` - Ride can travel through this zone.
 \-&nbsp;`maximum_speed_kph` | No maximum speed to observe, thus omitted.
-\-&nbsp;`station_parking`| `true` - There are stations can be used.
+\-&nbsp;`station_parking`| `ride_allowed` includes allowance to park at stations, thus omitted.
 
 Note: This contradicts GBFSv2.3 specification which says:
 

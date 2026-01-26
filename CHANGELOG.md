@@ -2,6 +2,10 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2026-01-26
+- fix: for free2move, remove conflicting station_parking property in geofencing zone
+
+
 ## 2025-12-15
 
 - add MOQO provider `ford_carsharing_autohauskauderer`
