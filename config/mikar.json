@@ -82,11 +82,11 @@
             "rental_apps": {
                 "android": {
                     "discovery_uri": "https://mikar.de/yet_unknown",
-                    "store_uri": "https://apps.apple.com/de/app/mikar/id1361199550"
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.fleetster.mikar"
                 },
                 "ios": {
                     "discovery_uri": "https://mikar.de/yet_unknown",
-                    "store_uri": "https://play.google.com/store/apps/details?id=de.fleetster.mikar"
+                    "store_uri": "https://apps.apple.com/de/app/mikar/id1361199550"
                 }
             },
             "system_id": "mikar",
