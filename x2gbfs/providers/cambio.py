@@ -140,7 +140,7 @@ class CambioProvider(BaseProvider):
         """
         Guesses the propulsion type from vehicle name.
         """
-        station_name = unidecode_with_german_umlauts(elem['name'].lower())
+        station_name = unidecode_with_german_umlauts(elem['name'].lower()).replace(' ', '-')
         station_url = f"https://www.cambio-carsharing.de/stationen/station/{station_name}-{elem['id']}"
 
         return {
