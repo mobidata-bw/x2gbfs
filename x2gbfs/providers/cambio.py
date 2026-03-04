@@ -20,7 +20,9 @@ class CambioProvider(BaseProvider):
     VEHICLE_TYPES_URL = 'https://cwapi.cambio-carsharing.com/opendata/v1/mandator/{city_id}/vehicles'
 
     def __init__(self, feed_config: dict[str, Any]):
-        self.city_id = feed_config['provider-info']['city_id']
+        provider_info = feed_config['provider-info']
+        self.city_id = provider_info['city_id']
+        self.partner = provider_info.get('partner')
         self.config = feed_config
 
     def _all_stations(self) -> list[dict[str, Any]]:
@@ -52,8 +54,9 @@ class CambioProvider(BaseProvider):
             geo_position = elem['geoposition']
             station_id = elem['id']
             address = elem['address']
+            city = address.get('addressLocation')
             vehicle_types_available = self._extract_vehicle_types_available(elem)
-            rental_uris = self._extract_station_rental_uris(elem)
+            rental_uris = self._extract_station_rental_uris(elem, city)
             gbfs_station = {
                 'lat': geo_position.get('latitude'),
                 'lon': geo_position.get('longitude'),
@@ -61,7 +64,7 @@ class CambioProvider(BaseProvider):
                 'station_id': station_id,
                 'address': f"{address.get('streetAddress')} {address.get('streetNumber')}",
                 'post_code': address.get('postalCode'),
-                'city': address.get('addressLocation'),  # Non-standard
+                'city': city,  # Field standardized with v3.1-RC2
                 'rental_uris': rental_uris,
             }
 
@@ -136,12 +139,19 @@ class CambioProvider(BaseProvider):
 
         return 'combustion'
 
-    def _extract_station_rental_uris(self, elem: dict[str, str]) -> dict[str, str]:
+    def _extract_station_rental_uris(self, elem: dict[str, str], city: str) -> dict[str, str]:
         """
         Guesses the propulsion type from vehicle name.
         """
-        station_name = unidecode_with_german_umlauts(elem['name'].lower()).replace(' ', '-')
-        station_url = f"https://www.cambio-carsharing.de/stationen/station/{station_name}-{elem['id']}"
+        match self.partner:
+            case None:
+                station_name = unidecode_with_german_umlauts(elem['name'].lower()).replace(' ', '-')
+                station_url = f"https://www.cambio-carsharing.de/stationen/station/{station_name}-{elem['id']}"
+            case 'stadtteilauto':
+                station_city = unidecode_with_german_umlauts(city).lower().replace(' ', '-')
+                station_url = f"https://www.stadtteilauto.com/de/privat/stationen/{station_city}/#station_{elem['id']}"
+            case _:
+                raise RuntimeError(f"Unsupported partner '{self.partner}'")
 
         return {
             'web': station_url,
