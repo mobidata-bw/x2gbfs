@@ -254,12 +254,13 @@ class MoqoProvider(BaseProvider):
                 'model': gbfs_model,
                 'return_constraint': 'roundtrip_station',
             }
-            default_pricing_plan_id = self._default_pricing_plan_id(vehicle['car_type'])
-            if default_pricing_plan_id:
-                vehicle_types[id]['default_pricing_plan_id'] = default_pricing_plan_id
-            pricing_plan_ids = self._pricing_plan_ids(vehicle['car_type'])
-            if pricing_plan_ids:
-                vehicle_types[id]['pricing_plan_ids'] = pricing_plan_ids
+            if self.config.get('feed_data', {}).get('pricing_plans') is not None:  # pricing_plans is optional
+                default_pricing_plan_id = self._default_pricing_plan_id(vehicle['car_type'])
+                if default_pricing_plan_id:
+                    vehicle_types[id]['default_pricing_plan_id'] = default_pricing_plan_id
+                pricing_plan_ids = self._pricing_plan_ids(vehicle['car_type'])
+                if pricing_plan_ids:
+                    vehicle_types[id]['pricing_plan_ids'] = pricing_plan_ids
         return id
 
     @staticmethod
