@@ -1,0 +1,37 @@
+{
+    "feed_data": {
+        "system_information": {
+            "attribution_organization_name": "Autohaus Bölz GmbH",
+            "attribution_url": "https://www.ford-boelz-schwaigern.de/",
+            "email": "support@moqo.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "name": "Ford Carsharing (Autohaus Bölz)",
+            "opening_hours": "24/7",
+            "operator": "Ford-Händler Dienstleistungsgesellschaft mbH",
+            "phone_number": "+4907138941440",
+            "privacy_last_updated": "2025-03-01",
+            "privacy_url": "https://www.ford-carsharing.de/privacy-policy/",
+            "purchase_url": "https://portal.ford-carsharing.de/js_sign_up/205321084#/subscription-selection",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.fordcarsharing.sharing.app"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/us/app/ford-carsharing/id6717600632"
+                }
+            },
+            "system_id": "ford_carsharing_autohausboelz",
+            "terms_last_updated": "2024-12-05",
+            "terms_url": "https://www.ford-carsharing.de/wp-content/uploads/2024/12/FCS_AGB_10-24_Version_20241205.pdf",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.ford-carsharing.de/"
+        }
+    },
+    "provider_data": {
+        "team_id": "494351255"
+    }
+}
