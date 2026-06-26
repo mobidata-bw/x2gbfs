@@ -2,6 +2,9 @@
 
 The changelog lists most feature changes between each release. Search GitHub issues and pull requests for smaller issues.
 
+## 2026-06-24
+- add MOQO providers `ford_carsharing_autohausalbert`, `ford_carsharing_autohausboelz`. Note: `pricing_plans` is not included.
+
 ## 2026-02-13
 - fix: update mikar rental_apps store_uri
 
