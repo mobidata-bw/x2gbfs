@@ -82,6 +82,7 @@ def build_extractor(provider: str, feed_config: Dict[str, Any]) -> BaseProvider:
         'ford_carsharing_autohauskauderer',
         'stadtwerke_wertheim',
         'hertlein_carsharing',
+        'szabo_mobility',
     ]:
         return MoqoProvider(feed_config)
     if provider == 'lara_to_go':
