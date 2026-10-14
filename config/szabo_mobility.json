@@ -1,0 +1,35 @@
+{
+    "feed_data": {
+        "system_information": {
+            "attribution_organization_name": "Szabo GmbH",
+            "attribution_url": "https://www.szabo.de",
+            "email": "info@szabo.de",
+            "feed_contact_email": "mobidata-bw@nvbw.de",
+            "language": "de",
+            "license_id": "DL-DE-BY-2.0",
+            "name": "Szabo Mobility",
+            "opening_hours": "24/7",
+            "operator": "Szabo GmbH",
+            "phone_number": "+4909342967920",
+            "privacy_last_updated": "2026-01-01",
+            "privacy_url": "https://www.szabo.de/datenschutz",
+            "purchase_url": "https://portal.moqo.de/js_sign_up/szabo-mobility?ref=qrcode#/payment",
+            "rental_apps": {
+                "android": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://play.google.com/store/apps/details?id=de.moqo.work&gl=DE"
+                },
+                "ios": {
+                    "discovery_uri": "https://go.moqo.de/deeplink/openApp",
+                    "store_uri": "https://apps.apple.com/de/app/moqo/id1385011262"
+                }
+            },
+            "system_id": "szabo_mobility",
+            "timezone": "Europe/Berlin",
+            "url": "https://www.szabo.de/carsharing-privat"
+        }
+    },
+    "provider_data": {
+        "team_id": "2062394964"
+    }
+}
