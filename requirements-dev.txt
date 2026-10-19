@@ -4,5 +4,5 @@ types-xmltodict==0.14.0.20241009
 pytest==9.0.2
 
 ruff~=0.14.11
-black~=25.1.0
+black~=26.10.1
 mypy~=1.19.1
